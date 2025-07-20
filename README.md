@@ -1,4 +1,7 @@
 # 100ProjectsOfCode
+
+[한국어판](./README_ko.md)
+
 A list of practical knowledge-building projects. As the projects are aimed to increase your knowledge base, they are somewhat challenging. However, there are a few easy ones too. Many of them are even worthy enough to showcase on your portfolio.   
 The projects are divided into multiple categories and tagged with some suggested languages and frameworks/tools (I'm still working on this part) to get you started.
 
