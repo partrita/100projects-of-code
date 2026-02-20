@@ -1,0 +1,20 @@
+---
+title: "Kaggle Titanic Challenge"
+---
+
+Kaggle offers fascinating challenges to introduce you to the basics of machine learning with Python or R: Use a real dataset from the [Titanic passenger log](https://www.kaggle.com/c/titanic) to predict which passengers were most likely to survive the disaster.
+
+## Python Implementation
+
+```python
+def kaggle_titanic_challenge():
+    """
+    Implementation for Kaggle Titanic Challenge
+    """
+    print("Executing Kaggle Titanic Challenge...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    kaggle_titanic_challenge()
+```

@@ -1,0 +1,20 @@
+---
+title: "Product Landing Page"
+---
+
+Build the ideal product landing page according to you. Choose a product, build a page and showcase that on your portfolio.
+
+## Python Implementation
+
+```python
+def product_landing_page():
+    """
+    Implementation for Product Landing Page
+    """
+    print("Executing Product Landing Page...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    product_landing_page()
+```

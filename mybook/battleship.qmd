@@ -1,0 +1,20 @@
+---
+title: "Battleship"
+---
+
+Build the classic game of battleship. You can build a CLI app or a much better app with graphics using any 2D graphics module.
+
+## Python Implementation
+
+```python
+def battleship():
+    """
+    Implementation for Battleship
+    """
+    print("Executing Battleship...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    battleship()
+```

@@ -1,0 +1,20 @@
+---
+title: "Tetris"
+---
+
+Code the game of Tetris starting from the Tetrominoes to the game interface. A web app is better as it will let you play from anywhere. For additional challenge try to implement a simple HTML and JavaScript version without any additional frameworks or libraries to help.
+
+## Python Implementation
+
+```python
+def tetris():
+    """
+    Implementation for Tetris
+    """
+    print("Executing Tetris...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    tetris()
+```

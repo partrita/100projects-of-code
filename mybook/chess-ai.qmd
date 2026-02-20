@@ -1,0 +1,20 @@
+---
+title: "Chess AI"
+---
+
+Now that you have most likely built the chess game, build an AI that you can play against. For inspiration look into the examples provided. The challenge here is to make an AI that is fast enough to play against. Most simple AIs for chess are just really slow (take about a minute or more for a move). Make your chess engine interface with other programs such via the [Universal Chess Interface](https://en.wikipedia.org/wiki/Universal_Chess_Interface). Then you can test it out against other bots/players online.
+
+## Python Implementation
+
+```python
+def chess_ai():
+    """
+    Implementation for Chess AI
+    """
+    print("Executing Chess AI...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    chess_ai()
+```

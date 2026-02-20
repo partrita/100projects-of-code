@@ -1,0 +1,20 @@
+---
+title: "Virtual Assistant"
+---
+
+Build a virtual assistant that will help you carry out tasks like calling people, scheduling tasks, creating todo lists, taking notes, .. you get the point.
+
+## Python Implementation
+
+```python
+def virtual_assistant():
+    """
+    Implementation for Virtual Assistant
+    """
+    print("Executing Virtual Assistant...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    virtual_assistant()
+```

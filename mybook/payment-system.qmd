@@ -1,0 +1,20 @@
+---
+title: "Payment System"
+---
+
+Build a payment interface that can deal with fake cash (better if you can deal with real currency, although I don't know if you have to take extra steps for that). Users should be able to receive and send money, and also check their current balance.
+
+## Python Implementation
+
+```python
+def payment_system():
+    """
+    Implementation for Payment System
+    """
+    print("Executing Payment System...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    payment_system()
+```

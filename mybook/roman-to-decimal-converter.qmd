@@ -1,0 +1,20 @@
+---
+title: "Roman to Decimal Converter"
+---
+
+Write a script that converts decimal numbers to roman numerals and vice versa. This may seem like an easy task but I assure you its not that easy. Give it a try.
+
+## Python Implementation
+
+```python
+def roman_to_decimal_converter():
+    """
+    Implementation for Roman to Decimal Converter
+    """
+    print("Executing Roman to Decimal Converter...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    roman_to_decimal_converter()
+```

@@ -1,0 +1,20 @@
+---
+title: "Traffic Notifier"
+---
+
+Build an app (phone app will be better) that finds how congested one route is and then suggests you a better route to take to your destination.
+
+## Python Implementation
+
+```python
+def traffic_notifier():
+    """
+    Implementation for Traffic Notifier
+    """
+    print("Executing Traffic Notifier...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    traffic_notifier()
+```

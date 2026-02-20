@@ -1,0 +1,20 @@
+---
+title: "Codec Software"
+---
+
+Build a software that will encrypt and decrypt text for you. Incorporate quite a few algorithms to provide flexibility to the user.
+
+## Python Implementation
+
+```python
+def codec_software():
+    """
+    Implementation for Codec Software
+    """
+    print("Executing Codec Software...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    codec_software()
+```

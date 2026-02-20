@@ -1,0 +1,20 @@
+---
+title: "Command Line Terminal"
+---
+
+If you are building the Operating System, you will surely need a Command Line Terminal. Try to clone the bash shell or Windows PowerShell as an independent project to make it easier while you build your own OS.
+
+## Python Implementation
+
+```python
+def command_line_terminal():
+    """
+    Implementation for Command Line Terminal
+    """
+    print("Executing Command Line Terminal...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    command_line_terminal()
+```

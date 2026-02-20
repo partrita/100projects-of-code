@@ -1,0 +1,20 @@
+---
+title: "Messenger Bot"
+---
+
+Build a bot for messenger that can do some menial tasks too like flip a coin, roll a dice, present the news, and chat with you when bored.
+
+## Python Implementation
+
+```python
+def messenger_bot():
+    """
+    Implementation for Messenger Bot
+    """
+    print("Executing Messenger Bot...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    messenger_bot()
+```

@@ -1,0 +1,20 @@
+---
+title: "URL Shortener"
+---
+
+Build a web app that can shorten any URL that the user provides. You can either code an algorithm that shortens and stores the user provide URL or use an API.
+
+## Python Implementation
+
+```python
+def url_shortener():
+    """
+    Implementation for URL Shortener
+    """
+    print("Executing URL Shortener...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    url_shortener()
+```

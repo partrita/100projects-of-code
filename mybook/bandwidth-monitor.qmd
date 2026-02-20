@@ -1,0 +1,20 @@
+---
+title: "Bandwidth Monitor"
+---
+
+Build a tool to track how much data you have downloaded or uploaded to the internet. Have it email you weekly reports of your usage (or notify you when you get above a specified usage limit). As a bonus challenge, predict peak usage times.
+
+## Python Implementation
+
+```python
+def bandwidth_monitor():
+    """
+    Implementation for Bandwidth Monitor
+    """
+    print("Executing Bandwidth Monitor...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    bandwidth_monitor()
+```

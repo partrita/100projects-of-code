@@ -1,0 +1,20 @@
+---
+title: "UML Diagram Generator"
+---
+
+Write a script that goes through your OOPS code and creates a well-formatted UML diagram for your code.
+
+## Python Implementation
+
+```python
+def uml_diagram_generator():
+    """
+    Implementation for UML Diagram Generator
+    """
+    print("Executing UML Diagram Generator...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    uml_diagram_generator()
+```

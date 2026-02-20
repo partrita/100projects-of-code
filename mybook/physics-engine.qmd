@@ -1,0 +1,20 @@
+---
+title: "Physics Engine"
+---
+
+Video Games work on [physics engines](https://en.wikipedia.org/wiki/Physics_engine). Build your own. You can later use this engine to build games or carry out simulations. Try building a 2D or 3D physics engine that can handle collision, movement, acceleration, gravity, and other forces in the system. You may need to first understand a bit of physics to be able to build something, so take your time for this one.
+
+## Python Implementation
+
+```python
+def physics_engine():
+    """
+    Implementation for Physics Engine
+    """
+    print("Executing Physics Engine...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    physics_engine()
+```

@@ -1,0 +1,20 @@
+---
+title: "WhatsApp Butler"
+---
+
+Build a bot for WhatsApp that can scrape information from the internet like news, wikipedia entries, and other things. Make it able to keep track of some events like your/someone else's birthday and send an automatic message wishing you/the other person.
+
+## Python Implementation
+
+```python
+def whatsapp_butler():
+    """
+    Implementation for WhatsApp Butler
+    """
+    print("Executing WhatsApp Butler...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    whatsapp_butler()
+```

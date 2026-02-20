@@ -1,0 +1,20 @@
+---
+title: "Regex Query Tool"
+---
+
+Build a search tool that implements Regular Expressions. With it you can easily search for text matching a pattern in websites or documents that you may be writing or browsing.
+
+## Python Implementation
+
+```python
+def regex_query_tool():
+    """
+    Implementation for Regex Query Tool
+    """
+    print("Executing Regex Query Tool...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    regex_query_tool()
+```

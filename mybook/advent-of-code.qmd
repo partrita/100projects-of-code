@@ -1,0 +1,20 @@
+---
+title: "Advent of Code"
+---
+
+[Advent of Code](https://adventofcode.com/) challenges occur every year in the days leading up to Christmas. They include lots of fun programming challenges that can help you develop your chops in a programming language that you want to master.
+
+## Python Implementation
+
+```python
+def advent_of_code():
+    """
+    Implementation for Advent of Code
+    """
+    print("Executing Advent of Code...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    advent_of_code()
+```

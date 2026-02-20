@@ -1,0 +1,20 @@
+---
+title: "Pong AI"
+---
+
+Add to the Pong program you created above. Create an AI opponent to play against in a single player mode.
+
+## Python Implementation
+
+```python
+def pong_ai():
+    """
+    Implementation for Pong AI
+    """
+    print("Executing Pong AI...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    pong_ai()
+```

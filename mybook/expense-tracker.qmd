@@ -1,0 +1,20 @@
+---
+title: "Expense Tracker"
+---
+
+Create a simple interface (web app/phone app) you can use to add and categorize your expense. Generate monthly reports based on the inputs and write custom alerts for things like, "spending too much on coffee... as always".
+
+## Python Implementation
+
+```python
+def expense_tracker():
+    """
+    Implementation for Expense Tracker
+    """
+    print("Executing Expense Tracker...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    expense_tracker()
+```

@@ -1,0 +1,20 @@
+---
+title: "Directory Tree Generator"
+---
+
+Generate a tree like structure using the directories present in a given path by the user. This allows you to see the positioning of files and directories. We are visual animals and thus, visual depictions of directories are more understandable.
+
+## Python Implementation
+
+```python
+def directory_tree_generator():
+    """
+    Implementation for Directory Tree Generator
+    """
+    print("Executing Directory Tree Generator...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    directory_tree_generator()
+```

@@ -1,0 +1,20 @@
+---
+title: "Flappy Bird"
+---
+
+This is one of the simplest difficult games that you can build. You can use images for pipes and the bird or generate your own custom bird and pipes for the project.
+
+## Python Implementation
+
+```python
+def flappy_bird():
+    """
+    Implementation for Flappy Bird
+    """
+    print("Executing Flappy Bird...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    flappy_bird()
+```

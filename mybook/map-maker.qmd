@@ -1,0 +1,20 @@
+---
+title: "Map Maker"
+---
+
+Build a simple program that will generate random terrain maps through [procedural generation](https://en.wikipedia.org/wiki/Procedural_generation) with a user supplied seed.
+
+## Python Implementation
+
+```python
+def map_maker():
+    """
+    Implementation for Map Maker
+    """
+    print("Executing Map Maker...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    map_maker()
+```

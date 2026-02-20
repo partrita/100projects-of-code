@@ -1,0 +1,20 @@
+---
+title: "Weather App"
+---
+
+Build an app that gets the weather at your location in the current time. You can either use a web scraper in the background to collect the data or use a weather API.
+
+## Python Implementation
+
+```python
+def weather_app():
+    """
+    Implementation for Weather App
+    """
+    print("Executing Weather App...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    weather_app()
+```

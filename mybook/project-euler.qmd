@@ -1,0 +1,20 @@
+---
+title: "Project Euler"
+---
+
+[Project Euler](https://projecteuler.net/) contains mathematical challenges that require programming tools to be solved. There are over 700 problems that you can solve, I urge you to document each solution in a properly organized way (probably build a repo for the solutions) so that you can showcase them online.
+
+## Python Implementation
+
+```python
+def project_euler():
+    """
+    Implementation for Project Euler
+    """
+    print("Executing Project Euler...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    project_euler()
+```

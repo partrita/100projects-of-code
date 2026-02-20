@@ -1,0 +1,20 @@
+---
+title: "Machine Translator"
+---
+
+Build an app to translate text from one language to another. For bonus points include an image translator that can get text from image and translate it.
+
+## Python Implementation
+
+```python
+def machine_translator():
+    """
+    Implementation for Machine Translator
+    """
+    print("Executing Machine Translator...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    machine_translator()
+```

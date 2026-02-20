@@ -1,0 +1,20 @@
+---
+title: "Music Player"
+---
+
+Build a music player app that can play music from mp3 files and also have functionality for forward, rewind, pause, and play.
+
+## Python Implementation
+
+```python
+def music_player():
+    """
+    Implementation for Music Player
+    """
+    print("Executing Music Player...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    music_player()
+```

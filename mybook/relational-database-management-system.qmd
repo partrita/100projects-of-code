@@ -1,0 +1,20 @@
+---
+title: "Relational Database Management System"
+---
+
+Build your own database management system like MySQL or PostgreSQL. It doesn't have to be compatible with them, but it does need to help users manage their data efficiently and create relational tables.
+
+## Python Implementation
+
+```python
+def relational_database_management_system():
+    """
+    Implementation for Relational Database Management System
+    """
+    print("Executing Relational Database Management System...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    relational_database_management_system()
+```

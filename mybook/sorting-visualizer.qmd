@@ -1,0 +1,20 @@
+---
+title: "Sorting Visualizer"
+---
+
+Build a webpage/video that will visualize the different sorting algorithms. You can use different kinds of visualizations: dots, bars, colour bars, circularly scattered points, and so on.
+
+## Python Implementation
+
+```python
+def sorting_visualizer():
+    """
+    Implementation for Sorting Visualizer
+    """
+    print("Executing Sorting Visualizer...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    sorting_visualizer()
+```

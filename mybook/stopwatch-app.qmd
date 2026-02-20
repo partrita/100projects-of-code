@@ -1,0 +1,20 @@
+---
+title: "Stopwatch App"
+---
+
+Build a stopwatch app/web app. It should also be able to lap time.
+
+## Python Implementation
+
+```python
+def stopwatch_app():
+    """
+    Implementation for Stopwatch App
+    """
+    print("Executing Stopwatch App...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    stopwatch_app()
+```

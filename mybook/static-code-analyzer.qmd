@@ -1,0 +1,20 @@
+---
+title: "Static Code Analyzer"
+---
+
+Make a software that will go through your code (without executing it) and check for any inconsistencies or errors (syntax errors, indentation, etc) that may cause any problems during execution.
+
+## Python Implementation
+
+```python
+def static_code_analyzer():
+    """
+    Implementation for Static Code Analyzer
+    """
+    print("Executing Static Code Analyzer...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    static_code_analyzer()
+```

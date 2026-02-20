@@ -1,0 +1,20 @@
+---
+title: "Game of Life"
+---
+
+[Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) simulates the lives of simple cells that obey algorithmic laws. You can read the algorithmic rules from the wikipedia page and implement them. Make the program capable of graphical rendering to display the end product.
+
+## Python Implementation
+
+```python
+def game_of_life():
+    """
+    Implementation for Game of Life
+    """
+    print("Executing Game of Life...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    game_of_life()
+```

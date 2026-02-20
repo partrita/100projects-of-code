@@ -1,0 +1,20 @@
+---
+title: "Calorie Counter"
+---
+
+Build an app that will track the amount of calories that you eat everyday. Try to also incorporate information about other macro and micro nutrients to provide a more complete picture.
+
+## Python Implementation
+
+```python
+def calorie_counter():
+    """
+    Implementation for Calorie Counter
+    """
+    print("Executing Calorie Counter...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    calorie_counter()
+```

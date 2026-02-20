@@ -1,0 +1,20 @@
+---
+title: "Version Control System"
+---
+
+Make a proper version control system like git that can keep track of any changes that you make to your project.
+
+## Python Implementation
+
+```python
+def version_control_system():
+    """
+    Implementation for Version Control System
+    """
+    print("Executing Version Control System...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    version_control_system()
+```

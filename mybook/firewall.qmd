@@ -1,0 +1,20 @@
+---
+title: "Firewall"
+---
+
+Build a firewall software that can regulate the network connections for the user and also block/notify of any suspicious action from any website/internal software/external agent.
+
+## Python Implementation
+
+```python
+def firewall():
+    """
+    Implementation for Firewall
+    """
+    print("Executing Firewall...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    firewall()
+```

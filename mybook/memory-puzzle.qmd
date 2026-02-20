@@ -1,0 +1,20 @@
+---
+title: "Memory Puzzle"
+---
+
+Implement a classic memory puzzle where the user has to click on two similar cards to eliminate them. Shuffle the cards randomly in the beginning and give the user a fixed number of chances or a fixed time to clear the board.
+
+## Python Implementation
+
+```python
+def memory_puzzle():
+    """
+    Implementation for Memory Puzzle
+    """
+    print("Executing Memory Puzzle...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    memory_puzzle()
+```

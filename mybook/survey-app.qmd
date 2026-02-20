@@ -1,0 +1,20 @@
+---
+title: "Survey App"
+---
+
+Build an app/web app that will let anyone create survey questions and circulate it via email to record responses and then analyze the data collected.
+
+## Python Implementation
+
+```python
+def survey_app():
+    """
+    Implementation for Survey App
+    """
+    print("Executing Survey App...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    survey_app()
+```

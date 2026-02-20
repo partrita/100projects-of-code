@@ -1,0 +1,20 @@
+---
+title: "Movie Recommendation System"
+---
+
+Build a recommendation system that lets you or any users choose the next movie that you want to watch. Instead of copying an existing movie recommender with a well studied algorithm, try to come up with your own algorithm and test it out.
+
+## Python Implementation
+
+```python
+def movie_recommendation_system():
+    """
+    Implementation for Movie Recommendation System
+    """
+    print("Executing Movie Recommendation System...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    movie_recommendation_system()
+```

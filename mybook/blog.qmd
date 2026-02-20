@@ -1,0 +1,20 @@
+---
+title: "Blog"
+---
+
+A blog is a must have for everyone (according to me). Combine that fact with the fact that you learn a lot of things while building your own blog from scratch, and voila!
+
+## Python Implementation
+
+```python
+def blog():
+    """
+    Implementation for Blog
+    """
+    print("Executing Blog...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    blog()
+```

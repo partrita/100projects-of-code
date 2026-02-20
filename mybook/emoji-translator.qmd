@@ -1,0 +1,20 @@
+---
+title: "Emoji Translator"
+---
+
+Build a browser extension that will translate any provided sentence into a combination of emojis. You can use the extension to automatically change texts that a user sends via messaging or email or even use it to aid in writing blog posts.
+
+## Python Implementation
+
+```python
+def emoji_translator():
+    """
+    Implementation for Emoji Translator
+    """
+    print("Executing Emoji Translator...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    emoji_translator()
+```

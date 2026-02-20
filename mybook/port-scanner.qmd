@@ -1,0 +1,20 @@
+---
+title: "Port Scanner"
+---
+
+Build a port scanner application that can probe a server or host for open ports. You will need some technical knowledge regarding how networks work and how you can scan for ports or classify them.
+
+## Python Implementation
+
+```python
+def port_scanner():
+    """
+    Implementation for Port Scanner
+    """
+    print("Executing Port Scanner...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    port_scanner()
+```

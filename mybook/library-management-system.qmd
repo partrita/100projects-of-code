@@ -1,0 +1,20 @@
+---
+title: "Library Management System"
+---
+
+Build an app for a hypothetical (or better, a real one near you) library that will help in management. You need to keep track of books you have, books to order, people with access to the library, books borrowed, returned and other related tasks.
+
+## Python Implementation
+
+```python
+def library_management_system():
+    """
+    Implementation for Library Management System
+    """
+    print("Executing Library Management System...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    library_management_system()
+```

@@ -1,0 +1,20 @@
+---
+title: "Tic Tac Toe"
+---
+
+Build a CLI app for tic-tac-toe or a graphical interface. One of the interesting ideas is to let the user draw Xs and Os and then let the machine automatically identify if you drew an X or an O.
+
+## Python Implementation
+
+```python
+def tic_tac_toe():
+    """
+    Implementation for Tic Tac Toe
+    """
+    print("Executing Tic Tac Toe...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    tic_tac_toe()
+```

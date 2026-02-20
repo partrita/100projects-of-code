@@ -1,0 +1,23 @@
+---
+title: "Twitter Bot"
+---
+
+Build a bot that will either
+- follow people that follow the bot
+- retweet tweets containing some specific keywords related to a topic
+- retweet tweets containing a specific hashtag
+
+## Python Implementation
+
+```python
+def twitter_bot():
+    """
+    Implementation for Twitter Bot
+    """
+    print("Executing Twitter Bot...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    twitter_bot()
+```

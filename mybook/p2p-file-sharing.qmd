@@ -1,0 +1,20 @@
+---
+title: "P2P File Sharing"
+---
+
+Build an app that will allow for peer-to-peer file sharing securely over the internet. This will help you transfer files securely from one location to another or send something to your friend.
+
+## Python Implementation
+
+```python
+def p2p_file_sharing():
+    """
+    Implementation for P2P File Sharing
+    """
+    print("Executing P2P File Sharing...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    p2p_file_sharing()
+```

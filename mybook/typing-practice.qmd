@@ -1,0 +1,20 @@
+---
+title: "Typing Practice"
+---
+
+Build an app that lets you practice typing. Make it generate random sentences and see how fast you can type the sentences. Typing is something that many developers completely ignore, but it is one of the most important skills that someone working with computers should have.
+
+## Python Implementation
+
+```python
+def typing_practice():
+    """
+    Implementation for Typing Practice
+    """
+    print("Executing Typing Practice...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    typing_practice()
+```

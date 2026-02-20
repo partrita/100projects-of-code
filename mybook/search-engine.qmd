@@ -1,0 +1,20 @@
+---
+title: "Search Engine"
+---
+
+Build a Web Search Engine like Google or Bing. Don't copy from them though :wink:
+
+## Python Implementation
+
+```python
+def search_engine():
+    """
+    Implementation for Search Engine
+    """
+    print("Executing Search Engine...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    search_engine()
+```

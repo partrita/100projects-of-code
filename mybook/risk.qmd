@@ -1,0 +1,20 @@
+---
+title: "Risk"
+---
+
+Try coding the classic board game of [Risk](https://en.wikipedia.org/wiki/Risk_(game)). Make sure you know all the rules and understand the game properly before you code it.
+
+## Python Implementation
+
+```python
+def risk():
+    """
+    Implementation for Risk
+    """
+    print("Executing Risk...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    risk()
+```

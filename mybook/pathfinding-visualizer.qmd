@@ -1,0 +1,20 @@
+---
+title: "Pathfinding Visualizer"
+---
+
+Make a visualizer for the different pathfinding algorithms. Add this to a maze maker and you have a program that can generate and solve mazes.
+
+## Python Implementation
+
+```python
+def pathfinding_visualizer():
+    """
+    Implementation for Pathfinding Visualizer
+    """
+    print("Executing Pathfinding Visualizer...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    pathfinding_visualizer()
+```

@@ -1,0 +1,20 @@
+---
+title: "Snake"
+---
+
+This is one of the simplest items on the list. For an additional challenge, try generating different maps to play in.
+
+## Python Implementation
+
+```python
+def snake():
+    """
+    Implementation for Snake
+    """
+    print("Executing Snake...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    snake()
+```
