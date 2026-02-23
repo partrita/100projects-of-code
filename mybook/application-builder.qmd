@@ -1,20 +1,50 @@
 ---
-title: "Application Builder"
+title: "애플리케이션 빌더 (Application Builder)"
 ---
 
-This is probably the hardest one on the list and the most vague one too. Design a system that takes in text input and generates applications (or at least application interfaces) based on the text description. You can also use a drag-and-drop like feature to let users build the app.
+가장 어렵고 추상적인 프로젝트 중 하나입니다. 사용자의 텍스트 입력을 받아 애플리케이션이나 사용자 인터페이스(UI)를 생성하는 시스템을 설계해 보세요. 드래그 앤 드롭 방식을 도입하여 누구나 쉽게 앱을 제작할 수 있는 도구를 만들 수도 있습니다.
 
-## Python Implementation
+단순한 UI 레이아웃 생성부터 실제 동작하는 로직까지 포함하는 복잡한 시스템으로 확장 가능합니다. 최근에는 LLM(대규모 언어 모델)을 활용하여 사용자의 자연어 설명으로부터 코드를 생성하는 방식이 각광받고 있습니다.
+
+## 주요 개발 포인트
+- **UI 레이아웃 엔진**: XML, JSON 등을 기반으로 화면을 구성하는 엔진을 만듭니다.
+- **코드 자동 생성기**: 사용자의 입력에 따라 Python, HTML/CSS 등의 소스 코드를 자동으로 작성합니다.
+- **컴포넌트 라이브러리**: 버튼, 입력란, 이미지 박스 등 자주 사용되는 UI 요소를 모듈화하여 제공합니다.
+
+## Python 구현 예시 (간단한 코드 템플릿 생성기)
 
 ```python
-def application_builder():
+import string
+
+def generate_python_app(app_name, features):
     """
-    Implementation for Application Builder
+    제공된 기능 목록에 따라 Python 소스 코드를 생성합니다.
     """
-    print("Executing Application Builder...")
-    # TODO: Add your implementation here
-    pass
+    print(f"'{app_name}' 앱 생성 중...")
+    
+    template = f"""
+# {app_name} - 자동 생성된 애플리케이션
+import sys
+
+def main():
+    print("'{app_name}' 실행 중...")
+    {chr(10).join([f'    # 기능 추가: {feature}' for feature in features])}
+    print("앱이 정상적으로 시작되었습니다.")
 
 if __name__ == "__main__":
-    application_builder()
+    main()
+"""
+    return template
+
+if __name__ == "__main__":
+    name = "MyAwesomeApp"
+    features_list = ["로그인 기능", "데이터베이스 연동", "리포트 출력"]
+    
+    result_code = generate_python_app(name, features_list)
+    print("--- 생성된 코드 ---")
+    print(result_code)
+    
+    # 생성된 코드를 파일로 저장하는 로직 추가 가능
+    # with open(f"{name}.py", "w", encoding="utf-8") as f:
+    #     f.write(result_code)
 ```

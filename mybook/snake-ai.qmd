@@ -1,20 +1,72 @@
 ---
-title: "Snake AI"
+title: "스네이크 AI (Snake AI)"
 ---
 
-Build a simple snake AI that plays snake. For an added challenge, generate random maps and then train your AI to play in any random map that you generate.
+전설적인 게임인 스네이크(Snake)를 위한 인공지능(AI)을 설계해 봅시다. 단순히 게임을 즐기는 것 이상으로, 무작위 맵에서 살아남고 점수를 극대화할 수 있는 똑똑한 뱀을 만드는 것이 목표입니다.
 
-## Python Implementation
+이 프로젝트는 강화 학습(Reinforcement Learning)의 기초와 자급자족하는 게임 캐릭터의 의사 결정 과정을 익히기에 아주 좋습니다. 특히 최근 게임이나 로봇 공학에서 사용되는 최적 경로 탐색과 장애물 회피 기술을 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **강화 학습 알고리즘**: Q-Learning이나 NEAT(NeuroEvolution of Augmenting Topologies)를 사용하여 뱀을 훈련시킵니다.
+- **게임 환경 시뮬레이션**: 뱀이 학습할 수 있도록 게임의 물리 엔진(이동, 먹이 생성, 충돌 등)을 구축합니다.
+- **입력 데이터 (Sensor Data)**: 뱀의 머리 위치, 먹이 위치, 주변 장애물 유무 등을 AI의 입력값으로 제공합니다.
+- **보상 시스템 설계**: 먹이를 먹으면 보상을, 자기 몸이나 벽에 부딪히면 벌칙을 주어 점수를 최적화합니다.
+- **무작위 맵 생성**: 매 게임마다 지형이나 장애물 위치를 무작위로 생성하여 AI가 일반화된 능력을 갖추도록 합니다.
+
+## Python 구현 예시 (Q-Learning 기반 간단한 상태 및 행동 시뮬레이션)
 
 ```python
-def snake_ai():
+import random
+
+class SnakeAI:
     """
-    Implementation for Snake AI
+    현재 상태를 기반으로 뱀의 다음 이동 방향을 결정합니다.
     """
-    print("Executing Snake AI...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self, actions=[0, 1, 2, 3]): # 0: 위, 1: 아래, 2: 왼쪽, 3: 오른쪽
+        self.actions = actions
+        self.q_table = {} # {상태: [Q값1, Q값2, Q값3, Q값4]}
+        print("스네이크 AI 엔진 초기화 완료.")
+
+    def get_state(self, snake_head, food_pos):
+        """
+        뱀의 현재 상태를 튜플 형태로 요약하여 반환합니다.
+        """
+        dx = food_pos[0] - snake_head[0]
+        dy = food_pos[1] - snake_head[1]
+        
+        # 단순화된 상태 예: 먹이가 어느 방향에 있는지 (dx, dy의 부호)
+        return (1 if dx > 0 else -1 if dx < 0 else 0,
+                1 if dy > 0 else -1 if dy < 0 else 0)
+
+    def decide_action(self, state):
+        """
+        현재 상태에 대해 가장 높은 가치를 가진 행동을 선택합니다.
+        """
+        if state not in self.q_table:
+            # 처음 보는 상태면 0으로 초기화
+            self.q_table[state] = [0.0] * len(self.actions)
+            
+        # 입실론-탐욕(Epsilon-greedy) 전략을 쓸 수도 있지만, 여기서는 단순히 최선의 수 선택
+        q_values = self.q_table[state]
+        best_action = q_values.index(max(q_values))
+        
+        # 학습 초기에는 무작위로 움직이는 것도 중요함
+        if max(q_values) == 0:
+            best_action = random.choice(self.actions)
+            
+        print(f"상태 {state} -> 행동 {best_action} 선택.")
+        return best_action
 
 if __name__ == "__main__":
-    snake_ai()
+    ai = SnakeAI()
+    
+    # 5번의 턴 시뮬레이션
+    print("스네이크 AI 학습 시뮬레이션 시작")
+    for _ in range(5):
+        # 뱀과 먹이의 위치 시뮬레이션
+        head = (10, 10)
+        food = (random.randint(0, 20), random.randint(0, 20))
+        
+        current_state = ai.get_state(head, food)
+        ai.decide_action(current_state)
 ```

@@ -1,20 +1,74 @@
 ---
-title: "Web Browser"
+title: "웹 브라우저 (Web Browser)"
 ---
 
-Build a piece of software that will help you browse any HTML page. For bonus points, add additional features like those in Chrome and Firefox.
+어떤 HTML 페이지든 자유롭게 둘러볼 수 있는 나만의 웹 브라우저 소프트웨어를 만들어 봅시다. 보너스 점수를 위해 구글 크롬(Chrome)이나 파이어폭스(Firefox)에서 제공하는 북마크, 히스토리, 다중 탭 등의 추가 기능을 포함시켜 보세요.
 
-## Python Implementation
+이 프로젝트는 웹의 작동 원리(HTTP/HTTPS)와 HTML/CSS 렌더링, 그리고 복잡한 사용자 인터페이스(GUI)를 익히기에 아주 좋은 과제입니다. 특히 최근 웹 표준을 준수하고 보안 기능을 갖춘 브라우저 엔진을 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **HTML/CSS 렌더링 엔진**: `QtWebEngine`이나 `PyQt5.QtWebEngineWidgets`를 사용하여 웹 콘텐츠를 화면에 표시합니다.
+- **주소창 및 내비게이션 기능**: URL을 입력하고 페이지 이동, 뒤로 가기, 앞으로 가기, 새로고침 기능을 구현합니다.
+- **북마크 및 방문 기록 관리**: 자주 방문하는 사이트를 저장하고, 이전에 방문했던 목록을 조회하는 기능을 추가합니다.
+- **다중 탭(Multiple Tabs) 지원**: 여러 개의 웹 페이지를 동시에 열고 탭 간을 이동할 수 있도록 설계합니다.
+- **사용자 인터페이스 (GUI)**: 상단 메뉴 바, 주소창, 즐겨찾기 바, 그리고 하단 상태 표시줄을 포함한 세련된 UI를 구축합니다.
+
+## Python 구현 예시 (PyQt5 활용 간단한 웹 브라우저 시뮬레이션)
 
 ```python
-def web_browser():
+# 실제 구현 시 PyQt5, PyQtWebEngine 라이브러리 설치가 필요합니다.
+# import sys
+# from PyQt5.QtCore import QUrl
+# from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QVBoxLayout, QWidget
+# from PyQt5.QtWebEngineWidgets import QWebEngineView
+
+class SimpleWebBrowser:
     """
-    Implementation for Web Browser
+    사용자가 입력한 URL을 기반으로 웹 페이지를 불러오고 관리합니다.
     """
-    print("Executing Web Browser...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self, start_url="https://www.google.com"):
+        # self.browser = QWebEngineView()
+        # self.browser.setUrl(QUrl(start_url))
+        self.current_url = start_url
+        self.history = [start_url]
+        print(f"브라우저 시작 페이지: {start_url}")
+
+    def navigate_to_url(self, url):
+        """
+        새로운 URL 주소로 이동합니다.
+        """
+        if not url.startswith("http"):
+            url = "http://" + url
+            
+        print(f"'{url}' 사이트로 이동 중입니다...")
+        self.current_url = url
+        self.history.append(url)
+        # self.browser.setUrl(QUrl(url))
+        
+        return True
+
+    def go_back(self):
+        """
+        이전 페이지로 돌아갑니다.
+        """
+        if len(self.history) > 1:
+            self.history.pop()
+            prev_url = self.history[-1]
+            print(f"이전 페이지로 이동: {prev_url}")
+            self.current_url = prev_url
+            return True
+        print("이전 기록이 없습니다.")
+        return False
 
 if __name__ == "__main__":
-    web_browser()
+    # 브라우저 엔진 테스트 (시뮬레이션)
+    browser = SimpleWebBrowser()
+    
+    # 웹 서핑 시나리오 테스트
+    browser.navigate_to_url("python.org")
+    browser.navigate_to_url("github.com")
+    browser.go_back()
+    
+    # 팁: 브라우저 개발 시 보안을 위해 HTTPS(SSL) 인증서를 확인하는 로직을 추가해 보세요.
+    print("\n[팁] 'Chromium' 기반의 엔진을 사용하면 최신 웹 기술을 모두 지원할 수 있습니다.")
 ```

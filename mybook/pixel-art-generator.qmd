@@ -1,20 +1,50 @@
 ---
-title: "Pixel Art Generator"
+title: "픽셀 아트 생성기 (Pixel Art Generator)"
 ---
 
-Code a script that takes in a picture and then creates the Pixel Art from the image. You can achieve this by downsizing the image. You should also be able to generate random art using this script.
+사진을 입력받아 픽셀 아트(Pixel Art)로 변환해 주는 스크립트를 작성해 봅시다. 이미지를 축소(Downsizing)하여 픽셀화하는 기술을 활용하고, 보너스 점수를 위해 무작위 예술 작품을 생성하는 기능까지 추가해 보세요.
 
-## Python Implementation
+이 프로젝트는 이미지 처리 알고리즘과 색상 양자화(Color Quantization) 기술을 익히기에 아주 좋습니다. 특히 고해상도 이미지를 저해상도 픽셀 아트로 변환하면서 중요한 특징을 보존하는 과정을 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **이미지 픽셀화 (Pixelation)**: 이미지의 해상도를 낮추어 격자 모양의 픽셀 효과를 만듭니다.
+- **색상 팔레트 제한 (Color Palette)**: 사용되는 색상 수를 줄여 레트로 게임 느낌의 픽셀 아트를 구현합니다.
+- **이미지 업샘플링 (Upsampling)**: 작게 만든 픽셀 아트를 다시 선명하게 키워서 감상할 수 있게 합니다.
+- **무작위 픽셀 생성 (Generative Art)**: 시드값이나 알고리즘을 기반으로 추상적인 픽셀 아트를 자동으로 생성합니다.
+- **사용자 인터페이스 (GUI)**: 이미지를 업로드하고 픽셀 크기와 색상 수를 조절할 수 있는 UI를 구축합니다.
+
+## Python 구현 예시 (Pillow를 활용한 간단한 픽셀화)
 
 ```python
-def pixel_art_generator():
+# 실제 실행 시 Pillow 라이브러리 설치가 필요합니다.
+# from PIL import Image
+
+def generate_pixel_art(image_path, pixel_size=10, output_path="pixel_art.png"):
     """
-    Implementation for Pixel Art Generator
+    이미지를 특정 크기의 픽셀 아트로 변환합니다.
     """
-    print("Executing Pixel Art Generator...")
-    # TODO: Add your implementation here
-    pass
+    print(f"이미지 '{image_path}'를 {pixel_size}x{pixel_size} 픽셀 크기로 변환 중입니다...")
+    
+    # 1. 이미지 열기
+    # img = Image.open(image_path)
+    
+    # 2. 픽셀화 로직 (축소 후 다시 확대)
+    # width, height = img.size
+    # small_img = img.resize((width // pixel_size, height // pixel_size), resample=Image.BILINEAR)
+    # pixel_img = small_img.resize((width, height), resample=Image.NEAREST)
+    
+    # 3. 색상 수 제한 (선택 사항)
+    # pixel_img = pixel_img.convert('P', palette=Image.ADAPTIVE, colors=16)
+    
+    # 4. 결과 저장
+    # pixel_img.save(output_path)
+    print(f"픽셀 아트 생성 완료: {output_path}")
 
 if __name__ == "__main__":
-    pixel_art_generator()
+    # 테스트 데이터 시뮬레이션
+    sample_img = "nature_landscape.jpg"
+    p_size = 20 # 픽셀 크기 설정
+    
+    generate_pixel_art(sample_img, p_size)
+    print("\n[팁] 'NEAREST' 보간법을 사용하여 확대하면 픽셀 경계가 선명하게 유지됩니다.")
 ```

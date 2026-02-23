@@ -1,20 +1,67 @@
 ---
-title: "Shuffle Deck"
+title: "카드 셔플 시각화 (Shuffle Deck)"
 ---
 
-Build a web app to visualize the different shuffling algorithms that can be used to shuffle a standard deck of cards.
+표준 카드 한 벌을 섞는 데 사용할 수 있는 다양한 셔플링(Shuffling) 알고리즘을 시각화해 주는 웹 앱을 만들어 봅시다. 단순히 카드를 섞는 것 이상으로, 알고리즘에 따라 카드가 어떻게 재배치되는지 단계별로 보여주는 것이 목표입니다.
 
-## Python Implementation
+이 프로젝트는 무작위성(Randomness)의 핵심 원리와 피셔-예이츠(Fisher-Yates) 셔플과 같은 알고리즘을 시각적으로 이해하는 데 아주 좋습니다. 특히 최근 카드 게임이나 도박 게임에서 공정성을 보장하기 위해 사용되는 셔플 기법을 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **피셔-예이츠 셔플 (Fisher-Yates Shuffle)**: 현대적으로 가장 널리 쓰이는 공정한 셔플링 방식을 구현합니다.
+- **다양한 셔플 알고리즘**: 오버핸드 셔플, 리플 셔플 등 고전적인 카드 섞기 기법을 포함합니다.
+- **실시간 셔플 시각화 (Visualization)**: 카드가 섞이는 과정을 애니메이션으로 보여주고, 섞기 전후의 분포 변화를 막대그래프로 시각화합니다.
+- **무작위성 테스트 (Randomness Test)**: 셔플된 결과가 얼마나 고르게 분포되어 있는지 통계적으로 검증하는 기능을 추가합니다.
+- **사용자 인터페이스 (GUI)**: 카드 한 벌을 화면에 배치하고, 셔플 버튼과 알고리즘 선택 메뉴를 포함한 UI를 구축합니다.
+
+## Python 구현 예시 (간단한 피셔-예이츠 셔플 및 시각화 시뮬레이션)
 
 ```python
-def shuffle_deck():
+import random
+
+class DeckShuffler:
     """
-    Implementation for Shuffle Deck
+    카드 셔플 알고리즘을 실행하고 그 과정을 추적합니다.
     """
-    print("Executing Shuffle Deck...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self, deck_size=52):
+        self.deck_size = deck_size
+        self.deck = list(range(1, deck_size + 1))
+        print(f"{deck_size}장의 카드를 생성했습니다.")
+
+    def fisher_yates_shuffle(self):
+        """
+        피셔-예이츠 셔플 알고리즘을 수행하고 그 과정을 출력합니다.
+        """
+        print("\n--- 피셔-예이츠 셔플 시작 ---")
+        
+        for i in range(self.deck_size - 1, 0, -1):
+            # 0부터 i 사이의 무작위 인덱스 선택
+            j = random.randint(0, i)
+            
+            # i번째 카드와 j번째 카드 교환 (Swap)
+            print(f"인덱스 {i}와 {j}를 교환 중...")
+            self.deck[i], self.deck[j] = self.deck[j], self.deck[i]
+            
+        print("셔플이 완료되었습니다.")
+        return self.deck
+
+    def display_deck_summary(self, sample_size=10):
+        """
+        셔플된 카드의 앞부분 일부를 출력합니다.
+        """
+        print(f"셔플된 덱 (앞 {sample_size}장): {self.deck[:sample_size]}...")
 
 if __name__ == "__main__":
-    shuffle_deck()
+    shuffler = DeckShuffler(52)
+    
+    # 셔플 전 상태 확인
+    shuffler.display_deck_summary()
+    
+    # 셔플 실행
+    shuffler.fisher_yates_shuffle()
+    
+    # 셔플 후 상태 확인
+    shuffler.display_deck_summary()
+    
+    # 팁: 셔플 후 특정 카드가 첫 번째에 위치할 확률을 수만 번 반복해서 테스트해 보세요.
+    print("\n[팁] 몬테카를로 시뮬레이션을 통해 알고리즘의 편향(Bias)을 검증할 수 있습니다.")
 ```

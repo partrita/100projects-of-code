@@ -1,20 +1,32 @@
 ---
-title: "Advent of Code"
+title: "Advent of Code (어드벤트 오브 코드)"
 ---
 
-[Advent of Code](https://adventofcode.com/) challenges occur every year in the days leading up to Christmas. They include lots of fun programming challenges that can help you develop your chops in a programming language that you want to master.
+[Advent of Code](https://adventofcode.com/)는 매년 크리스마스 전까지 매일 하나씩 공개되는 프로그래밍 도전 과제입니다. 이 챌린지는 프로그래밍 실력을 연마하고 새로운 언어를 익히기에 아주 좋은 기회입니다.
 
-## Python Implementation
+단순히 문제를 푸는 것을 넘어, 효율적인 알고리즘을 고민하고 코드를 최적화하는 과정을 통해 실력을 크게 향상시킬 수 있습니다. 매일 공개되는 퍼즐은 난이도가 점진적으로 높아지며, 전 세계 수많은 개발자들과 함께 경쟁하거나 협력하며 즐길 수 있습니다.
+
+## 주요 특징
+- **다양한 난이도**: 기초적인 문자열 처리부터 복잡한 그래프 알고리즘까지 다룹니다.
+- **언어 중립적**: 어떤 프로그래밍 언어로도 참여할 수 있습니다.
+- **스토리 라인**: 크리스마스를 구하기 위한 재미있는 이야기와 함께 진행됩니다.
+
+## Python 구현 예시
 
 ```python
-def advent_of_code():
+import requests
+
+def solve_advent_of_code_day1(input_data):
     """
-    Implementation for Advent of Code
+    Advent of Code 1일차 문제 해결 함수 예시
     """
-    print("Executing Advent of Code...")
-    # TODO: Add your implementation here
+    print("Advent of Code 1일차 해결 중...")
+    # 여기에 입력 데이터를 처리하고 정답을 도출하는 로직을 구현합니다.
+    # 예: 숫자의 합계를 구하거나 특정 패턴을 찾는 기능 등
     pass
 
 if __name__ == "__main__":
-    advent_of_code()
+    # 실제로는 adventofcode.com에서 입력 파일을 다운로드하여 사용해야 합니다.
+    test_data = "123\n456\n789"
+    solve_advent_of_code_day1(test_data)
 ```

@@ -1,20 +1,56 @@
 ---
-title: "Packet Sniffer"
+title: "패킷 스니퍼 (Packet Sniffer)"
 ---
 
-A packet sniffer is used to monitor network traffic by examining streams of data packets that flow between computers on a network. To start with the project, study network protocols properly. Then dive into implementing an application that tracks down network packets and parses its content in a human readable form.
+패킷 스니퍼(Packet Sniffer)는 네트워크에서 컴퓨터 간에 흐르는 데이터 패킷 스트림을 조사하여 네트워크 트래픽을 모니터링하는 데 사용됩니다. 이 프로젝트를 시작하려면 네트워크 프로토콜을 제대로 공부해야 합니다. 그런 다음 네트워크 패킷을 추적하고 그 내용을 읽을 수 있는 형식으로 파싱(Parsing)하는 애플리케이션 구현에 뛰어드세요.
 
-## Python Implementation
+이 프로젝트는 네트워크 통신의 바닥을 들여다보고, 데이터가 어떻게 조각나고 조립되어 전송되는지 이해하기에 최고의 과제입니다. 특히 최근 웹 보안과 트래픽 분석에 필수적인 패킷의 구조를 직접 분석하고 시각화하는 도구를 설계해 보세요.
+
+## 주요 개발 포인트
+- **네트워크 프로토콜 심층 분석**: TCP/IP, UDP, ICMP, HTTP, DNS 등 다양한 프로토콜의 헤더(Header) 구조를 학습합니다.
+- **로우 소켓 (Raw Socket) 프로그래밍**: OS 수준의 낮은 단계에서 패킷을 직접 가로채기 위해 로우 소켓을 생성하고 처리합니다.
+- **패킷 파싱 및 디코딩**: 16진수(Hex) 데이터로 된 패킷을 사람이 읽을 수 있는 정보(발신지, 수신지, 포트, 페이로드 등)로 변환합니다.
+- **실시간 트래픽 분석**: 들어오는 패킷을 실시간으로 분석하여 특정 패턴이나 이상 징후를 감지합니다.
+- **사용자 인터페이스 (GUI)**: 와이어샤크(Wireshark)와 같이 실시간 패킷 흐름을 표 형태로 보여주고 상세 내용을 확인할 수 있는 UI를 구축합니다.
+
+## Python 구현 예시 (Scapy 라이브러리 활용 패킷 캡처)
 
 ```python
-def packet_sniffer():
+# 실제 실행 시 scapy 라이브러리 설치와 관리자 권한이 필요합니다.
+# from scapy.all import sniff
+
+def packet_handler(pkt):
     """
-    Implementation for Packet Sniffer
+    캡처된 각 패킷을 처리하고 요약 정보를 출력합니다.
     """
-    print("Executing Packet Sniffer...")
-    # TODO: Add your implementation here
-    pass
+    if pkt.haslayer('IP'):
+        ip_layer = pkt.getlayer('IP')
+        print(f"IP 패킷 감지: {ip_layer.src} -> {ip_layer.dst}")
+        
+        if pkt.haslayer('TCP'):
+            tcp_layer = pkt.getlayer('TCP')
+            print(f"  TCP 포트: {tcp_layer.sport} -> {tcp_layer.dport}")
+        elif pkt.haslayer('UDP'):
+            udp_layer = pkt.getlayer('UDP')
+            print(f"  UDP 포트: {udp_layer.sport} -> {udp_layer.dport}")
+
+def start_sniffing(interface="eth0", count=5):
+    """
+    지정된 네트워크 인터페이스에서 패킷 캡처를 시작합니다.
+    """
+    print(f"'{interface}' 인터페이스에서 {count}개의 패킷을 캡처합니다...")
+    
+    # 실제 캡처 실행 (scapy 라이브러리 함수 호출)
+    # sniff(iface=interface, prn=packet_handler, count=count)
+    
+    # 가상의 패킷 처리 결과 시뮬레이션
+    print("\n--- 캡처 결과 요약 ---")
+    print("1. [IP] 192.168.0.1 -> 192.168.0.10 [TCP] 80 -> 54321")
+    print("2. [IP] 192.168.0.10 -> 8.8.8.8 [UDP] 53 -> 53 (DNS Query)")
+    print("3. [IP] 142.250.207.46 -> 192.168.0.10 [TCP] 443 -> 54322 (HTTPS)")
 
 if __name__ == "__main__":
-    packet_sniffer()
+    # 실제 환경에서 실행 시 관리자 권한(sudo)이 필요할 수 있습니다.
+    # start_sniffing()
+    print("패킷 스니핑을 시작하려면 Scapy 설치 후 위 함수를 호출하세요.")
 ```

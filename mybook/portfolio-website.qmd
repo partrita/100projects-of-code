@@ -1,20 +1,44 @@
 ---
-title: "Portfolio Website"
+title: "포트폴리오 웹사이트 (Portfolio Website)"
 ---
 
-If you are ever interested in showcasing the things you have built, build a portfolio website! Building a website to display all the stuff will teach you a lot about website design in general (if you've never built a website before).
+직접 만든 프로젝트를 세상에 보여주고 싶으신가요? 나만의 포트폴리오 웹사이트를 만들어 봅시다. 웹사이트 제작 경험이 없다면, 이 프로젝트는 전반적인 웹 디자인 원리를 익히기에 가장 좋은 출발점이 될 것입니다.
 
-## Python Implementation
+이 프로젝트는 자신의 강점과 작품들을 시각적으로 돋보이게 만들고, 방문자가 나를 더 잘 알 수 있도록 돕는 유용한 도구입니다. 특히 최근 웹 트렌드를 반영하고 모바일에서도 잘 보이는 반응형 레이아웃을 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **프로젝트 갤러리 (Showcase)**: 카드나 그리드 레이아웃을 사용하여 주요 프로젝트의 이미지와 설명을 보여줍니다.
+- **자기소개 및 스킬 목록**: 보유한 기술(HTML, CSS, JS, Python 등)을 아이콘이나 바 차트로 표시합니다.
+- **연락처 양식 (Contact Form)**: 방문자가 직접 이메일을 보내거나 소셜 미디어로 연결할 수 있도록 합니다.
+- **반응형 디자인 (Responsive Layout)**: 미디어 쿼리나 CSS 프레임워크를 활용하여 다양한 기기(모바일, 태블릿, 데스크톱)에 맞게 화면을 구성합니다.
+- **사용자 인터페이스 (GUI)**: 부드러운 스크롤 애니메이션과 깔끔한 폰트, 일관된 색상 테마를 적용합니다.
+
+## Python 구현 예시 (Flask를 활용한 간단한 포트폴리오 서버)
 
 ```python
-def portfolio_website():
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+# 내 프로젝트 목록 (가상의 데이터)
+projects = [
+    {"name": "날씨 앱", "desc": "실시간 날씨 정보를 가져오는 앱", "tech": "Python, API"},
+    {"name": "체스 게임", "desc": "친구와 즐기는 정통 체스", "tech": "Pygame"},
+    {"name": "블로그 플랫폼", "desc": "마크다운 기반의 개인 블로그", "tech": "Django"}
+]
+
+@app.route("/")
+def home():
     """
-    Implementation for Portfolio Website
+    포트폴리오 홈 화면을 렌더링합니다.
     """
-    print("Executing Portfolio Website...")
-    # TODO: Add your implementation here
-    pass
+    print("포트폴리오 홈페이지를 렌더링 중입니다...")
+    # 실제로는 render_template('index.html', projects=projects) 사용
+    return f"나의 포트폴리오에 오신 것을 환영합니다! ({len(projects)}개의 프로젝트 보유)"
 
 if __name__ == "__main__":
-    portfolio_website()
+    # Flask 서버 테스트 실행
+    # app.run(debug=True)
+    print("실제 웹사이트를 보려면 Flask 서버를 실행하고 브라우저에서 접속하세요.")
+    print(home())
 ```

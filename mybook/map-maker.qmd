@@ -1,20 +1,79 @@
 ---
-title: "Map Maker"
+title: "지도 제작기 (Map Maker)"
 ---
 
-Build a simple program that will generate random terrain maps through [procedural generation](https://en.wikipedia.org/wiki/Procedural_generation) with a user supplied seed.
+사용자가 제공한 시드(Seed)값을 기반으로 절차적 생성(Procedural Generation) 기법을 사용하여 무작위 지형 지도를 생성하는 프로그램을 만들어 봅시다.
 
-## Python Implementation
+이 프로젝트는 알고리즘을 활용하여 무궁무진한 변주를 만들어내고, 이를 시각적으로 표현하는 방법을 익히기에 아주 좋습니다. 특히 펄린 노이즈(Perlin Noise)나 셀룰러 오토마타와 같은 기술을 활용하여 산, 바다, 들판이 조화롭게 배치된 아름다운 지도를 설계해 보세요.
+
+## 주요 개발 포인트
+- **절차적 지형 생성 (Procedural Generation)**: 시드값을 입력받아 항상 동일한 시드에 대해서는 똑같은 무작위 지형을 생성하도록 합니다.
+- **노이즈 알고리즘 활용**: 펄린 노이즈(Perlin Noise)나 심플렉스 노이즈(Simplex Noise)를 사용하여 자연스러운 지형의 고저차를 구현합니다.
+- **지형 타입 분류**: 높이에 따라 바다(Sea), 해변(Beach), 평원(Plain), 산(Mountain), 눈 덮인 봉우리(Snow) 등으로 분류합니다.
+- **바이옴(Biome) 시스템**: 온도와 습도 데이터를 추가하여 사막, 정글, 툰드라 등 다양한 기후 지역을 생성합니다.
+- **그래픽 렌더링**: 생성된 지형 데이터를 타일 맵(Tile Map)이나 픽셀 아트로 시각화합니다.
+
+## Python 구현 예시 (간단한 노이즈 기반 지형 생성 시뮬레이션)
 
 ```python
-def map_maker():
+import random
+
+class MapMaker:
     """
-    Implementation for Map Maker
+    무작위 시드를 기반으로 지형 데이터를 생성합니다.
     """
-    print("Executing Map Maker...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self, width=20, height=10):
+        self.width = width
+        self.height = height
+        self.terrain_symbols = {
+            'sea': '~~', 
+            'beach': '..', 
+            'plain': 'grass', 
+            'mountain': '^^', 
+            'snow': '**'
+        }
+
+    def generate_terrain(self, seed=None):
+        """
+        무작위 높이 값을 생성하여 지형 기호를 배정합니다.
+        """
+        if seed:
+            random.seed(seed)
+            
+        print(f"시드({seed if seed else 'Random'})를 기반으로 지도를 생성 중입니다...")
+        
+        map_data = []
+        for r in range(self.height):
+            row = []
+            for c in range(self.width):
+                # 실제 구현 시 펄린 노이즈 라이브러리 사용 권장
+                height_val = random.random()
+                
+                # 높이에 따른 지형 결정
+                if height_val < 0.3: symbol = "~~" # 바다
+                elif height_val < 0.4: symbol = ".." # 해변
+                elif height_val < 0.7: symbol = "::" # 평원
+                elif height_val < 0.9: symbol = "^^" # 산
+                else: symbol = "**" # 눈
+                
+                row.append(symbol)
+            map_data.append(row)
+        return map_data
+
+    def display_map(self, map_data):
+        """
+        생성된 지형을 텍스트로 출력합니다.
+        """
+        print("\n--- 생성된 지도 ---")
+        for row in map_data:
+            print(" ".join(row))
+        print("------------------")
 
 if __name__ == "__main__":
-    map_maker()
+    maker = MapMaker(width=30, height=12)
+    
+    # 특정 시드로 지도 생성 테스트
+    test_seed = 42
+    my_map = maker.generate_terrain(seed=test_seed)
+    maker.display_map(my_map)
 ```

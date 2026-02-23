@@ -1,20 +1,66 @@
 ---
-title: "Tic Tac Toe"
+title: "틱택토 (Tic Tac Toe)"
 ---
 
-Build a CLI app for tic-tac-toe or a graphical interface. One of the interesting ideas is to let the user draw Xs and Os and then let the machine automatically identify if you drew an X or an O.
+가장 단순하면서도 재미있는 고전 게임인 틱택토(Tic Tac Toe)를 만들어 봅시다. 명령줄 인터페이스(CLI) 앱부터 시작하여, 화려한 그래픽을 갖춘 버전까지 확장할 수 있습니다. 보너스 점수를 위해 사용자가 직접 X나 O를 그리면 기계가 이를 자동으로 인식하여 수를 두는 창의적인 기능을 구현해 보세요.
 
-## Python Implementation
+이 프로젝트는 2차원 격자판 위에서의 게임 로직(X/O 배치, 승리 판정)과 사용자 입력을 처리하는 방법을 익히기에 아주 좋은 과제입니다. 특히 최근 틱택토와 빙고(Bingo)를 결합한 새로운 게임 방식을 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **격자판 기반 게임 로직**: 3x3 격자판을 데이터 구조(예: 리스트)로 관리하고, X와 O를 번갈아 배치하는 턴 시스템을 구축합니다.
+- **승리 조건 판별 (Victory Check)**: 가로, 세로, 대각선 방향으로 같은 문자가 3개 연속으로 놓였는지 확인합니다.
+- **사용자 인터페이스 (GUI)**: 마우스 클릭으로 칸을 선택하거나, 터치 스크린에서 직접 X/O를 그리는 UI를 제작합니다.
+- **이미지 인식 연동 (Optional)**: OpenCV 등을 활용하여 사용자가 손으로 그린 문자를 디지털 데이터로 변환하여 게임에 반영합니다.
+- **로컬 멀티플레이어**: 한 대의 컴퓨터나 모바일 기기에서 두 사람이 번갈아 가며 대결하는 기능을 구현합니다.
+
+## Python 구현 예시 (CLI 기반 간단한 틱택토 게임 루프)
 
 ```python
-def tic_tac_toe():
+def print_board(board):
     """
-    Implementation for Tic Tac Toe
+    현재 3x3 보드 상태를 보기 좋게 출력합니다.
     """
-    print("Executing Tic Tac Toe...")
-    # TODO: Add your implementation here
-    pass
+    print("\n--- 틱택토 보드 ---")
+    for row in board:
+        print(" | ".join(row))
+        print("-" * 10)
+
+def check_winner(board):
+    """
+    현재 보드에서 승리자가 있는지 확인합니다.
+    """
+    # 가로, 세로, 대각선 승리 조건
+    for row in board:
+        if row[0] == row[1] == row[2] != ' ': return row[0]
+    for col in range(3):
+        if board[0][col] == board[1][col] == board[2][col] != ' ': return board[0][col]
+    if board[0][0] == board[1][1] == board[2][2] != ' ': return board[0][0]
+    if board[0][2] == board[1][1] == board[2][0] != ' ': return board[0][2]
+    
+    return None
 
 if __name__ == "__main__":
-    tic_tac_toe()
+    # 빈 보드 생성
+    board = [[' ' for _ in range(3)] for _ in range(3)]
+    current_player = 'X'
+    
+    print("틱택토 게임을 시작합니다!")
+    
+    # 5번의 턴 시뮬레이션
+    for turn in range(5):
+        print_board(board)
+        # 실제 구현 시 사용자로부터 입력을 받음 (예: 1, 1)
+        # r, c = map(int, input(f"{current_player}님, 위치 선택 (행 열): ").split())
+        r, c = turn % 3, (turn * 2) % 3 # 가상의 자동 입력
+        
+        if board[r][c] == ' ':
+            board[r][c] = current_player
+            winner = check_winner(board)
+            if winner:
+                print_board(board)
+                print(f"축하합니다! {winner}님이 승리하셨습니다.")
+                break
+            current_player = 'O' if current_player == 'X' else 'X'
+        else:
+            print("이미 선택된 자리입니다. 다시 시도하세요.")
 ```

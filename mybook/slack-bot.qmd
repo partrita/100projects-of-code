@@ -1,20 +1,67 @@
 ---
-title: "Slack Bot"
+title: "슬랙 봇 (Slack Bot)"
 ---
 
-Description
+비즈니스 협업 도구인 슬랙(Slack)을 위한 나만의 봇을 만들어 봅시다. 단순히 메시지를 주고받는 것 이상으로, 업무를 자동화하고 정보를 실시간으로 공유하는 유용한 비서를 만드는 것이 목표입니다.
 
-## Python Implementation
+이 프로젝트는 슬랙 API와 웹훅(Webhook), 그리고 이벤트 기반 프로그래밍(Event-driven Programming)을 이해하는 데 아주 좋습니다. 특히 최근 팀 협업과 업무 효율성을 높여주는 슬랙 봇을 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **슬랙 API 연동**: Slack SDK나 Bolt 프레임워크를 사용하여 봇과 채널을 연결합니다.
+- **자동 메시지 게시 (Post Message)**: 특정 이벤트가 발생할 때 채널로 메시지나 파일을 보냅니다.
+- **슬래시 명령어 (Slash Commands)**: '/상태', '/할일', '/보고' 등의 명령어를 인식하여 특정 작업을 실행합니다.
+- **이벤트 구독 (Events API)**: 사용자가 메시지를 남기거나 이모지를 다는 이벤트를 실시간으로 수신합니다.
+- **사용자 인터페이스 (GUI)**: 봇의 설정 창, 메시지 템플릿, 그리고 봇의 활동 로그를 보여주는 대시보드를 구축합니다.
+
+## Python 구현 예시 (Slack SDK 활용 메시지 전송 시뮬레이션)
 
 ```python
-def slack_bot():
+# 실제 실행 시 slack_sdk 라이브러리 설치와 API 토큰이 필요합니다.
+# from slack_sdk import WebClient
+
+class SlackBot:
     """
-    Implementation for Slack Bot
+    슬랙 채널로 메시지를 보내고 이벤트를 처리합니다.
     """
-    print("Executing Slack Bot...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self, token, channel_name="#general"):
+        self.token = token
+        self.channel_name = channel_name
+        # self.client = WebClient(token=token)
+        print(f"'{channel_name}' 채널용 슬랙 봇 시작.")
+
+    def post_message(self, text):
+        """
+        메시지를 지정된 채널로 보냅니다.
+        """
+        print(f"'{self.channel_name}' 채널로 메시지 전송 중: {text}")
+        
+        # 실제 구현 시 API 호출
+        # self.client.chat_postMessage(channel=self.channel_name, text=text)
+        
+        print("전송이 완료되었습니다.")
+        return True
+
+    def handle_command(self, command):
+        """
+        슬래시 명령어를 처리합니다.
+        """
+        print(f"받은 명령어: {command}")
+        
+        if "/서버상태" in command:
+            return self.post_message("현재 서버는 정상적으로 작동 중입니다. (업타임: 124시간)")
+        elif "/할일" in command:
+            return self.post_message("오늘의 할 일: [1] 코드 리뷰 [2] 문서 작성 [3] 회의 참석")
+        return False
 
 if __name__ == "__main__":
-    slack_bot()
+    # 테스트용 API 토큰 (가상의 예시)
+    my_token = "xoxb-123456789-abcdefghijk"
+    my_bot = SlackBot(my_token, "#dev-team")
+    
+    # 메시지 및 명령어 처리 시뮬레이션
+    my_bot.post_message("안녕하세요! 저는 새로운 팀원 슬랙 봇입니다.")
+    my_bot.handle_command("/서버상태")
+    
+    # 팁: 인입된 멘션을 확인하여 특정 행동을 하게 하려면 Slack Events API를 사용해 보세요.
+    print("\n[팁] FastAPI나 Flask를 함께 사용하면 슬랙으로부터 오는 웹훅을 쉽게 받을 수 있습니다.")
 ```

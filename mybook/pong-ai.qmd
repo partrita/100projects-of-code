@@ -1,20 +1,63 @@
 ---
-title: "Pong AI"
+title: "퐁 AI (Pong AI)"
 ---
 
-Add to the Pong program you created above. Create an AI opponent to play against in a single player mode.
+앞서 만든 퐁(Pong) 게임에 인공지능(AI)을 추가해 봅시다. 혼자서도 즐길 수 있도록 1인 플레이 모드에서 나를 상대해 줄 똑똑한 AI 적을 만드는 것이 목표입니다.
 
-## Python Implementation
+이 프로젝트는 간단한 게임 물리와 AI의 의사 결정 과정을 익히기에 아주 좋습니다. 특히 공의 궤적을 예측하여 패들을 움직이는 로직을 설계하고, 점차 실력이 향상되는 AI를 직접 구현해 보세요.
+
+## 주요 개발 포인트
+- **AI 궤적 예측 (Trajectory Prediction)**: 공의 현재 위치와 속도를 기반으로 공이 패들에 도달할 위치를 예측합니다.
+- **패들 이동 제어**: 공의 예상 도달 지점으로 패들을 위아래로 움직여서 방어합니다.
+- **반응 속도 조절**: AI의 난이도를 조절하기 위해 반응 속도나 패들 이동 속도에 제한을 둡니다.
+- **공격적 AI 전략**: 단순히 방어만 하는 것이 아니라, 공을 패들의 구석에 맞춰 상대방이 받기 어렵게 날리는 로직을 설계합니다.
+- **학습 기반 AI (Reinforcement Learning)**: 강화 학습을 통해 실제 사람의 플레이를 모방하거나 스스로 실력을 키우는 AI를 실험해 봅니다.
+
+## Python 구현 예시 (간단한 공 위치 추적 AI 로직)
 
 ```python
-def pong_ai():
+import random
+
+class PongAI:
     """
-    Implementation for Pong AI
+    공의 위치를 실시간으로 추적하여 패들을 제어하는 AI 로직을 제공합니다.
     """
-    print("Executing Pong AI...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self, paddle_height=60):
+        self.paddle_y = 300 # 화면 중앙
+        self.paddle_height = paddle_height
+        self.difficulty = 0.8 # 0.0 ~ 1.0 (높을수록 똑똑함)
+
+    def decide_move(self, ball_y):
+        """
+        공의 Y 좌표에 따라 패들을 위나 아래로 움직일지 결정합니다.
+        """
+        # 패들의 중앙 위치 계산
+        paddle_center = self.paddle_y + (self.paddle_height / 2)
+        
+        # 난이도에 따른 무작위성 추가 (실수를 유발함)
+        if random.random() > self.difficulty:
+            print("AI: 잠깐 한눈을 팔았습니다!")
+            return 0 # 이동 안 함
+            
+        # 공이 패들 중앙보다 위에 있으면 위로 이동
+        if ball_y < paddle_center - 10:
+            print("AI: 위로 이동 중...")
+            self.paddle_y -= 5
+            return -1
+        # 공이 패들 중앙보다 아래에 있으면 아래로 이동
+        elif ball_y > paddle_center + 10:
+            print("AI: 아래로 이동 중...")
+            self.paddle_y += 5
+            return 1
+        return 0
 
 if __name__ == "__main__":
-    pong_ai()
+    ai = PongAI()
+    
+    # 5번의 프레임 업데이트 시나리오 시뮬레이션
+    print("AI 패들 시뮬레이션 시작")
+    for _ in range(5):
+        # 공의 위치가 바뀌는 상황 (시뮬레이션)
+        current_ball_y = random.randint(100, 500)
+        ai.decide_move(current_ball_y)
 ```

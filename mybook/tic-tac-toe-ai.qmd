@@ -1,20 +1,89 @@
 ---
-title: "Tic Tac Toe AI"
+title: "틱택토 AI (Tic Tac Toe AI)"
 ---
 
-Build an AI that is unbeatable (either wins always or at least draws) in tic-tac-toe. Instead of just hardcoding what move to play when, build an AI that learns how to play and then devises strategies to win.
+절대로 지지 않는(항상 이기거나 비기는) 무적의 틱택토(Tic Tac Toe) 인공지능(AI)을 만들어 봅시다. 단순히 상황별 이동을 하드코딩하는 대신, 게임의 규칙을 배우고 스스로 승리 전략을 고안하는 똑똑한 AI를 구현하는 것이 목표입니다.
 
-## Python Implementation
+이 프로젝트는 게임 트리 탐색(Minimax)과 강화 학습, 그리고 최적의 수를 결정하는 인공지능의 사고 과정을 익히기에 아주 좋은 과제입니다. 특히 최근 인공지능과 대결하는 재미있는 퀴즈 앱이나 게임 환경을 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **미니맥스 (Minimax) 알고리즘**: 모든 가능한 수를 시뮬레이션하여 자신이 이기거나 비기는 최적의 경로를 찾습니다.
+- **게임 상태 표현 (Game State Representation)**: 3x3 격자판을 데이터 구조(예: 리스트, 튜플)로 관리하고 보드를 분석합니다.
+- **알파-베타 가지치기 (Alpha-Beta Pruning)**: 탐색 범위를 줄여 AI의 응답 속도를 비약적으로 향상시킵니다.
+- **학습 기반 AI (Reinforcement Learning)**: 수천 번의 대결을 통해 어떤 상황에서 어떤 수가 유리한지 스스로 학습하도록 합니다.
+- **사용자 인터페이스 (GUI)**: 사람이 X나 O를 직접 그리고 기계가 이를 인식하여 자동으로 수를 두는 창의적인 UI를 구축합니다.
+
+## Python 구현 예시 (Minimax 알고리즘 기반 AI 이동 로직)
 
 ```python
-def tic_tac_toe_ai():
+import math
+
+class TicTacToeAI:
     """
-    Implementation for Tic Tac Toe AI
+    미니맥스 알고리즘을 사용하여 최적의 틱택토 이동을 결정합니다.
     """
-    print("Executing Tic Tac Toe AI...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self, board):
+        self.board = board # 3x3 리스트
+
+    def check_winner(self, board):
+        """
+        현재 보드에서 승리자('X', 'O')를 판별하거나 비김(None)을 반환합니다.
+        """
+        # 가로, 세로, 대각선 승리 조건 검사
+        for row in range(3):
+            if board[row][0] == board[row][1] == board[row][2] != ' ': return board[row][0]
+        for col in range(3):
+            if board[0][col] == board[1][col] == board[2][col] != ' ': return board[0][col]
+        if board[0][0] == board[1][1] == board[2][2] != ' ': return board[0][0]
+        if board[0][2] == board[1][1] == board[2][0] != ' ': return board[0][2]
+        
+        # 보드가 가득 찼는지 확인 (비김)
+        if all(cell != ' ' for row in board for cell in row): return 'Tie'
+        return None
+
+    def minimax(self, board, depth, is_maximizing):
+        """
+        재귀적으로 모든 가능성을 탐색하여 점수를 매깁니다.
+        """
+        winner = self.check_winner(board)
+        if winner == 'O': return 10 - depth # AI 승리
+        if winner == 'X': return depth - 10 # 사람 승리
+        if winner == 'Tie': return 0
+        
+        if is_maximizing:
+            best_score = -math.inf
+            # 빈 자리에 O를 놓아보고 점수 계산
+            for r in range(3):
+                for c in range(3):
+                    if board[r][c] == ' ':
+                        board[r][c] = 'O'
+                        score = self.minimax(board, depth + 1, False)
+                        board[r][c] = ' ' # 원상복구
+                        best_score = max(score, best_score)
+            return best_score
+        else:
+            best_score = math.inf
+            # 빈 자리에 X를 놓아보고 점수 계산
+            for r in range(3):
+                for c in range(3):
+                    if board[r][c] == ' ':
+                        board[r][c] = 'X'
+                        score = self.minimax(board, depth + 1, True)
+                        board[r][c] = ' ' # 원상복구
+                        best_score = min(score, best_score)
+            return best_score
 
 if __name__ == "__main__":
-    tic_tac_toe_ai()
+    # 샘플 보드 상황 (X: 사람, O: AI)
+    current_board = [
+        ['X', ' ', ' '],
+        [' ', 'O', ' '],
+        [' ', ' ', 'X']
+    ]
+    
+    ai = TicTacToeAI(current_board)
+    print("AI가 다음 최적의 수를 계산 중입니다...")
+    
+    # 팁: 보드가 넓어질수록(4x4 등) 탐색 시간이 기하급수적으로 늘어나므로 가지치기가 필수입니다.
+    print(f"\n[팁] 알파-베타 가지치기를 구현하면 탐색 속도를 획기적으로 개선할 수 있습니다.")
 ```

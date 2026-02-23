@@ -1,20 +1,75 @@
 ---
-title: "Static Code Analyzer"
+title: "정적 코드 분석기 (Static Code Analyzer)"
 ---
 
-Make a software that will go through your code (without executing it) and check for any inconsistencies or errors (syntax errors, indentation, etc) that may cause any problems during execution.
+프로그램을 실행하지 않고 소스 코드를 분석하여 구문 오류나 일관성 없는 코딩 스타일을 찾아주는 소프트웨어를 만들어 봅시다. 특히 들여쓰기, 사용하지 않는 변수, 그리고 잠재적인 버그를 사전에 감지하는 것이 목표입니다.
 
-## Python Implementation
+이 프로젝트는 프로그래밍 언어의 구조(AST)와 코딩 컨벤션, 그리고 코드 품질 관리 기법을 익히기에 아주 좋은 고난도 과제입니다. 특히 최근 코드 리뷰와 자동화 테스트에 필수적인 정적 분석 도구를 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **소스 코드 파싱 (Abstract Syntax Tree)**: `ast` 모듈을 활용하여 파이썬 코드를 트리 구조로 분석합니다.
+- **구문 및 코딩 스타일 검사 (Linting Rules)**: PEP 8과 같은 표준 스타일을 기준으로 들여쓰기나 명명 규칙을 확인합니다.
+- **잠재적 오류 및 버그 감지**: 초기화되지 않은 변수, 무한 루프 가능성, 사용되지 않는 함수 등을 찾아냅니다.
+- **코드 복잡도 측정 (Complexity Metrics)**: 순환 복잡도(Cyclomatic Complexity)를 계산하여 유지보수가 어려운 코드를 식별합니다.
+- **사용자 인터페이스 (GUI)**: 분석할 소스 파일을 불러오고 발견된 오류를 줄 번호와 함께 리스트로 보여주는 UI를 구축합니다.
+
+## Python 구현 예시 (ast 모듈 활용 간단한 정적 분석 로직)
 
 ```python
-def static_code_analyzer():
+import ast
+
+class SimpleCodeAnalyzer(ast.NodeVisitor):
     """
-    Implementation for Static Code Analyzer
+    파이썬 소스 코드를 방문하여 특정 패턴이나 오류를 찾습니다.
     """
-    print("Executing Static Code Analyzer...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self):
+        self.errors = []
+        print("정적 코드 분석기 시작.")
+
+    def visit_FunctionDef(self, node):
+        """
+        함수 정의를 분석하여 규칙을 검사합니다.
+        """
+        # 함수 이름이 소문자로 시작하는지 확인 (간단한 스타일 검사)
+        if not node.name[0].islower():
+            self.errors.append(f"줄 {node.lineno}: 함수명 '{node.name}'은 소문자로 시작해야 합니다.")
+        
+        # 함수의 docstring 존재 여부 확인
+        if ast.get_docstring(node) is None:
+            self.errors.append(f"줄 {node.lineno}: 함수 '{node.name}'에 docstring이 없습니다.")
+            
+        self.generic_visit(node)
+
+    def analyze_file(self, filename, code):
+        """
+        제공된 코드 문자열을 파싱하고 분석을 수행합니다.
+        """
+        print(f"'{filename}' 분석 중...")
+        try:
+            tree = ast.parse(code)
+            self.visit(tree)
+            
+            if self.errors:
+                print("\n--- 분석 결과 (발견된 문제) ---")
+                for err in self.errors:
+                    print(err)
+            else:
+                print("축하합니다! 분석 결과 아무런 문제가 발견되지 않았습니다.")
+        except SyntaxError as e:
+            print(f"구문 오류 발생: {e}")
 
 if __name__ == "__main__":
-    static_code_analyzer()
+    analyzer = SimpleCodeAnalyzer()
+    
+    # 분석할 샘플 코드 (오류가 포함된 코드)
+    sample_code = """
+def MyFunction():
+    x = 10
+    return x
+
+def calculate_area(r):
+    '''원의 넓이를 계산합니다.'''
+    return 3.14 * r * r
+"""
+    analyzer.analyze_file("sample.py", sample_code)
 ```

@@ -1,20 +1,59 @@
 ---
-title: "Random Username Generator"
+title: "무작위 사용자 이름 생성기 (Random Username Generator)"
 ---
 
-Write a script to generate random usernames that you can use in games or various other places.
+게임이나 다양한 사이트에서 사용할 수 있는 무작위 사용자 이름을 생성해 주는 스크립트를 작성해 봅시다. 형용사와 명사를 조합하여 흥미로운 닉네임을 만들고, 숫자를 섞어 나만의 고유한 이름을 완성해 보세요.
 
-## Python Implementation
+이 프로젝트는 문자열 조합과 무작위 추출, 그리고 사용자에게 어울리는 멋진 이름을 추천하는 로직을 익히기에 아주 좋습니다. 특히 최근 게임이나 커뮤니티에서 유행하는 중복되지 않는 독창적인 닉네임을 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **형용사 및 명사 데이터베이스**: '용감한', '수줍은', '푸른', '호랑이', '컴퓨터' 등 다양한 단어 목록을 구성합니다.
+- **무작위 단어 조합**: 여러 단어 카테고리에서 각각 하나씩 뽑아 새로운 이름을 합성합니다.
+- **숫자 및 특수문자 추가**: 이름 끝에 행운의 숫자나 특수문자를 붙여 고유성을 높입니다.
+- **사용자 커스터마이징**: 원하는 길이, 포함할 단어 등을 사용자가 직접 설정할 수 있도록 합니다.
+- **사용자 인터페이스 (GUI)**: 버튼을 누를 때마다 새로운 이름 후보를 보여주고, 마음에 드는 이름을 복사하는 UI를 구축합니다.
+
+## Python 구현 예시 (간단한 무작위 닉네임 생성 클래스)
 
 ```python
-def random_username_generator():
+import random
+
+class UsernameGenerator:
     """
-    Implementation for Random Username Generator
+    다양한 단어 조합을 통해 창의적이고 고유한 닉네임을 생성합니다.
     """
-    print("Executing Random Username Generator...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self):
+        self.adjectives = ["용감한", "빛나는", "차분한", "빠른", "푸른", "신비로운"]
+        self.nouns = ["사자", "독수리", "별빛", "파도", "나무", "코더", "해커"]
+
+    def generate(self, use_numbers=True, count=5):
+        """
+        요청한 개수만큼 무작위 닉네임을 생성합니다.
+        """
+        print(f"{count}개의 닉네임 후보를 생성 중입니다...")
+        
+        results = []
+        for _ in range(count):
+            adj = random.choice(self.adjectives)
+            noun = random.choice(self.nouns)
+            name = f"{adj}{noun}"
+            
+            if use_numbers:
+                # 100 ~ 999 사이의 무작위 숫자 추가
+                name += str(random.randint(100, 999))
+                
+            results.append(name)
+            
+        print("\n--- 추천 닉네임 ---")
+        for i, n in enumerate(results, 1):
+            print(f"{i}. {n}")
+            
+        return results
 
 if __name__ == "__main__":
-    random_username_generator()
+    generator = UsernameGenerator()
+    
+    # 닉네임 생성 테스트
+    generator.generate(use_numbers=True, count=3)
+    generator.generate(use_numbers=False, count=2)
 ```

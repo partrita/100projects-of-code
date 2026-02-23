@@ -1,20 +1,72 @@
 ---
-title: "Weather App"
+title: "날씨 앱 (Weather App)"
 ---
 
-Build an app that gets the weather at your location in the current time. You can either use a web scraper in the background to collect the data or use a weather API.
+현재 위치의 날씨 정보를 실시간으로 가져오는 앱을 만들어 봅시다. 백그라운드에서 웹 스크래퍼를 실행하여 데이터를 수집하거나, 신뢰할 수 있는 날씨 API(OpenWeatherMap 등)를 활용하여 정보를 제공하는 것이 목표입니다.
 
-## Python Implementation
+이 프로젝트는 외부 데이터 API를 연동하고 JSON 데이터를 파싱(Parsing)하며, 사용자에게 현재 기온, 습도, 날씨 상태 등을 시각적으로 보여주는 방법을 익히기에 아주 좋은 과제입니다. 특히 최근 날씨와 연관된 생활 정보를 제공하는 독창적인 시스템을 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **날씨 데이터 수집 (API/Scraping)**: OpenWeatherMap, AccuWeather, 또는 기상청 데이터를 가져옵니다.
+- **현재 위치 기반 날씨 정보**: 사용자의 IP 주소나 GPS 데이터를 기반으로 자동으로 해당 지역의 날씨를 찾습니다.
+- **기상 데이터 분석 및 시각화**: 기온, 습도, 미세먼지 수치 등을 수집하여 그래프나 아이콘으로 보여줍니다.
+- **단기 및 장기 기상 예보**: 현재 날씨뿐만 아니라 시간별, 일별 예보 정보를 제공합니다.
+- **사용자 인터페이스 (GUI)**: 날씨 상태(맑음, 비, 눈 등)에 따라 배경색이나 아이콘을 동적으로 바꾸는 UI를 구축합니다.
+
+## Python 구현 예시 (OpenWeatherMap API 활용 날씨 조회 시뮬레이션)
 
 ```python
-def weather_app():
+import requests
+
+class WeatherApp:
     """
-    Implementation for Weather App
+    외부 날씨 API를 호출하여 기상 정보를 가져오고 분석합니다.
     """
-    print("Executing Weather App...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self, api_key):
+        self.api_key = api_key
+        print("날씨 조회 엔진 시작.")
+
+    def get_weather(self, city="Seoul"):
+        """
+        지정된 도시의 현재 날씨 정보를 조회합니다.
+        """
+        print(f"'{city}'의 현재 기상 상태를 조회 중입니다...")
+        
+        # 실제 구현 시 API 호출
+        # url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={self.api_key}&units=metric"
+        # response = requests.get(url)
+        # data = response.json()
+        
+        # 가상의 날씨 데이터 결과 예시
+        weather_data = {
+            "city": city,
+            "temp": 18.5,
+            "humidity": 45,
+            "description": "맑음(Clear Sky)"
+        }
+        
+        print("\n--- 오늘의 날씨 리포트 ---")
+        print(f"도시: {weather_data['city']}")
+        print(f"기온: {weather_data['temp']}°C")
+        print(f"습도: {weather_data['humidity']}%")
+        print(f"상태: {weather_data['description']}")
+        
+        if weather_data['temp'] < 10:
+            print("안내: 오늘은 날씨가 춥습니다. 따뜻하게 입으세요.")
+        elif "비" in weather_data['description']:
+            print("안내: 비가 올 수 있으니 우산을 챙기세요.")
+            
+        return weather_data
 
 if __name__ == "__main__":
-    weather_app()
+    # 테스트용 API 키 (가상의 예시)
+    my_key = "abcde12345"
+    app = WeatherApp(my_key)
+    
+    # 날씨 조회 테스트
+    app.get_weather("Busan")
+    app.get_weather("London")
+    
+    # 팁: 기상청의 공개 데이터 API를 활용하면 한국의 상세한 미세먼지 정보도 얻을 수 있습니다.
+    print("\n[팁] 'Matplotlib'을 사용하여 일주일간의 기온 변화 그래프를 그려 보세요.")
 ```

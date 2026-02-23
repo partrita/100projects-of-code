@@ -1,20 +1,65 @@
 ---
-title: "WhatsApp Butler"
+title: "왓츠앱 집사 (WhatsApp Butler)"
 ---
 
-Build a bot for WhatsApp that can scrape information from the internet like news, wikipedia entries, and other things. Make it able to keep track of some events like your/someone else's birthday and send an automatic message wishing you/the other person.
+전 세계적으로 널리 쓰이는 메신저인 왓츠앱(WhatsApp)을 위한 나만의 봇을 만들어 봅시다. 인터넷에서 뉴스나 위키피디아 항목과 같은 정보를 가져와서 사용자에게 전달하거나, 친구의 생일과 같은 중요한 이벤트를 기억했다가 축하 메시지를 자동으로 보내주는 봇을 목표로 합니다.
 
-## Python Implementation
+이 프로젝트는 왓츠앱 API와 웹 브라우저 자동화(Selenium), 그리고 정기적인 일정 관리 기능을 익히기에 아주 좋은 과제입니다. 특히 최근 소통과 일정 관리에 필수적인 왓츠앱 봇을 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **왓츠앱 비즈니스 API 및 라이브러리 연동**: `pywhatkit`이나 공식 API를 사용하여 메시지를 자동으로 전송합니다.
+- **정보 스크래핑 및 브리핑**: 위키피디아, 뉴스 사이트 등에서 가져온 요약 정보를 대화창에 바로 띄워줍니다.
+- **중요 이벤트 알림 (Event Tracking)**: 생일, 기념일, 회의 시간 등을 기록하고 정해진 시간에 알림을 보냅니다.
+- **자동 응답 및 키워드 감지**: 특정 단어(예: "안녕", "오늘 뉴스")를 입력하면 그에 맞는 정보를 회신합니다.
+- **사용자 인터페이스 (GUI)**: 이벤트 목록 관리창, 봇의 답변 템플릿, 그리고 봇의 활동 로그를 보여주는 대시보드를 구축합니다.
+
+## Python 구현 예시 (pywhatkit 활용 간단한 자동 메시지 전송 시뮬레이션)
 
 ```python
-def whatsapp_butler():
+# 실제 구현 시 pywhatkit 라이브러리 설치와 웹 브라우저 인증이 필요합니다.
+# import pywhatkit
+
+class WhatsAppButler:
     """
-    Implementation for WhatsApp Butler
+    왓츠앱을 통해 정보를 전달하고 이벤트를 관리하는 기능을 제공합니다.
     """
-    print("Executing WhatsApp Butler...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self, owner_name="나"):
+        self.owner = owner_name
+        self.events = {} # {날짜: [이벤트명, 연락처]}
+        print(f"'{owner_name}'님의 왓츠앱 집사 서비스를 시작합니다.")
+
+    def send_instant_message(self, phone_no, message):
+        """
+        특정 연락처로 메시지를 즉시 보냅니다.
+        """
+        print(f"'{phone_no}' 번호로 메시지 전송 중: {message}")
+        
+        # 실제 구현 시 라이브러리 호출
+        # pywhatkit.sendwhatmsg_instantly(phone_no, message)
+        
+        print("전송이 완료되었습니다.")
+        return True
+
+    def check_and_notify_events(self, current_date):
+        """
+        오늘의 일정을 확인하고 왓츠앱으로 알림을 보냅니다.
+        """
+        print(f"[{current_date}] 일정을 확인 중입니다...")
+        
+        today_events = self.events.get(current_date, [])
+        for event_name, phone in today_events:
+            msg = f"집사 알림: 오늘은 '{event_name}'입니다! 잊지 마세요."
+            self.send_instant_message(phone, msg)
 
 if __name__ == "__main__":
-    whatsapp_butler()
+    butler = WhatsAppButler("Norah Jones")
+    
+    # 이벤트 등록 테스트
+    butler.events["2026-02-23"] = [("팀 프로젝트 발표", "+821012345678")]
+    
+    # 일정 확인 및 알림 시뮬레이션
+    butler.check_and_notify_events("2026-02-23")
+    
+    # 팁: 왓츠앱 웹 자동화를 사용할 때는 보안과 스팸 방지 정책을 반드시 확인하세요.
+    print("\n[팁] 'Twilio'와 같은 서비스를 연동하면 서버에서 안정적으로 왓츠앱 메시지를 보낼 수 있습니다.")
 ```

@@ -1,20 +1,69 @@
 ---
-title: "URL Shortener"
+title: "URL 단축기 (URL Shortener)"
 ---
 
-Build a web app that can shorten any URL that the user provides. You can either code an algorithm that shortens and stores the user provide URL or use an API.
+사용자가 제공한 긴 URL을 짧고 간결한 URL로 변환해 주는 웹 앱을 만들어 봅시다. 단축된 URL을 입력하면 원본 URL로 리다이렉션(Redirection)해 주는 것이 목표입니다.
 
-## Python Implementation
+이 프로젝트는 고유한 ID 생성 기술(Base62 등)과 데이터베이스 매핑(Mapping), 그리고 웹 서버의 리다이렉션 기능을 익히기에 아주 좋은 과제입니다. 특히 최근 소셜 미디어와 공유 기능에 필수적인 도구를 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **URL 단축 알고리즘 (Shortening)**: 원본 URL을 고유한 해시(Hash)나 베이스62(Base62) 코드로 변환합니다.
+- **원본-단축 URL 매핑 저장 (Database)**: SQLite나 Redis 등을 활용하여 단축 코드와 원본 주소를 한 쌍으로 저장합니다.
+- **HTTP 리다이렉션 (Redirection)**: 사용자가 단축 주소로 접속하면 301 또는 302 상태 코드를 사용하여 원본 페이지로 보냅니다.
+- **방문자 통계 분석 (Analytics)**: 각 단축 URL이 몇 번 클릭되었는지, 어느 국가에서 접속했는지 기록하고 시각화합니다.
+- **사용자 인터페이스 (GUI)**: 긴 URL 입력창, 단축 버튼, 그리고 생성된 결과 URL을 보여주는 UI를 구축합니다.
+
+## Python 구현 예시 (Flask 활용 간단한 URL 단축기 서버)
 
 ```python
-def url_shortener():
+import hashlib
+from flask import Flask, request, redirect
+
+app = Flask(__name__)
+
+# 단축 URL 매핑 데이터베이스 (가상)
+url_db = {} # {short_id: original_url}
+
+def generate_short_id(original_url):
     """
-    Implementation for URL Shortener
+    원본 URL을 MD5 해시의 앞부분을 활용하여 고유한 단축 아이디로 변환합니다.
     """
-    print("Executing URL Shortener...")
-    # TODO: Add your implementation here
-    pass
+    # 원본 URL을 바이트로 변환 후 해싱
+    hash_obj = hashlib.md5(original_url.encode())
+    # 6자리 짧은 아이디 생성 (Base64 등 사용 가능)
+    return hash_obj.hexdigest()[:6]
+
+@app.route("/shorten", methods=["POST"])
+def shorten_url():
+    """
+    긴 URL을 받아서 짧은 아이디를 생성하고 저장합니다.
+    """
+    original_url = request.form.get("url")
+    if not original_url:
+        return "URL을 입력하세요."
+        
+    short_id = generate_short_id(original_url)
+    url_db[short_id] = original_url
+    
+    print(f"URL 단축 완료: {original_url} -> /{short_id}")
+    return f"단축 URL: http://localhost:5000/{short_id}"
+
+@app.route("/<short_id>")
+def navigate_to_original(short_id):
+    """
+    단축 아이디로 접속 시 원본 URL로 리다이렉션합니다.
+    """
+    original_url = url_db.get(short_id)
+    if original_url:
+        print(f"리다이렉션 수행 중: /{short_id} -> {original_url}")
+        return redirect(original_url)
+    return "유효하지 않은 단축 URL입니다.", 404
 
 if __name__ == "__main__":
-    url_shortener()
+    # Flask 서버 테스트 실행
+    # app.run(debug=True)
+    print("실제 URL 단축기를 사용하려면 Flask 서버를 실행하고 브라우저에서 접속하세요.")
+    
+    # 팁: 동일한 URL을 여러 번 단축할 때 항상 같은 아이디를 줄 것인지 고민해 보세요.
+    print("\n[팁] Redis와 같은 메모리 기반 DB를 사용하면 훨씬 빠른 리다이렉션이 가능합니다.")
 ```

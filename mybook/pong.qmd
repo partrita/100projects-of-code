@@ -1,20 +1,74 @@
 ---
-title: "Pong"
+title: "퐁 (Pong)"
 ---
 
-Code the game of [pong](https://en.wikipedia.org/wiki/Pong). Make it multiplayer and visually appealing.
+전설적인 아케이드 게임인 퐁(Pong)을 직접 만들어 봅시다. 두 명의 플레이어가 패들을 사용하여 공을 주고받는 간단한 구조부터, 시각적으로 매력적인 고해상도 그래픽까지 구현해 보세요.
 
-## Python Implementation
+이 프로젝트는 게임 개발의 기초인 2차원 기하학과 물리 법칙(충돌과 반사), 그리고 실시간 입력을 처리하는 방법을 익히기에 아주 좋습니다. 특히 최근 게임들이 제공하는 세련된 사운드 효과와 파티클 애니메이션을 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **패들 및 공 생성**: 2차원 화면에 두 명의 플레이어를 위한 패들과 하나의 공을 배치합니다.
+- **물리 시뮬레이션 (Reflections)**: 공이 패들이나 벽에 부딪혔을 때 입사각에 따라 반사되는 각도를 계산합니다.
+- **점수 시스템 및 승리 판정**: 공이 화면 양쪽 끝을 넘어갈 때마다 점수를 올리고 승리한 플레이어를 선언합니다.
+- **실시간 입력 처리**: 키보드(W, S / 화살표 키)를 동시에 인식하여 두 플레이어의 패들을 제어합니다.
+- **그래픽과 오디오**: 깔끔한 배경색, 패들의 잔상 효과, 그리고 공이 튕길 때 나는 효과음을 추가합니다.
+
+## Python 구현 예시 (Pygame을 활용한 기본 게임 루프)
 
 ```python
-def pong():
+import pygame
+import sys
+
+# Pygame 초기화 및 화면 설정
+pygame.init()
+SCREEN_WIDTH = 600
+SCREEN_HEIGHT = 400
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+clock = pygame.time.Clock()
+
+# 게임 변수 설정
+ball_x, ball_y = 300, 200
+ball_speed_x, ball_speed_y = 4, 4
+paddle_left_y, paddle_right_y = 150, 150
+PADDLE_WIDTH, PADDLE_HEIGHT = 10, 80
+
+def run_pong_sim():
     """
-    Implementation for Pong
+    퐁 게임의 공 움직임과 패들 제어를 시뮬레이션합니다.
     """
-    print("Executing Pong...")
-    # TODO: Add your implementation here
-    pass
+    global ball_x, ball_y, ball_speed_x, ball_speed_y
+    print("퐁 게임 시뮬레이션 시작! 종료하려면 창을 닫으세요.")
+    
+    running = True
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+        # 공 이동
+        ball_x += ball_speed_x
+        ball_y += ball_speed_y
+        
+        # 위아래 벽 충돌
+        if ball_y <= 0 or ball_y >= SCREEN_HEIGHT:
+            ball_speed_y *= -1
+            
+        # 패들 충돌 (간단한 시뮬레이션)
+        if ball_x <= PADDLE_WIDTH or ball_x >= SCREEN_WIDTH - PADDLE_WIDTH:
+            ball_speed_x *= -1
+            
+        # 화면 그리기
+        screen.fill((0, 0, 0)) # 검정 배경
+        pygame.draw.rect(screen, (255, 255, 255), (10, paddle_left_y, PADDLE_WIDTH, PADDLE_HEIGHT)) # 왼쪽 패들
+        pygame.draw.rect(screen, (255, 255, 255), (SCREEN_WIDTH-20, paddle_right_y, PADDLE_WIDTH, PADDLE_HEIGHT)) # 오른쪽 패들
+        pygame.draw.circle(screen, (255, 255, 255), (ball_x, ball_y), 8) # 공
+        
+        pygame.display.flip()
+        clock.tick(60) # 60 FPS
 
 if __name__ == "__main__":
-    pong()
+    # Pygame 설치 시 실행 가능
+    # run_pong_sim()
+    print("실제 게임을 실행하려면 Pygame 설치 후 위 함수를 호출하세요.")
 ```

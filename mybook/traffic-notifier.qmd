@@ -1,20 +1,67 @@
 ---
-title: "Traffic Notifier"
+title: "교통 알림기 (Traffic Notifier)"
 ---
 
-Build an app (phone app will be better) that finds how congested one route is and then suggests you a better route to take to your destination.
+특정 경로의 혼잡도를 파악하고 더 나은 경로를 추천해 주는 앱(스마트폰 앱이 더 좋습니다)을 만들어 봅시다. 실시간 교통 정보를 분석하여 사용자에게 가장 빠르고 쾌적한 이동 경로를 제안하는 것이 목표입니다.
 
-## Python Implementation
+이 프로젝트는 지도 데이터와 실시간 API를 연동하고, 경로 탐색 알고리즘을 활용하여 교통 혼잡도를 예측하는 방법을 익히기에 아주 좋은 과제입니다. 특히 최근 교통 상황에 따라 도착 시간을 정확하게 예측하는 독창적인 시스템을 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **실시간 교통 데이터 수집**: Google Maps API, Tmap API, Naver Maps API 등을 활용하여 현재 도로의 정체 상태를 가져옵니다.
+- **최단 및 최적 경로 탐색**: 다익스트라(Dijkstra) 또는 A* 알고리즘을 사용하여 소요 시간이 가장 적은 경로를 계산합니다.
+- **교통 혼잡도 알림 (Push Notification)**: 목적지로 가는 길에 사고나 심한 정체가 발생하면 사용자에게 즉시 알림을 보냅니다.
+- **도착 예정 시간(ETA) 예측**: 현재 속도와 도로 상황을 반영하여 목적지까지 걸리는 시간을 실시간으로 업데이트합니다.
+- **사용자 인터페이스 (GUI)**: 지도를 화면에 보여주고, 추천 경로와 예상 소요 시간을 시각화하는 UI를 구축합니다.
+
+## Python 구현 예시 (Google Maps API 활용 간단한 경로 소요 시간 조회 시뮬레이션)
 
 ```python
-def traffic_notifier():
+# 실제 구현 시 googlemaps 등 라이브러리 설치와 API 키가 필요합니다.
+# import googlemaps
+
+class TrafficNotifier:
     """
-    Implementation for Traffic Notifier
+    대상 경로의 교통 상황을 분석하고 알림을 보냅니다.
     """
-    print("Executing Traffic Notifier...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self, api_key):
+        self.api_key = api_key
+        # self.gmaps = googlemaps.Client(key=api_key)
+        print("교통 알림 엔진 시작.")
+
+    def get_travel_time(self, origin, destination):
+        """
+        출발지와 목적지 사이의 현재 교통 상황을 반영한 소요 시간을 조회합니다.
+        """
+        print(f"'{origin}'에서 '{destination}'까지의 최적 경로를 찾는 중...")
+        
+        # 가상의 교통 데이터 결과 예시
+        current_traffic_time = "45분"
+        normal_time = "30분"
+        
+        # 정체 여부 판단
+        if "45분" in current_traffic_time:
+            print(f"!!! 경고: 현재 경로에 정체가 발생했습니다. 평소보다 15분 더 소요됩니다.")
+            self.send_alert(f"평소보다 막히네요! {current_traffic_time} 소요 예상.")
+            
+        return current_traffic_time
+
+    def send_alert(self, message):
+        """
+        사용자에게 푸시 알림이나 메시지를 전송합니다.
+        """
+        # 실제 구현 시 Firebase Cloud Messaging (FCM) 등을 활용
+        print(f"[알림 전송] {message}")
 
 if __name__ == "__main__":
-    traffic_notifier()
+    # 테스트용 API 키 (가상의 예시)
+    my_key = "AIzaSy..."
+    notifier = TrafficNotifier(my_key)
+    
+    # 경로 소요 시간 조회 테스트
+    origin_point = "서울역"
+    dest_point = "강남역"
+    notifier.get_travel_time(origin_point, dest_point)
+    
+    # 팁: 주기적으로 데이터를 확인하여 급격한 변화가 있을 때만 알림을 주도록 설계해 보세요.
+    print("\n[팁] 과거 정체 데이터를 학습하면 특정 시간대의 정체를 미리 예측할 수 있습니다.")
 ```

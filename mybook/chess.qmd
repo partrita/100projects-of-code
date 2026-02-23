@@ -1,20 +1,65 @@
 ---
-title: "Chess"
+title: "체스 게임 (Chess)"
 ---
 
-Code the game of chess from the ground up. Build a board, the pieces (you can use images for this part). Code in the rules and make sure you allow no invalid moves.
+고전적인 보드 게임인 체스를 처음부터 끝까지 코딩해 봅시다. 보드를 구성하고, 각 기물(폰, 나이트, 비숍, 룩, 퀸, 킹)의 이미지를 사용하여 화면을 꾸밉니다. 모든 기물의 이동 규칙을 정확하게 코딩하고, 잘못된 수(Invalid Moves)를 둘 수 없도록 철저히 검증해야 합니다.
 
-## Python Implementation
+체스는 규칙이 상당히 많고 복잡하기 때문에 세심한 설계가 필요합니다. 캐슬링(Castling), 앙파상(En passant), 프로모션(Promotion)과 같은 특수 규칙들까지 완벽하게 구현하는 것이 목표입니다.
+
+## 주요 개발 포인트
+- **8x8 보드 표현**: 2차원 리스트 또는 배열을 사용하여 체스판의 상태를 관리합니다.
+- **기물 이동 로직**: 각 기물의 독특한 이동 범위를 계산하고 경로가 막혔는지 확인합니다.
+- **특수 규칙 구현**: 캐슬링, 앙파상, 폰의 승진(Promotion) 조건을 체크합니다.
+- **체크 및 체크메이트 판정**: 현재 킹이 공격받고 있는지, 더 이상 피할 곳이 없는지 판단합니다.
+- **턴 관리**: 백과 흑이 번갈아 가며 수를 두는 시스템을 구축합니다.
+
+## Python 구현 예시 (보드 초기화 및 출력)
 
 ```python
-def chess():
+class ChessGame:
     """
-    Implementation for Chess
+    체스 게임의 보드 상태와 기본 규칙을 관리합니다.
     """
-    print("Executing Chess...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self):
+        # 대문자는 백(White), 소문자는 흑(Black)
+        self.board = [
+            ['r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'],
+            ['p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'],
+            [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+            [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+            [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+            [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+            ['P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'],
+            ['R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R']
+        ]
+        self.turn = 'White'
+
+    def display(self):
+        """
+        체스판을 보기 좋게 출력합니다.
+        """
+        print(f"\n--- {self.turn} 턴 ---")
+        print("  a b c d e f g h")
+        print("  ----------------")
+        for i, row in enumerate(self.board):
+            print(f"{8-i}|{' '.join(row)}|{8-i}")
+        print("  ----------------")
+        print("  a b c d e f g h")
+
+    def move_piece(self, start_pos, end_pos):
+        """
+        기물을 이동시키고 턴을 넘깁니다. (실제 구현에서는 규칙 검증 필요)
+        """
+        # start_pos, end_pos는 'e2', 'e4'와 같은 형식으로 입력받을 수 있습니다.
+        print(f"기물 이동: {start_pos} -> {end_pos}")
+        # TODO: 이동 로직 및 규칙 검사 추가
+        self.turn = 'Black' if self.turn == 'White' else 'White'
 
 if __name__ == "__main__":
-    chess()
+    game = ChessGame()
+    game.display()
+    
+    # 예시 이동
+    game.move_piece("e2", "e4")
+    game.display()
 ```

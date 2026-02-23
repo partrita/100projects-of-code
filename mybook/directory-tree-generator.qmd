@@ -1,20 +1,50 @@
 ---
-title: "Directory Tree Generator"
+title: "디렉토리 트리 생성기 (Directory Tree Generator)"
 ---
 
-Generate a tree like structure using the directories present in a given path by the user. This allows you to see the positioning of files and directories. We are visual animals and thus, visual depictions of directories are more understandable.
+사용자가 입력한 경로에 있는 디렉토리들을 나무(Tree) 모양의 구조로 시각화해 주는 프로그램을 만들어 봅시다. 파일과 디렉토리의 계층적 위치를 한눈에 파악할 수 있도록 돕는 유용한 도구입니다.
 
-## Python Implementation
+이 프로젝트는 파일 시스템의 재귀적(Recursive) 탐색 방법을 이해하고, 복잡한 데이터를 보기 좋게 출력하는 로직을 익히기에 아주 좋습니다. 특히 폴더 구조가 복잡할 때 프로젝트의 전체 구성을 빠르게 확인하는 용도로 활용할 수 있습니다.
+
+## 주요 개발 포인트
+- **재귀적 파일 탐색**: 하위 폴더와 그 안의 파일들을 깊이 우선 탐색(DFS) 방식으로 방문합니다.
+- **시각적 트리 표현**: `│`, `├─`, `└─`와 같은 특수 문자를 사용하여 구조를 그립니다.
+- **필터링 및 제외 기능**: `.git`, `node_modules`, `__pycache__` 등 원치 않는 폴더를 숨기는 기능을 추가합니다.
+- **파일 정보 추가**: 파일의 크기나 수정 날짜 등의 정보를 트리 옆에 함께 표시합니다.
+- **출력 형식 다양화**: 콘솔 출력 외에도 텍스트 파일(txt), 마크다운(md), 또는 이미지로 저장할 수 있습니다.
+
+## Python 구현 예시 (간단한 디렉토리 트리 출력)
 
 ```python
-def directory_tree_generator():
+import os
+
+def generate_tree(dir_path, prefix=""):
     """
-    Implementation for Directory Tree Generator
+    지정된 경로의 디렉토리와 파일을 트리 모양으로 출력합니다.
     """
-    print("Executing Directory Tree Generator...")
-    # TODO: Add your implementation here
-    pass
+    if not os.path.exists(dir_path):
+        print(f"'{dir_path}' 경로를 찾을 수 없습니다.")
+        return
+    
+    # 해당 디렉토리의 파일 및 폴더 목록 가져오기 (정렬)
+    items = sorted(os.listdir(dir_path))
+    
+    for i, item in enumerate(items):
+        item_path = os.path.join(dir_path, item)
+        is_last = (i == len(items) - 1)
+        
+        # 기호 선택 (마지막 아이템은 └─, 아니면 ├─)
+        symbol = "└── " if is_last else "├── "
+        print(f"{prefix}{symbol}{item}")
+        
+        # 디렉토리인 경우 재귀적으로 하위 탐색
+        if os.path.isdir(item_path):
+            next_prefix = prefix + ("    " if is_last else "│   ")
+            generate_tree(item_path, next_prefix)
 
 if __name__ == "__main__":
-    directory_tree_generator()
+    # 현재 디렉토리 트리 출력 테스트
+    print("--- 디렉토리 트리 생성 ---")
+    current_dir = "."
+    generate_tree(current_dir)
 ```

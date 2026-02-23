@@ -1,20 +1,62 @@
 ---
-title: "Command Line Terminal"
+title: "명령줄 터미널 (Command Line Terminal)"
 ---
 
-If you are building the Operating System, you will surely need a Command Line Terminal. Try to clone the bash shell or Windows PowerShell as an independent project to make it easier while you build your own OS.
+운영체제를 직접 만들고 있다면, 이를 조작하기 위한 명령줄 터미널(CLI)이 반드시 필요합니다. 리눅스의 Bash 쉘이나 윈도우의 파워쉘(PowerShell)을 클론해 보는 독립적인 프로젝트를 통해 터미널의 작동 원리를 깊이 있게 이해해 보세요.
 
-## Python Implementation
+단순히 명령어를 입력받는 것 이상으로, 인자(Arguments) 처리, 파이프라인(|), 리다이렉션(>, <)과 같은 복잡한 쉘의 기능을 직접 구현해 보면서 시스템 프로그래밍의 기초를 닦을 수 있습니다.
+
+## 주요 개발 포인트
+- **명령어 파싱**: 공백, 따옴표 등을 고려하여 사용자의 입력을 명령어와 인자로 분리합니다.
+- **내장 명령어 (Built-in Commands)**: `cd`, `ls`, `echo`, `pwd`, `exit` 등 기본적인 쉘 명령어를 직접 구현합니다.
+- **외부 프로그램 실행**: `subprocess`나 `os.exec`를 활용하여 시스템에 설치된 다른 프로그램을 실행합니다.
+- **리다이렉션 및 파이프**: 명령어의 실행 결과를 파일로 보내거나 다른 명령어의 입력으로 연결합니다.
+- **히스토리 및 탭 자동 완성**: 이전에 입력한 명령어를 불러오거나 파일 이름을 자동으로 완성해 주는 기능을 추가합니다.
+
+## Python 구현 예시 (간단한 쉘 시뮬레이션)
 
 ```python
-def command_line_terminal():
+import os
+import subprocess
+
+def run_shell():
     """
-    Implementation for Command Line Terminal
+    사용자 입력을 받아 명령어를 실행하는 간단한 쉘 루프입니다.
     """
-    print("Executing Command Line Terminal...")
-    # TODO: Add your implementation here
-    pass
+    print("나만의 Python 쉘에 오신 것을 환영합니다! (종료하려면 'exit' 입력)")
+    
+    while True:
+        try:
+            # 현재 디렉토리를 포함한 프롬프트 표시
+            current_dir = os.getcwd()
+            user_input = input(f"[{current_dir}] $ ").strip()
+            
+            if not user_input:
+                continue
+            
+            # 명령어와 인자 분리
+            parts = user_input.split()
+            cmd = parts[0]
+            args = parts[1:]
+            
+            if cmd == "exit":
+                print("쉘을 종료합니다. 안녕히 가세요!")
+                break
+            elif cmd == "cd":
+                # 내장 명령어 cd 처리
+                target_dir = args[0] if args else os.path.expanduser("~")
+                os.chdir(target_dir)
+            elif cmd == "pwd":
+                print(os.getcwd())
+            else:
+                # 외부 명령어 실행 시도
+                result = subprocess.run(user_input, shell=True, capture_output=False, text=True)
+                
+        except KeyboardInterrupt:
+            print("\n인터럽트 감지! 종료하려면 'exit'를 입력하세요.")
+        except Exception as e:
+            print(f"오류 발생: {e}")
 
 if __name__ == "__main__":
-    command_line_terminal()
+    run_shell()
 ```

@@ -1,20 +1,43 @@
 ---
-title: "Project Euler"
+title: "프로젝트 오일러 (Project Euler)"
 ---
 
-[Project Euler](https://projecteuler.net/) contains mathematical challenges that require programming tools to be solved. There are over 700 problems that you can solve, I urge you to document each solution in a properly organized way (probably build a repo for the solutions) so that you can showcase them online.
+[프로젝트 오일러](https://projecteuler.net/)는 프로그래밍 도구로 해결해야 하는 수학적 난제들로 가득 차 있습니다. 700개가 넘는 문제들이 준비되어 있으니, 각 솔루션을 체계적으로 문서화하고(온라인에 공유할 수 있도록 깔끔한 저장소를 만들어 보세요) 보너스 점수를 위해 효율적인 알고리즘으로 최적화해 보세요.
 
-## Python Implementation
+이 프로젝트는 수학적인 사고력과 복잡한 계산 문제를 해결하는 능력을 키우기에 아주 좋습니다. 특히 수많은 숫자들이 소수(Prime Number)인지 판별하거나 피보나치 수열과 같은 수열의 특징을 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **수학적 난제 해결 (Euler Problems)**: 1번 문제부터 시작하여 점차 난이도가 높아지는 수학 퍼즐을 하나씩 정복합니다.
+- **알고리즘 효율성 최적화**: 1초 이내에 정답을 도출할 수 있도록 시간 복잡도(O)를 고려한 코드를 작성합니다.
+- **다양한 수학적 도구 구현**: 소수 판별, 최대 공약수(GCD), 최소 공배수(LCM), 팩토리얼 등 핵심 기능을 라이브러리화합니다.
+- **솔루션 문서화 (Documentation)**: 왜 이런 접근 방식을 택했는지 마크다운 파일로 설명하고 정리합니다.
+- **사용자 인터페이스 (GUI)**: 해결한 문제 목록과 소요 시간을 보여주는 대시보드를 구축합니다.
+
+## Python 구현 예시 (간단한 프로젝트 오일러 1번 문제 해결)
 
 ```python
-def project_euler():
+def solve_euler_01(limit=1000):
     """
-    Implementation for Project Euler
+    1부터 999까지의 자연수 중에서 3 또는 5의 배수의 합을 구합니다.
     """
-    print("Executing Project Euler...")
-    # TODO: Add your implementation here
-    pass
+    print(f"1부터 {limit-1}까지 3 또는 5의 배수의 합을 계산 중입니다...")
+    
+    # 1. 반복문 방식
+    total_sum = 0
+    for i in range(1, limit):
+        if i % 3 == 0 or i % 5 == 0:
+            total_sum += i
+            
+    # 2. 리스트 컴프리헨션 방식 (더 파이썬다운 방식)
+    # total_sum = sum([i for i in range(1, limit) if i % 3 == 0 or i % 5 == 0])
+    
+    print(f"결과: {total_sum}")
+    return total_sum
 
 if __name__ == "__main__":
-    project_euler()
+    # 프로젝트 오일러 1번 정답 확인
+    solve_euler_01()
+    
+    # 팁: 큰 숫자들을 다룰 때는 정밀도(Precision)와 메모리 사용량을 주의하세요.
+    print("\n[팁] 효율적인 소수 판별을 위해 '에라토스테네스의 체'를 공부해 보세요.")
 ```

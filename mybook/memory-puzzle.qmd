@@ -1,20 +1,73 @@
 ---
-title: "Memory Puzzle"
+title: "메모리 퍼즐 (Memory Puzzle)"
 ---
 
-Implement a classic memory puzzle where the user has to click on two similar cards to eliminate them. Shuffle the cards randomly in the beginning and give the user a fixed number of chances or a fixed time to clear the board.
+사용자가 똑같은 카드 두 장을 클릭하여 짝을 맞추는 클래식한 메모리 퍼즐 게임을 구현해 봅시다. 게임 시작 시 카드를 무작위로 섞고, 제한된 횟수나 시간 안에 모든 짝을 맞추는 것이 목표입니다.
 
-## Python Implementation
+이 프로젝트는 게임의 상태 관리(Card State: Front/Back)와 이벤트 처리(Mouse Click), 그리고 간단한 데이터 구조(Shuffle, 2D Grid)를 익히기에 아주 좋습니다. 특히 아이들의 집중력을 높여줄 수 있는 흥미로운 디자인의 카드를 설계해 보세요.
+
+## 주요 개발 포인트
+- **카드 섞기 및 배치**: 무작위 시드로 카드의 위치를 섞고 격자(Grid) 모양으로 화면에 배치합니다.
+- **카드 상태 관리**: 각 카드가 뒤집혔는지(Front) 덮여있는지(Back) 상태를 저장하고 추적합니다.
+- **짝 맞추기 로직**: 두 장의 카드가 같은 이미지인지 판별하고, 같으면 그대로 두고 다르면 다시 뒤집습니다.
+- **점수 및 시간 기록**: 시도 횟수나 경과 시간을 기록하여 최고 기록을 저장합니다.
+- **그래픽 렌더링**: 각 카드에 동물, 과일, 숫자 등 다양한 이미지를 넣고 화려한 애니메이션 효과를 추가합니다.
+
+## Python 구현 예시 (간단한 메모리 퍼즐 상태 관리 시뮬레이션)
 
 ```python
-def memory_puzzle():
+import random
+import time
+
+class MemoryGame:
     """
-    Implementation for Memory Puzzle
+    메모리 퍼즐 게임의 보드와 규칙을 관리합니다.
     """
-    print("Executing Memory Puzzle...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self, size=4):
+        self.size = size
+        self.board = []
+        self.revealed = [[False for _ in range(size)] for _ in range(size)]
+        self.setup_board()
+
+    def setup_board(self):
+        """
+        카드 쌍을 생성하고 무작위로 섞어 보드에 배치합니다.
+        """
+        num_pairs = (self.size * self.size) // 2
+        cards = list(range(num_pairs)) * 2 # 0, 1, 2, ..., (num_pairs-1) 까지 두 개씩
+        random.shuffle(cards)
+        
+        # 리스트를 2D 격자 형태로 변환
+        self.board = [cards[i * self.size:(i + 1) * self.size] for i in range(self.size)]
+        print(f"{self.size}x{self.size} 보드 구성 완료.")
+
+    def flip_card(self, r, c):
+        """
+        지정된 위치의 카드를 뒤집습니다.
+        """
+        if 0 <= r < self.size and 0 <= c < self.size:
+            if not self.revealed[r][c]:
+                card_value = self.board[r][c]
+                print(f"({r}, {c}) 위치의 카드를 뒤집었습니다. 값: {card_value}")
+                self.revealed[r][c] = True
+                return card_value
+            else:
+                print("이미 뒤집힌 카드입니다.")
+        return None
 
 if __name__ == "__main__":
-    memory_puzzle()
+    game = MemoryGame(size=4)
+    
+    # 두 장의 카드를 뒤집는 시나리오 시뮬레이션
+    card1 = game.flip_card(0, 0)
+    card2 = game.flip_card(1, 1)
+    
+    if card1 == card2:
+        print("축하합니다! 짝을 맞췄습니다.")
+    else:
+        print("아쉽네요, 짝이 맞지 않습니다. 다시 뒤집습니다.")
+        # 1초 대기 후 다시 뒤집는 로직 (시뮬레이션)
+        time.sleep(1)
+        game.revealed[0][0] = False
+        game.revealed[1][1] = False
 ```

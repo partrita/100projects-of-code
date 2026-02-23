@@ -1,20 +1,70 @@
 ---
-title: "Search Engine"
+title: "검색 엔진 (Search Engine)"
 ---
 
-Build a Web Search Engine like Google or Bing. Don't copy from them though :wink:
+구글(Google)이나 빙(Bing)과 같은 나만의 웹 검색 엔진을 만들어 봅시다. 단순히 기존의 검색 기능을 가져오는 것이 아니라, 웹 데이터를 수집하고 인덱싱하며, 관련성에 따라 결과를 정렬하는 고유한 시스템을 구축하는 것이 목표입니다.
 
-## Python Implementation
+이 프로젝트는 대량의 웹 데이터를 관리하고 검색어에 가장 적합한 결과를 도출하는 과정, 그리고 검색 엔진의 핵심인 페이지랭크(PageRank)와 같은 알고리즘을 익히기에 아주 좋은 과제입니다. 특히 최근 웹의 방대한 정보 속에서 사용자에게 유용한 정보를 빠르게 제공하는 검색 시스템을 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **웹 크롤러 (Web Crawler)**: 시드(Seed) URL에서 시작하여 인터넷 상의 링크를 따라 페이지 정보를 수집합니다.
+- **인덱싱 및 역색인 (Inverted Indexing)**: 수집된 웹 페이지의 단어들을 분석하여 어떤 단어가 어느 페이지에 있는지 거꾸로 저장합니다.
+- **관련성 및 랭킹 알고리즘**: 검색어와 웹 페이지 사이의 관련성을 점수로 매겨서 상위에 노출할 순위를 결정합니다.
+- **검색 쿼리 파싱 및 추천**: 검색어가 포함된 기사를 찾고, 오타 교정이나 연관 검색어를 제안하는 기능을 추가합니다.
+- **사용자 인터페이스 (GUI)**: 검색창, 검색 결과 목록, 그리고 검색 결과를 요약해서 보여주는 UI를 구축합니다.
+
+## Python 구현 예시 (간단한 인덱싱 및 검색 로직 시뮬레이션)
 
 ```python
-def search_engine():
+import collections
+
+class TinySearchEngine:
     """
-    Implementation for Search Engine
+    웹 페이지 데이터를 인덱싱하고 검색 기능을 수행합니다.
     """
-    print("Executing Search Engine...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self):
+        # {단어: [문서ID, ...]} 형태의 역색인 구조
+        self.index = collections.defaultdict(list)
+        self.documents = {} # {문서ID: 문서제목}
+
+    def index_document(self, doc_id, content, title):
+        """
+        문서 내용을 단어 단위로 쪼개어 인덱스에 추가합니다.
+        """
+        self.documents[doc_id] = title
+        words = content.lower().split()
+        
+        for word in set(words): # 중복 제거
+            self.index[word].append(doc_id)
+            
+        print(f"문서 {doc_id} '{title}' 인덱싱 완료.")
+
+    def search(self, query):
+        """
+        검색어가 포함된 모든 문서들을 찾아 결과를 반환합니다.
+        """
+        query = query.lower()
+        print(f"\n'{query}' 검색 중...")
+        
+        doc_ids = self.index.get(query, [])
+        results = [self.documents[doc_id] for doc_id in doc_ids]
+        
+        if results:
+            print(f"검색 결과 ({len(results)}건): {', '.join(results)}")
+        else:
+            print("일치하는 검색 결과가 없습니다.")
+        return results
 
 if __name__ == "__main__":
-    search_engine()
+    engine = TinySearchEngine()
+    
+    # 문서 인덱싱 테스트
+    engine.index_document(1, "파이썬 코딩은 정말 재미있습니다.", "파이썬 입문")
+    engine.index_document(2, "검색 엔진의 핵심은 인덱싱입니다.", "검색 엔진의 원리")
+    engine.index_document(3, "코딩 공부는 꾸준함이 정답입니다.", "공부 방법")
+    
+    # 검색 테스트
+    engine.search("코딩")
+    engine.search("파이썬")
+    engine.search("데이터")
 ```

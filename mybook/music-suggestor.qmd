@@ -1,20 +1,58 @@
 ---
-title: "Music Suggestor"
+title: "음악 추천기 (Music Suggestor)"
 ---
 
-Bored of the same songs but don't know what to try next? Build an AI to suggest you music based on your taste that you are more likely to like.
+똑같은 노래만 반복해서 듣는 것이 지겨우신가요? 여러분의 취향을 분석하여 좋아할 만한 새로운 음악을 추천해 주는 AI를 만들어 봅시다.
 
-## Python Implementation
+이 프로젝트는 머신러닝의 추천 시스템과 음악 데이터 분석을 결합하여 개인화된 경험을 제공하는 방법을 익히기에 아주 좋습니다. 특히 스포티파이(Spotify)나 유튜브 뮤직(YouTube Music)과 같은 서비스의 작동 원리를 이해하고, 이를 직접 구현해 보면서 데이터로부터 가치 있는 인사이트를 도출하는 과정을 경험해 보세요.
+
+## 주요 개발 포인트
+- **사용자 취향 분석**: 즐겨 듣는 음악의 장르, 아티스트, 템포, 분위기 데이터를 수집하고 분석합니다.
+- **음악 특징 벡터화 (Audio Features)**: 곡의 에너지, 댄스 지수(Danceability), 어쿠스틱 수치 등을 기반으로 유사한 곡을 찾아냅니다.
+- **머신러닝 추천 알고리즘**: 협업 필터링이나 콘텐츠 기반 필터링 모델을 사용하여 사용자 맞춤형 목록을 생성합니다.
+- **Spotify API 연동**: 스포티파이의 방대한 음악 데이터베이스와 연동하여 실제 추천 결과를 가져오고 관리합니다.
+- **사용자 인터페이스 (GUI)**: 추천된 곡 목록을 보여주고, '좋아요'나 '싫어요'를 통해 모델을 지속적으로 훈련시키는 UI를 구축합니다.
+
+## Python 구현 예시 (장르 기반 추천 로직 시뮬레이션)
 
 ```python
-def music_suggestor():
+# 실제 구현 시 spotipy, scikit-learn 등을 활용합니다.
+# import spotipy
+# from spotipy.oauth2 import SpotifyClientCredentials
+
+class MusicSuggestor:
     """
-    Implementation for Music Suggestor
+    사용자의 선호 장르와 곡 특징을 분석하여 추천 음악을 제안합니다.
     """
-    print("Executing Music Suggestor...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self):
+        # self.sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials())
+        self.user_favorites = ["K-Pop", "Indie Rock", "Synthwave"]
+        print("음악 추천 엔진 초기화 완료.")
+
+    def suggest_next_track(self, last_played_genre):
+        """
+        마지막으로 들은 장르와 사용자의 평소 취향을 기반으로 추천합니다.
+        """
+        print(f"최근 장르 '{last_played_genre}'와(과) 연관된 곡을 찾는 중입니다...")
+        
+        # 가상의 추천 결과
+        recommendations = {
+            "K-Pop": ["NewJeans - Ditto", "IVE - I AM"],
+            "Indie Rock": ["The Strokes - Last Nite", "Phoenix - Lisztomania"],
+            "Synthwave": ["The Midnight - Sunset", "Kavinsky - Nightcall"]
+        }
+        
+        result = recommendations.get(last_played_genre, ["무작위 추천 곡 01", "무작위 추천 곡 02"])
+        print(f"오늘의 추천: {', '.join(result)}")
+        return result
 
 if __name__ == "__main__":
-    music_suggestor()
+    suggestor = MusicSuggestor()
+    
+    # 추천 테스트
+    suggestor.suggest_next_track("Synthwave")
+    suggestor.suggest_next_track("K-Pop")
+    
+    # 팁: 오디오 파일의 파형을 분석하여 비트(BPM)가 비슷한 곡을 추천해 보세요.
+    print("\n[팁] librosa 라이브러리를 사용하면 오디오 특성을 더 깊이 분석할 수 있습니다.")
 ```

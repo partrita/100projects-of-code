@@ -1,20 +1,54 @@
 ---
-title: "Pomodoro Clock"
+title: "뽀모도로 타이머 (Pomodoro Clock)"
 ---
 
-Build a Pomodoro timer that will help you take breaks at proper times while doing a task. For bonus points include different Pomodoro timer formats.
+집중력 향상을 돕는 뽀모도로(Pomodoro) 타이머를 만들어 봅시다. 작업 시간과 휴식 시간을 번갈아 가며 알림을 주는 기본 기능부터, 다양한 뽀모도로 형식을 지원하는 보너스 점수 기능까지 구현해 보세요.
 
-## Python Implementation
+이 프로젝트는 시간 관리 알고리즘과 사용자 경험(UX)을 고려한 타이머 시스템을 익히기에 아주 좋습니다. 특히 작업 효율을 극대화할 수 있는 나만의 타이머 규칙을 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **뽀모도로 기법 구현**: 25분 집중, 5분 휴식과 같은 표준 뽀모도로 규칙을 코드로 작성합니다.
+- **다양한 시간 설정 지원**: 사용자가 직접 집중 시간과 휴식 시간을 설정할 수 있도록 합니다.
+- **알림 기능 (Notification)**: 작업 세션이 끝날 때 소리나 팝업 알림으로 사용자에게 알립니다.
+- **통계 및 로그**: 하루 동안 완료한 뽀모도로 세션 수와 총 집중 시간을 기록하고 시각화합니다.
+- **사용자 인터페이스 (GUI)**: 남은 시간을 큰 글씨로 보여주고, 시작/일시정지/초기화 버튼을 포함한 UI를 구축합니다.
+
+## Python 구현 예시 (간단한 콘솔 기반 뽀모도로 타이머)
 
 ```python
-def pomodoro_clock():
+import time
+import sys
+
+def pomodoro_timer(focus_minutes=25, break_minutes=5):
     """
-    Implementation for Pomodoro Clock
+    지정한 시간 동안 집중하고 휴식하는 뽀모도로 세션을 실행합니다.
     """
-    print("Executing Pomodoro Clock...")
-    # TODO: Add your implementation here
-    pass
+    print(f"뽀모도로 타이머 시작! ({focus_minutes}분 집중 / {break_minutes}분 휴식)")
+    
+    # 1. 집중 세션 시작
+    print("\n[집중 시간] 작업에 몰입하세요!")
+    run_countdown(focus_minutes)
+    
+    # 2. 휴식 세션 시작
+    print("\n[휴식 시간] 잠시 눈을 붙이거나 스트레칭을 하세요.")
+    run_countdown(break_minutes)
+    
+    print("\n한 세션이 완료되었습니다. 고생하셨습니다!")
+
+def run_countdown(minutes):
+    """
+    지정한 분(minutes) 동안 카운트다운을 표시합니다.
+    """
+    seconds = minutes * 60
+    while seconds > 0:
+        mins, secs = divmod(seconds, 60)
+        timer = f'{mins:02d}:{secs:02d}'
+        print(f"남은 시간: {timer}", end="\r")
+        time.sleep(1) # 실제로는 1초 대기
+        seconds -= 1
 
 if __name__ == "__main__":
-    pomodoro_clock()
+    # 1분 집중, 1분 휴식으로 짧게 테스트
+    # pomodoro_timer(1, 1)
+    print("실제 타이머를 시작하려면 함수 호출의 주석을 해제하세요.")
 ```

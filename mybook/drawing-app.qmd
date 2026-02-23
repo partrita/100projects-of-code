@@ -1,20 +1,71 @@
 ---
-title: "Drawing App"
+title: "그림 그리기 앱 (Drawing App)"
 ---
 
-Build an app that lets the user draw anything and save it as an image. For extra points, add colouring and other cool things like animations.
+사용자가 무엇이든 자유롭게 그리고 이미지로 저장할 수 있는 앱을 만들어 봅시다. 기본적으로 펜과 지우개 기능을 구현하고, 보너스 점수를 위해 색칠하기, 도형 그리기, 애니메이션 효과 등 흥미로운 기능을 추가해 보세요.
 
-## Python Implementation
+이 프로젝트는 GUI(사용자 인터페이스)와 이벤트 처리(마우스 클릭, 드래그 등)를 익히는 데 최고의 과제입니다. 사용자가 화면 위에 마우스를 움직일 때마다 선을 긋고, 이를 캔버스 위에 실시간으로 반영하는 로직을 설계해 보세요.
+
+## 주요 개발 포인트
+- **캔버스(Canvas) 기반 그리기**: 사용자가 선을 긋고, 지우고, 색을 칠할 수 있는 작업 영역을 구현합니다.
+- **도구 팔레트 (Tool Palette)**: 연필, 지우개, 붓 등 다양한 도구와 브러시 크기를 선택할 수 있는 기능을 제공합니다.
+- **색상 선택기**: 다양한 색상을 선택하거나 혼합하여 사용할 수 있도록 팔레트를 구현합니다.
+- **이미지 저장**: 그린 작품을 PNG, JPG 등의 파일 형식으로 내보내는 기능을 추가합니다.
+- **레이어 및 실행 취소 (Undo/Redo)**: 그림을 더 정교하게 수정할 수 있는 레이어나 작업 취소 기능을 시도해 봅니다.
+
+## Python 구현 예시 (Tkinter 활용 간단 캔버스)
 
 ```python
-def drawing_app():
+import tkinter as tk
+
+class DrawingApp:
     """
-    Implementation for Drawing App
+    Tkinter를 사용한 간단한 그림 그리기 애플리케이션입니다.
     """
-    print("Executing Drawing App...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self, root):
+        self.root = root
+        self.root.title("나만의 그림 그리기 앱")
+        
+        # 캔버스 설정
+        self.canvas = tk.Canvas(self.root, bg="white", width=600, height=400)
+        self.canvas.pack(padx=10, pady=10)
+        
+        # 마우스 드래그 이벤트 바인딩
+        self.canvas.bind("<B1-Motion>", self.paint)
+        
+        # 버튼 영역
+        self.controls = tk.Frame(self.root)
+        self.controls.pack(fill="x", padx=10, pady=5)
+        
+        self.clear_btn = tk.Button(self.controls, text="모두 지우기", command=self.clear_all)
+        self.clear_btn.pack(side="left")
+        
+        self.last_x, self.last_y = None, None
+
+    def paint(self, event):
+        """
+        마우스 왼쪽 버튼을 누른 채 움직이면 선을 그립니다.
+        """
+        if self.last_x and self.last_y:
+            # 이전 위치와 현재 위치 사이에 선 긋기
+            self.canvas.create_line(self.last_x, self.last_y, event.x, event.y, 
+                                    width=2, fill="black", capstyle=tk.ROUND, smooth=tk.TRUE)
+        
+        self.last_x, self.last_y = event.x, event.y
+        # 마우스 버튼을 떼면 위치 초기화 (클릭 앤 드래그 시 매끄럽게 연결)
+        self.canvas.after(100, self.reset_pos)
+
+    def reset_pos(self):
+        self.last_x, self.last_y = None, None
+
+    def clear_all(self):
+        """
+        캔버스의 모든 내용을 삭제합니다.
+        """
+        self.canvas.delete("all")
 
 if __name__ == "__main__":
-    drawing_app()
+    root = tk.Tk()
+    app = DrawingApp(root)
+    root.mainloop()
 ```

@@ -1,20 +1,69 @@
 ---
-title: "Quiz App"
+title: "퀴즈 앱 (Quiz App)"
 ---
 
-The user chooses a category and gets a random set of questions from the given category. Implement a Multiple choice Quiz app to prevent more complications.
+사용자가 카테고리를 선택하면 무작위 질문이 나타나는 객관식 퀴즈 앱을 만들어 봅시다. 문제와 정답을 매칭하고, 최종 점수를 보여주는 것이 목표입니다.
 
-## Python Implementation
+이 프로젝트는 카테고리별로 데이터를 분류하고, 무작위로 문제를 추출하는 로직을 익히기에 아주 좋습니다. 특히 최근 퀴즈 게임들이 제공하는 화려한 효과와 타이머, 그리고 상식 지식을 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **카테고리별 문제 구성**: 역사, 과학, 영화, 코딩 등 다양한 분야의 문제를 JSON이나 DB로 관리합니다.
+- **무작위 문제 추출**: 선택한 카테고리 내에서 중복되지 않게 문제를 섞어서 출제합니다.
+- **객관식 문항 생성 (Multiple Choice)**: 정답과 오답을 적절히 섞어서 4지 선다형 문항을 구성합니다.
+- **점수 및 랭킹 시스템**: 맞힌 개수에 따라 점수를 부여하고, 친구와 경쟁할 수 있는 랭킹 기능을 추가합니다.
+- **사용자 인터페이스 (GUI)**: 남은 시간(Timer)과 현재 진행 상황(Progress Bar)을 보여주는 UI를 구축합니다.
+
+## Python 구현 예시 (간단한 객관식 퀴즈 클래스)
 
 ```python
-def quiz_app():
+import random
+
+class QuizApp:
     """
-    Implementation for Quiz App
+    사용자에게 퀴즈를 출제하고 정답 여부와 점수를 관리합니다.
     """
-    print("Executing Quiz App...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self, questions):
+        self.questions = questions # [ {'q': ..., 'choices': [...], 'a': ...}, ... ]
+        self.score = 0
+        self.current_idx = 0
+
+    def start_quiz(self):
+        """
+        무작위로 문제를 섞고 퀴즈를 시작합니다.
+        """
+        print("--- 퀴즈를 시작합니다! ---")
+        random.shuffle(self.questions)
+        
+        for i, q_data in enumerate(self.questions, 1):
+            print(f"\n[문제 {i}] {q_data['q']}")
+            for idx, choice in enumerate(q_data['choices'], 1):
+                print(f"{idx}. {choice}")
+                
+            user_ans = input("정답 번호를 선택하세요: ")
+            
+            if user_ans == str(q_data['a']):
+                print("정답입니다!")
+                self.score += 10
+            else:
+                print(f"오답입니다. (정답: {q_data['a']}번)")
+                
+        print(f"\n--- 퀴즈 종료! 최종 점수: {self.score}점 ---")
 
 if __name__ == "__main__":
-    quiz_app()
+    # 샘플 문제 데이터
+    sample_questions = [
+        {
+            "q": "대한민국의 수도는 어디인가요?",
+            "choices": ["부산", "서울", "대구", "인천"],
+            "a": 2
+        },
+        {
+            "q": "파이썬의 마스코트 동물은?",
+            "choices": ["사자", "뱀", "코끼리", "독수리"],
+            "a": 2
+        }
+    ]
+    
+    app = QuizApp(sample_questions)
+    app.start_quiz()
 ```

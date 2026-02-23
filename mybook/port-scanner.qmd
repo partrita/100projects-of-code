@@ -1,20 +1,54 @@
 ---
-title: "Port Scanner"
+title: "포트 스캐너 (Port Scanner)"
 ---
 
-Build a port scanner application that can probe a server or host for open ports. You will need some technical knowledge regarding how networks work and how you can scan for ports or classify them.
+서버나 호스트의 열린 포트(Open Ports)를 조사할 수 있는 포트 스캐너 앱을 만들어 봅시다. 네트워크가 어떻게 작동하는지, 포트를 어떻게 스캔하고 분류하는지에 대한 기술적 지식이 필요합니다.
 
-## Python Implementation
+이 프로젝트는 네트워크 보안과 시스템 관리의 기초를 익히기에 아주 좋습니다. 특히 특정 IP 주소에 대해 어떤 서비스(HTTP, FTP, SSH 등)가 활성화되어 있는지 확인하는 과정을 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **TCP/UDP 포트 스캔**: 소켓 연결을 시도하여 특정 포트가 열려 있는지 확인합니다.
+- **다중 포트 동시 스캔 (Multi-threading)**: `threading`이나 `asyncio`를 활용하여 수천 개의 포트를 빠르게 스캔합니다.
+- **서비스 배너 그래빙 (Banner Grabbing)**: 열린 포트에서 응답하는 메시지를 분석하여 사용 중인 소프트웨어 정보를 파악합니다.
+- **포트 분류 및 상태 판별**: '열림(Open)', '닫힘(Closed)', '필터링됨(Filtered)'으로 포트 상태를 구분합니다.
+- **사용자 인터페이스 (GUI)**: 대상 IP 주소와 포트 범위를 입력하고 스캔 결과를 표로 보여주는 UI를 구축합니다.
+
+## Python 구현 예시 (간단한 소켓 기반 포트 스캔 로직)
 
 ```python
-def port_scanner():
+import socket
+
+def scan_port(host, port):
     """
-    Implementation for Port Scanner
+    대상 호스트의 특정 포트에 접속을 시도하여 열려 있는지 확인합니다.
     """
-    print("Executing Port Scanner...")
-    # TODO: Add your implementation here
-    pass
+    try:
+        # AF_INET: IPv4, SOCK_STREAM: TCP
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.settimeout(1) # 1초 타임아웃 설정
+        
+        # 연결 시도
+        result = s.connect_ex((host, port))
+        
+        if result == 0:
+            print(f"포트 {port}번: 열림 (OPEN)")
+            return True
+        else:
+            # print(f"포트 {port}번: 닫힘 (CLOSED)")
+            return False
+        s.close()
+    except Exception as e:
+        print(f"오류 발생: {e}")
+        return False
 
 if __name__ == "__main__":
-    port_scanner()
+    target_host = "127.0.0.1" # 로컬 호스트 테스트
+    ports_to_scan = [80, 443, 8080, 22, 21] # 주요 포트들
+    
+    print(f"'{target_host}' 호스트의 포트 스캔을 시작합니다...")
+    
+    for p in ports_to_scan:
+        scan_port(target_host, p)
+        
+    print("\n스캔이 완료되었습니다.")
 ```

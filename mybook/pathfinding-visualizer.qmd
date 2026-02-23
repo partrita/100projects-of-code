@@ -1,20 +1,71 @@
 ---
-title: "Pathfinding Visualizer"
+title: "경로 탐색 시각화 도구 (Pathfinding Visualizer)"
 ---
 
-Make a visualizer for the different pathfinding algorithms. Add this to a maze maker and you have a program that can generate and solve mazes.
+다양한 경로 탐색 알고리즘을 시각적으로 보여주는 도구를 만들어 봅시다. 미로 생성기(Maze Maker) 기능을 추가하면, 미로를 생성하고 이를 해결하는 과정을 한눈에 볼 수 있는 멋진 프로그램을 완성할 수 있습니다.
 
-## Python Implementation
+이 프로젝트는 그래프 알고리즘(Dijkstra, A*, BFS/DFS)의 작동 원리를 깊이 있게 이해하고, 이를 실시간 애니메이션으로 시각화하는 방법을 익히기에 아주 좋습니다. 특히 장애물이 있는 환경에서 최단 경로를 찾는 과정을 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **경로 탐색 알고리즘 구현**: Dijkstra, A*, BFS, DFS 등 다양한 탐색 기법을 구현합니다.
+- **미로 생성 알고리즘**: 재귀적 분할(Recursive Division), 프림 알고리즘(Prim's), 또는 무작위 탐색을 통해 미로를 생성합니다.
+- **실시간 시각화 (Visualization)**: 알고리즘이 방문한 노드(Node)와 최종 최단 경로를 색상으로 구분하여 표시합니다.
+- **가중치 부여 및 장애물**: 사용자가 마우스로 벽을 그리거나 특정 타일에 가중치(늪, 숲 등)를 부여하는 기능을 추가합니다.
+- **사용자 인터페이스 (GUI)**: 격자(Grid) 크기를 조절하고, 알고리즘 종류와 실행 속도를 선택할 수 있는 UI를 구축합니다.
+
+## Python 구현 예시 (간단한 BFS 기반 경로 탐색 시뮬레이션)
 
 ```python
-def pathfinding_visualizer():
+from collections import deque
+
+def find_path_bfs(grid, start, end):
     """
-    Implementation for Pathfinding Visualizer
+    격자판 위에서 BFS(너비 우선 탐색)를 사용하여 최단 경로를 찾습니다.
     """
-    print("Executing Pathfinding Visualizer...")
-    # TODO: Add your implementation here
-    pass
+    rows = len(grid)
+    cols = len(grid[0])
+    queue = deque([start])
+    visited = {start: None} # 경로 추적을 위해 이전 노드 저장
+    
+    print(f"시작점 {start}에서 목표점 {end}까지 경로를 찾는 중...")
+    
+    while queue:
+        current = queue.popleft()
+        if current == end:
+            print("목표 지점을 찾았습니다!")
+            # 경로 복구 및 반환 (비주얼라이저 구현 시 중요)
+            path = []
+            while current:
+                path.append(current)
+                current = visited[current]
+            return path[::-1] # 역순으로 정렬하여 반환
+            
+        r, c = current
+        for dr, dc in [(0, 1), (0, -1), (1, 0), (-1, 0)]:
+            nr, nc = r + dr, c + dc
+            if 0 <= nr < rows and 0 <= nc < cols and grid[nr][nc] == 0:
+                if (nr, nc) not in visited:
+                    visited[(nr, nc)] = current
+                    queue.append((nr, nc))
+    
+    return None
 
 if __name__ == "__main__":
-    pathfinding_visualizer()
+    # 0은 이동 가능, 1은 벽
+    sample_grid = [
+        [0, 0, 0, 0, 0],
+        [1, 1, 0, 1, 0],
+        [0, 0, 0, 1, 0],
+        [0, 1, 1, 1, 0],
+        [0, 0, 0, 0, 0]
+    ]
+    
+    start_pos = (0, 0)
+    end_pos = (4, 4)
+    
+    result_path = find_path_bfs(sample_grid, start_pos, end_pos)
+    if result_path:
+        print(f"탐색된 최단 경로: {result_path}")
+    else:
+        print("경로를 찾을 수 없습니다.")
 ```

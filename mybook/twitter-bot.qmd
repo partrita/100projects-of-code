@@ -1,23 +1,71 @@
 ---
-title: "Twitter Bot"
+title: "트위터 봇 (Twitter Bot)"
 ---
 
-Build a bot that will either
-- follow people that follow the bot
-- retweet tweets containing some specific keywords related to a topic
-- retweet tweets containing a specific hashtag
+트위터(X)를 위한 나만의 자동화 봇을 만들어 봅시다. 나를 팔로우한 사람을 맞팔로우(Follow-back)하거나, 특정 키워드나 해시태그가 포함된 트윗을 자동으로 리트윗(Retweet)하는 등 다양한 작업을 자동으로 수행하는 것이 목표입니다.
 
-## Python Implementation
+이 프로젝트는 트위터 API와 소셜 미디어의 상호작용 방식, 그리고 대량의 데이터를 실시간으로 수집하고 처리하는 방법을 익히기에 아주 좋은 과제입니다. 특히 최근 트렌드를 반영한 정보를 자동으로 공유하는 독창적인 시스템을 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **트위터 API 연동 (v2 API)**: `tweepy`와 같은 라이브러리를 사용하여 계정 인증(OAuth) 및 봇을 서버에 연결합니다.
+- **맞팔로우 자동화 (Follow-back)**: 내 계정을 팔로우한 사용자 목록을 확인하고, 자동으로 팔로우를 누릅니다.
+- **키워드 및 해시태그 필터링**: 사용자가 설정한 주제(예: #Python, #AI)와 관련된 트윗을 실시간으로 감지합니다.
+- **자동 리트윗 및 좋아요**: 감지된 트윗 중에서 반응이 좋은 글을 골라 자동으로 리트윗하거나 좋아요를 누릅니다.
+- **정기적인 트윗 게시**: 매일 정해진 시간마다 날씨, 명언, 뉴스 등을 자동으로 트윗하는 기능을 추가합니다.
+
+## Python 구현 예시 (tweepy 활용 간단한 리트윗 봇 시뮬레이션)
 
 ```python
-def twitter_bot():
+# 실제 구현 시 tweepy 라이브러리 설치와 API 키/토큰이 필요합니다.
+# import tweepy
+
+class TwitterBot:
     """
-    Implementation for Twitter Bot
+    트위터 API를 활용하여 계정 활동을 자동화합니다.
     """
-    print("Executing Twitter Bot...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self, api_key, api_secret, access_token, access_token_secret):
+        # self.auth = tweepy.OAuthHandler(api_key, api_secret)
+        # self.auth.set_access_token(access_token, access_token_secret)
+        # self.api = tweepy.API(self.auth)
+        print("트위터 봇 인증 완료.")
+
+    def retweet_by_hashtag(self, hashtag, count=5):
+        """
+        특정 해시태그가 포함된 트윗을 검색하여 리트윗합니다.
+        """
+        print(f"#{hashtag} 해시태그 검색 중... (최대 {count}건)")
+        
+        # 실제 구현 시 API 호출
+        # for tweet in tweepy.Cursor(self.api.search_tweets, q=f"#{hashtag}").items(count):
+        #     try:
+        #         tweet.retweet()
+        #         print(f"리트윗 성공: {tweet.id}")
+        #     except tweepy.TweepyException as e:
+        #         print(f"오류 발생: {e}")
+                
+        print("리트윗 시뮬레이션 완료.")
+
+    def auto_follow_back(self):
+        """
+        나를 팔로우한 사람들을 확인하여 맞팔로우합니다.
+        """
+        print("나를 팔로우한 사용자 목록 확인 중...")
+        # for follower in tweepy.Cursor(self.api.get_followers).items():
+        #     if not follower.following:
+        #         follower.follow()
+        #         print(f"{follower.screen_name}님을 맞팔로우했습니다.")
+        pass
 
 if __name__ == "__main__":
-    twitter_bot()
+    # 테스트용 API 정보 (가상의 예시)
+    my_key = "abc12345"
+    my_secret = "secret678"
+    my_token = "token901"
+    my_token_secret = "token_secret234"
+    
+    bot = TwitterBot(my_key, my_secret, my_token, my_token_secret)
+    
+    # 리트윗 및 팔로우 테스트
+    bot.retweet_by_hashtag("Python", count=3)
+    bot.auto_follow_back()
 ```

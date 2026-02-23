@@ -1,20 +1,68 @@
 ---
-title: "Machine Translator"
+title: "기계 번역기 (Machine Translator)"
 ---
 
-Build an app to translate text from one language to another. For bonus points include an image translator that can get text from image and translate it.
+텍스트를 한 언어에서 다른 언어로 번역해 주는 앱을 만들어 봅시다. 보너스 점수를 위해 이미지에서 텍스트를 추출(OCR)하여 번역해 주는 기능까지 포함해 보세요.
 
-## Python Implementation
+이 프로젝트는 최신 언어 모델 API를 연동하고, 자연어 처리(NLP) 기술을 활용하여 다양한 언어 간의 장벽을 허무는 데 아주 좋습니다. 단순히 단어를 바꾸는 것이 아니라, 문맥에 맞는 자연스러운 번역을 제공하는 시스템을 설계해 보세요.
+
+## 주요 개발 포인트
+- **언어 번역 API 연동**: Google Translate API, DeepL API, Naver Papago API 등을 활용하여 고품질 번역을 수행합니다.
+- **이미지 텍스트 추출 (OCR)**: Tesseract OCR이나 Google Vision API를 사용하여 이미지 속 글자를 텍스트로 변환합니다.
+- **자동 언어 감지 (Language Detection)**: 사용자가 입력한 언어가 무엇인지 자동으로 판별하여 번역 설정을 돕습니다.
+- **번역 히스토리 저장**: 이전에 번역했던 내역을 저장하고 나중에 다시 볼 수 있는 기능을 제공합니다.
+- **사용자 인터페이스 (GUI)**: 원문 입력란과 번역 결과 출력란을 포함한 깔끔한 웹 또는 데스크톱 앱을 구축합니다.
+
+## Python 구현 예시 (Google Translate API 활용 시뮬레이션)
 
 ```python
-def machine_translator():
+# 실제 실행 시 googletrans 등 라이브러리 설치가 필요합니다.
+# from googletrans import Translator
+
+class SimpleTranslator:
     """
-    Implementation for Machine Translator
+    텍스트를 번역하고 언어를 감지하는 기능을 관리합니다.
     """
-    print("Executing Machine Translator...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self):
+        # self.translator = Translator()
+        print("번역 엔진 준비 완료.")
+
+    def translate_text(self, text, target_lang='ko'):
+        """
+        텍스트를 대상 언어로 번역합니다.
+        """
+        print(f"'{text}'를 {target_lang} 언어로 번역 중...")
+        
+        # 실제 API 호출 시뮬레이션
+        # translated = self.translator.translate(text, dest=target_lang)
+        # return translated.text
+        
+        # 가상의 번역 결과 예시
+        if target_lang == 'ko' and "hello" in text.lower():
+            return "안녕하세요"
+        elif target_lang == 'en' and "안녕" in text:
+            return "Hello"
+        return "번역 결과를 가져올 수 없습니다."
+
+    def detect_and_translate(self, text):
+        """
+        언어를 자동 감지한 후 한국어로 번역합니다.
+        """
+        # detected = self.translator.detect(text)
+        # print(f"감지된 언어: {detected.lang}")
+        # return self.translate_text(text, target_lang='ko')
+        pass
 
 if __name__ == "__main__":
-    machine_translator()
+    translator = SimpleTranslator()
+    
+    # 번역 테스트
+    result = translator.translate_text("Hello, how are you?", "ko")
+    print(f"번역 결과: {result}")
+    
+    # 이미지 번역 시나리오 시뮬레이션
+    print("\n[이미지 번역 시나리오]")
+    print("1. 이미지 파일 로드")
+    print("2. OCR 엔진을 통해 'Sales 50% Off' 텍스트 추출")
+    print(f"3. 번역 결과: {translator.translate_text('Sales 50% Off', 'ko')}")
 ```

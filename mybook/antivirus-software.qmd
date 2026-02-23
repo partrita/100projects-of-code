@@ -1,20 +1,54 @@
 ---
-title: "Antivirus Software"
+title: "안티바이러스 소프트웨어 (Antivirus Software)"
 ---
 
-Build an antivirus software that will protect you from viruses and other computer worms and stuff. Make sure you update it frequently to deal with the newer viruses.
+컴퓨터 바이러스, 웜, 트로이 목마와 같은 악성 코드로부터 사용자를 보호할 수 있는 안티바이러스 소프트웨어를 개발해 봅시다. 이 프로젝트는 시스템 보안의 기초부터 파일 시스템 모니터링, 해시 알고리즘 활용까지 폭넓은 지식을 필요로 합니다.
 
-## Python Implementation
+단순히 바이러스를 제거하는 것 이상으로, 새로운 위협에 대응하기 위해 수시로 업데이트하고 최신 정보를 반영하는 것이 중요합니다. 이 소프트웨어는 단순히 프로그램을 차단하는 기능만이 아니라, 전체적인 시스템 안정성을 유지하는 역할을 담당합니다.
+
+## 주요 개발 포인트
+- **시그니처 기반 탐지**: 알려진 악성 코드의 파일 해시(MD5, SHA-256 등)를 비교하여 탐지합니다.
+- **휴리스틱 분석**: 의심스러운 동작이나 패턴을 감지하여 알려지지 않은 위협을 찾아냅니다.
+- **파일 실시간 감시**: 파일이 생성되거나 수정될 때 즉시 검사하여 감염을 예방합니다.
+
+## Python 구현 예시 (간단한 파일 검사기)
 
 ```python
-def antivirus_software():
+import hashlib
+import os
+
+def calculate_file_hash(file_path):
     """
-    Implementation for Antivirus Software
+    파일의 SHA-256 해시값을 계산합니다.
     """
-    print("Executing Antivirus Software...")
-    # TODO: Add your implementation here
-    pass
+    sha256_hash = hashlib.sha256()
+    with open(file_path, "rb") as f:
+        for byte_block in iter(lambda: f.read(4096), b""):
+            sha256_hash.update(byte_block)
+    return sha256_hash.hexdigest()
+
+def scan_file(file_path, malicious_hashes):
+    """
+    지정된 파일의 해시값이 알려진 악성 해시 리스트에 있는지 확인합니다.
+    """
+    file_hash = calculate_file_hash(file_path)
+    if file_hash in malicious_hashes:
+        print(f"경고! '{file_path}'에서 악성 코드가 발견되었습니다.")
+        return True
+    return False
 
 if __name__ == "__main__":
-    antivirus_software()
+    # 간단한 테스트를 위한 알려진 악성 코드 해시 리스트 (예시)
+    malicious_hashes = ["5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8"]
+    test_file = "test_virus.txt"
+
+    # 테스트 파일 생성 (실제로는 기존 파일을 검사)
+    with open(test_file, "w") as f:
+        f.write("test data")
+
+    if not scan_file(test_file, malicious_hashes):
+        print(f"'{test_file}'은(는) 안전합니다.")
+
+    # 생성한 테스트 파일 삭제
+    os.remove(test_file)
 ```

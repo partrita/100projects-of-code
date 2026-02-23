@@ -1,20 +1,46 @@
 ---
-title: "Kaggle Titanic Challenge"
+title: "캐글 타이타닉 챌린지 (Kaggle Titanic Challenge)"
 ---
 
-Kaggle offers fascinating challenges to introduce you to the basics of machine learning with Python or R: Use a real dataset from the [Titanic passenger log](https://www.kaggle.com/c/titanic) to predict which passengers were most likely to survive the disaster.
+캐글(Kaggle)은 머신러닝의 기초를 배우기에 아주 좋은 플랫폼입니다. 특히 타이타닉 승객 데이터셋을 활용하여 어떤 승객이 생존할 가능성이 높은지 예측해 보는 것은 데이터 과학의 입문 코스로 매우 유명합니다.
 
-## Python Implementation
+이 프로젝트는 파이썬의 데이터 분석 라이브러리인 Pandas와 머신러닝 라이브러리인 Scikit-learn을 활용하여 실제 데이터를 전처리하고, 모델을 훈련시키며, 정확도를 평가하는 전체 과정을 경험할 수 있는 최고의 과제입니다.
+
+## 주요 개발 포인트
+- **데이터 분석 및 탐색 (EDA)**: 승객의 성별, 나이, 등급, 요금 등이 생존에 어떤 영향을 미쳤는지 분석합니다.
+- **데이터 전처리 (Feature Engineering)**: 결측치를 채우고, 문자열 데이터를 숫자로 변환하며, 새로운 특성(Features)을 생성합니다.
+- **머신러닝 모델 선택**: 의사 결정 나무(Decision Tree), 랜덤 포레스트(Random Forest), 로지스틱 회귀(Logistic Regression) 등 다양한 모델을 테스트합니다.
+- **모델 훈련 및 검증**: 훈련 데이터로 모델을 학습시키고, 검증 데이터로 정확도를 평가합니다.
+- **예측 결과 제출**: 캐글 플랫폼의 형식에 맞게 예측값을 CSV 파일로 저장하여 제출하고 점수를 확인합니다.
+
+## Python 구현 예시 (간단한 데이터 로드 및 모델 훈련 시뮬레이션)
 
 ```python
-def kaggle_titanic_challenge():
+# 실제 실행 시 pandas, scikit-learn 설치가 필요합니다.
+# import pandas as pd
+# from sklearn.ensemble import RandomForestClassifier
+
+def train_titanic_model():
     """
-    Implementation for Kaggle Titanic Challenge
+    타이타닉 승객 데이터를 로드하고 머신러닝 모델을 훈련시킵니다.
     """
-    print("Executing Kaggle Titanic Challenge...")
-    # TODO: Add your implementation here
-    pass
+    print("타이타닉 데이터를 분석하고 모델을 훈련 중입니다...")
+    
+    # 1. 데이터 로드 (가상의 예시)
+    # train_df = pd.read_csv("train.csv")
+    # test_df = pd.read_csv("test.csv")
+    
+    # 2. 전처리 시뮬레이션
+    print("전처리 단계: 성별을 숫자로 변환하고 결측치를 처리합니다.")
+    
+    # 3. 모델 정의 및 훈련
+    # model = RandomForestClassifier(n_estimators=100)
+    # model.fit(train_df[['Pclass', 'Sex_num', 'Age', 'Fare']], train_df['Survived'])
+    
+    # 4. 결과 출력
+    print("훈련 완료! 정확도(Accuracy): 약 82% (예상)")
+    print("예측 결과를 CSV로 저장하여 캐글에 제출할 준비가 되었습니다.")
 
 if __name__ == "__main__":
-    kaggle_titanic_challenge()
+    train_titanic_model()
 ```

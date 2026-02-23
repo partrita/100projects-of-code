@@ -1,20 +1,56 @@
 ---
-title: "Sorting Visualizer"
+title: "정렬 시각화 도구 (Sorting Visualizer)"
 ---
 
-Build a webpage/video that will visualize the different sorting algorithms. You can use different kinds of visualizations: dots, bars, colour bars, circularly scattered points, and so on.
+다양한 정렬 알고리즘을 시각적으로 보여주는 웹페이지나 비디오를 만들어 봅시다. 막대그래프나 점, 색상 바 등 다양한 시각화 기법을 사용하여 정렬되는 과정을 한눈에 볼 수 있는 멋진 프로그램을 완성할 수 있습니다.
 
-## Python Implementation
+이 프로젝트는 정렬 알고리즘(Bubble, Selection, Insertion, Quick, Merge Sort)의 작동 원리를 깊이 있게 이해하고, 이를 실시간 애니메이션으로 시각화하는 방법을 익히기에 아주 좋습니다. 특히 최근 알고리즘 시각화와 교육용 콘텐츠를 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **정렬 알고리즘 구현**: Bubble, Selection, Insertion, Quick, Merge Sort 등 다양한 정렬 기법을 구현합니다.
+- **실시간 시각화 (Visualization)**: 정렬 과정 중의 데이터 위치 변경과 비교 연산을 막대의 높이나 색상으로 시각화합니다.
+- **알고리즘 성능 비교**: 각 정렬 알고리즘의 시간 복잡도와 정렬 완료까지의 단계 수를 기록하여 비교합니다.
+- **다양한 데이터 생성**: 무작위 배열, 이미 정렬된 배열, 역순 배열 등 다양한 입력 데이터를 제공합니다.
+- **사용자 인터페이스 (GUI)**: 정렬 속도와 데이터 크기를 조절하고, 알고리즘 종류를 선택할 수 있는 UI를 구축합니다.
+
+## Python 구현 예시 (간단한 버블 정렬 시각화 시뮬레이션)
 
 ```python
-def sorting_visualizer():
+import random
+import time
+
+def bubble_sort_visualize(arr):
     """
-    Implementation for Sorting Visualizer
+    배열을 정렬하면서 그 과정을 텍스트로 시각화합니다.
     """
-    print("Executing Sorting Visualizer...")
-    # TODO: Add your implementation here
-    pass
+    n = len(arr)
+    print(f"정렬 시작: {arr}")
+    
+    for i in range(n):
+        swapped = False
+        for j in range(0, n-i-1):
+            # 두 요소를 비교하고 필요시 교환
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+                swapped = True
+            
+            # 시각화 (현재 비교 중인 상태 표시)
+            visual = ["|" * x for x in arr]
+            print(f"단계 {i}-{j}: {arr} {' <- 교환됨' if swapped else ''}")
+            # print("  ".join(visual)) # 막대 모양 시각화 (선택 사항)
+            time.sleep(0.1)
+            
+        if not swapped:
+            break
+            
+    print(f"최종 정렬 결과: {arr}")
+    return arr
 
 if __name__ == "__main__":
-    sorting_visualizer()
+    # 무작위 데이터 생성
+    sample_data = [random.randint(1, 10) for _ in range(8)]
+    bubble_sort_visualize(sample_data)
+    
+    # 팁: Matplotlib의 애니메이션 기능을 활용하면 더 화려한 시각화가 가능합니다.
+    print("\n[팁] 'Quick Sort'와 'Merge Sort'의 재귀 호출 과정을 시각화해 보세요.")
 ```

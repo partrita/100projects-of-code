@@ -1,20 +1,74 @@
 ---
-title: "Video Subtitle Generator"
+title: "비디오 자막 생성기 (Video Subtitle Generator)"
 ---
 
-Input a video and get a subtitle! Build a software that automatically creates subtitles from a provided video. It may seem difficult in the beginning, but look up Natural Language Processing to see how far machines already are with regard to understanding human language.
+비디오를 입력하면 자동으로 자막을 생성해 주는 소프트웨어를 만들어 봅시다. 음성을 텍스트로 변환(Speech-to-Text)하고, 이를 비디오의 시간대에 맞춰 자막 파일(SRT 등)로 저장하는 것이 목표입니다.
 
-## Python Implementation
+이 프로젝트는 자연어 처리(NLP)와 오디오 분석, 그리고 시간 기반의 데이터 동기화를 익히기에 아주 좋은 과제입니다. 특히 최근 영상 콘텐츠와 자막 번역에 필수적인 자동 자막 도구를 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **음성 인식 및 텍스트 변환 (STT)**: `SpeechRecognition`, `OpenAI Whisper` 등을 사용하여 영상의 음성을 고품질 텍스트로 바꿉니다.
+- **자막 시간 동기화 (Time Alignment)**: 음성이 나타난 정확한 시작 시간과 종료 시간을 추출하여 자막 문장에 배정합니다.
+- **자막 파일 형식 저장 (SRT/VTT)**: 생성된 자막 데이터를 표준 SRT 포맷(순번, 시간, 텍스트)으로 저장합니다.
+- **언어 자동 감지 및 번역**: 영상 속 언어를 자동으로 파악하고, 필요한 경우 다른 언어로 번역하는 기능을 추가합니다.
+- **사용자 인터페이스 (GUI)**: 비디오를 선택하고 자막 생성 버튼을 누르면 실시간으로 자막이 나타나는 대시보드를 구축합니다.
+
+## Python 구현 예시 (Whisper 모델 활용 자동 자막 생성 시뮬레이션)
 
 ```python
-def video_subtitle_generator():
+# 실제 구현 시 openai-whisper, moviepy 등이 필요합니다.
+# import whisper
+# from moviepy.editor import VideoFileClip
+
+class SubtitleGenerator:
     """
-    Implementation for Video Subtitle Generator
+    비디오에서 음성을 추출하고 자막 텍스트와 시간 정보를 생성합니다.
     """
-    print("Executing Video Subtitle Generator...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self, model_name="base"):
+        # self.model = whisper.load_model(model_name)
+        print(f"'{model_name}' 음성 인식 모델 로드 완료.")
+
+    def extract_audio(self, video_path, output_audio="temp_audio.wav"):
+        """
+        비디오 파일에서 오디오 트랙만 따로 추출하여 저장합니다.
+        """
+        print(f"'{video_path}'에서 오디오를 추출 중입니다...")
+        # clip = VideoFileClip(video_path)
+        # clip.audio.write_audiofile(output_audio)
+        return output_audio
+
+    def transcribe_and_save_srt(self, audio_path, srt_path="output_sub.srt"):
+        """
+        오디오를 텍스트로 변환하고 SRT 형식으로 저장합니다.
+        """
+        print("음성 인식 및 자막 변환 중... (시간이 소요될 수 있습니다)")
+        
+        # 실제 구현 시 모델을 통해 텍스트와 시간 데이터(Segments) 추출
+        # result = self.model.transcribe(audio_path)
+        
+        # 가상의 SRT 데이터 예시
+        srt_content = """
+1
+00:00:01,000 --> 00:00:05,000
+안녕하세요, 인공지능 자막 생성기 테스트 중입니다.
+
+2
+00:00:06,000 --> 00:00:10,000
+파이썬으로 자막을 만드는 것은 정말 흥미로운 작업입니다.
+"""
+        with open(srt_path, "w", encoding="utf-8") as f:
+            f.write(srt_content.strip())
+            
+        print(f"자막 파일 생성 완료: {srt_path}")
 
 if __name__ == "__main__":
-    video_subtitle_generator()
+    generator = SubtitleGenerator()
+    
+    # 비디오 파일 처리 시나리오 테스트
+    video_file = "my_vlog.mp4"
+    audio_file = generator.extract_audio(video_file)
+    generator.transcribe_and_save_srt(audio_file)
+    
+    # 팁: 자막을 비디오 위에 아예 입혀서(Hard-coded) 저장하려면 moviepy의 TextClip 기능을 활용해 보세요.
+    print("\n[팁] 'StableTS' 라이브러리를 사용하면 더 정교한 자막 시간 동기화가 가능합니다.")
 ```

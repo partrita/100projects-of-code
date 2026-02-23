@@ -1,20 +1,57 @@
 ---
-title: "Tetris"
+title: "테트리스 (Tetris)"
 ---
 
-Code the game of Tetris starting from the Tetrominoes to the game interface. A web app is better as it will let you play from anywhere. For additional challenge try to implement a simple HTML and JavaScript version without any additional frameworks or libraries to help.
+전설적인 퍼즐 게임인 테트리스(Tetris)를 테트로미노(Tetromino) 조각부터 게임 인터페이스까지 처음부터 코딩해 봅시다. 웹 앱으로 제작하면 어디서나 즐길 수 있는 멋진 게임이 될 것입니다. 보너스 점수를 위해 추가 프레임워크나 라이브러리 없이 순수 HTML과 JavaScript만으로 구현해 보세요.
 
-## Python Implementation
+이 프로젝트는 2차원 격자판 위에서의 개체 이동과 충돌 감지, 그리고 한 줄이 꽉 찼을 때 삭제하는 로직을 익히기에 아주 좋은 과제입니다. 특히 최근 복고풍 게임의 감성을 살린 픽셀 아트 그래픽과 중독성 있는 사운드를 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **테트로미노 조각 정의 (Tetrominoes)**: I, J, L, O, S, T, Z 모양의 7가지 블록을 정의하고 회전 로직을 구현합니다.
+- **격자판 기반 이동 및 충돌 감지**: 블록이 화면 밖으로 나가거나 다른 블록과 겹치지 않게 이동(좌우, 하강, 회전)을 제어합니다.
+- **라인 클리어 및 점수 시스템 (Line Clear)**: 가로 한 줄이 빈틈없이 블록으로 채워지면 해당 줄을 지우고 위의 블록들을 아래로 내립니다.
+- **레벨 및 난이도 조절**: 점수가 오를수록 블록이 떨어지는 속도가 빨라지도록 하여 긴장감을 유도합니다.
+- **사용자 인터페이스 (GUI)**: 다음 블록 미리보기(Next), 현재 점수(Score), 최고 점수(High Score)를 보여주는 UI를 구축합니다.
+
+## Python 구현 예시 (Pygame을 활용한 테트리스 조각 회전 로직)
 
 ```python
-def tetris():
+class TetrisPiece:
     """
-    Implementation for Tetris
+    테트로미노 조각의 모양과 회전을 관리합니다.
     """
-    print("Executing Tetris...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self, shape_matrix):
+        self.shape = shape_matrix
+        self.rotation = 0
+
+    def rotate(self):
+        """
+        조각을 시계 방향으로 90도 회전시킵니다. (2D 행렬 회전)
+        """
+        # 행렬을 전치(Transpose)한 후 각 행을 반전(Reverse)시킴
+        self.shape = [list(row) for row in zip(*self.shape[::-1])]
+        self.rotation = (self.rotation + 90) % 360
+        print(f"조각 회전 완료 (현재 각도: {self.rotation}도)")
+        return self.shape
 
 if __name__ == "__main__":
-    tetris()
+    # 'T' 모양 조각 정의 (3x3 행렬)
+    t_shape = [
+        [0, 1, 0],
+        [1, 1, 1],
+        [0, 0, 0]
+    ]
+    
+    piece = TetrisPiece(t_shape)
+    
+    # 조각 회전 테스트
+    print("원본 조각 모양:")
+    for row in piece.shape: print(row)
+    
+    piece.rotate()
+    print("\n90도 회전 후 모양:")
+    for row in piece.shape: print(row)
+    
+    # 팁: 실제 게임에서는 회전 후 벽이나 다른 블록과 충돌하는지(Wall Kick) 검사해야 합니다.
+    print("\n[팁] 'Hard Drop' 기능을 추가하여 블록을 즉시 바닥으로 내리는 로직을 만들어 보세요.")
 ```

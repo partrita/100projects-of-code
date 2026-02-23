@@ -1,20 +1,51 @@
 ---
-title: "MEME Generator"
+title: "밈 생성기 (MEME Generator)"
 ---
 
-Build an app/web app that will overlay text over an image, so that users can build memes.
+이미지 위에 텍스트를 겹쳐서 누구나 쉽게 나만의 밈(Meme)을 만들 수 있는 앱(또는 웹 앱)을 만들어 봅시다.
 
-## Python Implementation
+이 프로젝트는 이미지 처리 라이브러리(Pillow 등)와 사용자 인터페이스(GUI)를 결합하여 재미있는 창작물을 만드는 방법을 익히기에 아주 좋습니다. 특히 최근 인터넷 문화를 즐기고 이를 반영하는 독특하고 유머러스한 로직을 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **이미지 로딩 및 캔버스 설정**: 사용자가 업로드한 이미지나 미리 준비된 밈 템플릿을 불러옵니다.
+- **텍스트 오버레이 (Text Overlay)**: 이미지의 상단, 하단, 또는 원하는 위치에 텍스트를 배치합니다.
+- **글꼴 및 스타일 설정**: 밈의 분위기에 어울리는 다양한 글꼴(예: Impact 폰트), 크기, 색상, 외곽선 효과를 적용합니다.
+- **드래그 앤 드롭 편집**: 마우스로 텍스트의 위치를 자유롭게 이동시키고 크기를 조절하는 기능을 추가합니다.
+- **공유 및 저장 기능**: 완성된 밈을 이미지 파일(PNG, JPG)로 저장하거나 소셜 미디어로 공유할 수 있도록 합니다.
+
+## Python 구현 예시 (Pillow를 활용한 텍스트 삽입)
 
 ```python
-def meme_generator():
+# 실제 실행 시 Pillow 라이브러리 설치가 필요합니다.
+# from PIL import Image, ImageDraw, ImageFont
+
+def create_meme(image_path, top_text, bottom_text, output_path="meme_output.jpg"):
     """
-    Implementation for MEME Generator
+    이미지를 불러와 상단과 하단에 텍스트를 입혀 저장합니다.
     """
-    print("Executing MEME Generator...")
-    # TODO: Add your implementation here
-    pass
+    print(f"이미지 '{image_path}'를 로드하여 밈을 생성 중입니다...")
+    
+    # 1. 이미지 열기
+    # img = Image.open(image_path)
+    # draw = ImageDraw.Draw(img)
+    
+    # 2. 텍스트 배치 및 스타일링 (시뮬레이션)
+    print(f"상단 텍스트 추가: {top_text}")
+    print(f"하단 텍스트 추가: {bottom_text}")
+    
+    # 3. 폰트 선택 (예: Impact 폰트)
+    # font = ImageFont.truetype("impact.ttf", size=40)
+    
+    # 4. 이미지 저장
+    # img.save(output_path)
+    print(f"밈 생성이 완료되었습니다: {output_path}")
 
 if __name__ == "__main__":
-    meme_generator()
+    # 테스트 데이터로 밈 생성 시뮬레이션
+    sample_img = "funny_cat.jpg"
+    t_text = "이걸 내가 코딩했다고?"
+    b_text = "말도 안 돼!"
+    
+    create_meme(sample_img, t_text, b_text)
+    print("\n[팁] 실제 구현 시 한글 폰트(나눔고딕 등)를 설정해야 글자가 깨지지 않습니다.")
 ```

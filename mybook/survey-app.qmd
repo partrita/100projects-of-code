@@ -1,20 +1,83 @@
 ---
-title: "Survey App"
+title: "설문 조사 앱 (Survey App)"
 ---
 
-Build an app/web app that will let anyone create survey questions and circulate it via email to record responses and then analyze the data collected.
+누구나 설문 문항을 생성하고 배포하며 결과를 분석할 수 있는 설문 조사 앱(또는 웹 앱)을 만들어 봅시다. 이메일을 통해 링크를 공유하고, 응답 데이터를 수집하여 그래프나 표로 시각화하는 것이 목표입니다.
 
-## Python Implementation
+이 프로젝트는 폼(Form) 기반의 데이터 수집과 데이터 분석, 그리고 사용자 응답에 따른 동적인 화면 구성을 익히기에 아주 좋은 과제입니다. 특히 최근 설문 조사와 피드백 수집에 필수적인 도구를 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **설문지 생성 도구 (Survey Builder)**: 질문 유형(객관식, 주관식, 별점 등)을 선택하고 문항을 구성합니다.
+- **응답 수집 및 저장**: 사용자가 제출한 응답 데이터를 데이터베이스에 안전하게 기록합니다.
+- **이메일 배포 및 공유**: 설문 링크를 생성하고 이를 이메일로 대량 발송하는 기능을 추가합니다.
+- **응답 데이터 분석 및 시각화**: 수집된 통계를 파이 차트나 바 차트로 시각화하여 한눈에 파악하도록 돕습니다.
+- **사용자 인터페이스 (GUI)**: 설문 문항 편집창, 응답 대시보드, 그리고 응답자를 위한 깔끔한 설문 화면을 구축합니다.
+
+## Python 구현 예시 (간단한 설문 데이터 및 응답 관리 클래스)
 
 ```python
-def survey_app():
+import json
+
+class SurveyApp:
     """
-    Implementation for Survey App
+    설문 문항을 관리하고 사용자 응답 데이터를 분석합니다.
     """
-    print("Executing Survey App...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self, title):
+        self.title = title
+        self.questions = []
+        self.responses = []
+
+    def add_question(self, question_text, options=None):
+        """
+        새로운 설문 문항을 추가합니다.
+        """
+        question = {
+            "id": len(self.questions) + 1,
+            "text": question_text,
+            "options": options # None이면 주관식, 리스트면 객관식
+        }
+        self.questions.append(question)
+        print(f"문항 {question['id']} 추가: {question_text}")
+
+    def submit_response(self, respondent_id, answers):
+        """
+        응답자가 제출한 답변을 기록합니다.
+        """
+        response = {
+            "respondent": respondent_id,
+            "answers": answers # {question_id: answer_val}
+        }
+        self.responses.append(response)
+        print(f"응답자 '{respondent_id}'의 설문 제출 완료.")
+
+    def analyze_results(self):
+        """
+        수집된 응답 데이터를 바탕으로 간단한 통계를 냅니다.
+        """
+        print(f"\n--- 설문 결과 분석: {self.title} ---")
+        print(f"총 응답자 수: {len(self.responses)}명")
+        
+        # 1번 문항(예: 객관식) 통계 예시
+        q1_stats = {}
+        for res in self.responses:
+            ans = res['answers'].get(1)
+            if ans:
+                q1_stats[ans] = q1_stats.get(ans, 0) + 1
+        
+        for option, count in q1_stats.items():
+            print(f"문항 1 - {option}: {count}표")
 
 if __name__ == "__main__":
-    survey_app()
+    app = SurveyApp("2026 프로그래밍 언어 선호도 조사")
+    
+    # 설문 생성 테스트
+    app.add_question("가장 선호하는 언어는?", ["Python", "JavaScript", "Go", "Rust"])
+    app.add_question("해당 언어를 좋아하는 이유는?", None) # 주관식
+    
+    # 응답 제출 테스트
+    app.submit_response("User01", {1: "Python", 2: "배우기 쉬워서"})
+    app.submit_response("User02", {1: "Rust", 2: "성능이 좋아서"})
+    app.submit_response("User03", {1: "Python", 2: "AI 분야에 강력함"})
+    
+    app.analyze_results()
 ```

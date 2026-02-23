@@ -1,20 +1,68 @@
 ---
-title: "Firewall"
+title: "방화벽 (Firewall)"
 ---
 
-Build a firewall software that can regulate the network connections for the user and also block/notify of any suspicious action from any website/internal software/external agent.
+사용자의 네트워크 연결을 조절하고 의심스러운 활동을 차단하거나 사용자에게 알리는 방화벽 소프트웨어를 개발해 봅시다. 웹사이트나 내부 소프트웨어, 또는 외부 대리인으로부터 오는 모든 비정상적인 접근을 효과적으로 막는 것이 목표입니다.
 
-## Python Implementation
+이 프로젝트는 네트워크 보안의 핵심 원리를 이해하고, 실제 패킷(Packet) 수준의 데이터를 다루는 방법을 배우기에 적합합니다. 규칙 기반 차단부터 실시간 트래픽 분석까지, 시스템을 안전하게 지킬 수 있는 다양한 기능을 설계해 보세요.
+
+## 주요 개발 포인트
+- **네트워크 트래픽 감시**: 포트별, IP별 연결 상태를 실시간으로 모니터링합니다.
+- **규칙 기반 차단 (Filtering Rules)**: 특정 IP 주소나 도메인, 포트 번호를 허용하거나 차단하는 규칙을 설정합니다.
+- **보안 알림 시스템**: 비정상적인 접근이나 대량의 데이터 전송이 감지되면 사용자에게 즉시 알립니다.
+- **로그 및 리포트**: 차단된 활동과 허용된 활동을 기록하여 보고서를 생성합니다.
+- **침입 탐지 기능 (IDS)**: 단순한 차단을 넘어 악의적인 공격 패턴을 분석하여 예방합니다.
+
+## Python 구현 예시 (간단한 포트 차단 시뮬레이션)
 
 ```python
-def firewall():
+import socket
+
+class SimpleFirewall:
     """
-    Implementation for Firewall
+    네트워크 연결 요청을 검사하고 허용 또는 차단 여부를 결정합니다.
     """
-    print("Executing Firewall...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self):
+        self.blocked_ips = ["192.168.1.100", "10.0.0.50"]
+        self.blocked_ports = [8080, 21, 23] # 불필요한 포트 차단 예시
+
+    def check_connection(self, remote_ip, port):
+        """
+        연결 요청의 IP와 포트를 확인하여 보안 정책 위반 여부를 판별합니다.
+        """
+        print(f"연결 시도 감지: {remote_ip}:{port}")
+        
+        if remote_ip in self.blocked_ips:
+            print(f"!!! 차단됨: {remote_ip}는 블랙리스트에 등록된 IP입니다.")
+            return False
+            
+        if port in self.blocked_ports:
+            print(f"!!! 차단됨: {port}번 포트는 현재 정책에 의해 폐쇄되었습니다.")
+            return False
+            
+        print(f"허용됨: {remote_ip}와 {port}번 포트 연결 승인.")
+        return True
+
+    def run_server_simulation(self):
+        """
+        간단한 소켓 서버를 열어 연결 요청을 테스트합니다.
+        """
+        # 실제 방화벽은 커널 수준에서 동작하지만, 여기서는 앱 수준의 시뮬레이션을 수행합니다.
+        print("방화벽 시뮬레이션 서버가 시작되었습니다...")
+        
+        # 테스트용 가짜 데이터
+        test_requests = [
+            ("192.168.1.1", 80),
+            ("192.168.1.100", 443),
+            ("127.0.0.1", 21),
+            ("8.8.8.8", 8080)
+        ]
+        
+        for ip, port in test_requests:
+            self.check_connection(ip, port)
+            print("-" * 30)
 
 if __name__ == "__main__":
-    firewall()
+    firewall = SimpleFirewall()
+    firewall.run_server_simulation()
 ```

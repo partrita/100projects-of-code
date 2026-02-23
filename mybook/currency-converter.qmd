@@ -1,20 +1,54 @@
 ---
-title: "Currency Converter"
+title: "환율 계산기 (Currency Converter)"
 ---
 
-Code a script that scrapes the currency conversion rate and then converts from a given currency to another suing the current market rate.
+현재 시장 환율을 가져와서 한 통화에서 다른 통화로 변환해 주는 스크립트를 작성해 봅시다. 환율 정보를 실시간으로 수집하거나 주기적으로 업데이트되는 API를 활용하여 신뢰할 수 있는 계산기를 만드는 것이 목표입니다.
 
-## Python Implementation
+이 프로젝트는 웹 스크래핑이나 API 사용법을 익히고, 수치 데이터를 정확하게 처리하는 방법을 배울 수 있는 훌륭한 과제입니다. 사용자가 원하는 통화 쌍을 입력하면 현재 환율을 적용하여 결과값을 즉시 보여주는 기능을 구현해 보세요.
+
+## 주요 개발 포인트
+- **환율 데이터 수집**: 웹 스크래핑(BeautifulSoup) 또는 금융 API(ExchangeRate-API, Fixer.io 등)를 통해 최신 데이터를 가져옵니다.
+- **다양한 통화 지원**: KRW, USD, EUR, JPY 등 주요 통화뿐만 아니라 전 세계의 다양한 통화를 포함합니다.
+- **수수료 및 마진 계산**: 실제 환전 시 적용되는 수수료나 환전 마진을 설정할 수 있는 기능을 추가합니다.
+- **시각화 (History Chart)**: 과거의 환율 데이터를 가져와 기간별 환율 변동 추이를 그래프로 보여줍니다.
+
+## Python 구현 예시 (간단한 환율 변환기)
 
 ```python
-def currency_converter():
+import requests
+
+def convert_currency(amount, from_curr, to_curr):
     """
-    Implementation for Currency Converter
+    Open Exchange Rates API와 같은 무료 서비스를 가정하여 환율을 변환합니다.
+    (실제 구현 시 API 키가 필요할 수 있습니다)
     """
-    print("Executing Currency Converter...")
-    # TODO: Add your implementation here
-    pass
+    print(f"{amount} {from_curr} -> {to_curr} 변환 시도 중...")
+    
+    # 예시: 무료 API 엔드포인트 활용 (가상 API)
+    url = f"https://api.exchangerate-api.com/v4/latest/{from_curr}"
+    
+    try:
+        response = requests.get(url)
+        data = response.json()
+        
+        rates = data.get('rates', {})
+        if to_curr in rates:
+            rate = rates[to_curr]
+            converted = amount * rate
+            print(f"현재 환율: 1 {from_curr} = {rate:.2f} {to_curr}")
+            print(f"결과: {amount} {from_curr} = {converted:.2f} {to_curr}")
+            return converted
+        else:
+            print(f"지원되지 않는 통화입니다: {to_curr}")
+    except Exception as e:
+        print(f"오류 발생: {e}")
+    return None
 
 if __name__ == "__main__":
-    currency_converter()
+    # 100 달러가 한국 돈으로 얼마인지 계산 테스트
+    amount_to_convert = 100
+    source_currency = "USD"
+    target_currency = "KRW"
+    
+    convert_currency(amount_to_convert, source_currency, target_currency)
 ```

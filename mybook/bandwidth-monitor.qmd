@@ -1,20 +1,52 @@
 ---
-title: "Bandwidth Monitor"
+title: "대역폭 모니터 (Bandwidth Monitor)"
 ---
 
-Build a tool to track how much data you have downloaded or uploaded to the internet. Have it email you weekly reports of your usage (or notify you when you get above a specified usage limit). As a bonus challenge, predict peak usage times.
+인터넷으로 다운로드하거나 업로드한 데이터 양을 추적하는 도구를 개발해 보세요. 매주 사용량 리포트를 이메일로 보내거나, 특정 사용 한도를 초과할 때 알림을 보내는 기능을 추가할 수 있습니다. 보너스 챌린지로, 사용 패턴을 분석하여 피크 사용 시간을 예측해 보는 것도 좋습니다.
 
-## Python Implementation
+실시간으로 네트워크 인터페이스의 전송량을 감시하고 이를 기록함으로써 자신의 인터넷 사용 습관을 파악할 수 있습니다. 특히 제한된 데이터 요금제를 사용하는 환경에서 매우 유용한 도구가 될 것입니다.
+
+## 주요 개발 포인트
+- **네트워크 인터페이스 감시**: `psutil`과 같은 라이브러리를 사용하여 실시간 트래픽을 측정합니다.
+- **데이터 로깅**: 사용량을 데이터베이스나 파일(CSV, JSON 등)에 저장하여 통계를 냅니다.
+- **알림 및 리포트**: 이메일 API(SendGrid, SMTP 등)를 연동하여 정기 보고서를 발송합니다.
+- **피크 시간 분석**: 과거 데이터를 기반으로 가장 많이 사용하는 시간대를 시각화하거나 예측합니다.
+
+## Python 구현 예시 (실시간 트래픽 측정)
 
 ```python
-def bandwidth_monitor():
+import psutil
+import time
+
+def get_network_usage():
     """
-    Implementation for Bandwidth Monitor
+    네트워크 인터페이스를 통해 송수신된 바이트 수를 가져옵니다.
     """
-    print("Executing Bandwidth Monitor...")
-    # TODO: Add your implementation here
-    pass
+    net_io = psutil.net_io_counters()
+    return net_io.bytes_sent, net_io.bytes_recv
+
+def monitor_bandwidth(duration=60, interval=1):
+    """
+    지정한 시간 동안 1초 간격으로 트래픽 변화량을 모니터링합니다.
+    """
+    print(f"{duration}초 동안 네트워크 사용량을 모니터링합니다...")
+    
+    start_sent, start_recv = get_network_usage()
+    
+    for _ in range(duration // interval):
+        time.sleep(interval)
+        current_sent, current_recv = get_network_usage()
+        
+        sent_diff = current_sent - start_sent
+        recv_diff = current_recv - start_recv
+        
+        print(f"전송: {sent_diff / 1024:.2f} KB | 수신: {recv_diff / 1024:.2f} KB", end="\r")
+        
+        # 이전 값을 현재 값으로 업데이트하여 다음 인터벌의 차이를 계산
+        start_sent, start_recv = current_sent, current_recv
 
 if __name__ == "__main__":
-    bandwidth_monitor()
+    # 10초 동안 간단히 테스트 실행
+    monitor_bandwidth(duration=10)
+    print("\n모니터링이 종료되었습니다.")
 ```

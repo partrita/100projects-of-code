@@ -1,20 +1,61 @@
 ---
-title: "Deal Finder"
+title: "특가 상품 탐색기 (Deal Finder)"
 ---
 
-Build a simple web app to notify you when an item you covet goes on sale for a good price. You can use a web scraper to pull the item's product page and notify you of any price changes.
+사고 싶은 상품이 저렴한 가격으로 할인될 때 알림을 보내주는 간단한 웹 앱을 만들어 봅시다. 웹 스크래퍼를 활용하여 해당 상품의 제품 페이지 정보를 가져오고, 가격이 변동될 때마다 사용자에게 알려주는 기능을 구현합니다.
 
-## Python Implementation
+이 프로젝트는 웹의 데이터를 자동으로 수집하고, 조건에 따라 트리거되는 알림 시스템을 이해하는 데 매우 유용합니다. 특히 정기적으로 웹사이트를 확인하고 변화를 감지하는 백그라운드 태스크(Background Task) 기능을 익힐 수 있습니다.
+
+## 주요 개발 포인트
+- **웹 스크래핑 (Web Scraping)**: BeautifulSoup, Selenium 등을 사용하여 쇼핑몰의 가격 정보를 주기적으로 가져옵니다.
+- **가격 모니터링**: 이전 가격과 현재 가격을 비교하여 할인 여부를 판단합니다.
+- **알림 시스템 (Notification)**: 이메일, 텔레그램 봇, 또는 푸시 알림으로 할인 소식을 전송합니다.
+- **다중 사이트 지원**: 아마존, 이베이, 옥션, 쿠팡 등 여러 쇼핑몰의 상품을 한 번에 관리합니다.
+
+## Python 구현 예시 (간단한 웹 페이지 가격 크롤링)
 
 ```python
-def deal_finder():
+import requests
+from bs4 import BeautifulSoup
+
+def find_deal(product_url, target_price):
     """
-    Implementation for Deal Finder
+    지정된 URL에서 상품의 가격을 확인하고 목표가보다 낮은지 검사합니다.
     """
-    print("Executing Deal Finder...")
-    # TODO: Add your implementation here
-    pass
+    print(f"'{product_url}'에서 가격 정보를 가져오는 중...")
+    
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+    }
+    
+    try:
+        response = requests.get(product_url, headers=headers)
+        soup = BeautifulSoup(response.content, "html.parser")
+        
+        # 주의: 실제 사이트 구조에 맞춰 선택자(selector)를 수정해야 합니다.
+        price_tag = soup.select_one(".price-amount") or soup.select_one("#priceblock_ourprice")
+        
+        if price_tag:
+            # 텍스트에서 숫자만 추출 (예: "₩1,200,000" -> 1200000)
+            price_text = price_tag.get_text().replace(",", "").replace("₩", "").strip()
+            current_price = float(price_text)
+            
+            print(f"현재 가격: {current_price:,} 원")
+            
+            if current_price <= target_price:
+                print("!!! 목표가 달성! 즉시 구매하세요 !!!")
+                # 여기서 알림 발송 함수 호출 가능
+            else:
+                print(f"목표가({target_price:,} 원)까지 {current_price - target_price:,} 원 더 떨어져야 합니다.")
+        else:
+            print("가격 정보를 찾을 수 없습니다. 선택자를 확인해 보세요.")
+    except Exception as e:
+        print(f"오류 발생: {e}")
 
 if __name__ == "__main__":
-    deal_finder()
+    # 가상의 상품 페이지와 목표가 설정
+    test_url = "https://example-shop.com/product/laptop"
+    my_target = 1000000 # 100만 원
+    
+    find_deal(test_url, my_target)
 ```

@@ -1,20 +1,63 @@
 ---
-title: "Hand Gesture Recognition"
+title: "손동작 인식 (Hand Gesture Recognition)"
 ---
 
-Build a piece of software that can recognise gestures from a camera video and then carry out certain tasks based on the gesture.
+카메라 영상을 통해 손동작을 인식하고, 인식된 동작에 따라 특정 작업을 수행하는 소프트웨어를 개발해 봅시다. 예를 들어 손을 흔들면 인사를 하거나, 손가락 숫자에 따라 마우스 클릭이나 볼륨 조절 등의 명령을 내릴 수 있습니다.
 
-## Python Implementation
+이 프로젝트는 컴퓨터 비전과 머신러닝의 실제 적용 사례를 이해하는 데 아주 좋습니다. MediaPipe나 OpenCV와 같은 현대적인 라이브러리를 활용하여 손의 관절 포인트(Landmarks)를 추출하고, 이를 기반으로 동작을 분류하는 시스템을 설계해 보세요.
+
+## 주요 개발 포인트
+- **컴퓨터 비전 라이브러리 활용**: MediaPipe, OpenCV 등을 사용하여 손의 21개 랜드마크를 실시간으로 탐지합니다.
+- **손동작 분류 (Gesture Classification)**: 손가락의 펴진 상태나 위치 관계를 분석하여 '주먹', '가위', '보' 등의 동작을 식별합니다.
+- **동작-명령 매핑**: 인식된 손동작을 특정 키보드 입력이나 마우스 이벤트로 변환합니다.
+- **실시간 비디오 분석**: 저지연(Low-latency) 처리를 통해 사용자의 움직임에 즉각 반응하는 시스템을 구축합니다.
+- **사용자 정의 제스처 학습**: 사용자가 직접 동작을 가르치고 저장할 수 있는 기능을 추가합니다.
+
+## Python 구현 예시 (MediaPipe 활용 손동작 탐지 시뮬레이션)
 
 ```python
-def hand_gesture_recognition():
+# 실제 실행을 위해서는 mediapipe와 opencv-python이 필요합니다.
+# import cv2
+# import mediapipe as mp
+
+class GestureRecognizer:
     """
-    Implementation for Hand Gesture Recognition
+    영상 프레임에서 손동작을 감지하고 분류합니다.
     """
-    print("Executing Hand Gesture Recognition...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self):
+        # MediaPipe Hands 모델 초기화 (실제 코드에서 필요)
+        # self.mp_hands = mp.solutions.hands
+        # self.hands = self.mp_hands.Hands()
+        print("손동작 인식 엔진 초기화 완료.")
+
+    def process_frame(self, frame):
+        """
+        영상 프레임을 분석하여 손가락 개수를 세거나 제스처를 판별합니다.
+        """
+        # TODO: OpenCV 프레임을 MediaPipe에 전달하여 랜드마크 추출
+        # results = self.hands.process(frame)
+        
+        # 가상의 인식 결과 예시
+        finger_count = 2 # 인식된 손가락 개수 시뮬레이션
+        gesture = "가위" if finger_count == 2 else "주먹"
+        
+        print(f"인식된 제스처: {gesture} (손가락 {finger_count}개)")
+        return gesture
+
+    def execute_command(self, gesture):
+        """
+        제스처에 따라 시스템 명령을 실행합니다.
+        """
+        if gesture == "보":
+            print("명령: 화면 스크롤 다운 실행!")
+        elif gesture == "주먹":
+            print("명령: 프로그램 종료 시퀀스 가동!")
 
 if __name__ == "__main__":
-    hand_gesture_recognition()
+    recognizer = GestureRecognizer()
+    
+    # 3번의 프레임 처리 시뮬레이션
+    for _ in range(3):
+        res = recognizer.process_frame(None)
+        recognizer.execute_command(res)
 ```

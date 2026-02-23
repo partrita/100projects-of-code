@@ -1,20 +1,73 @@
 ---
-title: "Typing Practice"
+title: "타이핑 연습기 (Typing Practice)"
 ---
 
-Build an app that lets you practice typing. Make it generate random sentences and see how fast you can type the sentences. Typing is something that many developers completely ignore, but it is one of the most important skills that someone working with computers should have.
+타이핑 실력을 향상시키기 위한 타이핑 연습 앱을 만들어 봅시다. 무작위 문장을 생성하고, 얼마나 빠르고 정확하게 입력하는지 측정하는 것이 목표입니다. 타이핑은 많은 개발자들이 간과하기 쉽지만, 컴퓨터와 소통하는 가장 중요한 기술 중 하나입니다.
 
-## Python Implementation
+이 프로젝트는 키보드 이벤트 처리와 정확도(Accuracy) 및 속도(WPM: Words Per Minute) 계산, 그리고 사용자 피드백 시스템을 익히기에 아주 좋은 과제입니다. 특히 최근 유행하는 타자 연습 게임이나 경쟁 모드를 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **무작위 문장 및 단어 생성**: 영어와 한글 문장을 무작위로 가져와 사용자에게 제시합니다.
+- **실시간 오타 감지 (Error Detection)**: 사용자가 입력하는 매 순간, 제시된 문장과 비교하여 틀린 부분을 빨간색으로 표시합니다.
+- **속도 및 정확도 계산 (WPM/Accuracy)**: 입력한 글자 수와 소요 시간을 기반으로 분당 타수와 정확도를 실시간으로 업데이트합니다.
+- **최고 기록 관리 (High Score)**: 가장 높은 타수와 정확도를 기록하고 이전 기록과 비교하여 성장 과정을 보여줍니다.
+- **사용자 인터페이스 (GUI)**: 타이핑 영역, 현재 타수 및 정확도 대시보드, 그리고 오타 발생 시 경고음을 포함한 UI를 구축합니다.
+
+## Python 구현 예시 (간단한 타이핑 정확도 및 속도 계산 로직)
 
 ```python
-def typing_practice():
+import time
+
+class TypingTrainer:
     """
-    Implementation for Typing Practice
+    제시된 문장과 사용자 입력을 비교하여 타이핑 속도와 정확도를 계산합니다.
     """
-    print("Executing Typing Practice...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self, sentence):
+        self.sentence = sentence
+        self.start_time = 0
+        self.end_time = 0
+
+    def start_test(self):
+        """
+        테스트를 시작하고 사용자 입력을 받습니다.
+        """
+        print(f"\n제시된 문장: {self.sentence}")
+        print("준비되면 엔터를 누르고 타이핑을 시작하세요!")
+        input()
+        
+        self.start_time = time.time()
+        user_input = input("입력: ")
+        self.end_time = time.time()
+        
+        self.calculate_results(user_input)
+
+    def calculate_results(self, user_input):
+        """
+        WPM과 정확도를 계산하여 결과를 출력합니다.
+        """
+        elapsed_time = self.end_time - self.start_time
+        char_count = len(user_input)
+        
+        # WPM (Words Per Minute) 계산: 보통 5글자를 한 단어로 침
+        wpm = (char_count / 5) / (elapsed_time / 60)
+        
+        # 정확도 계산
+        correct_chars = sum(1 for a, b in zip(self.sentence, user_input) if a == b)
+        accuracy = (correct_chars / len(self.sentence)) * 100
+        
+        print("\n--- 타이핑 테스트 결과 ---")
+        print(f"소요 시간: {elapsed_time:.2f}초")
+        print(f"타수 (WPM): {wpm:.1f}")
+        print(f"정확도: {accuracy:.1f}%")
+        
+        if accuracy < 100:
+            print(f"오타: {len(self.sentence) - correct_chars}개")
 
 if __name__ == "__main__":
-    typing_practice()
+    sample = "파이썬으로 나만의 프로그램을 만드는 것은 정말 즐거운 일입니다."
+    trainer = TypingTrainer(sample)
+    
+    # 타이핑 테스트 시작 (실제 입력을 기다림)
+    # trainer.start_test()
+    print("실제 테스트를 하려면 함수 호출의 주석을 해제하세요.")
 ```

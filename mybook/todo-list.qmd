@@ -1,20 +1,75 @@
 ---
-title: "ToDo List"
+title: "할 일 목록 (ToDo List)"
 ---
 
-Build a To Do app that can track the various stages of a given work (todo, ongoing, completed). For bonus points, make it work with recurring tasks and incorporate task scheduling (when to do what/a deadline for tasks).
+다양한 작업 단계(할 일, 진행 중, 완료)를 추적할 수 있는 할 일 앱을 만들어 봅시다. 보너스 점수를 위해 반복되는 작업(Recurring tasks)과 작업 일정 관리(데드라인 등) 기능을 포함시켜 보세요.
 
-## Python Implementation
+이 프로젝트는 상태 관리(Status Management)와 데이터 정렬, 그리고 사용자 경험(UX)을 고려한 효율적인 할 일 관리 시스템을 익히기에 아주 좋은 과제입니다. 특히 최근 업무 생산성을 높여주는 칸반 보드(Kanban Board)나 할 일 알림 기능을 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **작업 단계 및 상태 추적**: '할 일(To Do)', '진행 중(In Progress)', '완료(Done)'로 상태를 구분하여 관리합니다.
+- **반복 작업 관리 (Recurring Tasks)**: 매일, 매주 또는 매달 반복되는 작업을 자동으로 생성하는 로직을 구현합니다.
+- **작업 일정 및 데드라인 설정**: 각 할 일에 마감 기한을 정하고, 기한이 임박했을 때 알림을 보내는 기능을 추가합니다.
+- **카테고리 및 우선순위 설정**: 업무, 개인, 건강 등 카테고리를 나누고 중요도에 따라 우선순위를 부여합니다.
+- **사용자 인터페이스 (GUI)**: 드래그 앤 드롭으로 상태를 변경하거나, 캘린더 뷰를 통해 일정을 보여주는 UI를 구축합니다.
+
+## Python 구현 예시 (간단한 할 일 관리 클래스)
 
 ```python
-def todo_list():
+from datetime import datetime
+
+class TodoList:
     """
-    Implementation for ToDo List
+    할 일 목록을 생성하고 각 작업의 상태와 데드라인을 관리합니다.
     """
-    print("Executing ToDo List...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self):
+        self.tasks = []
+        self.categories = ["업무", "개인", "공부"]
+
+    def add_task(self, title, category, due_date=None):
+        """
+        새로운 할 일을 목록에 추가합니다.
+        """
+        task = {
+            "id": len(self.tasks) + 1,
+            "title": title,
+            "category": category,
+            "status": "할 일",
+            "due_date": due_date,
+            "created_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        }
+        self.tasks.append(task)
+        print(f"작업 '{title}'이(가) 추가되었습니다. (카테고리: {category})")
+
+    def update_status(self, task_id, new_status):
+        """
+        작업의 현재 상태를 업데이트합니다.
+        """
+        for task in self.tasks:
+            if task['id'] == task_id:
+                task['status'] = new_status
+                print(f"작업 {task_id}번의 상태가 '{new_status}'(으)로 변경되었습니다.")
+                return True
+        print("해당 작업을 찾을 수 없습니다.")
+        return False
+
+    def list_tasks(self):
+        """
+        현재 진행 중인 모든 할 일을 보여줍니다.
+        """
+        print("\n--- 나의 할 일 목록 ---")
+        for task in self.tasks:
+            print(f"[{task['status']}] {task['id']}. {task['title']} ({task['category']})")
 
 if __name__ == "__main__":
-    todo_list()
+    my_todo = TodoList()
+    
+    # 할 일 추가 테스트
+    my_todo.add_task("파이썬 코딩 공부하기", "공부", "2026-03-01")
+    my_todo.add_task("친구와 저녁 식사", "개인")
+    my_todo.add_task("코드 리뷰 완료하기", "업무", "2026-02-28")
+    
+    # 상태 업데이트 테스트
+    my_todo.update_status(1, "진행 중")
+    my_todo.list_tasks()
 ```

@@ -1,20 +1,72 @@
 ---
-title: "Simulate the World"
+title: "세계 시뮬레이션 (Simulate the World)"
 ---
 
-Build a simulation of the whole world. Try to be as detailed as you can. Keep it simple when you feel stuck and slowly improve on it. Treat it as a self-sustaining game if it makes things easier. For bonus points, add an AI to the system to let it work on its own.
+전 세계를 시뮬레이션해 봅시다. 가능한 한 상세하게 구축하고, 처음에는 간단하게 시작하여 점차 복잡하게 발전시켜 보세요. 이 프로젝트는 자급자족하는 게임처럼 다루면 더 쉽고 재미있을 것입니다. 보너스 점수를 위해 시스템이 스스로 작동하도록 하는 인공지능(AI)을 추가해 보세요.
 
-## Python Implementation
+이 프로젝트는 대규모 데이터를 관리하고 수많은 개체 간의 상호작용을 계산하며, 자급자족하는 생태계나 사회 시스템을 모델링하는 방법을 익히기에 아주 좋습니다. 특히 최근의 멀티 에이전트 시뮬레이션과 같은 복잡한 연산 과정을 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **지형 및 자원 생성 (World Generation)**: 바다, 땅, 산, 그리고 그 위에 있는 나무, 물 등의 자원을 배치합니다.
+- **개체 관리 (Agent System)**: 사람, 동물, 식물 등 수많은 개체를 만들고 각자의 상태(배고픔, 건강, 에너지 등)를 추적합니다.
+- **생태계 상호작용 (Ecosystem Dynamics)**: 포식자-피식자 관계나 식물의 번식, 계절 변화에 따른 자원 변동을 모델링합니다.
+- **사회 및 경제 시스템**: 개체들이 자원을 채집하고 거래하며, 마을이나 문명을 형성하는 과정을 시뮬레이션합니다.
+- **사용자 인터페이스 (GUI)**: 전체 지도를 보여주고 각 개체의 움직임과 상태 변화를 시각화하는 UI를 구축합니다.
+
+## Python 구현 예시 (간단한 에이전트 기반 생태계 시뮬레이션)
 
 ```python
-def simulate_the_world():
+import random
+import time
+
+class WorldAgent:
     """
-    Implementation for Simulate the World
+    세계 내에서 활동하는 각 개체(사람, 동물 등)의 상태와 행동을 정의합니다.
     """
-    print("Executing Simulate the World...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self, name, x, y):
+        self.name = name
+        self.x = x
+        self.y = y
+        self.energy = 100
+
+    def move(self):
+        """
+        무작위로 한 칸 이동하고 에너지를 소비합니다.
+        """
+        self.x += random.randint(-1, 1)
+        self.y += random.randint(-1, 1)
+        self.energy -= 5
+        print(f"'{self.name}' 이동 중... 위치({self.x}, {self.y}), 에너지: {self.energy}")
+
+    def eat(self):
+        """
+        에너지를 보충합니다.
+        """
+        self.energy += 20
+        print(f"'{self.name}' 식사 중! 에너지 보충 완료: {self.energy}")
 
 if __name__ == "__main__":
-    simulate_the_world()
+    # 3명의 에이전트로 시뮬레이션 시작
+    world_width, world_height = 50, 50
+    agents = [
+        WorldAgent("평민 A", 10, 10),
+        WorldAgent("평민 B", 20, 20),
+        WorldAgent("모험가 C", 30, 30)
+    ]
+    
+    print("세계 시뮬레이션 시작 (5턴)")
+    for turn in range(5):
+        print(f"\n--- 턴 {turn + 1} ---")
+        for agent in agents:
+            # 에너지가 낮으면 먹고, 아니면 이동
+            if agent.energy < 50:
+                agent.eat()
+            else:
+                agent.move()
+                
+            if agent.energy <= 0:
+                print(f"!!! '{agent.name}'이(가) 에너지가 다하여 사망했습니다.")
+                agents.remove(agent)
+                
+        time.sleep(1)
 ```

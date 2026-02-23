@@ -1,20 +1,58 @@
 ---
-title: "UML Diagram Generator"
+title: "UML 다이어그램 생성기 (UML Diagram Generator)"
 ---
 
-Write a script that goes through your OOPS code and creates a well-formatted UML diagram for your code.
+작성한 객체 지향 프로그래밍(OOP) 코드를 분석하여 잘 정제된 UML(Unified Modeling Language) 다이어그램을 자동으로 생성해 주는 스크립트를 만들어 봅시다. 클래스 간의 관계와 속성, 메서드 정보를 시각적으로 표현하는 것이 목표입니다.
 
-## Python Implementation
+이 프로젝트는 파이썬의 `inspect`나 `ast` 모듈을 활용하여 코드 구조를 분석하고, 이를 시각화 라이브러리(Graphviz 등)를 통해 다이어그램으로 변환하는 방법을 익히기에 아주 좋은 과제입니다. 특히 복잡한 프로젝트의 설계를 한눈에 파악할 수 있는 유용한 도구를 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **객체 지향 코드 분석 (Class Parsing)**: `inspect` 모듈을 사용하여 클래스의 상속 구조와 멤버(속성, 메서드)를 추출합니다.
+- **클래스 다이어그램 생성**: 클래스들 사이의 연관(Association), 상속(Inheritance), 의존(Dependency) 관계를 정의합니다.
+- **시각화 도구 연동 (Graphviz/PlantUML)**: 분석된 데이터를 바탕으로 DOT 언어나 PlantUML 형식을 생성하고 이미지로 렌더링합니다.
+- **클래스 및 메서드 정보 필터링**: 프라이빗(Private) 멤버와 공용(Public) 멤버를 구분하여 다이어그램에 표시하거나 숨기는 기능을 추가합니다.
+- **사용자 인터페이스 (GUI)**: 파이썬 파일(.py)을 업로드하고 생성된 UML 이미지를 즉시 확인하는 UI를 구축합니다.
+
+## Python 구현 예시 (inspect 모듈 활용 간단한 클래스 정보 추출)
 
 ```python
-def uml_diagram_generator():
+import inspect
+
+class SampleParent:
+    """부모 클래스 샘플"""
+    def __init__(self, name):
+        self.name = name
+    def say_hello(self):
+        print(f"안녕, {self.name}!")
+
+class SampleChild(SampleParent):
+    """자식 클래스 샘플"""
+    def do_work(self):
+        print(f"{self.name}가 일하는 중...")
+
+def generate_uml_text(cls):
     """
-    Implementation for UML Diagram Generator
+    클래스 정보를 UML 텍스트 형식으로 변환하여 출력합니다.
     """
-    print("Executing UML Diagram Generator...")
-    # TODO: Add your implementation here
-    pass
+    print(f"\n--- 클래스: {cls.__name__} ---")
+    
+    # 상속 정보 (부모 클래스들)
+    bases = [base.__name__ for base in cls.__bases__ if base != object]
+    if bases:
+        print(f"상속: {', '.join(bases)}")
+    
+    # 메서드 목록 (매직 메서드 제외)
+    methods = [m[0] for m in inspect.getmembers(cls, predicate=inspect.isfunction) if not m[0].startswith('__')]
+    print(f"메서드: {', '.join(methods)}")
+    
+    # docstring (설명)
+    print(f"설명: {inspect.getdoc(cls)}")
 
 if __name__ == "__main__":
-    uml_diagram_generator()
+    # 샘플 클래스들 분석 테스트
+    generate_uml_text(SampleParent)
+    generate_uml_text(SampleChild)
+    
+    # 팁: Graphviz의 'Digraph' 객체를 사용하면 위의 텍스트를 이미지 파일로 쉽게 저장할 수 있습니다.
+    print("\n[팁] 'pylint'나 'pyreverse'와 같은 기존 도구의 작동 방식을 참고해 보세요.")
 ```

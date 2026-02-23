@@ -1,20 +1,60 @@
 ---
-title: "News Aggregator"
+title: "뉴스 애그리게이터 (News Aggregator)"
 ---
 
-Build an app that will present you daily news from credible sources. Make sure you pool unique information about a given news headline from different sites to remove any bias that may be present in a given source.
+신뢰할 수 있는 소스로부터 매일의 주요 뉴스를 한눈에 보여주는 앱을 만들어 봅시다. 단순히 뉴스를 모으는 것을 넘어, 여러 사이트에서 하나의 헤드라인에 대해 서로 다른 정보를 수집함으로써 편향되지 않은 정보를 제공하는 것이 목표입니다.
 
-## Python Implementation
+이 프로젝트는 웹의 정보를 체계적으로 모으는 크롤링 기술과 대량의 텍스트 데이터를 처리하는 NLP 기술을 익히기에 아주 좋습니다. 특히 최근 인터넷 뉴스의 가짜 뉴스를 필터링하거나, 같은 사건을 다루는 여러 기사의 공통점과 차이점을 분석하는 독창적인 시스템을 설계해 보세요.
+
+## 주요 개발 포인트
+- **뉴스 소스 수집**: `BeautifulSoup`, `Selenium`, 또는 뉴스 API(NewsAPI, GNews 등)를 활용하여 최신 헤드라인을 가져옵니다.
+- **편향성 제거 (Bias Reduction)**: 같은 사건을 다루는 여러 언론사의 기사를 대조하여 사실관계를 확인하고 요약합니다.
+- **RSS 피드 지원**: 사용자가 직접 원하는 뉴스 소스의 RSS 주소를 추가하고 관리할 수 있도록 합니다.
+- **주제별 자동 분류**: 자연어 처리(NLP)를 활용하여 정체, 경제, 사회, IT 등 카테고리를 자동으로 배정합니다.
+- **사용자 인터페이스 (GUI)**: 카드 레이아웃이나 목록 형태로 깔끔하게 뉴스를 보여주고, 필터링 기능을 제공하는 UI를 구축합니다.
+
+## Python 구현 예시 (간단한 뉴스 API 활용 시뮬레이션)
 
 ```python
-def news_aggregator():
+import requests
+
+class NewsAggregator:
     """
-    Implementation for News Aggregator
+    여러 뉴스 소스로부터 최신 헤드라인을 수집하고 요약합니다.
     """
-    print("Executing News Aggregator...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self, api_key):
+        self.api_key = api_key
+        self.sources = ["techcrunch", "cnn", "the-verge", "bbc-news"]
+
+    def fetch_latest_news(self, category="technology"):
+        """
+        뉴스 API를 호출하여 지정된 카테고리의 최신 기사를 가져옵니다.
+        """
+        print(f"'{category}' 카테고리의 뉴스 데이터를 수집 중입니다...")
+        
+        # NewsAPI.org 와 같은 서비스를 가정 (실제 구현 시 API 키 필요)
+        url = f"https://newsapi.org/v2/top-headlines?category={category}&apiKey={self.api_key}"
+        
+        # 가상의 뉴스 결과 예시
+        news_data = [
+            {"title": "새로운 AI 모델 발표", "source": "TechCrunch", "url": "https://example.com/ai"},
+            {"title": "우주 탐사선의 화성 착륙 성공", "source": "BBC News", "url": "https://example.com/space"},
+            {"title": "차세대 스마트폰 디자인 유출", "source": "The Verge", "url": "https://example.com/phone"}
+        ]
+        
+        print(f"\n--- 오늘의 주요 뉴스 ({category}) ---")
+        for i, article in enumerate(news_data, 1):
+            print(f"{i}. [{article['source']}] {article['title']}")
+            print(f"   링크: {article['url']}")
+            
+        return news_data
 
 if __name__ == "__main__":
-    news_aggregator()
+    # 테스트 API 키 (가상)
+    my_key = "abcde12345"
+    aggregator = NewsAggregator(my_key)
+    
+    # 뉴스 수집 테스트
+    aggregator.fetch_latest_news("business")
+    aggregator.fetch_latest_news("science")
 ```

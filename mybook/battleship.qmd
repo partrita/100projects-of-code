@@ -1,20 +1,63 @@
 ---
-title: "Battleship"
+title: "배틀쉽 게임 (Battleship)"
 ---
 
-Build the classic game of battleship. You can build a CLI app or a much better app with graphics using any 2D graphics module.
+고전적인 보드 게임인 배틀쉽을 직접 만들어 봅시다. 간단한 CLI(명령줄 인터페이스) 앱으로 시작하여, 더 나아가 2D 그래픽 모듈(Pygame 등)을 활용한 화려한 버전으로 확장할 수 있습니다.
 
-## Python Implementation
+이 프로젝트는 2차원 배열을 다루고 게임 로직(함선 배치, 공격, 승리 조건 확인 등)을 설계하는 연습에 최적입니다. 또한 간단한 AI 상대(랜덤 공격 또는 전략적 공격)를 구현하여 혼자서도 즐길 수 있도록 만들 수 있습니다.
+
+## 주요 개발 포인트
+- **보드 표현**: 10x10 크기의 2차원 리스트를 사용하여 바다를 표현합니다.
+- **함선 배치 로직**: 서로 겹치지 않게 가로 또는 세로로 함선을 무작위 또는 수동으로 배치합니다.
+- **공격 로직**: 사용자의 입력을 받아 해당 위치가 '명중(Hit)'인지 '빗나감(Miss)'인지 판별합니다.
+- **AI 대전**: 상대 컴퓨터의 공격 패턴(무작위 공격 -> 명중 시 주변 탐색 등)을 설계합니다.
+
+## Python 구현 예시 (CLI 기반 보드 출력)
 
 ```python
-def battleship():
+import random
+
+def create_board(size=5):
     """
-    Implementation for Battleship
+    지정된 크기의 빈 보드를 생성합니다.
     """
-    print("Executing Battleship...")
-    # TODO: Add your implementation here
-    pass
+    return [["O" for _ in range(size)] for _ in range(size)]
+
+def print_board(board):
+    """
+    현재 보드 상태를 보기 좋게 출력합니다.
+    """
+    for row in board:
+        print(" ".join(row))
+
+def random_row(board):
+    return random.randint(0, len(board) - 1)
+
+def random_col(board):
+    return random.randint(0, len(board[0]) - 1)
 
 if __name__ == "__main__":
-    battleship()
+    size = 5
+    board = create_board(size)
+    ship_row = random_row(board)
+    ship_col = random_col(board)
+    
+    # 디버그용: 실제 함선의 위치를 숨기고 게임 시작
+    # print(f"함선 위치: ({ship_row}, {ship_col})")
+    
+    print("--- 배틀쉽 게임 시작! ---")
+    print_board(board)
+    
+    # 간단한 1회성 공격 테스트
+    guess_row = int(input("행(Row) 입력 (0-4): "))
+    guess_col = int(input("열(Col) 입력 (0-4): "))
+    
+    if guess_row == ship_row and guess_col == ship_col:
+        print("축하합니다! 함선을 침몰시켰습니다.")
+        board[guess_row][guess_col] = "X"
+    else:
+        print("아쉽네요, 빗나갔습니다.")
+        board[guess_row][guess_col] = "M"
+    
+    print_board(board)
 ```

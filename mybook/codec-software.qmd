@@ -1,20 +1,58 @@
 ---
-title: "Codec Software"
+title: "코덱 소프트웨어 (Codec Software)"
 ---
 
-Build a software that will encrypt and decrypt text for you. Incorporate quite a few algorithms to provide flexibility to the user.
+텍스트를 암호화하고 복호화할 수 있는 나만의 소프트웨어를 개발해 봅시다. 사용자에게 유연성을 제공하기 위해 다양한 암호화 알고리즘(고전 암호부터 현대 암호까지)을 포함하는 것이 목표입니다.
 
-## Python Implementation
+이 프로젝트는 데이터 보안의 기초와 알고리즘의 원리를 이해하는 데 매우 효과적입니다. 간단한 시저 암호(Caesar Cipher)부터 시작하여 AES, RSA와 같은 현대적인 대칭/비대칭 키 암호화 방식까지 구현해 보세요.
+
+## 주요 개발 포인트
+- **고전 암호 (Classic Ciphers)**: 시저 암호, 비즈네르(Vigenere) 암호와 같은 역사적인 암호화 기법을 구현합니다.
+- **현대 암호 (Modern Encryption)**: `cryptography` 라이브러리를 활용하여 AES나 RSA와 같은 강력한 암호화 표준을 적용합니다.
+- **해싱 (Hashing)**: MD5, SHA-256 등을 사용하여 데이터의 무결성을 확인하는 기능을 추가합니다.
+- **인코딩 (Encoding)**: Base64와 같은 데이터 전송용 인코딩/디코딩 기능을 포함합니다.
+- **사용자 인터페이스 (GUI)**: 알고리즘을 선택하고 텍스트를 입력하면 즉시 결과를 보여주는 UI를 구축합니다.
+
+## Python 구현 예시 (간단한 시저 암호 구현)
 
 ```python
-def codec_software():
+import string
+
+def caesar_cipher(text, shift, mode='encrypt'):
     """
-    Implementation for Codec Software
+    텍스트를 지정된 만큼 밀어서 암호화하거나 복호화합니다.
     """
-    print("Executing Codec Software...")
-    # TODO: Add your implementation here
-    pass
+    alphabet = string.ascii_lowercase
+    result = ""
+    
+    # 복호화 시에는 반대 방향으로 밀기
+    if mode == 'decrypt':
+        shift = -shift
+        
+    for char in text.lower():
+        if char in alphabet:
+            idx = alphabet.find(char)
+            new_idx = (idx + shift) % 26
+            result += alphabet[new_idx]
+        else:
+            # 알파벳이 아닌 문자는 그대로 유지
+            result += char
+            
+    return result
 
 if __name__ == "__main__":
-    codec_software()
+    original_text = "Hello, world! This is a secret message."
+    shift_value = 4
+    
+    # 암호화 테스트
+    encrypted = caesar_cipher(original_text, shift_value, 'encrypt')
+    print(f"원본: {original_text}")
+    print(f"암호화: {encrypted}")
+    
+    # 복호화 테스트
+    decrypted = caesar_cipher(encrypted, shift_value, 'decrypt')
+    print(f"복호화: {decrypted}")
+    
+    if original_text.lower() == decrypted:
+        print("암복호화 성공!")
 ```

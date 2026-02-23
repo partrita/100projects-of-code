@@ -1,20 +1,58 @@
 ---
-title: "Build an OS"
+title: "운영체제 만들기 (Build an OS)"
 ---
 
-This project will be technically challenging and will deepen your understanding of how computers and operating systems work. Building an OS from the ground up is a really daunting task but you will surely find a way to do it.
+기술적으로 매우 어렵지만, 컴퓨터와 운영체제(OS)의 작동 원리를 깊이 있게 이해할 수 있는 최고 난도의 프로젝트입니다. 운영체제를 바닥부터 하나씩 구축해 나가는 과정은 두렵게 느껴질 수도 있지만, 그 과정에서 얻게 될 지식은 여러분의 코딩 인생에 큰 자산이 될 것입니다.
 
-## Python Implementation
+커널 설계, 메모리 관리, 프로세스 스케줄링, 파일 시스템 구현 등 컴퓨터 과학의 핵심 요소들을 직접 경험해 보게 됩니다. 비록 Python은 운영체제 자체를 만드는 데 최적화된 언어는 아니지만, OS의 각 구성 요소를 시뮬레이션하거나 설계하는 로직을 공부하기에는 좋은 도구가 될 수 있습니다.
+
+## 주요 개발 포인트
+- **부트로더 (Bootloader)**: 컴퓨터가 켜진 후 가장 먼저 실행되어 커널을 메모리에 올리는 역할을 연구합니다.
+- **커널 (Kernel)**: 하드웨어와 사용자 간의 가교 역할을 하는 운영체제의 핵심부(메모리 관리, 인터럽트 처리)를 설계합니다.
+- **프로세스 스케줄링**: 여러 작업이 공평하게 CPU 자원을 나누어 쓸 수 있게 조율하는 알고리즘을 구현합니다.
+- **파일 시스템**: 데이터를 저장하고 읽어오는 체계적인 방법을 구축합니다.
+- **입출력 관리**: 키보드, 화면 등 주변 장치와의 통신 방법을 정의합니다.
+
+## Python 구현 예시 (운영체제 스케줄러 시뮬레이션)
 
 ```python
-def build_an_os():
+import time
+from collections import deque
+
+class SimpleScheduler:
     """
-    Implementation for Build an OS
+    라운드 로빈(Round-Robin) 방식의 운영체제 스케줄러를 시뮬레이션합니다.
     """
-    print("Executing Build an OS...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self):
+        self.queue = deque()
+
+    def add_process(self, pid, task_name, burst_time):
+        print(f"프로세스 {pid} '{task_name}' 등록됨 (소요 시간: {burst_time})")
+        self.queue.append({'pid': pid, 'name': task_name, 'time_left': burst_time})
+
+    def run(self, time_slice=2):
+        print("--- 스케줄러 시작 ---")
+        while self.queue:
+            process = self.queue.popleft()
+            print(f"프로세스 {process['pid']} 실행 중... 남은 시간: {process['time_left']}")
+            
+            # 지정된 타임 슬라이스 동안 실행
+            execution_time = min(process['time_left'], time_slice)
+            time.sleep(execution_time * 0.1) # 실제로는 짧게 시뮬레이션
+            process['time_left'] -= execution_time
+            
+            if process['time_left'] > 0:
+                print(f"타임 슬라이스 종료! 프로세스 {process['pid']}를 대기열로 이동합니다.")
+                self.queue.append(process)
+            else:
+                print(f"프로세스 {process['pid']} '{process['name']}' 완료!")
+        print("--- 모든 프로세스가 종료되었습니다. ---")
 
 if __name__ == "__main__":
-    build_an_os()
+    scheduler = SimpleScheduler()
+    scheduler.add_process(1, "Text Editor", 5)
+    scheduler.add_process(2, "Web Browser", 3)
+    scheduler.add_process(3, "System Scan", 6)
+    
+    scheduler.run(time_slice=2)
 ```

@@ -1,20 +1,69 @@
 ---
-title: "Music Player"
+title: "음악 플레이어 (Music Player)"
 ---
 
-Build a music player app that can play music from mp3 files and also have functionality for forward, rewind, pause, and play.
+MP3 파일을 재생하고, 앞으로 감기, 뒤로 감기, 정지, 재생 기능을 갖춘 음악 플레이어 앱을 만들어 봅시다.
 
-## Python Implementation
+이 프로젝트는 오디오 처리 라이브러리(Pygame, Pydub 등)와 사용자 인터페이스(GUI)를 결합하여 나만의 플레이리스트를 관리하는 방법을 익히기에 아주 좋습니다. 특히 최근 음악 플레이어들이 제공하는 가사 표시, 이퀄라이저, 앨범 아트 워크 등 풍부한 기능을 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **오디오 파일 재생 및 제어**: `pygame.mixer` 등을 사용하여 MP3, WAV 파일을 재생하고 중지, 일시정지 기능을 구현합니다.
+- **재생 위치 조절 (Seek)**: 슬라이더를 통해 음악의 특정 지점으로 이동하거나 앞으로/뒤로 5초씩 건너뛰는 기능을 추가합니다.
+- **플레이리스트 관리**: 폴더 내의 모든 음악 파일을 불러와 목록을 만들고, 셔플(Shuffle)이나 반복 재생(Repeat) 모드를 설정합니다.
+- **오디오 정보 메타데이터 (ID3 Tag)**: `mutagen`과 같은 라이브러리를 활용하여 곡 제목, 가수, 앨범 아트 정보를 추출합니다.
+- **사용자 인터페이스 (GUI)**: 재생 버튼, 앨범 이미지, 가사 창을 포함한 깔끔하고 세련된 UI를 구축합니다.
+
+## Python 구현 예시 (Pygame 활용 간단 플레이어 루프)
 
 ```python
-def music_player():
+# 실제 실행 시 pygame 라이브러리 설치가 필요합니다.
+# import pygame
+
+class SimpleMusicPlayer:
     """
-    Implementation for Music Player
+    MP3 파일 재생 및 기본 제어 기능을 제공합니다.
     """
-    print("Executing Music Player...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self):
+        # pygame.mixer.init()
+        self.is_playing = False
+        print("음악 플레이어 엔진 초기화 완료.")
+
+    def play_music(self, file_path):
+        """
+        지정한 음악 파일을 재생합니다.
+        """
+        print(f"재생 중: {file_path}")
+        # pygame.mixer.music.load(file_path)
+        # pygame.mixer.music.play()
+        self.is_playing = True
+
+    def stop_music(self):
+        """
+        음악 재생을 중단합니다.
+        """
+        if self.is_playing:
+            # pygame.mixer.music.stop()
+            self.is_playing = False
+            print("재생 중단됨.")
+        else:
+            print("현재 재생 중인 음악이 없습니다.")
+
+    def pause_music(self):
+        """
+        재생을 일시정지하거나 재개합니다.
+        """
+        # pygame.mixer.music.pause() 또는 unpause()
+        pass
 
 if __name__ == "__main__":
-    music_player()
+    player = SimpleMusicPlayer()
+    
+    # 음악 재생 시나리오 시뮬레이션
+    sample_file = "favorite_song.mp3"
+    player.play_music(sample_file)
+    
+    # 사용자 명령 입력 시뮬레이션
+    command = "stop"
+    if command == "stop":
+        player.stop_music()
 ```

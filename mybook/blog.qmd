@@ -1,20 +1,55 @@
 ---
-title: "Blog"
+title: "블로그 (Blog)"
 ---
 
-A blog is a must have for everyone (according to me). Combine that fact with the fact that you learn a lot of things while building your own blog from scratch, and voila!
+누구에게나 자신만의 블로그는 하나쯤 필요하다고 생각합니다. 직접 블로그를 밑바닥부터 구축해 보면서 배울 수 있는 방대한 지식과 경험은 덤이죠!
 
-## Python Implementation
+이 프로젝트는 웹 애플리케이션의 핵심인 CRUD(생성, 조회, 수정, 삭제) 기능을 완벽하게 익히기에 아주 좋습니다. 데이터베이스 설계부터 사용자 인증, 스타일링까지 웹 개발의 전 과정을 경험할 수 있는 최고의 프로젝트입니다.
+
+## 주요 개발 포인트
+- **웹 프레임워크**: Python의 Django나 Flask를 활용하여 서버를 구축합니다.
+- **데이터베이스 설계**: 게시글(Post), 작성자(Author), 댓글(Comment) 등을 모델링합니다.
+- **템플릿 엔진**: 서버에서 데이터를 받아 사용자에게 보여줄 HTML 화면을 구성합니다.
+- **사용자 인증**: 로그인, 로그아웃, 글 작성 권한 관리 등을 구현합니다.
+- **스타일링**: CSS 프레임워크(Bootstrap 등)를 활용하여 깔끔한 디자인을 적용합니다.
+
+## Python 구현 예시 (Flask 간단 서버 예시)
 
 ```python
-def blog():
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+# 임시 게시글 데이터 (실제 프로젝트에서는 데이터베이스 연동 필요)
+posts = [
+    {
+        'author': 'Norah Jones',
+        'title': '나의 첫 번째 블로그 글',
+        'content': '블로그를 처음 시작했습니다! 반갑습니다.',
+        'date_posted': '2026-02-23'
+    },
+    {
+        'author': 'Jane Doe',
+        'title': '파이썬으로 웹 개발하기',
+        'content': 'Flask는 정말 강력하고 배우기 쉬운 프레임워크입니다.',
+        'date_posted': '2026-02-24'
+    }
+]
+
+@app.route("/")
+@app.route("/home")
+def home():
     """
-    Implementation for Blog
+    홈 화면에서 전체 게시글 목록을 보여줍니다.
     """
-    print("Executing Blog...")
-    # TODO: Add your implementation here
-    pass
+    print("블로그 홈 화면 렌더링 중...")
+    # render_template을 사용하여 HTML 파일로 데이터를 전달합니다.
+    # return render_template('home.html', posts=posts)
+    return f"총 {len(posts)}개의 게시글이 있습니다."
 
 if __name__ == "__main__":
-    blog()
+    # Flask 서버 실행 (debug=True는 개발용)
+    # app.run(debug=True)
+    print("Flask 블로그 서버 테스트 실행 중...")
+    print(home())
 ```

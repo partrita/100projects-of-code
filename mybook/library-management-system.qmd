@@ -1,20 +1,66 @@
 ---
-title: "Library Management System"
+title: "도서관 관리 시스템 (Library Management System)"
 ---
 
-Build an app for a hypothetical (or better, a real one near you) library that will help in management. You need to keep track of books you have, books to order, people with access to the library, books borrowed, returned and other related tasks.
+가상의 도서관(또는 근처의 실제 도서관)을 위한 관리 시스템을 개발해 봅시다. 보유한 도서 목록, 구매 예정 도서, 도서관 이용자 정보, 대출 및 반납 기록 등 도서관 운영에 필요한 모든 과정을 전산화하는 것이 목표입니다.
 
-## Python Implementation
+이 프로젝트는 데이터베이스 설계와 사용자 관리, 그리고 비즈니스 로직(대출 기간, 연체료 등)을 익히기에 아주 좋은 과제입니다. 사용자가 책을 검색하고 빌리고 반납하는 과정을 원활하게 처리할 수 있는 직관적인 UI를 설계해 보세요.
+
+## 주요 개발 포인트
+- **도서 및 회원 데이터베이스**: SQLite, MySQL 등을 사용하여 도서 정보와 회원 정보를 체계적으로 저장합니다.
+- **대출 및 반납 로직**: 책의 재고 상태를 확인하고 대출 가능 여부를 판단하며, 반납 시 상태를 업데이트합니다.
+- **연체료 계산 및 알림**: 반납 예정일이 지났을 때 연체료를 계산하고 사용자에게 알리는 기능을 추가합니다.
+- **도서 검색 및 필터링**: 제목, 저자, 카테고리별로 원하는 도서를 빠르게 찾을 수 있도록 검색 엔진을 구현합니다.
+- **관리자 페이지**: 도서 추가, 회원 등록, 대출 통계 확인 등 도서관 관리자를 위한 전용 화면을 제공합니다.
+
+## Python 구현 예시 (간단한 도서 대출 관리 클래스)
 
 ```python
-def library_management_system():
+from datetime import datetime, timedelta
+
+class LibrarySystem:
     """
-    Implementation for Library Management System
+    도서 목록과 대출 정보를 관리하는 클래스입니다.
     """
-    print("Executing Library Management System...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self):
+        self.books = {
+            "B001": {"title": "Python Programming", "author": "Alice", "available": True},
+            "B002": {"title": "Data Science", "author": "Bob", "available": True},
+            "B003": {"title": "Web Development", "author": "Charlie", "available": True}
+        }
+        self.loans = {} # {book_id: (member_id, due_date)}
+
+    def borrow_book(self, book_id, member_id):
+        """
+        도서 대출을 처리합니다.
+        """
+        if book_id in self.books and self.books[book_id]['available']:
+            self.books[book_id]['available'] = False
+            due_date = datetime.now() + timedelta(days=14) # 14일 대출
+            self.loans[book_id] = (member_id, due_date)
+            print(f"'{self.books[book_id]['title']}' 대출 완료! 반납 예정일: {due_date.strftime('%Y-%m-%d')}")
+        else:
+            print("현재 대출 가능한 도서가 아니거나 존재하지 않는 도서 코드입니다.")
+
+    def return_book(self, book_id):
+        """
+        도서 반납을 처리합니다.
+        """
+        if book_id in self.books and not self.books[book_id]['available']:
+            self.books[book_id]['available'] = True
+            member_id, due_date = self.loans.pop(book_id)
+            print(f"'{self.books[book_id]['title']}' 반납 완료! 이용자: {member_id}")
+            
+            if datetime.now() > due_date:
+                print("주의: 반납 기한이 지났습니다. 연체료를 확인하세요.")
+        else:
+            print("이미 반납되었거나 정보가 잘못되었습니다.")
 
 if __name__ == "__main__":
-    library_management_system()
+    library = LibrarySystem()
+    
+    # 대출 및 반납 테스트
+    library.borrow_book("B001", "Member01")
+    library.borrow_book("B001", "Member02") # 이미 대출된 책 시도
+    library.return_book("B001")
 ```

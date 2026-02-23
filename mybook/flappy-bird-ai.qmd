@@ -1,20 +1,69 @@
 ---
-title: "Flappy Bird AI"
+title: "플래피 버드 AI (Flappy Bird AI)"
 ---
 
-Design an AI for the flappy bird game. Try out a few learning algorithms to train your network - Q-Learning, NEAT, etc. Build the perfect AI that will play flappy bird better than you (or anyone else) ever can.
+플래피 버드(Flappy Bird) 게임을 위한 인공지능(AI)을 설계해 봅시다. Q-Learning, NEAT(NeuroEvolution of Augmenting Topologies) 등 다양한 강화 학습 알고리즘을 사용하여 새가 파이프 사이를 완벽하게 통과하도록 훈련시키는 것이 목표입니다.
 
-## Python Implementation
+이 프로젝트는 머신러닝의 기초와 게임 환경에서의 의사 결정 과정을 익히기에 최적입니다. 사람보다 훨씬 더 정교하게 게임을 플레이하는 AI를 만들어 보면서, 신경망(Neural Network)이 어떻게 학습하고 진화하는지 직접 경험해 보세요.
+
+## 주요 개발 포인트
+- **강화 학습 알고리즘**: Q-Learning이나 NEAT를 활용하여 보상과 벌칙을 기반으로 학습시킵니다.
+- **게임 환경 시뮬레이션**: AI가 학습할 수 있도록 게임의 물리 엔진(중력, 충돌 등)을 구축합니다.
+- **입력 데이터 (Sensor Data)**: 새의 높이, 다음 파이프와의 거리, 파이프 사이의 간격 등을 AI의 입력값으로 제공합니다.
+- **보상 시스템 설계**: 파이프를 통과하면 보상을, 충돌하면 벌칙을 주어 점수를 최적화합니다.
+- **세대 진화 (Evolution)**: NEAT 알고리즘을 사용할 경우, 가장 우수한 개체를 선택하고 번식시켜 성능을 개선합니다.
+
+## Python 구현 예시 (NEAT-Python을 이용한 신경망 입력 구조)
 
 ```python
-def flappy_bird_ai():
+# 실제 실행을 위해서는 neat-python 라이브러리가 필요합니다.
+# import neat
+
+class FlappyBirdAI:
     """
-    Implementation for Flappy Bird AI
+    플래피 버드 AI의 학습과 실행을 관리합니다.
     """
-    print("Executing Flappy Bird AI...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self, bird_pos, pipe_pos, pipe_gap):
+        self.bird_y = bird_pos[1]
+        self.pipe_x = pipe_pos[0]
+        self.pipe_y_top = pipe_pos[1]
+        self.pipe_y_bottom = pipe_pos[1] + pipe_gap
+
+    def get_inputs(self):
+        """
+        AI 신경망에 전달할 입력 데이터를 계산합니다.
+        """
+        # 1. 새의 Y 좌표
+        # 2. 위쪽 파이프와 새의 거리
+        # 3. 아래쪽 파이프와 새의 거리
+        inputs = (
+            self.bird_y,
+            abs(self.bird_y - self.pipe_y_top),
+            abs(self.bird_y - self.pipe_y_bottom)
+        )
+        return inputs
+
+    def decide_jump(self, output):
+        """
+        신경망의 출력값에 따라 점프 여부를 결정합니다.
+        """
+        # 출력값이 0.5보다 크면 점프(Jump) 실행
+        if output > 0.5:
+            print("AI: 점프 수행!")
+            return True
+        return False
 
 if __name__ == "__main__":
-    flappy_bird_ai()
+    # 가상의 게임 데이터로 테스트
+    bird = (50, 200) # (x, y)
+    pipe = (300, 150) # (x, y_top)
+    gap = 100
+    
+    ai = FlappyBirdAI(bird, pipe, gap)
+    data = ai.get_inputs()
+    print(f"AI 입력 데이터: {data}")
+    
+    # 가상의 신경망 출력값 (학습이 완료되었다고 가정)
+    test_output = 0.7 
+    ai.decide_jump(test_output)
 ```

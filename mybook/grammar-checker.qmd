@@ -1,20 +1,70 @@
 ---
-title: "Grammar Checker"
+title: "문법 검사기 (Grammar Checker)"
 ---
 
-Build a software that will spell check and check simple grammatical errors in any text you write. For additional points/complexity, try to guess the mood (happy text, formal letter, etc) of the text and suggest appropriate changes.
+작성한 텍스트의 오타(Spell check)를 교정하고 간단한 문법 오류를 찾아주는 소프트웨어를 개발해 봅시다. 보너스 점수를 위해 텍스트의 분위기(행복함, 격식 있는 편지 등)를 추측하고 그에 적절한 표현을 제안하는 기능까지 추가해 보세요.
 
-## Python Implementation
+이 프로젝트는 자연어 처리(NLP)와 언어 모델의 활용을 연습하기에 아주 좋습니다. 텍스트 데이터를 분석하여 오류를 찾고, 사용자의 글쓰기 수준을 높여줄 수 있는 유용한 도구를 설계해 보세요.
+
+## 주요 개발 포인트
+- **오타 및 맞춤법 교정**: 사전 기반 비교나 `pyspellchecker`와 같은 라이브러리를 활용하여 틀린 단어를 찾아냅니다.
+- **문법 규칙 기반 검사**: 주어와 동사의 일치, 문장 부호의 적절성 등 언어별 문법 규칙을 적용합니다.
+- **감정 분석 (Sentiment Analysis)**: 글의 어조(Tone)를 분석하여 사용자가 의도한 분위기에 맞는지 판별합니다.
+- **표현 추천 및 대체어 제안**: 반복되는 단어를 피하기 위해 유의어나 더 적절한 전문 용어를 추천합니다.
+- **실시간 검사 API**: 작성 중인 글을 실시간으로 분석하여 밑줄을 긋거나 수정 제안을 보여주는 UI를 구현합니다.
+
+## Python 구현 예시 (간단한 오타 및 분위기 감지 시뮬레이션)
 
 ```python
-def grammar_checker():
+import string
+
+# 간단한 오타 사전 예시
+SPELL_DICT = {
+    "헬로": "안녕", "코딩": "프로그래밍", "컴퓨터": "컴퓨터", "알고리즘": "알고리즘"
+}
+
+def check_spelling(sentence):
     """
-    Implementation for Grammar Checker
+    제공된 문장 속 단어들의 오타를 검사합니다.
     """
-    print("Executing Grammar Checker...")
-    # TODO: Add your implementation here
-    pass
+    words = sentence.split()
+    corrected_words = []
+    
+    for word in words:
+        clean_word = word.strip(string.punctuation)
+        if clean_word in SPELL_DICT:
+            corrected_words.append(SPELL_DICT[clean_word])
+        else:
+            corrected_words.append(word)
+            
+    return " ".join(corrected_words)
+
+def detect_sentiment(text):
+    """
+    텍스트의 간단한 분위기를 분석합니다. (실제 프로젝트에서는 NLP 모델 사용 추천)
+    """
+    positive_words = ["좋아", "감사", "행복", "사랑", "훌륭"]
+    negative_words = ["화나", "슬퍼", "부족", "실패", "걱정"]
+    
+    score = 0
+    for word in positive_words:
+        if word in text: score += 1
+    for word in negative_words:
+        if word in text: score -= 1
+        
+    if score > 0: return "긍정적"
+    elif score < 0: return "부정적"
+    return "중립적"
 
 if __name__ == "__main__":
-    grammar_checker()
+    test_text = "오늘 코딩 공부해서 정말 행복해!"
+    
+    # 오타 교정 테스트
+    corrected = check_spelling(test_text)
+    print(f"원본: {test_text}")
+    print(f"교정: {corrected}")
+    
+    # 분위기 감지 테스트
+    mood = detect_sentiment(corrected)
+    print(f"문장 분위기: {mood}")
 ```

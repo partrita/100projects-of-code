@@ -1,20 +1,76 @@
 ---
-title: "Text Editor"
+title: "텍스트 에디터 (Text Editor)"
 ---
 
-Build a simple text editor that can help you open, read from and write to text files. For bonus points incorporate features like the find tool and regex search and replace.
+텍스트 파일을 열고, 읽고, 쓸 수 있는 간단한 텍스트 에디터를 만들어 봅시다. 보너스 점수를 위해 찾기 도구(Find Tool)와 정규식(Regex)을 활용한 검색 및 바꾸기 기능까지 포함해 보세요.
 
-## Python Implementation
+이 프로젝트는 파일 시스템의 입출력(I/O)과 문자열 조작, 그리고 사용자의 편집 내용을 실시간으로 관리하는 방법을 익히기에 아주 좋은 과제입니다. 특히 최근 개발용 에디터에 필수적인 문법 강조(Syntax Highlighting) 기능을 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **파일 열기/저장 기능 (I/O)**: `open()`, `read()`, `write()`를 활용하여 로컬 파일을 안전하게 읽고 저장합니다.
+- **텍스트 편집 및 버퍼 관리**: 사용자가 입력한 내용을 메모리에 보관하고 커서 위치를 추적합니다.
+- **찾기 및 바꾸기 (Regex Search)**: 정규 표현식을 사용하여 문서 내의 특정 패턴을 빠르게 찾아내고 일괄 변경합니다.
+- **실시간 문법 강조 (Syntax Highlighting)**: 특정 키워드(예: if, else, def)를 다른 색상으로 표시하여 가독성을 높입니다.
+- **사용자 인터페이스 (GUI)**: 메뉴 바(File, Edit, Help), 스크롤 바, 줄 번호(Line Numbers)를 포함한 깔끔한 UI를 구축합니다.
+
+## Python 구현 예시 (Tkinter 활용 간단한 에디터 시뮬레이션)
 
 ```python
-def text_editor():
+import tkinter as tk
+from tkinter import filedialog, messagebox
+
+class SimpleEditor:
     """
-    Implementation for Text Editor
+    텍스트 파일을 편집하고 관리하는 기능을 제공합니다.
     """
-    print("Executing Text Editor...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self, root):
+        self.root = root
+        self.root.title("나만의 Python 텍스트 에디터")
+        
+        # 텍스트 위젯 설정
+        self.text_area = tk.Text(self.root, wrap="word", undo=True)
+        self.text_area.pack(expand=True, fill="both")
+        
+        # 메뉴 설정
+        self.menu_bar = tk.Menu(self.root)
+        self.root.config(menu=self.menu_bar)
+        
+        file_menu = tk.Menu(self.menu_bar, tearoff=0)
+        file_menu.add_command(label="열기", command=self.open_file)
+        file_menu.add_command(label="저장", command=self.save_file)
+        file_menu.add_separator()
+        file_menu.add_command(label="종료", command=self.root.quit)
+        self.menu_bar.add_cascade(label="파일", menu=file_menu)
+
+    def open_file(self):
+        """
+        파일 탐색기를 열어 텍스트 파일을 불러옵/니다.
+        """
+        file_path = filedialog.askopenfilename(defaultextension=".txt", 
+                                               filetypes=[("Text Documents", "*.txt"), ("All Files", "*.*")])
+        if file_path:
+            with open(file_path, "r", encoding="utf-8") as f:
+                content = f.read()
+                self.text_area.delete(1.0, tk.END)
+                self.text_area.insert(tk.END, content)
+            print(f"'{file_path}' 파일을 열었습니다.")
+
+    def save_file(self):
+        """
+        현재 편집 중인 내용을 파일로 저장합니다.
+        """
+        file_path = filedialog.asksaveasfilename(defaultextension=".txt", 
+                                                 filetypes=[("Text Documents", "*.txt"), ("All Files", "*.*")])
+        if file_path:
+            content = self.text_area.get(1.0, tk.END)
+            with open(file_path, "w", encoding="utf-8") as f:
+                f.write(content)
+            messagebox.showinfo("저장 완료", f"'{file_path}'에 저장되었습니다.")
 
 if __name__ == "__main__":
-    text_editor()
+    # Tkinter 설치 시 실행 가능
+    # root = tk.Tk()
+    # app = SimpleEditor(root)
+    # root.mainloop()
+    print("실제 에디터를 실행하려면 Tkinter 설치 후 위 함수를 호출하세요.")
 ```

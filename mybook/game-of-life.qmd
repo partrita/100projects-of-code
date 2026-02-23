@@ -1,20 +1,87 @@
 ---
-title: "Game of Life"
+title: "인생 게임 (Game of Life)"
 ---
 
-[Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) simulates the lives of simple cells that obey algorithmic laws. You can read the algorithmic rules from the wikipedia page and implement them. Make the program capable of graphical rendering to display the end product.
+콘웨이의 인생 게임(Conway's Game of Life)은 알고리즘 법칙을 따르는 단순한 세포들의 삶을 시뮬레이션하는 흥미로운 프로젝트입니다. 위키피디아의 알고리즘 규칙을 읽고 이를 코드로 구현해 보세요.
 
-## Python Implementation
+이 프로젝트는 2차원 그리드(Grid)를 다루고, 주변 상태를 기반으로 다음 상태를 결정하는 세포 자동자(Cellular Automaton)의 개념을 이해하는 데 아주 좋습니다. 그래픽 렌더링 기능을 추가하여 생명이 탄생하고 사라지는 신비로운 과정을 시각적으로 확인해 보세요.
+
+## 주요 개발 포인트
+- **2차원 그리드 상태 관리**: 0(죽음)과 1(생존)로 이루어진 판(Board)을 구성합니다.
+- **알고리즘 규칙 구현**: 주변의 살아있는 이웃 세포 수에 따라 다음 세대의 상태를 결정합니다.
+  - 이웃이 2개 미만이면 죽음 (고립)
+  - 이웃이 2~3개면 생존
+  - 이웃이 3개면 탄생 (죽었던 곳에서)
+  - 이웃이 3개 초과면 죽음 (과밀)
+- **시간 흐름 시뮬레이션**: 매 초마다 전체 보드를 업데이트하며 세대 변화를 시각화합니다.
+- **다양한 패턴 초기화**: 글라이더(Glider), 고정 패턴(Still lifes), 진동자(Oscillators) 등 유명한 패턴을 불러오는 기능을 추가합니다.
+- **인터랙티브 UI**: 사용자가 마우스 클릭으로 세포를 직접 배치하고 시뮬레이션을 시작/정지할 수 있도록 합니다.
+
+## Python 구현 예시 (간단한 인생 게임 로직 시뮬레이션)
 
 ```python
-def game_of_life():
+import copy
+import time
+
+def count_live_neighbors(grid, r, c):
     """
-    Implementation for Game of Life
+    특정 세포 주변의 살아있는 이웃 수를 세어 반환합니다.
     """
-    print("Executing Game of Life...")
-    # TODO: Add your implementation here
-    pass
+    rows = len(grid)
+    cols = len(grid[0])
+    count = 0
+    
+    for i in range(-1, 2):
+        for j in range(-1, 2):
+            if i == 0 and j == 0:
+                continue
+            
+            nr, nc = r + i, c + j
+            # 경계 검사 후 살아있는지 확인
+            if 0 <= nr < rows and 0 <= nc < cols:
+                count += grid[nr][nc]
+    return count
+
+def update_grid(grid):
+    """
+    전체 보드를 한 세대 업데이트합니다.
+    """
+    rows = len(grid)
+    cols = len(grid[0])
+    new_grid = copy.deepcopy(grid)
+    
+    for r in range(rows):
+        for c in range(cols):
+            neighbors = count_live_neighbors(grid, r, c)
+            
+            if grid[r][c] == 1:
+                # 생존 규칙
+                if neighbors < 2 or neighbors > 3:
+                    new_grid[r][c] = 0
+            else:
+                # 탄생 규칙
+                if neighbors == 3:
+                    new_grid[r][c] = 1
+    return new_grid
+
+def print_grid(grid):
+    """
+    현재 그리드 상태를 텍스트로 출력합니다.
+    """
+    for row in grid:
+        print("".join(["▣" if cell == 1 else "  " for cell in row]))
+    print("-" * (len(grid[0]) * 2))
 
 if __name__ == "__main__":
-    game_of_life()
+    # 10x10 보드 초기화 및 글라이더 패턴 배치
+    size = 10
+    board = [[0 for _ in range(size)] for _ in range(size)]
+    board[1][2] = 1; board[2][3] = 1; board[3][1] = 1; board[3][2] = 1; board[3][3] = 1
+    
+    print("인생 게임 시뮬레이션 시작 (5세대)")
+    for generation in range(5):
+        print(f"세대: {generation + 1}")
+        print_grid(board)
+        board = update_grid(board)
+        time.sleep(0.5)
 ```

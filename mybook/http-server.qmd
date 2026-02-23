@@ -1,20 +1,61 @@
 ---
-title: "HTTP Server"
+title: "HTTP 서버 (HTTP Server)"
 ---
 
-To understand HTTP better, you need to build an HTTP server. It's not much difficult now a days (with the wealth of information around us).
+HTTP(HyperText Transfer Protocol)를 더 잘 이해하기 위해 직접 HTTP 서버를 만들어 봅시다. 단순히 외부 라이브러리를 가져다 쓰는 대신, 소켓 프로그래밍을 통해 바닥부터 통신 규약을 구현해 보세요.
 
-## Python Implementation
+이 프로젝트는 웹의 작동 원리와 클라이언트-서버 구조를 깊이 있게 파악하는 데 아주 좋습니다. 최근에는 다양한 웹 프레임워크가 추상화되어 있지만, 직접 서버를 구축해 봄으로써 패킷의 구성과 데이터 전송의 흐름을 명확하게 알 수 있습니다.
+
+## 주요 개발 포인트
+- **소켓 프로그래밍**: Python의 `socket` 라이브러리를 사용하여 TCP 서버를 열고 포트를 감시합니다.
+- **HTTP 요청 파싱**: 클라이언트로부터 들어온 GET, POST 등의 요청 메시지를 분석합니다.
+- **HTTP 응답 생성**: 상태 코드(200 OK, 404 Not Found 등)와 헤더, 본문(Body)을 포함한 메시지를 작성합니다.
+- **정적 파일 서빙**: 서버의 특정 디렉토리에 있는 HTML, CSS, JS, 이미지 파일을 읽어서 전송합니다.
+- **다중 연결 처리**: `threading`이나 `asyncio`를 활용하여 여러 클라이언트의 요청을 동시에 처리합니다.
+
+## Python 구현 예시 (간단한 소켓 기반 HTTP 서버)
 
 ```python
-def http_server():
+import socket
+
+def start_http_server(host='127.0.0.1', port=8080):
     """
-    Implementation for HTTP Server
+    TCP 소켓을 열어 웹 브라우저의 접속을 기다립니다.
     """
-    print("Executing HTTP Server...")
-    # TODO: Add your implementation here
-    pass
+    # TCP/IP 소켓 생성
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        s.bind((host, port))
+        s.listen(1)
+        
+        print(f"HTTP 서버가 http://{host}:{port} 에서 대기 중입니다...")
+        
+        while True:
+            # 클라이언트 접속 수락
+            conn, addr = s.accept()
+            with conn:
+                # 클라이언트의 요청 읽기
+                request_data = conn.recv(1024).decode('utf-8')
+                print(f"\n[{addr}] 로부터 요청 받음:\n{request_data[:100]}...")
+                
+                # 간단한 HTTP 응답 메시지 작성
+                response_body = "<h1>나만의 Python HTTP 서버에 오신 것을 환영합니다!</h1>"
+                response_headers = (
+                    "HTTP/1.1 200 OK\r\n"
+                    "Content-Type: text/html; charset=utf-8\r\n"
+                    f"Content-Length: {len(response_body.encode('utf-8'))}\r\n"
+                    "Connection: close\r\n"
+                    "\r\n"
+                )
+                
+                # 응답 전송
+                conn.sendall(response_headers.encode('utf-8'))
+                conn.sendall(response_body.encode('utf-8'))
+                
+                print("응답 전송 완료.")
+                break # 테스트를 위해 한 번의 요청 처리 후 종료 (실제로는 무한 루프)
 
 if __name__ == "__main__":
-    http_server()
+    # 브라우저에서 http://127.0.0.1:8080 접속 테스트 가능
+    # start_http_server()
+    print("실제 서버를 실행하려면 함수 호출의 주석을 해제하세요.")
 ```

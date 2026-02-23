@@ -1,20 +1,64 @@
 ---
-title: "Risk"
+title: "리스크 게임 (Risk)"
 ---
 
-Try coding the classic board game of [Risk](https://en.wikipedia.org/wiki/Risk_(game)). Make sure you know all the rules and understand the game properly before you code it.
+전통적인 보드 게임인 [Risk](https://en.wikipedia.org/wiki/Risk_(game))를 코딩해 봅시다. 세계 정복을 목표로 하는 이 게임은 전략적인 사고와 전술, 그리고 주사위 굴림을 통한 승패 결정을 익히기에 아주 좋은 프로젝트입니다.
 
-## Python Implementation
+이 프로젝트는 복잡한 게임 규칙(대륙 점령, 영토 확장, 병력 배치)과 턴 기반 시스템, 그리고 인공지능(AI) 적을 설계하는 방법을 배우는 데 아주 좋습니다. 특히 전 세계 지도를 기반으로 각 영토를 관리하고 점령하는 로직을 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **세계 지도 및 영토 구성 (Map Territories)**: 대륙과 각 영토 간의 연결 관계(Graph)를 데이터 구조로 구축합니다.
+- **병력 배치 및 이동 로직**: 매 턴마다 점령한 영토에 따라 병력을 추가로 배치하고, 다른 영토로 이동시키는 기능을 구현합니다.
+- **전투 시스템 (Dice Rolling)**: 공격자와 방어자가 주사위를 굴려 숫자를 비교하고, 병력 손실을 결정하는 로직을 설계합니다.
+- **대륙 보너스 및 승리 조건**: 특정 대륙을 완전히 점령했을 때 추가 병력을 주거나, 모든 영토를 차지하면 승리하는 규칙을 적용합니다.
+- **사용자 인터페이스 (GUI)**: 세계 지도를 보여주고 각 영토의 현재 점령자와 병력 수를 시각화하는 UI를 구축합니다.
+
+## Python 구현 예시 (간단한 주사위 전투 로직 시뮬레이션)
 
 ```python
-def risk():
+import random
+
+class RiskBattleSimulator:
     """
-    Implementation for Risk
+    공격자와 방어자가 주사위를 굴려 병력 손실을 결정합니다.
     """
-    print("Executing Risk...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self, attacker_units, defender_units):
+        self.attacker_units = attacker_units
+        self.defender_units = defender_units
+
+    def roll_dice(self, count):
+        """
+        주사위를 지정된 횟수만큼 굴리고 큰 순서대로 정렬하여 반환합니다.
+        """
+        rolls = [random.randint(1, 6) for _ in range(count)]
+        return sorted(rolls, reverse=True)
+
+    def resolve_battle(self):
+        """
+        전투를 한 라운드 수행하고 남은 병력을 업데이트합니다.
+        """
+        print(f"\n--- 전투 시작 (공격: {self.attacker_units} / 방어: {self.defender_units}) ---")
+        
+        # 공격자는 최대 3개, 방어자는 최대 2개의 주사위 사용
+        a_dice = self.roll_dice(min(3, self.attacker_units - 1))
+        d_dice = self.roll_dice(min(2, self.defender_units))
+        
+        print(f"공격자 주사위: {a_dice}")
+        print(f"방어자 주사위: {d_dice}")
+        
+        # 두 주사위 결과를 비교하여 높은 쪽이 승리 (방어자 우선 승리 원칙)
+        for a, d in zip(a_dice, d_dice):
+            if a > d:
+                self.defender_units -= 1
+                print("공격자 승리! 방어자 병력 1명 손실")
+            else:
+                self.attacker_units -= 1
+                print("방어자 승리! 공격자 병력 1명 손실")
+                
+        print(f"전투 결과: (공격 남음: {self.attacker_units} / 방어 남음: {self.defender_units})")
 
 if __name__ == "__main__":
-    risk()
+    # 공격자 10명, 방어자 5명으로 전투 시뮬레이션
+    battle = RiskBattleSimulator(10, 5)
+    battle.resolve_battle()
 ```

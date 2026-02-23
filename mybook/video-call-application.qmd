@@ -1,20 +1,62 @@
 ---
-title: "Video Call Application"
+title: "비디오 통화 애플리케이션 (Video Call Application)"
 ---
 
-Build an app that can let you video call anyone anywhere over the internet.
+인터넷을 통해 전 세계 어디서나 비디오 통화를 할 수 있는 앱을 만들어 봅시다. 실시간 영상과 음성을 주고받으며 지연 시간(Latency)을 최소화하는 것이 목표입니다.
 
-## Python Implementation
+이 프로젝트는 실시간 미디어 스트리밍 기술과 WebRTC(Web Real-Time Communication), 그리고 서버-클라이언트 간의 지속적인 통신(WebSocket 등)을 익히기에 아주 좋은 과제입니다. 특히 최근 원격 회의와 소통에 필수적인 영상 통화 시스템을 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **실시간 영상 및 음성 스트리밍 (WebRTC)**: 웹 브라우저나 모바일 기기 간에 직접 미디어 데이터를 주고받는 기술을 적용합니다.
+- **피어 투 피어 (P2P) 연결 및 신호 서버 (Signaling)**: 통화 당사자 간의 연결을 돕기 위해 WebSocket이나 서버를 통한 시그널링 과정을 구현합니다.
+- **NAT 트래버스 및 STUN/TURN 서버**: 방화벽이나 사설 IP 환경에서도 원활하게 통화할 수 있도록 중계 서버를 연동합니다.
+- **미디어 압축 및 코덱 (Codec)**: 비디오와 오디오 데이터를 효율적으로 압축하여 데이터 전송량을 줄이고 품질을 유지합니다.
+- **사용자 인터페이스 (GUI)**: 카메라 화면 미리보기, 통화 수락/거절 버튼, 마이크 음소거 기능 등을 포함한 UI를 구축합니다.
+
+## Python 구현 예시 (aiortc 라이브러리 활용 실시간 미디어 전송 시나리오)
 
 ```python
-def video_call_application():
+# 실제 구현 시 aiortc, opencv-python, asyncio 등이 필요합니다.
+# import asyncio
+# from aiortc import RTCPeerConnection, RTCSessionDescription
+
+class VideoCallApp:
     """
-    Implementation for Video Call Application
+    영상 통화를 위한 피어 투 피어 연결과 미디어 스트림을 관리합니다.
     """
-    print("Executing Video Call Application...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self):
+        # self.pc = RTCPeerConnection()
+        print("비디오 통화 엔진 시작.")
+
+    async def create_offer(self):
+        """
+        통화를 시작하기 위한 '오퍼(Offer)'를 생성합니다.
+        """
+        print("통화 요청(Offer) 생성 중...")
+        # offer = await self.pc.createOffer()
+        # await self.pc.setLocalDescription(offer)
+        
+        # 실제 시그널링 서버를 통해 상대방에게 전달
+        # print(f"생성된 오퍼: {self.pc.localDescription}")
+        
+        print("상대방의 응답을 기다리는 중...")
+        return True
+
+    async def handle_answer(self, answer_sdp):
+        """
+        상대방으로부터 받은 '앤서(Answer)'를 처리하여 연결을 완성합니다.
+        """
+        # answer = RTCSessionDescription(sdp=answer_sdp, type='answer')
+        # await self.pc.setRemoteDescription(answer)
+        print("상대방과 연결이 완료되었습니다. 영상 통화를 시작합니다.")
 
 if __name__ == "__main__":
-    video_call_application()
+    app = VideoCallApp()
+    
+    # 비동기 통화 시나리오 시뮬레이션
+    # loop = asyncio.get_event_loop()
+    # loop.run_until_complete(app.create_offer())
+    
+    # 팁: 영상 데이터 처리를 위해 OpenCV 라이브러리를 함께 활용해 보세요.
+    print("\n[팁] 'Socket.io'를 활용하면 시그널링 서버를 아주 쉽게 구축할 수 있습니다.")
 ```

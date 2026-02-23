@@ -1,20 +1,59 @@
 ---
-title: "Movie Recommendation System"
+title: "영화 추천 시스템 (Movie Recommendation System)"
 ---
 
-Build a recommendation system that lets you or any users choose the next movie that you want to watch. Instead of copying an existing movie recommender with a well studied algorithm, try to come up with your own algorithm and test it out.
+다음에 볼 영화를 선택하기 어려운 상황을 해결해 줄 나만의 영화 추천 시스템을 만들어 봅시다. 기존의 영화 추천 알고리즘을 그대로 가져다 쓰는 대신, 자신만의 아이디어를 바탕으로 설계하고 테스트해 보는 것이 목표입니다.
 
-## Python Implementation
+이 프로젝트는 추천 시스템의 핵심 원리인 협업 필터링(Collaborative Filtering)과 콘텐츠 기반 필터링(Content-based Filtering)을 이해하는 데 아주 좋습니다. 특히 수많은 영화 데이터 속에서 사용자의 취향을 정확하게 파악하고, 이를 바탕으로 개인화된 추천 목록을 생성하는 과정을 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **영화 및 이용자 데이터 수집**: TMDB API, MovieLens 등에서 영화 정보와 사용자 별점 데이터를 가져옵니다.
+- **콘텐츠 기반 필터링**: 영화의 장르, 감독, 배우, 줄거리 키워드 등을 분석하여 유사한 영화를 찾아냅니다.
+- **협업 필터링 (Collaborative Filtering)**: 나와 비슷한 영화 취향을 가진 다른 사용자들이 재미있게 본 영화를 추천합니다.
+- **하이브리드 추천 방식**: 여러 가지 추천 알고리즘을 조합하여 정확도와 다양성을 높입니다.
+- **사용자 인터페이스 (GUI)**: 사용자가 영화를 선택하고 별점을 매기면 실시간으로 추천 목록이 업데이트되는 UI를 구축합니다.
+
+## Python 구현 예시 (간단한 영화 장르 기반 추천 시나리오)
 
 ```python
-def movie_recommendation_system():
+# 실제 구현 시 pandas, scikit-learn 등을 활용합니다.
+# import pandas as pd
+# from sklearn.metrics.pairwise import cosine_similarity
+
+class MovieRecommender:
     """
-    Implementation for Movie Recommendation System
+    영화 데이터와 사용자 취향을 바탕으로 추천 결과를 생성합니다.
     """
-    print("Executing Movie Recommendation System...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self):
+        self.movies = [
+            {"id": 1, "title": "토이 스토리", "genres": ["애니메이션", "코미디"]},
+            {"id": 2, "title": "다크 나이트", "genres": ["액션", "범죄"]},
+            {"id": 3, "title": "인셉션", "genres": ["액션", "SF"]},
+            {"id": 4, "title": "라라랜드", "genres": ["로맨스", "뮤지컬"]},
+            {"id": 5, "title": "어벤져스", "genres": ["액션", "SF"]}
+        ]
+
+    def recommend_by_genre(self, favorite_genre):
+        """
+        좋아하는 장르를 포함한 영화 목록을 반환합니다.
+        """
+        print(f"사용자가 선호하는 장르 '{favorite_genre}'를 분석 중입니다...")
+        
+        results = [m['title'] for m in self.movies if favorite_genre in m['genres']]
+        
+        if results:
+            print(f"추천 영화: {', '.join(results)}")
+        else:
+            print("해당 장르의 영화를 찾을 수 없습니다.")
+        return results
 
 if __name__ == "__main__":
-    movie_recommendation_system()
+    recommender = MovieRecommender()
+    
+    # 장르 기반 추천 테스트
+    recommender.recommend_by_genre("액션")
+    recommender.recommend_by_genre("SF")
+    
+    # 팁: 실제 프로젝트에서는 영화 줄거리 벡터화를 통해 코사인 유사도를 계산해 보세요.
+    print("\n[팁] TF-IDF나 워드 임베딩을 활용하면 훨씬 정교한 추천이 가능합니다.")
 ```

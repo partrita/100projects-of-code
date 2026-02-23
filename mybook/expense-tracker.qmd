@@ -1,20 +1,77 @@
 ---
-title: "Expense Tracker"
+title: "지출 추적기 (Expense Tracker)"
 ---
 
-Create a simple interface (web app/phone app) you can use to add and categorize your expense. Generate monthly reports based on the inputs and write custom alerts for things like, "spending too much on coffee... as always".
+지출을 추가하고 카테고리별로 분류할 수 있는 간단한 지출 추적기(웹 앱 또는 폰 앱)를 만들어 봅시다. 입력한 데이터를 바탕으로 월간 보고서를 생성하고, 특정 지출이 너무 많을 때(예: "커피를 너무 많이 마셨어요!") 알림을 보내주는 기능까지 구현해 보세요.
 
-## Python Implementation
+이 프로젝트는 실생활에서 유용한 가계부 시스템을 구축하고, 데이터를 체계적으로 관리하는 방법을 익히기에 아주 좋습니다. 특히 지출 패턴을 분석하여 예산을 절약할 수 있는 인사이트를 제공하는 기능을 설계해 보세요.
+
+## 주요 개발 포인트
+- **지출 데이터베이스 설계**: 날짜, 카테고리(식비, 교통비, 취미 등), 금액, 설명을 저장합니다.
+- **월간 보고서 생성**: 지정된 기간의 총지출액과 카테고리별 비중을 계산하여 요약합니다.
+- **맞춤형 알림 설정**: 특정 카테고리의 지출이 예산을 초과하면 경고 메시지를 보여줍니다.
+- **데이터 시각화**: 파이 차트(Pie Chart)나 바 차트(Bar Chart)를 사용하여 지출 분포를 시각화합니다.
+- **파일 내보내기**: 기록한 데이터를 CSV나 Excel 파일로 저장하여 외부 프로그램에서 분석할 수 있도록 합니다.
+
+## Python 구현 예시 (간단한 지출 관리 프로그램)
 
 ```python
-def expense_tracker():
+from datetime import datetime
+
+class ExpenseTracker:
     """
-    Implementation for Expense Tracker
+    지출 내역을 저장하고 분석하는 클래스입니다.
     """
-    print("Executing Expense Tracker...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self):
+        self.expenses = []
+        self.categories = ["식비", "교통비", "쇼핑", "교육", "기타"]
+
+    def add_expense(self, amount, category, description):
+        """
+        새로운 지출 내역을 기록합니다.
+        """
+        if category not in self.categories:
+            category = "기타"
+            
+        expense = {
+            "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "amount": amount,
+            "category": category,
+            "description": description
+        }
+        self.expenses.append(expense)
+        print(f"[{category}] {amount:,}원 지출 등록 완료: {description}")
+
+    def get_summary(self):
+        """
+        카테고리별 지출 요약을 계산합니다.
+        """
+        summary = {cat: 0 for cat in self.categories}
+        total = 0
+        
+        for exp in self.expenses:
+            summary[exp['category']] += exp['amount']
+            total += exp['amount']
+            
+        print("\n--- 지출 요약 리포트 ---")
+        for cat, amount in summary.items():
+            if amount > 0:
+                percent = (amount / total) * 100
+                print(f"{cat}: {amount:,}원 ({percent:.1f}%)")
+        print(f"총 지출액: {total:,}원")
+        
+        # 간단한 경고 기능
+        if summary.get("식비", 0) > 200000:
+            print("경고: 이번 달 식비 지출이 너무 많습니다! 외식을 줄여보세요.")
 
 if __name__ == "__main__":
-    expense_tracker()
+    tracker = ExpenseTracker()
+    
+    # 지출 내역 입력 테스트
+    tracker.add_expense(8500, "식비", "점심 김치찌개")
+    tracker.add_expense(12000, "교통비", "버스 카드 충전")
+    tracker.add_expense(50000, "쇼핑", "새 셔츠 구매")
+    tracker.add_expense(4500, "식비", "카페 아메리카노")
+    
+    tracker.get_summary()
 ```

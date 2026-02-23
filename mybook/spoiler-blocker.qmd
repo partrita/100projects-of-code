@@ -1,20 +1,62 @@
 ---
-title: "Spoiler Blocker"
+title: "스포일러 차단기 (Spoiler Blocker)"
 ---
 
-Build a browser extension that blocks movie spoilers on websites. I put it in AI as you have to think of a changing algorithm that should be smart enough to identify spoilers from a piece of text.
+웹사이트에서 영화나 드라마의 스포일러를 감지하고 차단해 주는 브라우저 확장 프로그램을 만들어 봅시다. 텍스트에서 스포일러성 정보를 식별하고 사용자에게 노출되지 않도록 가리는 것이 목표입니다.
 
-## Python Implementation
+이 프로젝트는 자연어 처리(NLP)와 브라우저 익스텐션(Browser Extension) 개발의 핵심 기술을 익히기에 아주 좋은 과제입니다. 특히 사용자가 설정한 작품의 스포일러를 정확하게 찾아내어 가리는 독창적인 시스템을 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **텍스트 분석 및 스포일러 탐지 (NLP)**: 영화 제목, 등장인물, 줄거리와 관련된 키워드를 분석하여 스포일러를 가려냅니다.
+- **브라우저 확장 프로그램 개발 (Manifest v3)**: Chrome이나 Firefox에서 동작하며 웹 페이지의 DOM(Document Object Model) 요소를 조작합니다.
+- **머신러닝 기반 스포일러 분류**: 단순한 키워드 매칭을 넘어, 문맥에 따라 스포일러 여부를 확률적으로 판단하는 모델을 학습시킵니다.
+- **개인화된 스포일러 설정**: 사용자가 차단하고 싶은 영화나 드라마 작품을 등록하고 관리하는 기능을 제공합니다.
+- **사용자 인터페이스 (GUI)**: 팝업 창을 통해 차단 상태를 켜고 끄며, 차단된 횟수와 상세 설정을 보여주는 대시보드를 구축합니다.
+
+## Python 구현 예시 (간단한 키워드 기반 스포일러 탐지 로직)
 
 ```python
-def spoiler_blocker():
+# 실제 구현 시 텍스트 데이터를 분석하기 위해 NLP 라이브러리(NLTK, KoNLPy 등)를 사용합니다.
+# from konlpy.tag import Okt
+
+class SpoilerBlocker:
     """
-    Implementation for Spoiler Blocker
+    제공된 문장에서 영화나 드라마 스포일러를 탐지하여 차단 여부를 결정합니다.
     """
-    print("Executing Spoiler Blocker...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self, target_titles):
+        self.target_titles = target_titles
+        self.spoiler_keywords = ["죽다", "범인", "결말", "정체", "반전"]
+        print(f"차단 대상 작품: {', '.join(target_titles)}")
+
+    def check_spoiler(self, text):
+        """
+        문장에 스포일러가 포함되어 있는지 확인합니다. (시뮬레이션)
+        """
+        print(f"분석 중: {text[:50]}...")
+        
+        # 제목이나 등장인물이 포함되어 있는지 확인
+        has_target = any(title in text for title in self.target_titles)
+        # 스포일러성 키워드가 포함되어 있는지 확인
+        has_spoiler = any(k in text for k in self.spoiler_keywords)
+        
+        is_spoiler = has_target and has_spoiler
+        result = "스포일러 감지" if is_spoiler else "안전함"
+        print(f"결과: {result}")
+        return is_spoiler
 
 if __name__ == "__main__":
-    spoiler_blocker()
+    # 타겟 작품 설정 (예: 어벤져스)
+    titles = ["어벤져스", "타노스", "아이언맨"]
+    blocker = SpoilerBlocker(titles)
+    
+    # 텍스트 테스트
+    text1 = "어벤져스 정말 재미있어요! 꼭 보세요."
+    text2 = "타노스의 정체는 사실... (중략) 죽어요."
+    
+    is_spoil = blocker.check_spoiler(text1)
+    print("-" * 30)
+    is_spoil = blocker.check_spoiler(text2)
+    
+    # 팁: 브라우저에서는 JavaScript를 사용하여 해당 텍스트를 흐리게(Blur) 처리해 보세요.
+    print("\n[팁] 'spaCy'나 'HuggingFace'의 분류 모델을 활용하면 더 정교한 스포일러 차단이 가능합니다.")
 ```

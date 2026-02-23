@@ -1,20 +1,71 @@
 ---
-title: "Math Editor"
+title: "수식 편집기 (Math Editor)"
 ---
 
-Build an app that will properly format equations that a user inputs. I personally find it really inconvenient to work with a special software to just write and display equations properly like Latex, thus, if you build something that can convert plain English text to properly formatted equations, ping me!
+사용자가 입력한 수식을 보기 좋게 정렬하고 출력해 주는 앱을 만들어 봅시다. 특히 LaTeX와 같은 전문 소프트웨어를 쓰지 않아도 일상적인 언어로 수식을 입력하면 이를 표준 형식으로 변환해 주는 기능을 구현해 보세요.
 
-## Python Implementation
+이 프로젝트는 텍스트 파싱과 데이터 포맷팅, 그리고 복잡한 수식을 시각적으로 렌더링하는 방법을 익히기에 아주 좋습니다. 특히 수학자나 공학자들이 손쉽게 수식을 작성하고 공유할 수 있도록 돕는 유용한 도구를 설계해 보세요.
+
+## 주요 개발 포인트
+- **수식 파싱 엔진**: 사용자가 입력한 문자열(예: 'x의 제곱 + y의 제곱')을 수학적 구조로 분석합니다.
+- **LaTeX 변환기**: 분석된 수식을 LaTeX나 MathML과 같은 표준 포맷으로 자동 변환합니다.
+- **실시간 미리보기 (Live Preview)**: 사용자가 입력하는 즉시 렌더링된 수식의 모습을 화면에 보여줍니다.
+- **이미지 내보내기**: 완성된 수식을 PNG나 SVG 이미지 파일로 저장하여 문서에 삽입할 수 있도록 합니다.
+- **수식 자동 완성**: 자주 사용하는 수학 기호나 함수(sin, log, sqrt 등)를 자동으로 추천해 줍니다.
+
+## Python 구현 예시 (간단한 수식 파싱 및 LaTeX 변환 시뮬레이션)
 
 ```python
-def math_editor():
+import string
+
+class MathEditor:
     """
-    Implementation for Math Editor
+    텍스트 입력을 받아 수식 형태로 변환하고 관리합니다.
     """
-    print("Executing Math Editor...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self):
+        self.keywords = {
+            "제곱": "^2", "세제곱": "^3", "더하기": "+", "빼기": "-", "곱하기": "*",
+            "나누기": "/", "루트": "sqrt", "파이": "pi", "시그마": "sum"
+        }
+
+    def text_to_latex(self, input_text):
+        """
+        한글로 된 수식 설명을 LaTeX 스타일로 변환합니다.
+        """
+        print(f"입력: {input_text}")
+        
+        words = input_text.split()
+        latex_parts = []
+        
+        for word in words:
+            # 키워드 사전에 있는 경우 변환, 아니면 그대로 유지
+            if word in self.keywords:
+                latex_parts.append(self.keywords[word])
+            else:
+                latex_parts.append(word)
+        
+        result = "".join(latex_parts)
+        print(f"변환된 LaTeX: ${result}$")
+        return result
+
+    def render_preview(self, latex_str):
+        """
+        변환된 수식을 시각적으로 보여주는 시뮬레이션입니다.
+        """
+        # 실제로는 matplotlib나 외부 API를 사용하여 이미지로 렌더링
+        print(f"[미리보기] {latex_str}를 화면에 렌더링 중...")
+        pass
 
 if __name__ == "__main__":
-    math_editor()
+    editor = MathEditor()
+    
+    # 수식 변환 테스트
+    formula_1 = "x 제곱 더하기 y 제곱"
+    latex_1 = editor.text_to_latex(formula_1)
+    
+    formula_2 = "루트 x 더하기 파이"
+    latex_2 = editor.text_to_latex(formula_2)
+    
+    # 렌더링 시뮬레이션 호출
+    editor.render_preview(latex_1)
 ```

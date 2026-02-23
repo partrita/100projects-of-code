@@ -1,20 +1,58 @@
 ---
-title: "Folder Encrypter"
+title: "폴더 암호화 도구 (Folder Encrypter)"
 ---
 
-Build a piece of software that can encrypt and lock a selected folder. The contents of the folder should not be accessible/copied/moved without the correct password.
+지정된 폴더를 선택하여 암호화하고 잠글 수 있는 소프트웨어를 개발해 봅시다. 올바른 비밀번호를 입력하지 않으면 폴더 내부의 파일을 읽거나 복사하거나 이동할 수 없도록 보호하는 것이 목표입니다.
 
-## Python Implementation
+이 프로젝트는 파일 시스템의 재귀적 접근과 강력한 암호화 알고리즘(AES 등)을 다루는 방법을 익히기에 아주 좋습니다. 특히 폴더 전체를 하나의 안전한 저장소로 만들거나, 개별 파일을 모두 암호화하는 방식을 고민해 보세요.
+
+## 주요 개발 포인트
+- **재귀적 파일 암호화**: 폴더 내부의 모든 하위 폴더와 파일들을 순회하며 암호화합니다.
+- **강력한 암호화 알고리즘 (AES-256)**: 현대적인 암호화 표준을 사용하여 데이터를 안전하게 보호합니다.
+- **비밀번호 해싱 및 검증**: 사용자의 비밀번호를 솔트(Salt)와 함께 해싱하여 안전하게 저장하고 비교합니다.
+- **메타데이터 관리**: 암호화된 파일의 원본 이름, 크기, 권한 등을 보관했다가 복호화 시 복구합니다.
+- **사용자 인터페이스 (GUI)**: 폴더를 선택하고 암호를 입력하기 위한 편리한 창을 구현합니다.
+
+## Python 구현 예시 (간단한 폴더 순회 및 암호화 로직 시뮬레이션)
 
 ```python
-def folder_encrypter():
+import os
+import hashlib
+
+def get_key_from_password(password):
     """
-    Implementation for Folder Encrypter
+    사용자의 비밀번호를 SHA-256 해시로 변환하여 암호화 키로 사용합니다.
     """
-    print("Executing Folder Encrypter...")
-    # TODO: Add your implementation here
-    pass
+    return hashlib.sha256(password.encode()).digest()
+
+def encrypt_folder(folder_path, password):
+    """
+    폴더 내의 모든 파일을 암호화합니다. (실제 구현 시 암호화 라이브러리 연동)
+    """
+    print(f"'{folder_path}' 폴더 암호화 중...")
+    key = get_key_from_password(password)
+    
+    for root, dirs, files in os.walk(folder_path):
+        for file in files:
+            file_path = os.path.join(root, file)
+            print(f"암호화 중: {file_path}")
+            # TODO: 실제 파일 데이터를 읽어서 AES 암호화 후 덮어쓰기 또는 새 파일 생성
+            # with open(file_path, 'rb') as f:
+            #     data = f.read()
+            # encrypted_data = aes_encrypt(data, key)
+            # with open(file_path + '.locked', 'wb') as f:
+            #     f.write(encrypted_data)
+            
+    print("\n폴더 암호화가 완료되었습니다.")
 
 if __name__ == "__main__":
-    folder_encrypter()
+    test_folder = "my_secrets"
+    # 테스트 폴더와 파일 생성
+    if not os.path.exists(test_folder):
+        os.makedirs(test_folder)
+        with open(os.path.join(test_folder, "test.txt"), "w") as f:
+            f.write("이것은 비밀 문서입니다.")
+            
+    my_password = "super_secret_password"
+    encrypt_folder(test_folder, my_password)
 ```

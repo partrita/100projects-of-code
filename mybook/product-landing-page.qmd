@@ -1,20 +1,44 @@
 ---
-title: "Product Landing Page"
+title: "제품 랜딩 페이지 (Product Landing Page)"
 ---
 
-Build the ideal product landing page according to you. Choose a product, build a page and showcase that on your portfolio.
+여러분의 아이디어를 한눈에 보여줄 수 있는 이상적인 제품 랜딩 페이지를 만들어 봅시다. 특정 제품을 선택하여 페이지를 구축하고, 이를 포트폴리오에 자랑해 보세요.
 
-## Python Implementation
+이 프로젝트는 마케팅적인 관점과 사용자 경험(UX)을 결합하여 방문자가 제품의 가치를 즉시 이해하도록 돕는 유용한 도구입니다. 특히 최근 웹 트렌드를 반영하고 구매나 가입을 유도하는 강력한 콜 투 액션(CTA) 버튼을 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **제품의 핵심 가치 전달 (Value Proposition)**: 큰 헤드라인과 매력적인 이미지를 사용하여 제품의 장점을 명확하게 설명합니다.
+- **기능 및 혜택 설명 (Features)**: 아이콘이나 짧은 텍스트를 카드 형태로 배치하여 상세한 기능을 소개합니다.
+- **고객 후기 및 신뢰성 확보 (Social Proof)**: 실제 사용자의 리뷰나 추천사, 파트너 로고 등을 추가합니다.
+- **가격 및 구독 모델 (Pricing)**: 다양한 가격 옵션을 표 형태로 깔끔하게 정리하여 보여줍니다.
+- **사용자 인터페이스 (GUI)**: 부드러운 스크롤 애니메이션과 깔끔한 폰트, 일관된 색상 테마를 적용합니다.
+
+## Python 구현 예시 (Flask를 활용한 제품 랜딩 페이지 서버)
 
 ```python
-def product_landing_page():
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+# 제품 정보 (가상의 데이터)
+product_info = {
+    "name": "나만의 프로그래밍 봇",
+    "description": "24시간 여러분의 코딩을 도와주는 똑똑한 비서입니다.",
+    "price": "월 9,900원"
+}
+
+@app.route("/")
+def index():
     """
-    Implementation for Product Landing Page
+    제품 랜딩 페이지 홈 화면을 렌더링합니다.
     """
-    print("Executing Product Landing Page...")
-    # TODO: Add your implementation here
-    pass
+    print(f"'{product_info['name']}' 제품 랜딩 페이지를 렌더링 중입니다...")
+    # 실제로는 render_template('landing.html', product=product_info) 사용
+    return f"{product_info['name']} - {product_info['description']} (가격: {product_info['price']})"
 
 if __name__ == "__main__":
-    product_landing_page()
+    # Flask 서버 테스트 실행
+    # app.run(debug=True)
+    print("실제 랜딩 페이지를 보려면 Flask 서버를 실행하고 브라우저에서 접속하세요.")
+    print(index())
 ```

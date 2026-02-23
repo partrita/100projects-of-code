@@ -1,20 +1,68 @@
 ---
-title: "P2P File Sharing"
+title: "P2P 파일 공유 앱 (P2P File Sharing)"
 ---
 
-Build an app that will allow for peer-to-peer file sharing securely over the internet. This will help you transfer files securely from one location to another or send something to your friend.
+인터넷을 통해 안전하게 피어 투 피어(P2P) 방식으로 파일을 공유할 수 있는 앱을 만들어 봅시다. 이 도구는 한 위치에서 다른 위치로 파일을 안전하게 전송하거나, 친구에게 직접 무언가를 보내는 데 도움을 줍니다.
 
-## Python Implementation
+이 프로젝트는 네트워크 통신의 핵심인 P2P 프로토콜을 이해하고, 중앙 서버 없이 클라이언트 간에 직접 데이터를 주고받는 방법을 익히기에 아주 좋습니다. 특히 파일 전송 중에 데이터가 손상되지 않도록 보장하고, 암호화를 통해 보안성을 높이는 과정을 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **P2P 네트워크 프로토콜**: 비트토렌트(BitTorrent)와 같은 분산형 네트워크 구조를 이해하고 구현합니다.
+- **안전한 데이터 전송**: TLS/SSL 등을 적용하여 전송 중인 파일을 암호화하고 보호합니다.
+- **직접 소켓 통신 (TCP/UDP)**: 서버를 거치지 않고 사용자 간에 직접 연결하여 데이터를 송수신합니다.
+- **파일 분할 및 병합**: 대용량 파일을 여러 조각(Chunks)으로 나누어 보내고, 수신 측에서 다시 합치는 로직을 개발합니다.
+- **사용자 인터페이스 (GUI)**: 파일 업로드, 다운로드 상태 표시줄, 접속된 피어 목록을 보여주는 UI를 구축합니다.
+
+## Python 구현 예시 (간단한 소켓 파일 서버/클라이언트 시뮬레이션)
 
 ```python
-def p2p_file_sharing():
+import socket
+import os
+
+class P2PFileSharer:
     """
-    Implementation for P2P File Sharing
+    클라이언트 간 직접 연결을 통해 파일을 송수신합니다.
     """
-    print("Executing P2P File Sharing...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self, host='127.0.0.1', port=5001):
+        self.host = host
+        self.port = port
+
+    def send_file(self, filename):
+        """
+        지정된 파일을 수신 대기 중인 다른 피어에게 보냅니다.
+        """
+        print(f"'{filename}' 파일을 보낼 준비 중입니다...")
+        
+        # 실제 구현 시 소켓을 생성하고 수신 측 IP로 접속
+        # with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        #     s.connect((self.host, self.port))
+        #     with open(filename, "rb") as f:
+        #         s.sendall(f.read())
+        
+        print("파일 전송이 완료되었습니다.")
+
+    def receive_file(self, save_as):
+        """
+        다른 피어로부터 파일을 받아서 저장합니다.
+        """
+        print(f"파일 수신을 위해 {self.port}번 포트에서 대기 중입니다...")
+        
+        # 실제 구현 시 소켓 서버를 열고 연결을 수락
+        # with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        #     s.bind((self.host, self.port))
+        #     s.listen(1)
+        #     conn, addr = s.accept()
+        #     with conn:
+        #         data = conn.recv(4096)
+        #         with open(save_as, "wb") as f:
+        #             f.write(data)
+        
+        print(f"파일을 성공적으로 받아 '{save_as}'로 저장했습니다.")
 
 if __name__ == "__main__":
-    p2p_file_sharing()
+    p2p = P2PFileSharer()
+    
+    # 송수신 시나리오 테스트
+    p2p.send_file("my_photo.jpg")
+    p2p.receive_file("received_photo.jpg")
 ```

@@ -1,20 +1,69 @@
 ---
-title: "Calorie Counter"
+title: "칼로리 카운터 (Calorie Counter)"
 ---
 
-Build an app that will track the amount of calories that you eat everyday. Try to also incorporate information about other macro and micro nutrients to provide a more complete picture.
+매일 섭취하는 칼로리를 추적하는 앱을 만들어 봅시다. 단순히 칼로리 수치뿐만 아니라, 탄수화물, 단백질, 지방 등 영양소(매크로 및 마이크로 영양소) 정보를 포함하여 건강 상태를 종합적으로 파악할 수 있는 도구를 구축해 보세요.
 
-## Python Implementation
+식단 관리뿐만 아니라 목표 체중 설정, 기초 대사량 계산 등 개인 맞춤형 정보를 제공함으로써 사용자에게 실질적인 도움을 줄 수 있습니다. 데이터를 시각화하여 변화 과정을 한눈에 보여주는 기능도 추가해 보세요.
+
+## 주요 개발 포인트
+- **사용자 프로필**: 나이, 체중, 신장, 활동 수준 등을 기반으로 일일 권장 칼로리를 계산합니다.
+- **식품 데이터베이스**: 식품의 영양 정보를 관리하거나 외부 API(예: Edamam, FatSecret 등)를 연동합니다.
+- **영양소 추적 (Macro Tracking)**: 탄수화물, 단백질, 지방의 비율을 실시간으로 계산하고 목표치와 비교합니다.
+- **일일 기록 로그**: 날짜별로 섭취한 음식을 저장하고 조회할 수 있는 로그 기능을 구현합니다.
+- **시각화 (Chart)**: 일주일 또는 한 달간의 칼로리 섭취 변화를 그래프로 시각화합니다.
+
+## Python 구현 예시 (간단한 영양소 합계 계산기)
 
 ```python
-def calorie_counter():
+class CalorieTracker:
     """
-    Implementation for Calorie Counter
+    식단과 영양소를 추적하는 클래스입니다.
     """
-    print("Executing Calorie Counter...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self):
+        self.daily_log = []
+        self.goals = {'calories': 2000, 'protein': 150, 'carbs': 250, 'fats': 70}
+
+    def add_food(self, name, cal, protein, carbs, fats):
+        food_item = {
+            'name': name,
+            'cal': cal,
+            'protein': protein,
+            'carbs': carbs,
+            'fats': fats
+        }
+        self.daily_log.append(food_item)
+        print(f"'{name}'이(가) 추가되었습니다. ({cal} kcal)")
+
+    def calculate_totals(self):
+        totals = {'cal': 0, 'protein': 0, 'carbs': 0, 'fats': 0}
+        for item in self.daily_log:
+            totals['cal'] += item['cal']
+            totals['protein'] += item['protein']
+            totals['carbs'] += item['carbs']
+            totals['fats'] += item['fats']
+        return totals
+
+    def display_report(self):
+        totals = self.calculate_totals()
+        print("\n--- 오늘의 영양 섭취 리포트 ---")
+        print(f"총 칼로리: {totals['cal']} / {self.goals['calories']} kcal")
+        print(f"단백질: {totals['protein']} / {self.goals['protein']} g")
+        print(f"탄수화물: {totals['carbs']} / {self.goals['carbs']} g")
+        print(f"지방: {totals['fats']} / {self.goals['fats']} g")
+        
+        if totals['cal'] > self.goals['calories']:
+            print("주의! 목표 칼로리를 초과했습니다.")
+        else:
+            print(f"남은 칼로리: {self.goals['calories'] - totals['cal']} kcal")
 
 if __name__ == "__main__":
-    calorie_counter()
+    tracker = CalorieTracker()
+    
+    # 예시 식품 추가
+    tracker.add_food("닭가슴살 샐러드", 350, 30, 10, 5)
+    tracker.add_food("카페 라떼", 150, 5, 12, 6)
+    tracker.add_food("스테이크 정식", 800, 60, 40, 35)
+    
+    tracker.display_report()
 ```

@@ -1,20 +1,77 @@
 ---
-title: "Snake"
+title: "스네이크 (Snake)"
 ---
 
-This is one of the simplest items on the list. For an additional challenge, try generating different maps to play in.
+가장 단순하지만 중독성 있는 고전 게임인 스네이크(Snake)를 만들어 봅시다. 몸집이 점점 커지는 뱀을 조종하며 먹이를 먹고 살아남는 기본 기능부터, 무작위 맵 생성과 같은 보너스 점수 기능까지 구현해 보세요.
 
-## Python Implementation
+이 프로젝트는 게임의 기본 물리(이동, 성장, 충돌)와 실시간 입력을 처리하는 방법을 익히기에 아주 좋습니다. 특히 최근 복고풍 게임의 감성을 살린 픽셀 아트 그래픽과 사운드를 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **뱀의 이동 및 성장 시스템**: 머리가 이동할 때 꼬리가 따라오고, 먹이를 먹으면 몸길이가 늘어나는 로직을 구현합니다.
+- **무작위 먹이 생성 (Food Spawning)**: 화면 안의 비어 있는 공간에 무작위로 먹이가 나타나도록 합니다.
+- **충돌 감지 (Collision Detection)**: 뱀의 머리가 벽이나 자신의 몸에 닿았을 때 게임 오버를 판별합니다.
+- **무작위 지형 및 장애물**: 매 게임마다 맵의 모양이나 장애물 배치를 바꿔서 난이도를 높입니다.
+- **사용자 인터페이스 (GUI)**: 현재 점수(Score)와 최고 점수(High Score)를 보여주고, 키보드 방향키로 뱀을 조종하는 UI를 구축합니다.
+
+## Python 구현 예시 (Pygame을 활용한 간단한 스네이크 루프)
 
 ```python
-def snake():
+import pygame
+import random
+import sys
+
+# Pygame 초기화 및 화면 설정
+pygame.init()
+WIDTH, HEIGHT = 400, 400
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+clock = pygame.time.Clock()
+
+# 게임 변수 설정
+snake_pos = [[100, 50], [90, 50], [80, 50]]
+food_pos = [random.randrange(1, (WIDTH//10)) * 10, random.randrange(1, (HEIGHT//10)) * 10]
+direction = 'RIGHT'
+
+def run_snake_sim():
     """
-    Implementation for Snake
+    스네이크 게임의 이동과 먹이 생성, 충돌을 시뮬레이션합니다.
     """
-    print("Executing Snake...")
-    # TODO: Add your implementation here
-    pass
+    global snake_pos, food_pos, direction
+    print("스네이크 게임 시뮬레이션 시작! 방향키로 조종하세요.")
+    
+    running = True
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+        # 뱀 이동 (머리 위치 업데이트)
+        head = list(snake_pos[0])
+        if direction == 'RIGHT': head[0] += 10
+        elif direction == 'LEFT': head[0] -= 10
+        elif direction == 'UP': head[1] -= 10
+        elif direction == 'DOWN': head[1] += 10
+        
+        snake_pos.insert(0, head)
+        
+        # 먹이를 먹었는지 확인
+        if head == food_pos:
+            print("먹이를 먹었습니다! 점수 +10")
+            food_pos = [random.randrange(1, (WIDTH//10)) * 10, random.randrange(1, (HEIGHT//10)) * 10]
+        else:
+            snake_pos.pop() # 먹이를 못 먹었으면 꼬리 제거 (이동 효과)
+            
+        # 화면 그리기
+        screen.fill((0, 0, 0)) # 검정 배경
+        for pos in snake_pos:
+            pygame.draw.rect(screen, (0, 255, 0), pygame.Rect(pos[0], pos[1], 10, 10)) # 뱀
+        pygame.draw.rect(screen, (255, 0, 0), pygame.Rect(food_pos[0], food_pos[1], 10, 10)) # 먹이
+        
+        pygame.display.flip()
+        clock.tick(15) # 속도 조절
 
 if __name__ == "__main__":
-    snake()
+    # Pygame 설치 시 실행 가능
+    # run_snake_sim()
+    print("실제 게임을 실행하려면 Pygame 설치 후 위 함수를 호출하세요.")
 ```

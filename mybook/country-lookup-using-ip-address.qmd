@@ -1,20 +1,50 @@
 ---
-title: "Country Lookup using IP address"
+title: "IP 주소를 활용한 국가 조회 (Country Lookup using IP address)"
 ---
 
-Can you find the country from a provided IP address? Write a script that can help you with this. For bonus points, try to figure out a more local location from the IP address.
+제공된 IP 주소를 통해 해당 IP가 어느 국가에서 접속된 것인지 찾아내는 스크립트를 작성해 보세요. 보너스 챌린지로, 국가를 넘어 도시나 더 상세한 지역 위치까지 파악해 보는 것도 재미있을 것입니다.
 
-## Python Implementation
+이 프로젝트는 네트워크 프로토콜에 대한 이해를 돕고, 외부 API를 연동하여 실제 데이터를 가져오는 과정을 연습하기에 좋습니다. 또한 수집된 위치 정보를 지도 위에 표시하거나 통계를 내는 등 다양한 방식으로 확장할 수 있습니다.
+
+## 주요 개발 포인트
+- **IP 지오로케이션 API 연동**: IPStack, ip-api, MaxMind 등 유명한 지오로케이션 서비스를 활용합니다.
+- **데이터 파싱**: API로부터 받은 JSON 데이터를 분석하여 국가, 도시, 위도, 경도 등을 추출합니다.
+- **사용자 인터페이스**: CLI에서 IP를 입력하면 결과를 즉시 출력하거나, 웹 대시보드에서 지도로 보여줍니다.
+- **오프라인 데이터베이스 활용**: API 호출 제한을 피하기 위해 로컬에 GeoIP 데이터베이스를 구축해 봅니다.
+
+## Python 구현 예시 (간단한 IP 위치 조회 스크립트)
 
 ```python
-def country_lookup_using_ip_address():
+import requests
+
+def lookup_ip(ip_address):
     """
-    Implementation for Country Lookup using IP address
+    공용 API를 호출하여 지정된 IP 주소의 위치 정보를 가져옵니다.
     """
-    print("Executing Country Lookup using IP address...")
-    # TODO: Add your implementation here
-    pass
+    print(f"IP 주소 '{ip_address}'의 위치를 조회 중...")
+    
+    # ip-api.com의 무료 API 사용 예시 (상업용 사용 시 주의)
+    url = f"http://ip-api.com/json/{ip_address}"
+    
+    try:
+        response = requests.get(url)
+        data = response.json()
+        
+        if data['status'] == 'success':
+            print(f"조회 결과:")
+            print(f" - 국가: {data['country']} ({data['countryCode']})")
+            print(f" - 지역: {data['regionName']}")
+            print(f" - 도시: {data['city']}")
+            print(f" - 위도/경도: {data['lat']}, {data['lon']}")
+            return data
+        else:
+            print("위치 정보를 찾을 수 없습니다.")
+    except Exception as e:
+        print(f"오류 발생: {e}")
+    return None
 
 if __name__ == "__main__":
-    country_lookup_using_ip_address()
+    # 구글 퍼블릭 DNS IP로 테스트
+    test_ip = "8.8.8.8"
+    lookup_ip(test_ip)
 ```

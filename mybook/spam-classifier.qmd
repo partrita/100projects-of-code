@@ -1,20 +1,65 @@
 ---
-title: "Spam Classifier"
+title: "스팸 분류기 (Spam Classifier)"
 ---
 
-Build a spam classifier that filters ads and other unrequired emails from people that you don't really want to look at.
+광고나 원치 않는 이메일을 필터링해 주는 스팸 분류기를 만들어 봅시다. 머신러닝 기술을 사용하여 이메일의 내용을 분석하고, 스팸인지 아닌지 자동으로 판별하는 것이 목표입니다.
 
-## Python Implementation
+이 프로젝트는 자연어 처리(NLP)와 텍스트 분류 알고리즘(Naive Bayes 등)의 작동 원리를 익히기에 아주 좋은 과제입니다. 특히 최근 대규모 언어 모델을 활용하여 더 정교하게 스팸을 필터링하는 독창적인 시스템을 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **텍스트 데이터 전처리 (Preprocessing)**: 불용어(Stopwords) 제거, 토큰화(Tokenization), 스테밍(Stemming) 등을 통해 텍스트를 정제합니다.
+- **특징 추출 (Feature Extraction)**: TF-IDF나 CountVectorizer를 사용하여 텍스트 데이터를 숫자로 변환합니다.
+- **머신러닝 모델 선택 (Model Selection)**: Naive Bayes, Support Vector Machine(SVM), Logistic Regression 등 다양한 분류 모델을 테스트합니다.
+- **모델 훈련 및 성능 평가 (Evaluation)**: 정확도(Accuracy), 정밀도(Precision), 재현율(Recall) 등을 지표로 사용하여 모델의 성능을 측정합니다.
+- **사용자 인터페이스 (GUI)**: 이메일 본문을 입력하고 스팸 여부를 즉시 확인하는 UI를 구축합니다.
+
+## Python 구현 예시 (Naive Bayes 기반 간단한 스팸 분류 로직)
 
 ```python
-def spam_classifier():
+# 실제 구현 시 scikit-learn, nltk 등을 활용합니다.
+# from sklearn.feature_extraction.text import CountVectorizer
+# from sklearn.naive_bayes import MultinomialNB
+
+class SpamClassifier:
     """
-    Implementation for Spam Classifier
+    이메일 내용을 분석하여 스팸(Spam) 또는 햄(Ham, 정상)으로 분류합니다.
     """
-    print("Executing Spam Classifier...")
-    # TODO: Add your implementation here
-    pass
+    def __init__(self):
+        # self.vectorizer = CountVectorizer()
+        # self.model = MultinomialNB()
+        print("스팸 분류 엔진 초기화 완료.")
+
+    def train_model(self, emails, labels):
+        """
+        제공된 데이터로 분류기 모델을 훈련시킵니다.
+        """
+        # X = self.vectorizer.fit_transform(emails)
+        # self.model.fit(X, labels)
+        print("모델 훈련이 완료되었습니다.")
+
+    def predict_spam(self, email_text):
+        """
+        새로운 이메일이 스팸인지 예측합니다. (시뮬레이션)
+        """
+        print(f"분석 중: {email_text[:50]}...")
+        
+        # 간단한 키워드 기반 시뮬레이션
+        spam_keywords = ["대출", "무료", "당첨", "축하", "광고"]
+        is_spam = any(k in email_text for k in spam_keywords)
+        
+        result = "스팸" if is_spam else "정상"
+        print(f"분류 결과: {result}")
+        return result
 
 if __name__ == "__main__":
-    spam_classifier()
+    classifier = SpamClassifier()
+    
+    # 모델 훈련 (시나리오)
+    train_emails = ["무료 당첨 기회를 놓치지 마세요!", "내일 회의 시간 변경 안내", "초저금리 대출 즉시 승인"]
+    train_labels = ["스팸", "정상", "스팸"]
+    classifier.train_model(train_emails, train_labels)
+    
+    # 예측 테스트
+    classifier.predict_spam("안녕하세요, 지난번에 말씀하신 자료 보냅니다.")
+    classifier.predict_spam("대출 광고: 지금 바로 신청하세요!")
 ```

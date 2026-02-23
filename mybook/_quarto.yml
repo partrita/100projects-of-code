@@ -6,9 +6,6 @@ book:
   date: 2/20/2026
   chapters:
   - index.qmd
-  - intro.qmd
-  - summary.qmd
-  - references.qmd
   - ftp-client.qmd
   - http-server.qmd
   - web-scraper.qmd

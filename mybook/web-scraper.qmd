@@ -1,20 +1,61 @@
 ---
-title: "Web Scraper"
+title: "웹 스크래퍼 (Web Scraper)"
 ---
 
-Build a web scraper that takes in a URL/Keyword as input and returns matching results from the web related to the input. You can also build a product searcher or something like that.
+URL이나 키워드를 입력받아 웹에서 일치하는 결과를 수집해 주는 웹 스크래퍼를 만들어 봅시다. 단순히 정보를 가져오는 것을 넘어, 특정 제품을 검색하고 최저가를 찾는 등 실용적인 도구를 만드는 것이 목표입니다.
 
-## Python Implementation
+이 프로젝트는 웹의 데이터를 자동으로 수집하고 분석하며, 대량의 정보를 체계적으로 정리하는 방법을 익히기에 아주 좋은 과제입니다. 특히 최근 인터넷에 널려 있는 방대한 데이터를 가치 있는 정보로 변환하는 독창적인 시스템을 직접 설계해 보세요.
+
+## 주요 개발 포인트
+- **웹 페이지 데이터 수집 (BeautifulSoup/Selenium)**: 정적 웹 페이지나 동적으로 로딩되는 페이지를 파싱(Parsing)하여 원하는 정보를 추출합니다.
+- **키워드 기반 정보 검색**: 사용자가 입력한 검색어와 관련된 내용을 웹사이트 상단에서 찾아서 목록으로 보여줍니다.
+- **제품 가격 비교 및 추적**: 여러 쇼핑몰의 가격 정보를 가져와서 가장 저렴한 곳을 알려주는 기능을 추가합니다.
+- **데이터 필터링 및 정렬**: 수집된 결과를 관련도, 가격, 날짜순으로 정렬하여 사용자에게 제공합니다.
+- **사용자 인터페이스 (GUI)**: 검색창, 스크래핑 버튼, 그리고 결과 목록을 포함한 대시보드를 구축합니다.
+
+## Python 구현 예시 (BeautifulSoup 활용 간단한 뉴스 기사 제목 스크래핑)
 
 ```python
-def web_scraper():
+import requests
+from bs4 import BeautifulSoup
+
+def scrape_news_titles(url):
     """
-    Implementation for Web Scraper
+    지정된 뉴스 사이트의 메인 헤드라인을 가져옵니다.
     """
-    print("Executing Web Scraper...")
-    # TODO: Add your implementation here
-    pass
+    print(f"'{url}'에서 최신 정보를 스크래핑 중입니다...")
+    
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+    }
+    
+    try:
+        response = requests.get(url, headers=headers)
+        soup = BeautifulSoup(response.content, "html.parser")
+        
+        # 실제 사이트의 구조에 맞게 태그와 클래스를 선택해야 합니다.
+        # 예: h2 태그의 제목들 추출
+        titles = soup.find_all("h2")
+        
+        if not titles:
+            print("제목 정보를 찾을 수 없습니다. 선택자를 확인해 보세요.")
+            return []
+            
+        print(f"\n--- 발견된 제목 ({len(titles)}건) ---")
+        for i, t in enumerate(titles[:10], 1):
+            print(f"{i}. {t.get_text().strip()}")
+            
+        return titles
+    except Exception as e:
+        print(f"오류 발생: {e}")
+        return []
 
 if __name__ == "__main__":
-    web_scraper()
+    # 테스트용 URL (예: IT 뉴스 사이트)
+    test_url = "https://example-news.com/tech"
+    # scrape_news_titles(test_url)
+    print("실제 스크래핑을 위해 함수 호출의 주석을 해제하세요.")
+    
+    # 팁: 웹사이트의 'robots.txt' 파일을 확인하여 크롤링 허용 범위를 지키는 것이 중요합니다.
+    print("\n[팁] 'Scrapy' 프레임워크를 사용하면 대규모 크롤링 작업을 훨씬 체계적으로 관리할 수 있습니다.")
 ```

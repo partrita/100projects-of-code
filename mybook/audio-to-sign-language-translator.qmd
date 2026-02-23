@@ -1,20 +1,59 @@
 ---
-title: "Audio to Sign Language Translator"
+title: "오디오-수어 번역기 (Audio to Sign Language Translator)"
 ---
 
-Similar to the video translator, but now you need to translate an audio to sign language. The sign language part can be in the form of a series of images or a video.
+비디오 번역과 비슷하지만, 이번에는 음성을 수어로 번역하는 시스템을 구축해 보세요. 수어는 일련의 이미지 세트나 비디오 형식으로 표현될 수 있습니다. 이 프로젝트는 단순히 언어를 바꾸는 것이 아니라, 음성을 텍스트로 변환하고 이를 다시 수어의 문법과 동작으로 매핑하는 복합적인 과정입니다.
 
-## Python Implementation
+음성 인식(STT) 기술을 활용하여 텍스트를 추출한 후, 이를 수어 사전의 단어나 동작에 대응시켜 시각화하는 과정이 핵심입니다. 3D 아바타를 활용하거나 미리 촬영된 수어 영상을 조합하여 구현할 수 있습니다.
+
+## 주요 개발 포인트
+- **음성 인식 (STT)**: Google Speech-to-Text 등을 사용하여 음성을 정확하게 텍스트로 변환합니다.
+- **NLP (자연어 처리)**: 한국어와 수어의 문법 차이를 극복하기 위해 문장을 분석하고 최적화합니다.
+- **수어 동작 데이터베이스**: 단어별 수어 동작 이미지나 영상 클립을 관리합니다.
+- **비주얼 렌더링**: 추출된 수어 데이터를 연속적인 애니메이션으로 보여줍니다.
+
+## Python 구현 예시 (STT 라이브러리 활용)
 
 ```python
-def audio_to_sign_language_translator():
+import speech_recognition as sr
+
+def transcribe_audio(audio_file_path):
     """
-    Implementation for Audio to Sign Language Translator
+    음성 파일을 텍스트로 변환합니다.
     """
-    print("Executing Audio to Sign Language Translator...")
-    # TODO: Add your implementation here
+    recognizer = sr.Recognizer()
+    with sr.AudioFile(audio_file_path) as source:
+        audio_data = recognizer.record(source)
+    
+    try:
+        text = recognizer.recognize_google(audio_data, language="ko-KR")
+        print(f"인식된 텍스트: {text}")
+        return text
+    except sr.UnknownValueError:
+        print("음성을 인식할 수 없습니다.")
+    except sr.RequestError as e:
+        print(f"API 요청 오류: {e}")
+    return None
+
+def translate_to_sign_language(text):
+    """
+    텍스트를 수어 데이터로 매핑합니다. (간단한 예시)
+    """
+    if not text:
+        return
+    
+    # 예: "안녕하세요" -> ["hello_sign.mp4"]
+    # 실제 구현에서는 형태소 분석을 통해 각 단어에 맞는 수어 이미지를 찾아야 합니다.
+    print(f"'{text}' 문장을 수어로 변환 중...")
+    # TODO: 관련 수어 영상 클립 재생 또는 이미지 표시 로직 추가
     pass
 
 if __name__ == "__main__":
-    audio_to_sign_language_translator()
+    # 실제 음성 파일이 있는 경우 실행 가능
+    # audio_path = "sample_voice.wav"
+    # text = transcribe_audio(audio_path)
+    # translate_to_sign_language(text)
+    
+    # 테스트용 가짜 데이터
+    translate_to_sign_language("만나서 반갑습니다")
 ```
