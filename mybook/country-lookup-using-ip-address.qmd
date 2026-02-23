@@ -1,0 +1,20 @@
+---
+title: "Country Lookup using IP address"
+---
+
+Can you find the country from a provided IP address? Write a script that can help you with this. For bonus points, try to figure out a more local location from the IP address.
+
+## Python Implementation
+
+```python
+def country_lookup_using_ip_address():
+    """
+    Implementation for Country Lookup using IP address
+    """
+    print("Executing Country Lookup using IP address...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    country_lookup_using_ip_address()
+```

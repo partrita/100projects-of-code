@@ -1,0 +1,20 @@
+---
+title: "Web Scraper"
+---
+
+Build a web scraper that takes in a URL/Keyword as input and returns matching results from the web related to the input. You can also build a product searcher or something like that.
+
+## Python Implementation
+
+```python
+def web_scraper():
+    """
+    Implementation for Web Scraper
+    """
+    print("Executing Web Scraper...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    web_scraper()
+```

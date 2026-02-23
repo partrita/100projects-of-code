@@ -1,0 +1,20 @@
+---
+title: "Face Tracker"
+---
+
+Build a piece of software that will analyse pictures (or better, live cam feed) and tag faces in the images as face or with a box.
+
+## Python Implementation
+
+```python
+def face_tracker():
+    """
+    Implementation for Face Tracker
+    """
+    print("Executing Face Tracker...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    face_tracker()
+```

@@ -1,0 +1,20 @@
+---
+title: "MEME Generator"
+---
+
+Build an app/web app that will overlay text over an image, so that users can build memes.
+
+## Python Implementation
+
+```python
+def meme_generator():
+    """
+    Implementation for MEME Generator
+    """
+    print("Executing MEME Generator...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    meme_generator()
+```

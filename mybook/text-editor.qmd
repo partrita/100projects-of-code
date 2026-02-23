@@ -1,0 +1,20 @@
+---
+title: "Text Editor"
+---
+
+Build a simple text editor that can help you open, read from and write to text files. For bonus points incorporate features like the find tool and regex search and replace.
+
+## Python Implementation
+
+```python
+def text_editor():
+    """
+    Implementation for Text Editor
+    """
+    print("Executing Text Editor...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    text_editor()
+```

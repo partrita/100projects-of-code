@@ -1,0 +1,20 @@
+---
+title: "Pomodoro Clock"
+---
+
+Build a Pomodoro timer that will help you take breaks at proper times while doing a task. For bonus points include different Pomodoro timer formats.
+
+## Python Implementation
+
+```python
+def pomodoro_clock():
+    """
+    Implementation for Pomodoro Clock
+    """
+    print("Executing Pomodoro Clock...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    pomodoro_clock()
+```

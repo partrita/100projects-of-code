@@ -1,0 +1,20 @@
+---
+title: "Web Browser"
+---
+
+Build a piece of software that will help you browse any HTML page. For bonus points, add additional features like those in Chrome and Firefox.
+
+## Python Implementation
+
+```python
+def web_browser():
+    """
+    Implementation for Web Browser
+    """
+    print("Executing Web Browser...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    web_browser()
+```

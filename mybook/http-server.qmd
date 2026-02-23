@@ -1,0 +1,20 @@
+---
+title: "HTTP Server"
+---
+
+To understand HTTP better, you need to build an HTTP server. It's not much difficult now a days (with the wealth of information around us).
+
+## Python Implementation
+
+```python
+def http_server():
+    """
+    Implementation for HTTP Server
+    """
+    print("Executing HTTP Server...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    http_server()
+```

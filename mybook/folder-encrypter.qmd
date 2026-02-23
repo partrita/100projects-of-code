@@ -1,0 +1,20 @@
+---
+title: "Folder Encrypter"
+---
+
+Build a piece of software that can encrypt and lock a selected folder. The contents of the folder should not be accessible/copied/moved without the correct password.
+
+## Python Implementation
+
+```python
+def folder_encrypter():
+    """
+    Implementation for Folder Encrypter
+    """
+    print("Executing Folder Encrypter...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    folder_encrypter()
+```

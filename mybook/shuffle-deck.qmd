@@ -1,0 +1,20 @@
+---
+title: "Shuffle Deck"
+---
+
+Build a web app to visualize the different shuffling algorithms that can be used to shuffle a standard deck of cards.
+
+## Python Implementation
+
+```python
+def shuffle_deck():
+    """
+    Implementation for Shuffle Deck
+    """
+    print("Executing Shuffle Deck...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    shuffle_deck()
+```

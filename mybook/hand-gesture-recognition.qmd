@@ -1,0 +1,20 @@
+---
+title: "Hand Gesture Recognition"
+---
+
+Build a piece of software that can recognise gestures from a camera video and then carry out certain tasks based on the gesture.
+
+## Python Implementation
+
+```python
+def hand_gesture_recognition():
+    """
+    Implementation for Hand Gesture Recognition
+    """
+    print("Executing Hand Gesture Recognition...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    hand_gesture_recognition()
+```

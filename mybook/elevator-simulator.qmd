@@ -1,0 +1,20 @@
+---
+title: "Elevator Simulator"
+---
+
+Build a simulation for an elevator. This may seem like a random simulation, but you need to think a lot before implementing something regarding this, which floor to go to when two buttons are pressed? Is there any change if you add a preference for going up or going down? and so on.
+
+## Python Implementation
+
+```python
+def elevator_simulator():
+    """
+    Implementation for Elevator Simulator
+    """
+    print("Executing Elevator Simulator...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    elevator_simulator()
+```

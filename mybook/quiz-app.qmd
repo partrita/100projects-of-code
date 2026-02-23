@@ -1,0 +1,20 @@
+---
+title: "Quiz App"
+---
+
+The user chooses a category and gets a random set of questions from the given category. Implement a Multiple choice Quiz app to prevent more complications.
+
+## Python Implementation
+
+```python
+def quiz_app():
+    """
+    Implementation for Quiz App
+    """
+    print("Executing Quiz App...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    quiz_app()
+```

@@ -1,0 +1,20 @@
+---
+title: "Math Editor"
+---
+
+Build an app that will properly format equations that a user inputs. I personally find it really inconvenient to work with a special software to just write and display equations properly like Latex, thus, if you build something that can convert plain English text to properly formatted equations, ping me!
+
+## Python Implementation
+
+```python
+def math_editor():
+    """
+    Implementation for Math Editor
+    """
+    print("Executing Math Editor...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    math_editor()
+```

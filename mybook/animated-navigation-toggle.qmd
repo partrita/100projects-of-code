@@ -1,0 +1,20 @@
+---
+title: "Animated Navigation Toggle"
+---
+
+Although it may seem like a small task, building an animated navigation toggle will teach you a lot about web development. Explore all the ideas that you can play with and see if you can build something truly fascinating!
+
+## Python Implementation
+
+```python
+def animated_navigation_toggle():
+    """
+    Implementation for Animated Navigation Toggle
+    """
+    print("Executing Animated Navigation Toggle...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    animated_navigation_toggle()
+```

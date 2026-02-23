@@ -1,0 +1,20 @@
+---
+title: "Audio to Sign Language Translator"
+---
+
+Similar to the video translator, but now you need to translate an audio to sign language. The sign language part can be in the form of a series of images or a video.
+
+## Python Implementation
+
+```python
+def audio_to_sign_language_translator():
+    """
+    Implementation for Audio to Sign Language Translator
+    """
+    print("Executing Audio to Sign Language Translator...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    audio_to_sign_language_translator()
+```

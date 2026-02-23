@@ -1,0 +1,20 @@
+---
+title: "Simulate the World"
+---
+
+Build a simulation of the whole world. Try to be as detailed as you can. Keep it simple when you feel stuck and slowly improve on it. Treat it as a self-sustaining game if it makes things easier. For bonus points, add an AI to the system to let it work on its own.
+
+## Python Implementation
+
+```python
+def simulate_the_world():
+    """
+    Implementation for Simulate the World
+    """
+    print("Executing Simulate the World...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    simulate_the_world()
+```

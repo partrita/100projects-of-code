@@ -1,0 +1,20 @@
+---
+title: "Chess"
+---
+
+Code the game of chess from the ground up. Build a board, the pieces (you can use images for this part). Code in the rules and make sure you allow no invalid moves.
+
+## Python Implementation
+
+```python
+def chess():
+    """
+    Implementation for Chess
+    """
+    print("Executing Chess...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    chess()
+```

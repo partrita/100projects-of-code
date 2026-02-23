@@ -1,0 +1,21 @@
+---
+title: "FTP Client"
+---
+
+A simple File Transfer client that uses the FTP (File Transfer Protocol). As a bonus challenge, add support for secure file transfer. It can be a web, desktop, or CLI app.
+You can try to first implement TFTP (Trivial File Transfer Protocol) as it's easier.
+
+## Python Implementation
+
+```python
+def ftp_client():
+    """
+    Implementation for FTP Client
+    """
+    print("Executing FTP Client...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    ftp_client()
+```

@@ -1,0 +1,20 @@
+---
+title: "Packet Sniffer"
+---
+
+A packet sniffer is used to monitor network traffic by examining streams of data packets that flow between computers on a network. To start with the project, study network protocols properly. Then dive into implementing an application that tracks down network packets and parses its content in a human readable form.
+
+## Python Implementation
+
+```python
+def packet_sniffer():
+    """
+    Implementation for Packet Sniffer
+    """
+    print("Executing Packet Sniffer...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    packet_sniffer()
+```

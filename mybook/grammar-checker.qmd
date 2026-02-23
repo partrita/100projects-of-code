@@ -1,0 +1,20 @@
+---
+title: "Grammar Checker"
+---
+
+Build a software that will spell check and check simple grammatical errors in any text you write. For additional points/complexity, try to guess the mood (happy text, formal letter, etc) of the text and suggest appropriate changes.
+
+## Python Implementation
+
+```python
+def grammar_checker():
+    """
+    Implementation for Grammar Checker
+    """
+    print("Executing Grammar Checker...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    grammar_checker()
+```

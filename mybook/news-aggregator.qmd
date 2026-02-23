@@ -1,0 +1,20 @@
+---
+title: "News Aggregator"
+---
+
+Build an app that will present you daily news from credible sources. Make sure you pool unique information about a given news headline from different sites to remove any bias that may be present in a given source.
+
+## Python Implementation
+
+```python
+def news_aggregator():
+    """
+    Implementation for News Aggregator
+    """
+    print("Executing News Aggregator...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    news_aggregator()
+```

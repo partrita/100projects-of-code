@@ -1,0 +1,20 @@
+---
+title: "Spoiler Blocker"
+---
+
+Build a browser extension that blocks movie spoilers on websites. I put it in AI as you have to think of a changing algorithm that should be smart enough to identify spoilers from a piece of text.
+
+## Python Implementation
+
+```python
+def spoiler_blocker():
+    """
+    Implementation for Spoiler Blocker
+    """
+    print("Executing Spoiler Blocker...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    spoiler_blocker()
+```

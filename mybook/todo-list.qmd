@@ -1,0 +1,20 @@
+---
+title: "ToDo List"
+---
+
+Build a To Do app that can track the various stages of a given work (todo, ongoing, completed). For bonus points, make it work with recurring tasks and incorporate task scheduling (when to do what/a deadline for tasks).
+
+## Python Implementation
+
+```python
+def todo_list():
+    """
+    Implementation for ToDo List
+    """
+    print("Executing ToDo List...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    todo_list()
+```

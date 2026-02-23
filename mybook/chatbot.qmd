@@ -1,0 +1,20 @@
+---
+title: "Chatbot"
+---
+
+Build a chatbot that you can talk to when bored. For bonus points use machine learning/AI to make it smart. I suggest you to implement it as a simple CLI application.
+
+## Python Implementation
+
+```python
+def chatbot():
+    """
+    Implementation for Chatbot
+    """
+    print("Executing Chatbot...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    chatbot()
+```

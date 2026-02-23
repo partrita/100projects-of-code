@@ -1,0 +1,14 @@
+# pixi environments
+.pixi/*
+!.pixi/config.toml
+
+# Local bin
+bin/
+
+# Quarto output and cache
+mybook/_book/
+mybook/.quarto/
+mybook/*.tex
+mybook/*.log
+mybook/*.out
+mybook/*.aux

@@ -1,0 +1,20 @@
+---
+title: "Video Call Application"
+---
+
+Build an app that can let you video call anyone anywhere over the internet.
+
+## Python Implementation
+
+```python
+def video_call_application():
+    """
+    Implementation for Video Call Application
+    """
+    print("Executing Video Call Application...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    video_call_application()
+```

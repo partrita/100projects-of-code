@@ -1,0 +1,20 @@
+---
+title: "Application Builder"
+---
+
+This is probably the hardest one on the list and the most vague one too. Design a system that takes in text input and generates applications (or at least application interfaces) based on the text description. You can also use a drag-and-drop like feature to let users build the app.
+
+## Python Implementation
+
+```python
+def application_builder():
+    """
+    Implementation for Application Builder
+    """
+    print("Executing Application Builder...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    application_builder()
+```

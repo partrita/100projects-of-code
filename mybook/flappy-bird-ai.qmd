@@ -1,0 +1,20 @@
+---
+title: "Flappy Bird AI"
+---
+
+Design an AI for the flappy bird game. Try out a few learning algorithms to train your network - Q-Learning, NEAT, etc. Build the perfect AI that will play flappy bird better than you (or anyone else) ever can.
+
+## Python Implementation
+
+```python
+def flappy_bird_ai():
+    """
+    Implementation for Flappy Bird AI
+    """
+    print("Executing Flappy Bird AI...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    flappy_bird_ai()
+```

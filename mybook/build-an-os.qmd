@@ -1,0 +1,20 @@
+---
+title: "Build an OS"
+---
+
+This project will be technically challenging and will deepen your understanding of how computers and operating systems work. Building an OS from the ground up is a really daunting task but you will surely find a way to do it.
+
+## Python Implementation
+
+```python
+def build_an_os():
+    """
+    Implementation for Build an OS
+    """
+    print("Executing Build an OS...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    build_an_os()
+```

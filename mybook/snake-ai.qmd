@@ -1,0 +1,20 @@
+---
+title: "Snake AI"
+---
+
+Build a simple snake AI that plays snake. For an added challenge, generate random maps and then train your AI to play in any random map that you generate.
+
+## Python Implementation
+
+```python
+def snake_ai():
+    """
+    Implementation for Snake AI
+    """
+    print("Executing Snake AI...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    snake_ai()
+```

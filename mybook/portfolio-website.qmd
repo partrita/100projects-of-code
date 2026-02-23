@@ -1,0 +1,20 @@
+---
+title: "Portfolio Website"
+---
+
+If you are ever interested in showcasing the things you have built, build a portfolio website! Building a website to display all the stuff will teach you a lot about website design in general (if you've never built a website before).
+
+## Python Implementation
+
+```python
+def portfolio_website():
+    """
+    Implementation for Portfolio Website
+    """
+    print("Executing Portfolio Website...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    portfolio_website()
+```

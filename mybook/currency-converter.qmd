@@ -1,0 +1,20 @@
+---
+title: "Currency Converter"
+---
+
+Code a script that scrapes the currency conversion rate and then converts from a given currency to another suing the current market rate.
+
+## Python Implementation
+
+```python
+def currency_converter():
+    """
+    Implementation for Currency Converter
+    """
+    print("Executing Currency Converter...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    currency_converter()
+```

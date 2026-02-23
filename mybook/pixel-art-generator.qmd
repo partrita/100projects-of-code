@@ -1,0 +1,20 @@
+---
+title: "Pixel Art Generator"
+---
+
+Code a script that takes in a picture and then creates the Pixel Art from the image. You can achieve this by downsizing the image. You should also be able to generate random art using this script.
+
+## Python Implementation
+
+```python
+def pixel_art_generator():
+    """
+    Implementation for Pixel Art Generator
+    """
+    print("Executing Pixel Art Generator...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    pixel_art_generator()
+```

@@ -1,0 +1,20 @@
+---
+title: "Automatic Logo Generator"
+---
+
+Build a software that takes in a company name and some related keywords to generate a brand new logo for the user. Make the logo editable so the user can make any changes if they don't like the generated output.
+
+## Python Implementation
+
+```python
+def automatic_logo_generator():
+    """
+    Implementation for Automatic Logo Generator
+    """
+    print("Executing Automatic Logo Generator...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    automatic_logo_generator()
+```

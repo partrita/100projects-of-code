@@ -1,0 +1,20 @@
+---
+title: "Deal Finder"
+---
+
+Build a simple web app to notify you when an item you covet goes on sale for a good price. You can use a web scraper to pull the item's product page and notify you of any price changes.
+
+## Python Implementation
+
+```python
+def deal_finder():
+    """
+    Implementation for Deal Finder
+    """
+    print("Executing Deal Finder...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    deal_finder()
+```

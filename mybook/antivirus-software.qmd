@@ -1,0 +1,20 @@
+---
+title: "Antivirus Software"
+---
+
+Build an antivirus software that will protect you from viruses and other computer worms and stuff. Make sure you update it frequently to deal with the newer viruses.
+
+## Python Implementation
+
+```python
+def antivirus_software():
+    """
+    Implementation for Antivirus Software
+    """
+    print("Executing Antivirus Software...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    antivirus_software()
+```

@@ -1,0 +1,20 @@
+---
+title: "Random Username Generator"
+---
+
+Write a script to generate random usernames that you can use in games or various other places.
+
+## Python Implementation
+
+```python
+def random_username_generator():
+    """
+    Implementation for Random Username Generator
+    """
+    print("Executing Random Username Generator...")
+    # TODO: Add your implementation here
+    pass
+
+if __name__ == "__main__":
+    random_username_generator()
+```
