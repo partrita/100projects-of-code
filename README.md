@@ -1,975 +1,972 @@
 # 100ProjectsOfCode
+실용적인 지식 구축 프로젝트 목록입니다. 프로젝트는 지식 기반을 늘리는 것을 목표로 하므로 다소 도전적입니다. 그러나 쉬운 것도 몇 가지 있습니다. 그들 중 다수는 포트폴리오에 전시할 가치가 있습니다.
+프로젝트는 여러 범주로 나뉘며 시작하는 데 도움이 되는 몇 가지 제안된 언어 및 프레임워크/도구(아직 이 부분을 작업 중임)로 태그가 지정됩니다.
 
-[한국어판](./README_ko.md)
+## 시작하기
+프로젝트 아이디어를 시작하려면:
+1. 목록에서 프로젝트 선택
+2. 프로젝트용 GitHub 리포지토리 생성
+3. 처음부터 작업 시작(필요한 경우 바퀴를 재발명하십시오!)
+4. 완료되면 테스트하고 리포지토리의 README 어딘가에 #100ProjectsOfCode 태그와 함께 공유하십시오.
+5. 이 리포지토리 포크
+6. 완료된 항목을 확인하고 다른 프로젝트 아이디어로 반복
 
-A list of practical knowledge-building projects. As the projects are aimed to increase your knowledge base, they are somewhat challenging. However, there are a few easy ones too. Many of them are even worthy enough to showcase on your portfolio.   
-The projects are divided into multiple categories and tagged with some suggested languages and frameworks/tools (I'm still working on this part) to get you started.
+## 카테고리
 
-## Getting Started
-To get started with the project ideas:
-1. Pick a project from the list
-2. Create a GitHub repository for the project
-3. Start working, possibly from scratch (reinvent the wheel if you have to!)
-4. When done, test it, and share with the tag #100ProjectsOfCode somewhere in the README of the repo
-5. Fork this repo
-6. Check the completed item, and repeat with another project idea
-
-## Categories
-
-### General Web & Networking Projects  
-General Web projects, from building a simple website to building tools for complex and difficult networking tasks like packet sniffing.  
-  - [ ] [FTP Client](#ftp-client)
-  - [ ] [HTTP Server](#http-server)
-  - [ ] [Web Scraper](#web-scraper)
-  - [ ] [Port Scanner](#port-scanner)
-  - [ ] [Packet Sniffer](#packet-sniffer)
-  - [ ] [P2P File Sharing](#p2p-file-sharing)
-  - [ ] [Web Search Engine](#search-engine)
-  - [ ] [Bandwidth Monitor](#bandwidth-monitor)
-  - [ ] [Product Landing Page](#product-landing-page)
-  - [ ] [Create Your Own Blog](#blog)
-  - [ ] [Your Portfolio Website](#portfolio-website)
-  - [ ] [Animated Navigation Toggle](#animated-navigation-toggle)
-  - [ ] [Country Lookup using IP address](#country-lookup-using-ip-address)
-### Bots  
-Building automated bots is something you really want to try out at some point in your career/life.  
-  - [ ] [Chatbot](#chatbot)
-  - [ ] [Slack Bot](#slack-bot)
-  - [ ] [Twitter Bot](#twitter-bot)
-  - [ ] [Messenger Bot](#messenger-bot)
-  - [ ] [WhatsApp Butler](#whatsapp-butler)
-### Software & Apps  
-Proper software or application suggestions that you may even end up using in your daily life, like a simple text editor or a custom music player.  
-  - [ ] [Quiz App](#quiz-app)
-  - [ ] [Firewall](#firewall)
-  - [ ] [ToDo List](#todo-list)
-  - [ ] [Text Editor](#text-editor)
-  - [ ] [App Builder](#application-builder)
-  - [ ] [Drawing App](#drawing-app)
-  - [ ] [Survey App](#survey-app)
-  - [ ] [Web Browser](#web-browser)
-  - [ ] [Weather App](#weather-app)
-  - [ ] [Math Editor](#math-editor)
-  - [ ] [Music Player](#music-player)
-  - [ ] [Stopwatch App](#stopwatch-app)
-  - [ ] [URL Shortener](#url-shortener)
-  - [ ] [Payment System](#payment-system)
-  - [ ] [Meme Generator](#meme-generator)
-  - [ ] [Pomodoro Clock](#pomodoro-clock)
-  - [ ] [Typing Practice](#typing-practice)
-  - [ ] [Grammar Checker](#grammar-checker)
-  - [ ] [News Aggregator](#news-aggregator)
-  - [ ] [Calorie Counter](#calorie-counter)
-  - [ ] [Traffic Notifier](#traffic-notifier)
-  - [ ] [Virtual Assistant](#virtual-assistant)
-  - [ ] [Antivirus Software](#antivirus-software)
-  - [ ] [Video Call Application](#video-call-application)
-  - [ ] [Library Management System](#library-management-system)
-  - [ ] [Relational Database Management System](#relational-database-management-system)
-### Artificial Intelligence  
-Projects that mostly deal with Artificial Intelligence or Machine Learning. Ideal to showcase on your portfolio if you are thinking of apply for any AI related jobs or programs.  
-  - [ ] [Face Tracking](#face-tracker)
-  - [ ] [Spam Classifier](#spam-classifier)
-  - [ ] [Spoiler Blocker](#spoiler-blocker)
-  - [ ] [Music Suggestor](#music-suggestor)
-  - [ ] [Machine Translator](#machine-translator)
-  - [ ] [Hand Gesture Recognition](#hand-gesture-recognition)
-  - [ ] [Video Subtitle Generator](#video-subtitle-generator)
-  - [ ] [Automatic Logo Generator](#automatic-logo-generator)
-  - [ ] [Movie Recommendation System](#movie-recommendation-system)
-  - [ ] [Audio to Sign Language Translator](#audio-to-sign-laguage-translator)
-### Theoretical Computer Science  
-Projects that provide a deeper insight into the inner workings of many CS related stuff that you may be using knowingly or unknowingly in your daily life.  
-  - [ ] [Build an OS](#build-an-os)
-  - [ ] [Shuffle Deck](#shuffle-deck)
-  - [ ] [Sorting Visualizer](#sorting-visualizer)
-  - [ ] [Static Code Analyzer](#static-code-analyzer)
-  - [ ] [Command Line Terminal](#command-line-terminal)
-  - [ ] [UML Diagram Generator](#uml-diagram-generator)
-  - [ ] [Pathfinding Visualizer](#pathfinding-visualizer)
-  - [ ] [Version Control System](#version-control-system)
-  - [ ] [Code a Programming Language](#programming-language)
-### Cryptography  
-Projects that involve dealing with encryption/decryption or in general computer security.  
-  - [ ] [Codec Software](#codec-software)
-  - [ ] [Password Manager](#password-manager)
-  - [ ] [Password Generator](#password-generator)
-  - [ ] [Folder Encrypter/Locker](#folder-encrypter)
-  - [ ] [Password Strength Checker](#password-strength-checker)
-### Simulations, Games and Game AI  
-All work and no play makes jack a dull boy! Games are a must to enjoy and learn many of the concepts of programming including OOPS.  
-  - [ ] [Pong](#pong)
-  - [ ] [Pong AI](#pong-ai)
-  - [ ] [Risk](#risk)
-  - [ ] [Chess](#chess)
-  - [ ] [Snake](#snake)
-  - [ ] [Tetris](#tetris)
-  - [ ] [Chess AI](#chess-ai)
-  - [ ] [Snake AI](#snake-ai)
-  - [ ] [Map Maker](#map-maker)
-  - [ ] [Battleship](#battleship)
-  - [ ] [Flappy Bird](#flappy-bird)
-  - [ ] [Tic-Tac-Toe](#tic-tac-toe)
-  - [ ] [Memory Puzzle](#memory-puzzle)
-  - [ ] [Physics Engine](#physics-engine)
-  - [ ] [Flappy Bird AI](#flappy-bird-ai)
-  - [ ] [Tic-Tac-Toe AI](#tic-tac-toe-ai)
-  - [ ] [Elevator Simulator](#elevator-simulator)
-  - [ ] [Simulate the World](#simulate-the-world)
-  - [ ] [Character Generator](#character-generator)
-  - [ ] [Conway's Game of Life](#game-of-life)
-### Miscellaneous  
-These were alone in their own categories and I didn't want them to feel alone, so I pooled them together.  
-  - [ ] [Deal Finder](#deal-finder)
-  - [ ] [Expense Tracker](#expense-tracker)
-  - [ ] [Recipe Generator](#recipe-generator)
-  - [ ] [Emoji Translator](#emoji-translator)
-  - [ ] [Regex Query Tool](#regex-query-tool)
-  - [ ] [Currency Converter](#currency-converter)
-  - [ ] [Pixel Art Generator](#pixel-art-generator)
-  - [ ] [Directory Tree Generator](#directory-tree-generator)
-  - [ ] [Random username Generator](#random-username-generator)
-  - [ ] [Roman to Decimal Converter](#roman-to-decimal-converter)
-### Coding Challenges  
-Some recommended channels to work on more problems and sharpen your coding skills.  
-  - [ ] [Project Euler](#project-euler)
-  - [ ] [Advent-Of-Code](#advent-of-code)
-  - [ ] [Kaggle's Titanic Challenge](#kaggle-titanic-challenge)
+### 일반 웹 및 네트워킹 프로젝트
+간단한 웹사이트 구축에서 패킷 스니핑과 같은 복잡하고 어려운 네트워킹 작업을 위한 도구 구축에 이르기까지 일반적인 웹 프로젝트입니다.
+  - [ ] [FTP 클라이언트](#ftp-client)
+  - [ ] [HTTP 서버](#http-server)
+  - [ ] [웹 스크레이퍼](#web-scraper)
+  - [ ] [포트 스캐너](#port-scanner)
+  - [ ] [패킷 스니퍼](#packet-sniffer)
+  - [ ] [P2P 파일 공유](#p2p-file-sharing)
+  - [ ] [웹 검색 엔진](#search-engine)
+  - [ ] [대역폭 모니터](#bandwidth-monitor)
+  - [ ] [제품 랜딩 페이지](#product-landing-page)
+  - [ ] [나만의 블로그 만들기](#blog)
+  - [ ] [포트폴리오 웹사이트](#portfolio-website)
+  - [ ] [애니메이션 탐색 토글](#animated-navigation-toggle)
+  - [ ] [IP 주소를 이용한 국가 조회](#country-lookup-using-ip-address)
+### 봇
+자동화된 봇을 구축하는 것은 경력/인생의 어느 시점에서 정말로 시도하고 싶은 것입니다.
+  - [ ] [챗봇](#chatbot)
+  - [ ] [슬랙 봇](#slack-bot)
+  - [ ] [트위터 봇](#twitter-bot)
+  - [ ] [메신저 봇](#messenger-bot)
+  - [ ] [WhatsApp 버틀러](#whatsapp-butler)
+### 소프트웨어 및 앱
+간단한 텍스트 편집기나 맞춤형 음악 플레이어와 같이 일상 생활에서 사용하게 될 수도 있는 적절한 소프트웨어 또는 응용 프로그램 제안입니다.
+  - [ ] [퀴즈 앱](#quiz-app)
+  - [ ] [방화벽](#firewall)
+  - [ ] [할일 목록](#todo-list)
+  - [ ] [텍스트 편집기](#text-editor)
+  - [ ] [앱 빌더](#application-builder)
+  - [ ] [그림 앱](#drawing-app)
+  - [ ] [설문조사 앱](#survey-app)
+  - [ ] [웹 브라우저](#web-browser)
+  - [ ] [날씨 앱](#weather-app)
+  - [ ] [수학 편집기](#math-editor)
+  - [ ] [음악 플레이어](#music-player)
+  - [ ] [스톱워치 앱](#stopwatch-app)
+  - [ ] [URL 단축기](#url-shortener)
+  - [ ] [결제 시스템](#payment-system)
+  - [ ] [밈 생성기](#meme-generator)
+  - [ ] [뽀모도로 시계](#pomodoro-clock)
+  - [ ] [타자 연습](#typing-practice)
+  - [ ] [문법 검사기](#grammar-checker)
+  - [ ] [뉴스 애그리게이터](#news-aggregator)
+  - [ ] [칼로리 카운터](#calorie-counter)
+  - [ ] [교통 알리미](#traffic-notifier)
+  - [ ] [가상 비서](#virtual-assistant)
+  - [ ] [바이러스 백신 소프트웨어](#antivirus-software)
+  - [ ] [영상 통화 애플리케이션](#video-call-application)
+  - [ ] [도서관 관리 시스템](#library-management-system)
+  - [ ] [관계형 데이터베이스 관리 시스템](#relational-database-management-system)
+### 인공 지능
+주로 인공 지능 또는 기계 학습을 다루는 프로젝트. AI 관련 직업이나 프로그램에 지원하려는 경우 포트폴리오에 전시하기에 이상적입니다.
+  - [ ] [얼굴 추적](#face-tracker)
+  - [ ] [스팸 분류기](#spam-classifier)
+  - [ ] [스포일러 차단기](#spoiler-blocker)
+  - [ ] [음악 제안기](#music-suggestor)
+  - [ ] [기계 번역기](#machine-translator)
+  - [ ] [손 제스처 인식](#hand-gesture-recognition)
+  - [ ] [비디오 자막 생성기](#video-subtitle-generator)
+  - [ ] [자동 로고 생성기](#automatic-logo-generator)
+  - [ ] [영화 추천 시스템](#movie-recommendation-system)
+  - [ ] [오디오-수화 번역기](#audio-to-sign-laguage-translator)
+### 이론 컴퓨터 과학
+일상 생활에서 알게 모르게 사용하고 있을 수 있는 많은 CS 관련 물건의 내부 작동에 대한 더 깊은 통찰력을 제공하는 프로젝트입니다.
+  - [ ] [OS 빌드](#build-an-os)
+  - [ ] [덱 섞기](#shuffle-deck)
+  - [ ] [정렬 시각화기](#sorting-visualizer)
+  - [ ] [정적 코드 분석기](#static-code-analyzer)
+  - [ ] [명령줄 터미널](#command-line-terminal)
+  - [ ] [UML 다이어그램 생성기](#uml-diagram-generator)
+  - [ ] [경로 찾기 시각화기](#pathfinding-visualizer)
+  - [ ] [버전 관리 시스템](#version-control-system)
+  - [ ] [프로그래밍 언어 코딩](#programming-language)
+### 암호학
+암호화/해독 또는 일반적인 컴퓨터 보안을 다루는 프로젝트.
+  - [ ] [코덱 소프트웨어](#codec-software)
+  - [ ] [비밀번호 관리자](#password-manager)
+  - [ ] [비밀번호 생성기](#password-generator)
+  - [ ] [폴더 암호화/잠금](#folder-encrypter)
+  - [ ] [비밀번호 강도 검사기](#password-strength-checker)
+### 시뮬레이션, 게임 및 게임 AI
+일만 하고 놀지 않으면 잭은 지루한 소년이 됩니다! 게임은 OOPS를 포함한 많은 프로그래밍 개념을 즐기고 배우기 위해 필수적입니다.
+  - [ ] [퐁](#pong)
+  - [ ] [퐁 AI](#pong-ai)
+  - [ ] [리스크](#risk)
+  - [ ] [체스](#chess)
+  - [ ] [스네이크](#snake)
+  - [ ] [테트리스](#tetris)
+  - [ ] [체스 AI](#chess-ai)
+  - [ ] [스네이크 AI](#snake-ai)
+  - [ ] [맵 메이커](#map-maker)
+  - [ ] [배틀쉽](#battleship)
+  - [ ] [플래피 버드](#flappy-bird)
+  - [ ] [틱택토](#tic-tac-toe)
+  - [ ] [메모리 퍼즐](#memory-puzzle)
+  - [ ] [물리 엔진](#physics-engine)
+  - [ ] [플래피 버드 AI](#flappy-bird-ai)
+  - [ ] [틱택토 AI](#tic-tac-toe-ai)
+  - [ ] [엘리베이터 시뮬레이터](#elevator-simulator)
+  - [ ] [세계 시뮬레이션](#simulate-the-world)
+  - [ ] [캐릭터 생성기](#character-generator)
+  - [ ] [콘웨이의 생명 게임](#game-of-life)
+### 기타
+이것들은 각자의 범주에 속해 있었고 외로움을 느끼지 않도록 함께 모았습니다.
+  - [ ] [거래 찾기](#deal-finder)
+  - [ ] [비용 추적기](#expense-tracker)
+  - [ ] [레시피 생성기](#recipe-generator)
+  - [ ] [이모티콘 번역기](#emoji-translator)
+  - [ ] [정규식 쿼리 도구](#regex-query-tool)
+  - [ ] [통화 변환기](#currency-converter)
+  - [ ] [픽셀 아트 생성기](#pixel-art-generator)
+  - [ ] [디렉토리 트리 생성기](#directory-tree-generator)
+  - [ ] [임의의 사용자 이름 생성기](#random-username-generator)
+  - [ ] [로마자-십진수 변환기](#roman-to-decimal-converter)
+### 코딩 챌린지
+더 많은 문제를 해결하고 코딩 기술을 연마하기 위한 몇 가지 권장 채널입니다.
+  - [ ] [프로젝트 오일러](#project-euler)
+  - [ ] [어드벤트 오브 코드](#advent-of-code)
+  - [ ] [캐글의 타이타닉 챌린지](#kaggle-titanic-challenge)
 
 
 <!--
-Template
-## Title
+템플릿
+## 제목
 
-Description
+설명
 
-**Suggested Language**:
-**Suggested Frameworks/Tools**:
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 -->
 
-## General Web & Networking Projects  
+## 일반 웹 및 네트워킹 프로젝트
 
-### FTP Client
+### FTP 클라이언트
 
-A simple File Transfer client that uses the FTP (File Transfer Protocol). As a bonus challenge, add support for secure file transfer. It can be a web, desktop, or CLI app.  
-You can try to first implement TFTP (Trivial File Transfer Protocol) as it's easier.
+FTP(파일 전송 프로토콜)를 사용하는 간단한 파일 전송 클라이언트입니다. 보너스 챌린지로 보안 파일 전송 지원을 추가하십시오. 웹, 데스크톱 또는 CLI 앱이 될 수 있습니다.
+먼저 TFTP(Trivial File Transfer Protocol)를 구현해 볼 수 있습니다. 더 쉽기 때문입니다.
 
-**Suggested Language**: C/C++  
-**Suggested Frameworks/Tools**: Use [Wireshark](https://github.com/wireshark/wireshark) to observe packets and debug them  
-**Example Implementation**: [Filezilla](https://filezilla-project.org/sourcecode.php) is extremely complete, [here](https://github.com/jlaffaye/ftp) is a simple Go implementation  
+**권장 언어**: C/C++
+**권장 프레임워크/도구**: [Wireshark](https://github.com/wireshark/wireshark)를 사용하여 패킷을 관찰하고 디버그합니다.
+**구현 예**: [Filezilla](https://filezilla-project.org/sourcecode.php)는 매우 완전하며 [여기](https://github.com/jlaffaye/ftp)는 간단한 Go 구현입니다.
 
-### HTTP Server
+### HTTP 서버
 
-To understand HTTP better, you need to build an HTTP server. It's not much difficult now a days (with the wealth of information around us).
+HTTP를 더 잘 이해하려면 HTTP 서버를 구축해야 합니다. 요즘에는 그리 어렵지 않습니다(우리 주변에 정보가 풍부함).
 
-**Suggested Language**: Python (or any other language you want to master)  
-**Suggested Frameworks/Tools**: socket (Python Library)  
-**Example Implementation**: [Blog Post by Ruslan](https://ruslanspivak.com/lsbaws-part1/)  
+**권장 언어**: Python(또는 마스터하고 싶은 다른 언어)
+**권장 프레임워크/도구**: socket(Python 라이브러리)
+**구현 예**: [Ruslan의 블로그 게시물](https://ruslanspivak.com/lsbaws-part1/)
 
-### Web Scraper
+### 웹 스크레이퍼
 
-Build a web scraper that takes in a URL/Keyword as input and returns matching results from the web related to the input. You can also build a product searcher or something like that.
+URL/키워드를 입력으로 받아 입력과 관련된 웹에서 일치하는 결과를 반환하는 웹 스크레이퍼를 구축하십시오. 제품 검색기 등을 구축할 수도 있습니다.
 
-**Suggested Language**: Python (or any other language you want to master)  
-**Suggested Frameworks/Tools**: Beautifulsoup (Python Library)  
-**Example Implementation**:
+**권장 언어**: Python(또는 마스터하고 싶은 다른 언어)
+**권장 프레임워크/도구**: Beautifulsoup(Python 라이브러리)
+**구현 예**:
 
-### Port Scanner
+### 포트 스캐너
 
-Build a port scanner application that can probe a server or host for open ports. You will need some technical knowledge regarding how networks work and how you can scan for ports or classify them.
+서버 또는 호스트에서 열린 포트를 검색할 수 있는 포트 스캐너 응용 프로그램을 구축하십시오. 네트워크 작동 방식과 포트를 스캔하거나 분류하는 방법에 대한 기술적 지식이 필요합니다.
 
-**Suggested Language**: Java, C++, Python  
-**Suggested Frameworks/Tools**: [socket](https://docs.python.org/3/library/socket.html) Python library  
-**Example Implementation**: [piescan](https://github.com/m57/piescan) is a Python implementation
+**권장 언어**: Java, C++, Python
+**권장 프레임워크/도구**: [socket](https://docs.python.org/3/library/socket.html) Python 라이브러리
+**구현 예**: [piescan](https://github.com/m57/piescan)은 Python 구현입니다.
 
-### Packet Sniffer
+### 패킷 스니퍼
 
-A packet sniffer is used to monitor network traffic by examining streams of data packets that flow between computers on a network. To start with the project, study network protocols properly. Then dive into implementing an application that tracks down network packets and parses its content in a human readable form.
+패킷 스니퍼는 네트워크의 컴퓨터 간에 흐르는 데이터 패킷 스트림을 검사하여 네트워크 트래픽을 모니터링하는 데 사용됩니다. 프로젝트를 시작하려면 네트워크 프로토콜을 제대로 연구하십시오. 그런 다음 네트워크 패킷을 추적하고 해당 내용을 사람이 읽을 수 있는 형식으로 구문 분석하는 응용 프로그램을 구현하는 데 뛰어드십시오.
 
-**Suggested Language**: Java, C++  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**: [Wireshark](https://github.com/wireshark/wireshark) is an extremely complete packet sniffer, [herbivore](https://github.com/samatt/herbivore) is a simpler implementation.
+**권장 언어**: Java, C++
+**권장 프레임워크/도구**:
+**구현 예**: [Wireshark](https://github.com/wireshark/wireshark)는 매우 완전한 패킷 스니퍼이며 [herbivore](https://github.com/samatt/herbivore)는 더 간단한 구현입니다.
 
-### P2P File Sharing
+### P2P 파일 공유
 
-Build an app that will allow for peer-to-peer file sharing securely over the internet. This will help you transfer files securely from one location to another or send something to your friend.
+인터넷을 통해 안전하게 피어 투 피어 파일 공유를 허용하는 앱을 구축하십시오. 이렇게 하면 파일을 한 위치에서 다른 위치로 안전하게 전송하거나 친구에게 무언가를 보낼 수 있습니다.
 
-**Suggested Language**: Java, C++  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**: Java, C++
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Search Engine
+### 검색 엔진
 
-Build a Web Search Engine like Google or Bing. Don't copy from them though :wink:
+Google이나 Bing과 같은 웹 검색 엔진을 구축하십시오. 하지만 복사하지 마십시오. :wink:
 
-**Suggested Language**: web languages. The real work will happen on the backend side with languages like Python, PHP, SQL, Node... Use anything you want for the frontend : HTML, CSS, Javascript...  
-**Suggested Frameworks/Tools**: Django if you use Python, MySQL for the databases if you need one  
-**Example Implementation**: [searX](https://github.com/searx/searx) is an open-source search engine coded mostly in Python and Javascript
+**권장 언어**: 웹 언어. 실제 작업은 Python, PHP, SQL, Node와 같은 언어로 백엔드 측에서 발생합니다. 프런트엔드에는 원하는 것을 사용하십시오: HTML, CSS, Javascript...
+**권장 프레임워크/도구**: Python을 사용하는 경우 Django, 데이터베이스가 필요한 경우 MySQL
+**구현 예**: [searX](https://github.com/searx/searx)는 대부분 Python과 Javascript로 코딩된 오픈 소스 검색 엔진입니다.
 
-### Bandwidth Monitor
+### 대역폭 모니터
 
-Build a tool to track how much data you have downloaded or uploaded to the internet. Have it email you weekly reports of your usage (or notify you when you get above a specified usage limit). As a bonus challenge, predict peak usage times.
+인터넷에 다운로드하거나 업로드한 데이터 양을 추적하는 도구를 구축하십시오. 사용량에 대한 주간 보고서를 이메일로 보내거나 지정된 사용량 한도를 초과하면 알림을 받도록 하십시오. 보너스 챌린지로 피크 사용 시간을 예측하십시오.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Product Landing Page
+### 제품 랜딩 페이지
 
-Build the ideal product landing page according to you. Choose a product, build a page and showcase that on your portfolio.
+귀하에 따라 이상적인 제품 랜딩 페이지를 구축하십시오. 제품을 선택하고 페이지를 구축하고 포트폴리오에 전시하십시오.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Blog
+### 블로그
 
-A blog is a must have for everyone (according to me). Combine that fact with the fact that you learn a lot of things while building your own blog from scratch, and voila!
+블로그는 모든 사람에게 필수품입니다(제 생각에는). 처음부터 자신의 블로그를 구축하는 동안 많은 것을 배운다는 사실과 그 사실을 결합하면 짜잔!
 
-**Suggested Language**: JavaScript, Python, Ruby  
-**Suggested Frameworks/Tools**: Jekyll (for Ruby), Django/Flask (Python)  
-**Example Implementation**:
+**권장 언어**: JavaScript, Python, Ruby
+**권장 프레임워크/도구**: Jekyll(Ruby용), Django/Flask(Python용)
+**구현 예**:
 
-### Portfolio Website
+### 포트폴리오 웹사이트
 
-If you are ever interested in showcasing the things you have built, build a portfolio website! Building a website to display all the stuff will teach you a lot about website design in general (if you've never built a website before).
+지금까지 구축한 것을 선보이는 데 관심이 있다면 포트폴리오 웹사이트를 구축하십시오! 모든 것을 표시하는 웹사이트를 구축하면 일반적인 웹사이트 디자인에 대해 많은 것을 배울 수 있습니다(이전에 웹사이트를 구축한 적이 없는 경우).
 
-**Suggested Language**: JavaScript, HTML, CSS  
-**Suggested Frameworks/Tools**: GatsbyJS  
-**Example Implementation**:
+**권장 언어**: JavaScript, HTML, CSS
+**권장 프레임워크/도구**: GatsbyJS
+**구현 예**:
 
-### Animated Navigation Toggle
+### 애니메이션 탐색 토글
 
-Although it may seem like a small task, building an animated navigation toggle will teach you a lot about web development. Explore all the ideas that you can play with and see if you can build something truly fascinating!
+작은 작업처럼 보일 수 있지만 애니메이션 탐색 토글을 구축하면 웹 개발에 대해 많은 것을 배울 수 있습니다. 가지고 놀 수 있는 모든 아이디어를 탐색하고 정말 매혹적인 것을 만들 수 있는지 확인하십시오!
 
-**Suggested Language**: JavaScript, CSS  
-**Suggested Frameworks/Tools**: -  
-**Example Implementation**:
+**권장 언어**: JavaScript, CSS
+**권장 프레임워크/도구**: -
+**구현 예**:
 
-### Country Lookup using IP address
+### IP 주소를 이용한 국가 조회
 
-Can you find the country from a provided IP address? Write a script that can help you with this. For bonus points, try to figure out a more local location from the IP address.
+제공된 IP 주소에서 국가를 찾을 수 있습니까? 이 작업을 도와줄 수 있는 스크립트를 작성하십시오. 보너스 포인트로 IP 주소에서 더 지역적인 위치를 파악해 보십시오.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-## Bots  
+## 봇
 
-### Chatbot
+### 챗봇
 
-Build a chatbot that you can talk to when bored. For bonus points use machine learning/AI to make it smart. I suggest you to implement it as a simple CLI application.
+지루할 때 대화할 수 있는 챗봇을 구축하십시오. 보너스 포인트로 기계 학습/AI를 사용하여 스마트하게 만드십시오. 간단한 CLI 응용 프로그램으로 구현하는 것이 좋습니다.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Slack Bot
+### 슬랙 봇
 
-Description
+설명
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Twitter Bot
+### 트위터 봇
 
-Build a bot that will either
-- follow people that follow the bot
-- retweet tweets containing some specific keywords related to a topic
-- retweet tweets containing a specific hashtag
+다음을 수행할 봇을 구축하십시오.
+- 봇을 팔로우하는 사람 팔로우
+- 주제와 관련된 특정 키워드가 포함된 트윗 리트윗
+- 특정 해시태그가 포함된 트윗 리트윗
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Messenger Bot
+### 메신저 봇
 
-Build a bot for messenger that can do some menial tasks too like flip a coin, roll a dice, present the news, and chat with you when bored.
+동전 던지기, 주사위 굴리기, 뉴스 제공, 지루할 때 채팅과 같은 사소한 작업을 수행할 수 있는 메신저용 봇을 구축하십시오.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### WhatsApp Butler
+### WhatsApp 버틀러
 
-Build a bot for WhatsApp that can scrape information from the internet like news, wikipedia entries, and other things. Make it able to keep track of some events like your/someone else's birthday and send an automatic message wishing you/the other person.
+뉴스, 위키백과 항목 및 기타 정보와 같은 인터넷에서 정보를 스크랩할 수 있는 WhatsApp용 봇을 구축하십시오. 자신/다른 사람의 생일과 같은 일부 이벤트를 추적하고 자신/다른 사람을 축하하는 자동 메시지를 보낼 수 있도록 하십시오.
 
-**Suggested Language**:
-**Suggested Frameworks/Tools**:
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-## Software & Apps  
+## 소프트웨어 및 앱
 
-### Quiz App
+### 퀴즈 앱
 
-The user chooses a category and gets a random set of questions from the given category. Implement a Multiple choice Quiz app to prevent more complications.
+사용자는 카테고리를 선택하고 주어진 카테고리에서 무작위 질문 세트를 받습니다. 더 많은 복잡성을 방지하기 위해 객관식 퀴즈 앱을 구현하십시오.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Firewall
+### 방화벽
 
-Build a firewall software that can regulate the network connections for the user and also block/notify of any suspicious action from any website/internal software/external agent.
+사용자의 네트워크 연결을 규제하고 웹사이트/내부 소프트웨어/외부 에이전트의 의심스러운 작업을 차단/알림할 수 있는 방화벽 소프트웨어를 구축하십시오.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### ToDo List
+### 할일 목록
 
-Build a To Do app that can track the various stages of a given work (todo, ongoing, completed). For bonus points, make it work with recurring tasks and incorporate task scheduling (when to do what/a deadline for tasks).
+주어진 작업의 여러 단계(할 일, 진행 중, 완료)를 추적할 수 있는 할 일 앱을 구축하십시오. 보너스 포인트로 반복적인 작업을 처리하고 작업 예약(언제 무엇을 할지/작업 마감일)을 통합하십시오.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Text Editor
+### 텍스트 편집기
 
-Build a simple text editor that can help you open, read from and write to text files. For bonus points incorporate features like the find tool and regex search and replace.
+텍스트 파일을 열고, 읽고, 쓸 수 있는 간단한 텍스트 편집기를 구축하십시오. 보너스 포인트로 찾기 도구 및 정규식 검색 및 바꾸기와 같은 기능을 통합하십시오.
 
-**Suggested Language**: JavaScript, Java  
-**Suggested Frameworks/Tools**: Electron (JavaScript framework)  
-**Example Implementation**: Atom Editor, Notepad++
+**권장 언어**: JavaScript, Java
+**권장 프레임워크/도구**: Electron(JavaScript 프레임워크)
+**구현 예**: Atom Editor, Notepad++
 
-### Application Builder
+### 응용 프로그램 빌더
 
-This is probably the hardest one on the list and the most vague one too. Design a system that takes in text input and generates applications (or at least application interfaces) based on the text description. You can also use a drag-and-drop like feature to let users build the app.
+이것은 아마도 목록에서 가장 어렵고 가장 모호한 것입니다. 텍스트 입력을 받아 텍스트 설명을 기반으로 응용 프로그램(또는 최소한 응용 프로그램 인터페이스)을 생성하는 시스템을 설계하십시오. 드래그 앤 드롭과 같은 기능을 사용하여 사용자가 앱을 구축하도록 할 수도 있습니다.
 
-**Suggested Language**: -  
-**Suggested Frameworks/Tools**: -  
-**Example Implementation**: [AppGyver](https://www.appgyver.com/) is a good example of no code app builder
+**권장 언어**: -
+**권장 프레임워크/도구**: -
+**구현 예**: [AppGyver](https://www.appgyver.com/)는 코드 없는 앱 빌더의 좋은 예입니다.
 
-### Drawing App
+### 그림 앱
 
-Build an app that lets the user draw anything and save it as an image. For extra points, add colouring and other cool things like animations.
+사용자가 무엇이든 그리고 이미지로 저장할 수 있는 앱을 구축하십시오. 추가 포인트로 색칠 및 애니메이션과 같은 멋진 기능을 추가하십시오.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Survey App
+### 설문조사 앱
 
-Build an app/web app that will let anyone create survey questions and circulate it via email to record responses and then analyze the data collected.
+누구나 설문조사 질문을 만들고 이메일을 통해 배포하여 응답을 기록하고 수집된 데이터를 분석할 수 있는 앱/웹 앱을 구축하십시오.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Web Browser
+### 웹 브라우저
 
-Build a piece of software that will help you browse any HTML page. For bonus points, add additional features like those in Chrome and Firefox.
+HTML 페이지를 탐색하는 데 도움이 되는 소프트웨어를 구축하십시오. 보너스 포인트로 Chrome 및 Firefox와 같은 추가 기능을 추가하십시오.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Weather App
+### 날씨 앱
 
-Build an app that gets the weather at your location in the current time. You can either use a web scraper in the background to collect the data or use a weather API.
+현재 시간에 현재 위치의 날씨를 알려주는 앱을 구축하십시오. 백그라운드에서 웹 스크레이퍼를 사용하여 데이터를 수집하거나 날씨 API를 사용할 수 있습니다.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Math Editor
+### 수학 편집기
 
-Build an app that will properly format equations that a user inputs. I personally find it really inconvenient to work with a special software to just write and display equations properly like Latex, thus, if you build something that can convert plain English text to properly formatted equations, ping me!
+사용자가 입력한 방정식을 제대로 형식화하는 앱을 구축하십시오. 개인적으로 라텍스와 같이 방정식을 제대로 쓰고 표시하기 위해 특별한 소프트웨어를 사용하는 것이 정말 불편합니다. 따라서 일반 영어 텍스트를 제대로 형식화된 방정식으로 변환할 수 있는 것을 구축하면 저에게 핑을 보내주십시오!
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Music Player
+### 음악 플레이어
 
-Build a music player app that can play music from mp3 files and also have functionality for forward, rewind, pause, and play.
+mp3 파일에서 음악을 재생하고 앞으로, 되감기, 일시 중지 및 재생 기능도 있는 음악 플레이어 앱을 구축하십시오.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Stopwatch App
+### 스톱워치 앱
 
-Build a stopwatch app/web app. It should also be able to lap time.
+스톱워치 앱/웹 앱을 구축하십시오. 랩 타임도 가능해야 합니다.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### URL Shortener
+### URL 단축기
 
-Build a web app that can shorten any URL that the user provides. You can either code an algorithm that shortens and stores the user provide URL or use an API.
+사용자가 제공하는 모든 URL을 단축할 수 있는 웹 앱을 구축하십시오. 사용자 제공 URL을 단축하고 저장하는 알고리즘을 코딩하거나 API를 사용할 수 있습니다.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Payment System
+### 결제 시스템
 
-Build a payment interface that can deal with fake cash (better if you can deal with real currency, although I don't know if you have to take extra steps for that). Users should be able to receive and send money, and also check their current balance.
+가짜 현금을 처리할 수 있는 결제 인터페이스를 구축하십시오(실제 통화를 처리할 수 있다면 더 좋지만, 이를 위해 추가 단계를 거쳐야 하는지는 모르겠습니다). 사용자는 돈을 받고 보낼 수 있어야 하며 현재 잔액도 확인할 수 있어야 합니다.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### MEME Generator
+### 밈 생성기
 
-Build an app/web app that will overlay text over an image, so that users can build memes.
+이미지 위에 텍스트를 오버레이하여 사용자가 밈을 만들 수 있는 앱/웹 앱을 구축하십시오.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Pomodoro Clock
+### 뽀모도로 시계
 
-Build a Pomodoro timer that will help you take breaks at proper times while doing a task. For bonus points include different Pomodoro timer formats.
+작업을 수행하는 동안 적절한 시간에 휴식을 취하는 데 도움이 되는 뽀모도로 타이머를 구축하십시오. 보너스 포인트로 다른 뽀모도로 타이머 형식을 포함하십시오.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Typing Practice
+### 타자 연습
 
-Build an app that lets you practice typing. Make it generate random sentences and see how fast you can type the sentences. Typing is something that many developers completely ignore, but it is one of the most important skills that someone working with computers should have.
+타자 연습을 할 수 있는 앱을 구축하십시오. 임의의 문장을 생성하고 문장을 얼마나 빨리 입력할 수 있는지 확인하십시오. 타이핑은 많은 개발자가 완전히 무시하는 것이지만 컴퓨터로 작업하는 사람이 가져야 할 가장 중요한 기술 중 하나입니다.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Grammar Checker
+### 문법 검사기
 
-Build a software that will spell check and check simple grammatical errors in any text you write. For additional points/complexity, try to guess the mood (happy text, formal letter, etc) of the text and suggest appropriate changes.
+작성하는 모든 텍스트의 철자법을 확인하고 간단한 문법 오류를 확인하는 소프트웨어를 구축하십시오. 추가 포인트/복잡성을 위해 텍스트의 분위기(행복한 텍스트, 공식적인 편지 등)를 추측하고 적절한 변경 사항을 제안해 보십시오.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### News Aggregator
+### 뉴스 애그리게이터
 
-Build an app that will present you daily news from credible sources. Make sure you pool unique information about a given news headline from different sites to remove any bias that may be present in a given source.
+신뢰할 수 있는 출처의 일일 뉴스를 제공하는 앱을 구축하십시오. 특정 출처에 존재할 수 있는 편견을 제거하기 위해 다른 사이트에서 특정 뉴스 헤드라인에 대한 고유한 정보를 수집해야 합니다.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Calorie Counter
+### 칼로리 카운터
 
-Build an app that will track the amount of calories that you eat everyday. Try to also incorporate information about other macro and micro nutrients to provide a more complete picture.
+매일 먹는 칼로리 양을 추적하는 앱을 구축하십시오. 더 완전한 그림을 제공하기 위해 다른 다량 및 미량 영양소에 대한 정보도 포함해 보십시오.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Traffic Notifier
+### 교통 알리미
 
-Build an app (phone app will be better) that finds how congested one route is and then suggests you a better route to take to your destination.
+한 경로가 얼마나 혼잡한지 찾아내고 목적지까지 더 나은 경로를 제안하는 앱(전화 앱이 더 좋음)을 구축하십시오.
 
-**Suggested Language**: Java, Kotlin, Swift  
-**Suggested Frameworks/Tools**: Android Studio  
-**Example Implementation**:
+**권장 언어**: Java, Kotlin, Swift
+**권장 프레임워크/도구**: Android Studio
+**구현 예**:
 
-### Virtual Assistant
+### 가상 비서
 
-Build a virtual assistant that will help you carry out tasks like calling people, scheduling tasks, creating todo lists, taking notes, .. you get the point.
+전화 걸기, 작업 예약, 할 일 목록 만들기, 메모 작성 등과 같은 작업을 수행하는 데 도움이 되는 가상 비서를 구축하십시오. 요점을 아시겠죠?
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Antivirus Software
+### 바이러스 백신 소프트웨어
 
-Build an antivirus software that will protect you from viruses and other computer worms and stuff. Make sure you update it frequently to deal with the newer viruses.
+바이러스 및 기타 컴퓨터 웜 및 기타 것들로부터 사용자를 보호하는 바이러스 백신 소프트웨어를 구축하십시오. 새로운 바이러스에 대처하기 위해 자주 업데이트해야 합니다.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Video Call Application
+### 영상 통화 응용 프로그램
 
-Build an app that can let you video call anyone anywhere over the internet.
+인터넷을 통해 어디서든 누구에게나 영상 통화를 할 수 있는 앱을 구축하십시오.
 
-**Suggested Language**: Python, Java, C++ for a desktop app  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**: [Nextcloud Talk](https://github.com/nextcloud/spreed) and [Jitsi](https://github.com/jitsi/jitsi-meet) are open-source video call software
+**권장 언어**: 데스크톱 앱용 Python, Java, C++
+**권장 프레임워크/도구**:
+**구현 예**: [Nextcloud Talk](https://github.com/nextcloud/spreed) 및 [Jitsi](https://github.com/jitsi/jitsi-meet)는 오픈 소스 영상 통화 소프트웨어입니다.
 
-### Library Management System
+### 도서관 관리 시스템
 
-Build an app for a hypothetical (or better, a real one near you) library that will help in management. You need to keep track of books you have, books to order, people with access to the library, books borrowed, returned and other related tasks.
+가상의(또는 더 좋은 경우, 가까운 실제) 도서관을 위한 앱을 구축하여 관리에 도움이 되도록 하십시오. 보유하고 있는 책, 주문할 책, 도서관에 접근할 수 있는 사람, 대출, 반납된 책 및 기타 관련 작업을 추적해야 합니다.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Relational Database Management System
+### 관계형 데이터베이스 관리 시스템
 
-Build your own database management system like MySQL or PostgreSQL. It doesn't have to be compatible with them, but it does need to help users manage their data efficiently and create relational tables.
+MySQL이나 PostgreSQL과 같은 자체 데이터베이스 관리 시스템을 구축하십시오. 이들과 호환될 필요는 없지만 사용자가 데이터를 효율적으로 관리하고 관계형 테이블을 만들 수 있도록 도와야 합니다.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-## Artificial Intelligence  
+## 인공 지능
 
-### Face Tracker
+### 얼굴 추적기
 
-Build a piece of software that will analyse pictures (or better, live cam feed) and tag faces in the images as face or with a box.
+사진(또는 더 좋은 경우, 라이브 캠 피드)을 분석하고 이미지의 얼굴을 얼굴 또는 상자로 태그하는 소프트웨어를 구축하십시오.
 
-**Suggested Language**: Python (or any other language you want to learn)  
-**Suggested Frameworks/Tools**: OpenCV  
-**Example Implementation**:
+**권장 언어**: Python(또는 배우고 싶은 다른 언어)
+**권장 프레임워크/도구**: OpenCV
+**구현 예**:
 
-### Spam Classifier
+### 스팸 분류기
 
-Build a spam classifier that filters ads and other unrequired emails from people that you don't really want to look at.
+광고 및 기타 불필요한 이메일을 정말로 보고 싶지 않은 사람들로부터 필터링하는 스팸 분류기를 구축하십시오.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Spoiler Blocker
+### 스포일러 차단기
 
-Build a browser extension that blocks movie spoilers on websites. I put it in AI as you have to think of a changing algorithm that should be smart enough to identify spoilers from a piece of text.
+웹사이트에서 영화 스포일러를 차단하는 브라우저 확장 프로그램을 구축하십시오. 텍스트 조각에서 스포일러를 식별할 만큼 똑똑해야 하는 변화하는 알고리즘을 생각해야 하므로 AI에 넣었습니다.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Music Suggestor
+### 음악 제안기
 
-Bored of the same songs but don't know what to try next? Build an AI to suggest you music based on your taste that you are more likely to like.
+같은 노래에 질렸지만 다음에 무엇을 시도해야 할지 모르십니까? 취향에 따라 좋아할 가능성이 더 높은 음악을 제안하는 AI를 구축하십시오.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Machine Translator
+### 기계 번역기
 
-Build an app to translate text from one language to another. For bonus points include an image translator that can get text from image and translate it.
+한 언어에서 다른 언어로 텍스트를 번역하는 앱을 구축하십시오. 보너스 포인트로 이미지에서 텍스트를 가져와 번역할 수 있는 이미지 번역기를 포함하십시오.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Hand Gesture Recognition
+### 손 제스처 인식
 
-Build a piece of software that can recognise gestures from a camera video and then carry out certain tasks based on the gesture.
+카메라 비디오에서 제스처를 인식하고 제스처에 따라 특정 작업을 수행할 수 있는 소프트웨어를 구축하십시오.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Video Subtitle Generator
+### 비디오 자막 생성기
 
-Input a video and get a subtitle! Build a software that automatically creates subtitles from a provided video. It may seem difficult in the beginning, but look up Natural Language Processing to see how far machines already are with regard to understanding human language.
+비디오를 입력하고 자막을 받으십시오! 제공된 비디오에서 자동으로 자막을 만드는 소프트웨어를 구축하십시오. 처음에는 어려워 보일 수 있지만 자연어 처리를 검색하여 기계가 이미 인간 언어를 이해하는 데 얼마나 멀리 왔는지 확인하십시오.
 
-**Suggested Language**:  Python (As it would be really easy to implement with available libraries)  
-**Suggested Frameworks/Tools**:  [autosub](https://pypi.org/project/autosub/)  
-**Example Implementation**: You can refer the documentation [here](https://github.com/agermanidis/autosub/wiki) or can check the steps provided [here](http://alttechn.blogspot.com/2018/04/blog-post.html).
+**권장 언어**: Python(사용 가능한 라이브러리로 구현하기가 정말 쉬울 것이기 때문에)
+**권장 프레임워크/도구**: [autosub](https://pypi.org/project/autosub/)
+**구현 예**: [여기](https://github.com/agermanidis/autosub/wiki)에서 설명서를 참조하거나 [여기](http://alttechn.blogspot.com/2018/04/blog-post.html)에서 제공된 단계를 확인할 수 있습니다.
 
-### Automatic Logo Generator
+### 자동 로고 생성기
 
-Build a software that takes in a company name and some related keywords to generate a brand new logo for the user. Make the logo editable so the user can make any changes if they don't like the generated output.
+회사 이름과 관련 키워드를 입력하여 사용자를 위한 새로운 로고를 생성하는 소프트웨어를 구축하십시오. 사용자가 생성된 출력이 마음에 들지 않으면 변경할 수 있도록 로고를 편집 가능하게 만드십시오.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Movie Recommendation System
+### 영화 추천 시스템
 
-Build a recommendation system that lets you or any users choose the next movie that you want to watch. Instead of copying an existing movie recommender with a well studied algorithm, try to come up with your own algorithm and test it out.
+귀하 또는 모든 사용자가 보고 싶은 다음 영화를 선택할 수 있는 추천 시스템을 구축하십시오. 잘 연구된 알고리즘으로 기존 영화 추천기를 복사하는 대신 자신만의 알고리즘을 고안하고 테스트해 보십시오.
 
-**Suggested Language**: Python (or any other language you are comfortable with)  
-**Suggested Frameworks/Tools**: -  
-**Example Implementation**: There are many, [Netflix](https://www.netflix.com/) recommender system, [Movie lens](https://movielens.org/), etc
+**권장 언어**: Python(또는 편안한 다른 언어)
+**권장 프레임워크/도구**: -
+**구현 예**: [Netflix](https://www.netflix.com/) 추천 시스템, [Movie lens](https://movielens.org/) 등 많이 있습니다.
 
-### Audio to Sign Language Translator
+### 오디오-수화 번역기
 
-Similar to the video translator, but now you need to translate an audio to sign language. The sign language part can be in the form of a series of images or a video.
+비디오 번역기와 유사하지만 이제 오디오를 수화로 번역해야 합니다. 수화 부분은 일련의 이미지 또는 비디오 형태일 수 있습니다.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-## Theoretical Computer Science  
+## 이론 컴퓨터 과학
 
-### Build an OS
+### OS 빌드
 
-This project will be technically challenging and will deepen your understanding of how computers and operating systems work. Building an OS from the ground up is a really daunting task but you will surely find a way to do it.
+이 프로젝트는 기술적으로 도전적이며 컴퓨터와 운영 체제가 어떻게 작동하는지에 대한 이해를 심화시킬 것입니다. 처음부터 OS를 구축하는 것은 정말 힘든 작업이지만 확실히 방법을 찾을 수 있을 것입니다.
 
-**Suggested Language**: low-level languages like C/C++.  
-**Suggested Frameworks/Tools**: -  
-**Example Implementation**: [LFS](http://www.linuxfromscratch.org/) is a project that explain every step to create a Linux OS  
+**권장 언어**: C/C++와 같은 저수준 언어.
+**권장 프레임워크/도구**: -
+**구현 예**: [LFS](http://www.linuxfromscratch.org/)는 Linux OS를 만드는 모든 단계를 설명하는 프로젝트입니다.
 
-### Shuffle Deck
+### 덱 섞기
 
-Build a web app to visualize the different shuffling algorithms that can be used to shuffle a standard deck of cards.
+표준 카드 덱을 섞는 데 사용할 수 있는 다양한 셔플링 알고리즘을 시각화하는 웹 앱을 구축하십시오.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Sorting Visualizer
+### 정렬 시각화기
 
-Build a webpage/video that will visualize the different sorting algorithms. You can use different kinds of visualizations: dots, bars, colour bars, circularly scattered points, and so on.
+다양한 정렬 알고리즘을 시각화하는 웹페이지/비디오를 구축하십시오. 점, 막대, 색상 막대, 원형으로 흩어진 점 등 다양한 종류의 시각화를 사용할 수 있습니다.
 
-**Suggested Language**: Processing, JavaScript  
-**Suggested Frameworks/Tools**: P5.js (JavaScript)  
-**Example Implementation**:
+**권장 언어**: Processing, JavaScript
+**권장 프레임워크/도구**: P5.js(JavaScript)
+**구현 예**:
 
-### Static Code Analyzer
+### 정적 코드 분석기
 
-Make a software that will go through your code (without executing it) and check for any inconsistencies or errors (syntax errors, indentation, etc) that may cause any problems during execution.
+코드를 실행하지 않고 코드를 검토하고 실행 중에 문제를 일으킬 수 있는 불일치 또는 오류(구문 오류, 들여쓰기 등)를 확인하는 소프트웨어를 만드십시오.
 
-**Suggested Language**: Any language you feel comfortable with
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**: 편안한 모든 언어
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Command Line Terminal
+### 명령줄 터미널
 
-If you are building the Operating System, you will surely need a Command Line Terminal. Try to clone the bash shell or Windows PowerShell as an independent project to make it easier while you build your own OS.
+운영 체제를 구축하는 경우 명령줄 터미널이 확실히 필요합니다. 자신만의 OS를 구축하는 동안 더 쉽게 만들기 위해 bash 셸 또는 Windows PowerShell을 독립적인 프로젝트로 복제해 보십시오.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### UML Diagram Generator
+### UML 다이어그램 생성기
 
-Write a script that goes through your OOPS code and creates a well-formatted UML diagram for your code.
+OOPS 코드를 검토하고 코드에 대한 잘 형식화된 UML 다이어그램을 만드는 스크립트를 작성하십시오.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Pathfinding Visualizer
+### 경로 찾기 시각화기
 
-Make a visualizer for the different pathfinding algorithms. Add this to a maze maker and you have a program that can generate and solve mazes.
+다양한 경로 찾기 알고리즘에 대한 시각화기를 만드십시오. 이것을 미로 제작기에 추가하면 미로를 생성하고 해결할 수 있는 프로그램이 있습니다.
 
-**Suggested Language**: Processing, JavaScript  
-**Suggested Frameworks/Tools**: P5.js (JavaScript)  
-**Example Implementation**:
+**권장 언어**: Processing, JavaScript
+**권장 프레임워크/도구**: P5.js(JavaScript)
+**구현 예**:
 
-### Version Control System
+### 버전 관리 시스템
 
-Make a proper version control system like git that can keep track of any changes that you make to your project.
+프로젝트에 대한 모든 변경 사항을 추적할 수 있는 git과 같은 적절한 버전 관리 시스템을 만드십시오.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Programming Language
+### 프로그래밍 언어
 
-Code a programming language from scratch. This project will give you great insights into why languages are structured the way they are and which languages suit which tasks better. There are quite a few programming languages, thus, incorporate some really weird (or helpful) features to make your language stand out (e.g. check out [brainfuck](https://en.wikipedia.org/wiki/Brainfuck)).
+처음부터 프로그래밍 언어를 코딩하십시오. 이 프로젝트는 언어가 구성되는 방식과 어떤 언어가 어떤 작업에 더 적합한지에 대한 훌륭한 통찰력을 제공합니다. 프로그래밍 언어는 꽤 많으므로 언어를 돋보이게 하기 위해 정말 이상한(또는 유용한) 기능을 통합하십시오(예: [brainfuck](https://en.wikipedia.org/wiki/Brainfuck) 확인).
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-## Cryptography  
+## 암호학
 
-### Codec Software
+### 코덱 소프트웨어
 
-Build a software that will encrypt and decrypt text for you. Incorporate quite a few algorithms to provide flexibility to the user.
+텍스트를 암호화하고 해독하는 소프트웨어를 구축하십시오. 사용자에게 유연성을 제공하기 위해 몇 가지 알고리즘을 통합하십시오.
 
-**Suggested Language**: C, C++, Java, Python  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**: C, C++, Java, Python
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Password Manager
+### 비밀번호 관리자
 
-Build a software that can manage the different passwords that you use on different websites. For bonus points incorporate a random password generator.
+다른 웹사이트에서 사용하는 다른 비밀번호를 관리할 수 있는 소프트웨어를 구축하십시오. 보너스 포인트로 임의의 비밀번호 생성기를 통합하십시오.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Folder Encrypter
+### 폴더 암호화기
 
-Build a piece of software that can encrypt and lock a selected folder. The contents of the folder should not be accessible/copied/moved without the correct password.
+선택한 폴더를 암호화하고 잠글 수 있는 소프트웨어를 구축하십시오. 올바른 비밀번호 없이는 폴더의 내용을 액세스/복사/이동할 수 없어야 합니다.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Password Strength Checker
+### 비밀번호 강도 검사기
 
-Build a website/app that will check how strong a given password is. To make it more fancy, incorporate a good metric of how strong a password is (check out the example).
+주어진 비밀번호가 얼마나 강력한지 확인하는 웹사이트/앱을 구축하십시오. 더 멋지게 만들려면 비밀번호가 얼마나 강력한지에 대한 좋은 메트릭을 통합하십시오(예제 확인).
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**: [How secure is my Password?](https://howsecureismypassword.net/)
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**: [내 비밀번호는 얼마나 안전한가요?](https://howsecureismypassword.net/)
 
-## Simulations, Games and Game AI  
+## 시뮬레이션, 게임 및 게임 AI
 
-### Pong
+### 퐁
 
-Code the game of [pong](https://en.wikipedia.org/wiki/Pong). Make it multiplayer and visually appealing.
+[퐁](https://en.wikipedia.org/wiki/Pong) 게임을 코딩하십시오. 멀티플레이어가 가능하고 시각적으로 매력적으로 만드십시오.
 
-**Suggested Language**: Python (or any other language of choice)  
-**Suggested Frameworks/Tools**: Pygame (Python)  
-**Example Implementation**:
+**권장 언어**: Python(또는 선택한 다른 언어)
+**권장 프레임워크/도구**: Pygame(Python)
+**구현 예**:
 
-### Pong AI
+### 퐁 AI
 
-Add to the Pong program you created above. Create an AI opponent to play against in a single player mode.
+위에서 만든 퐁 프로그램에 추가하십시오. 싱글 플레이어 모드에서 대결할 AI 상대를 만드십시오.
 
-**Suggested Language**: Python (or any other language of choice)  
-**Suggested Frameworks/Tools**: TensorFlow, PyTorch, openai/gym  
-**Example Implementation**:
+**권장 언어**: Python(또는 선택한 다른 언어)
+**권장 프레임워크/도구**: TensorFlow, PyTorch, openai/gym
+**구현 예**:
 
-### Risk
+### 리스크
 
-Try coding the classic board game of [Risk](https://en.wikipedia.org/wiki/Risk_(game)). Make sure you know all the rules and understand the game properly before you code it.
+고전적인 보드 게임인 [리스크](https://en.wikipedia.org/wiki/Risk_(game))를 코딩해 보십시오. 코딩하기 전에 모든 규칙을 알고 게임을 제대로 이해해야 합니다.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Chess
+### 체스
 
-Code the game of chess from the ground up. Build a board, the pieces (you can use images for this part). Code in the rules and make sure you allow no invalid moves.
+처음부터 체스 게임을 코딩하십시오. 보드, 조각을 만드십시오(이 부분에는 이미지를 사용할 수 있음). 규칙을 코딩하고 유효하지 않은 이동을 허용하지 않도록 하십시오.
 
-**Suggested Language**: JavaScript, Python, any other language you want to master  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**: [Chessboard.js](https://chessboardjs.com/)
+**권장 언어**: JavaScript, Python, 마스터하고 싶은 다른 언어
+**권장 프레임워크/도구**:
+**구현 예**: [Chessboard.js](https://chessboardjs.com/)
 
-### Snake
+### 스네이크
 
-This is one of the simplest items on the list. For an additional challenge, try generating different maps to play in.
+이것은 목록에서 가장 간단한 항목 중 하나입니다. 추가적인 도전을 위해 플레이할 다른 맵을 생성해 보십시오.
 
-**Suggested Language**: Any language that you feel comfortable with  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**: 편안한 모든 언어
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Tetris
+### 테트리스
 
-Code the game of Tetris starting from the Tetrominoes to the game interface. A web app is better as it will let you play from anywhere. For additional challenge try to implement a simple HTML and JavaScript version without any additional frameworks or libraries to help.
+테트로미노부터 게임 인터페이스까지 테트리스 게임을 코딩하십시오. 웹 앱은 어디서든 플레이할 수 있으므로 더 좋습니다. 추가적인 도전을 위해 추가 프레임워크나 라이브러리 없이 간단한 HTML 및 JavaScript 버전을 구현해 보십시오.
 
-**Suggested Language**: JavaScript, HTML  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**: JavaScript, HTML
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Chess AI
+### 체스 AI
 
-Now that you have most likely built the chess game, build an AI that you can play against. For inspiration look into the examples provided. The challenge here is to make an AI that is fast enough to play against. Most simple AIs for chess are just really slow (take about a minute or more for a move). Make your chess engine interface with other programs such via the [Universal Chess Interface](https://en.wikipedia.org/wiki/Universal_Chess_Interface). Then you can test it out against other bots/players online.
+이제 체스 게임을 거의 다 만들었으므로 대결할 수 있는 AI를 구축하십시오. 영감을 얻으려면 제공된 예제를 살펴보십시오. 여기서의 과제는 대결할 만큼 충분히 빠른 AI를 만드는 것입니다. 체스를 위한 대부분의 간단한 AI는 정말 느립니다(이동에 약 1분 이상 걸림). 체스 엔진이 [Universal Chess Interface](https://en.wikipedia.org/wiki/Universal_Chess_Interface)를 통해 다른 프로그램과 인터페이스하도록 하십시오. 그런 다음 온라인에서 다른 봇/플레이어와 테스트해 볼 수 있습니다.
 
-**Suggested Language**: Python, JavaScript  
-**Suggested Frameworks/Tools**: Chessboard.js (JavaScript)
-**Example Implementation**: [Stockfish AI](https://stockfishchess.org/), [Leela Chess Zero](https://lczero.org/)
+**권장 언어**: Python, JavaScript
+**권장 프레임워크/도구**: Chessboard.js(JavaScript)
+**구현 예**: [Stockfish AI](https://stockfishchess.org/), [Leela Chess Zero](https://lczero.org/)
 
-### Snake AI
+### 스네이크 AI
 
-Build a simple snake AI that plays snake. For an added challenge, generate random maps and then train your AI to play in any random map that you generate.
+스네이크를 플레이하는 간단한 스네이크 AI를 구축하십시오. 추가적인 도전을 위해 임의의 맵을 생성한 다음 생성하는 모든 임의의 맵에서 플레이하도록 AI를 훈련시키십시오.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Map Maker
+### 맵 메이커
 
-Build a simple program that will generate random terrain maps through [procedural generation](https://en.wikipedia.org/wiki/Procedural_generation) with a user supplied seed.
+사용자가 제공한 시드를 사용하여 [절차적 생성](https://en.wikipedia.org/wiki/Procedural_generation)을 통해 임의의 지형 맵을 생성하는 간단한 프로그램을 구축하십시오.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Battleship
+### 배틀쉽
 
-Build the classic game of battleship. You can build a CLI app or a much better app with graphics using any 2D graphics module.
+고전적인 배틀쉽 게임을 구축하십시오. CLI 앱을 구축하거나 2D 그래픽 모듈을 사용하여 훨씬 더 나은 그래픽 앱을 구축할 수 있습니다.
 
-**Suggested Language**: Python (or any language you want to learn)  
-**Suggested Frameworks/Tools**: Pygame (Python)  
-**Example Implementation**:
+**권장 언어**: Python(또는 배우고 싶은 언어)
+**권장 프레임워크/도구**: Pygame(Python)
+**구현 예**:
 
-### Flappy Bird
+### 플래피 버드
 
-This is one of the simplest difficult games that you can build. You can use images for pipes and the bird or generate your own custom bird and pipes for the project.
+이것은 만들 수 있는 가장 간단하고 어려운 게임 중 하나입니다. 파이프와 새에 이미지를 사용하거나 프로젝트를 위해 자신만의 맞춤형 새와 파이프를 생성할 수 있습니다.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Tic Tac Toe
+### 틱택토
 
-Build a CLI app for tic-tac-toe or a graphical interface. One of the interesting ideas is to let the user draw Xs and Os and then let the machine automatically identify if you drew an X or an O.
+틱택토용 CLI 앱 또는 그래픽 인터페이스를 구축하십시오. 흥미로운 아이디어 중 하나는 사용자가 X와 O를 그리게 하고 기계가 X를 그렸는지 O를 그렸는지 자동으로 식별하도록 하는 것입니다.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Memory Puzzle
+### 메모리 퍼즐
 
-Implement a classic memory puzzle where the user has to click on two similar cards to eliminate them. Shuffle the cards randomly in the beginning and give the user a fixed number of chances or a fixed time to clear the board.
+사용자가 두 개의 유사한 카드를 클릭하여 제거해야 하는 고전적인 메모리 퍼즐을 구현하십시오. 처음에 카드를 무작위로 섞고 사용자에게 보드를 클리어할 수 있는 고정된 기회 또는 고정된 시간을 제공하십시오.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Physics Engine
+### 물리 엔진
 
-Video Games work on [physics engines](https://en.wikipedia.org/wiki/Physics_engine). Build your own. You can later use this engine to build games or carry out simulations. Try building a 2D or 3D physics engine that can handle collision, movement, acceleration, gravity, and other forces in the system. You may need to first understand a bit of physics to be able to build something, so take your time for this one.
+비디오 게임은 [물리 엔진](https://en.wikipedia.org/wiki/Physics_engine)에서 작동합니다. 자신만의 것을 구축하십시오. 나중에 이 엔진을 사용하여 게임을 만들거나 시뮬레이션을 수행할 수 있습니다. 시스템의 충돌, 이동, 가속, 중력 및 기타 힘을 처리할 수 있는 2D 또는 3D 물리 엔진을 구축해 보십시오. 무언가를 만들 수 있으려면 먼저 물리학을 약간 이해해야 할 수 있으므로 이번에는 시간을 내십시오.
 
-**Suggested Language**: Processing (any other language that you feel comfortable with works too)  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**: Processing(편안한 다른 언어도 작동함)
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Flappy Bird AI
+### 플래피 버드 AI
 
-Design an AI for the flappy bird game. Try out a few learning algorithms to train your network - Q-Learning, NEAT, etc. Build the perfect AI that will play flappy bird better than you (or anyone else) ever can.
+플래피 버드 게임용 AI를 설계하십시오. Q-러닝, NEAT 등 네트워크를 훈련시키기 위해 몇 가지 학습 알고리즘을 시도해 보십시오. 당신(또는 다른 누구)보다 더 잘 플래피 버드를 플레이할 완벽한 AI를 구축하십시오.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Tic Tac Toe AI
+### 틱택토 AI
 
-Build an AI that is unbeatable (either wins always or at least draws) in tic-tac-toe. Instead of just hardcoding what move to play when, build an AI that learns how to play and then devises strategies to win.
+틱택토에서 무적(항상 이기거나 최소한 무승부)인 AI를 구축하십시오. 언제 어떤 수를 둘지 하드코딩하는 대신 플레이 방법을 배우고 승리 전략을 고안하는 AI를 구축하십시오.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Elevator Simulator
+### 엘리베이터 시뮬레이터
 
-Build a simulation for an elevator. This may seem like a random simulation, but you need to think a lot before implementing something regarding this, which floor to go to when two buttons are pressed? Is there any change if you add a preference for going up or going down? and so on.
+엘리베이터 시뮬레이션을 구축하십시오. 이것은 임의의 시뮬레이션처럼 보일 수 있지만 두 개의 버튼을 눌렀을 때 어느 층으로 갈지, 위로 가거나 아래로 가는 것을 선호하는 경우 변경 사항이 있는지 등과 같이 이것에 대해 무언가를 구현하기 전에 많이 생각해야 합니다.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Simulate the World
+### 세계 시뮬레이션
 
-Build a simulation of the whole world. Try to be as detailed as you can. Keep it simple when you feel stuck and slowly improve on it. Treat it as a self-sustaining game if it makes things easier. For bonus points, add an AI to the system to let it work on its own.
+전 세계 시뮬레이션을 구축하십시오. 가능한 한 상세하게 작성하십시오. 막혔을 때 간단하게 유지하고 천천히 개선하십시오. 더 쉽게 만들려면 자급자족 게임으로 취급하십시오. 보너스 포인트로 시스템에 AI를 추가하여 자체적으로 작동하도록 하십시오.
 
-**Suggested Language**: C++ (or C - you will need a fast language for the simulation)  
-**Suggested Frameworks/Tools**: Unity (Good for visualizations)  
-**Example Implementation**: [The Bibites](https://www.youtube.com/watch?v=myJ7YOZGkv0&ab_channel=TheBibites), [Simulating Ecosystem](https://www.youtube.com/watch?v=r_It_X7v-1E&ab_channel=SebastianLague) by Sebastian Lague
+**권장 언어**: C++(또는 C - 시뮬레이션에 빠른 언어가 필요함)
+**권장 프레임워크/도구**: Unity(시각화에 좋음)
+**구현 예**: The Bibites, Sebastian Lague의 생태계 시뮬레이션
 
-### Character Generator
+### 캐릭터 생성기
 
-Build a tool that will generate random characters for games that you play/build like Pathfinder or Divinity: Original Sin. First implement a random character generator and then tweak it to make characters that you will like (add an AI).
+Pathfinder나 Divinity: Original Sin과 같이 플레이/빌드하는 게임에 대한 임의의 캐릭터를 생성하는 도구를 구축하십시오. 먼저 임의의 캐릭터 생성기를 구현한 다음 원하는 캐릭터를 만들도록 조정하십시오(AI 추가).
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Game of Life
+### 생명 게임
 
-[Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) simulates the lives of simple cells that obey algorithmic laws. You can read the algorithmic rules from the wikipedia page and implement them. Make the program capable of graphical rendering to display the end product.
+[콘웨이의 생명 게임](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)은 알고리즘 법칙을 따르는 단순한 세포의 삶을 시뮬레이션합니다. 위키백과 페이지에서 알고리즘 규칙을 읽고 구현할 수 있습니다. 최종 제품을 표시하기 위해 프로그램을 그래픽 렌더링이 가능하도록 만드십시오.
 
-**Suggested Language**: Processing, JavaScript  
-**Suggested Frameworks/Tools**: P5.js (JavaScript)  
-**Example Implementation**:
+**권장 언어**: Processing, JavaScript
+**권장 프레임워크/도구**: P5.js(JavaScript)
+**구현 예**:
 
-## Miscellaneous  
+## 기타
 
-### Deal Finder
+### 거래 찾기
 
-Build a simple web app to notify you when an item you covet goes on sale for a good price. You can use a web scraper to pull the item's product page and notify you of any price changes.
+원하는 품목이 좋은 가격에 판매될 때 알려주는 간단한 웹 앱을 구축하십시오. 웹 스크레이퍼를 사용하여 품목의 제품 페이지를 가져와 가격 변경 사항을 알려줄 수 있습니다.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Expense Tracker
+### 비용 추적기
 
-Create a simple interface (web app/phone app) you can use to add and categorize your expense. Generate monthly reports based on the inputs and write custom alerts for things like, "spending too much on coffee... as always".
+비용을 추가하고 분류하는 데 사용할 수 있는 간단한 인터페이스(웹 앱/전화 앱)를 만드십시오. 입력을 기반으로 월간 보고서를 생성하고 "항상처럼 커피에 너무 많은 돈을 쓴다"와 같은 것에 대한 맞춤형 알림을 작성하십시오.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Recipe Generator
+### 레시피 생성기
 
-The app (or service) should generate new recipes/scrapes recipes from the web. So when you cook by its recipe, you rate it to tell it how good the recipe was.
+앱(또는 서비스)은 웹에서 새로운 레시피/스크랩 레시피를 생성해야 합니다. 그래서 그 레시피로 요리할 때 레시피가 얼마나 좋았는지 알려주기 위해 평가합니다.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Emoji Translator
+### 이모티콘 번역기
 
-Build a browser extension that will translate any provided sentence into a combination of emojis. You can use the extension to automatically change texts that a user sends via messaging or email or even use it to aid in writing blog posts.
+제공된 모든 문장을 이모티콘 조합으로 번역하는 브라우저 확장 프로그램을 구축하십시오. 확장 프로그램을 사용하여 사용자가 메시지나 이메일을 통해 보내는 텍스트를 자동으로 변경하거나 블로그 게시물 작성에 도움이 되도록 사용할 수 있습니다.
 
-**Suggested Language**: JavaScript  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**: JavaScript
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Regex Query Tool
+### 정규식 쿼리 도구
 
-Build a search tool that implements Regular Expressions. With it you can easily search for text matching a pattern in websites or documents that you may be writing or browsing.
+정규식을 구현하는 검색 도구를 구축하십시오. 이를 통해 작성하거나 탐색 중인 웹사이트나 문서에서 패턴과 일치하는 텍스트를 쉽게 검색할 수 있습니다.
 
-**Suggested Language**: JavaScript  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**: JavaScript
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Currency Converter
+### 통화 변환기
 
-Code a script that scrapes the currency conversion rate and then converts from a given currency to another suing the current market rate.
+통화 변환율을 스크랩한 다음 현재 시장 환율을 사용하여 특정 통화에서 다른 통화로 변환하는 스크립트를 코딩하십시오.
 
-**Suggested Language**: Python, JavaScript  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**: Python, JavaScript
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Pixel Art Generator
+### 픽셀 아트 생성기
 
-Code a script that takes in a picture and then creates the Pixel Art from the image. You can achieve this by downsizing the image. You should also be able to generate random art using this script.
+사진을 입력받아 이미지에서 픽셀 아트를 만드는 스크립트를 코딩하십시오. 이미지 크기를 줄여서 이를 달성할 수 있습니다. 이 스크립트를 사용하여 임의의 아트를 생성할 수도 있어야 합니다.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Directory Tree Generator
+### 디렉토리 트리 생성기
 
-Generate a tree like structure using the directories present in a given path by the user. This allows you to see the positioning of files and directories. We are visual animals and thus, visual depictions of directories are more understandable.
+사용자가 지정한 경로에 있는 디렉토리를 사용하여 트리와 같은 구조를 생성합니다. 이를 통해 파일 및 디렉토리의 위치를 볼 수 있습니다. 우리는 시각적인 동물이므로 디렉토리를 시각적으로 묘사하는 것이 더 이해하기 쉽습니다.
 
-**Suggested Language**:  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**:
+**권장 프레임워크/도구**:
+**구현 예**:
 
-### Random Username Generator
+### 임의의 사용자 이름 생성기
 
-Write a script to generate random usernames that you can use in games or various other places.
+게임이나 다른 다양한 장소에서 사용할 수 있는 임의의 사용자 이름을 생성하는 스크립트를 작성하십시오.
 
-**Suggested Language**: Python or any other language  
-**Suggested Frameworks/Tools**: Random (Python Library)  
-**Example Implementation**:
+**권장 언어**: Python 또는 기타 언어
+**권장 프레임워크/도구**: Random(Python 라이브러리)
+**구현 예**:
 
-### Roman to Decimal Converter
+### 로마자-십진수 변환기
 
-Write a script that converts decimal numbers to roman numerals and vice versa. This may seem like an easy task but I assure you its not that easy. Give it a try.
+십진수를 로마 숫자로 또는 그 반대로 변환하는 스크립트를 작성하십시오. 이것은 쉬운 작업처럼 보일 수 있지만 그렇게 쉽지 않다는 것을 보장합니다. 한번 해보십시오.
 
-**Suggested Language**: Python or any other language  
-**Suggested Frameworks/Tools**:  
-**Example Implementation**:
+**권장 언어**: Python 또는 기타 언어
+**권장 프레임워크/도구**:
+**구현 예**:
 
-## Coding Challenges  
+## 코딩 챌린지
 
-### Project Euler
+### 프로젝트 오일러
 
-[Project Euler](https://projecteuler.net/) contains mathematical challenges that require programming tools to be solved. There are over 700 problems that you can solve, I urge you to document each solution in a properly organized way (probably build a repo for the solutions) so that you can showcase them online.
+[프로젝트 오일러](https://projecteuler.net/)에는 해결하기 위해 프로그래밍 도구가 필요한 수학적 챌린지가 포함되어 있습니다. 해결할 수 있는 700개 이상의 문제가 있으며, 각 솔루션을 적절하게 정리된 방식으로 문서화하여(아마도 솔루션을 위한 리포지토리를 구축) 온라인에 전시할 수 있도록 촉구합니다.
 
-**Suggested Language**: Any language you want to practice  
+**권장 언어**: 연습하고 싶은 모든 언어
 
-### Advent of Code
+### 어드벤트 오브 코드
 
-[Advent of Code](https://adventofcode.com/) challenges occur every year in the days leading up to Christmas. They include lots of fun programming challenges that can help you develop your chops in a programming language that you want to master.
+[어드벤트 오브 코드](https://adventofcode.com/) 챌린지는 매년 크리스마스가 다가오는 날에 열립니다. 마스터하고 싶은 프로그래밍 언어로 실력을 개발하는 데 도움이 될 수 있는 재미있는 프로그래밍 챌린지가 많이 포함되어 있습니다.
 
-**Suggested Language**: Any language you want to master  
+**권장 언어**: 마스터하고 싶은 모든 언어
 
-### Kaggle Titanic Challenge
+### 캐글 타이타닉 챌린지
 
-Kaggle offers fascinating challenges to introduce you to the basics of machine learning with Python or R: Use a real dataset from the [Titanic passenger log](https://www.kaggle.com/c/titanic) to predict which passengers were most likely to survive the disaster.
+캐글은 Python 또는 R을 사용하여 기계 학습의 기초를 소개하는 매혹적인 챌린지를 제공합니다. [타이타닉 승객 로그](https://www.kaggle.com/c/titanic)의 실제 데이터 세트를 사용하여 재난에서 생존할 가능성이 가장 높은 승객을 예측하십시오.
 
-**Suggested Language**: Python or R  
+**권장 언어**: Python 또는 R
 
 
-## References
-- [40 Side Project ideas for Software Engineers](https://www.codementor.io/@npostolovski/40-side-project-ideas-for-software-engineers-g8xckyxef)
-- [42 Projects to Practice Programming Skills](https://itnext.io/42-projects-to-practice-programming-skills-6f5acc10fec0)
-- [More project ideas to improve your coding skills](https://www.freecodecamp.org/news/more-project-ideas-to-improve-your-coding-skills-99f48d09bb4b/)
-- [Computer Science Projects](https://www.geeksforgeeks.org/computer-science-projects/)
-- [13 Project Ideas for Intermediate Python Developers](https://realpython.com/intermediate-python-project-ideas/)
+## 참고 자료
+- [소프트웨어 엔지니어를 위한 40가지 사이드 프로젝트 아이디어](https://www.codementor.io/@npostolovski/40-side-project-ideas-for-software-engineers-g8xckyxef)
+- [프로그래밍 기술을 연습할 수 있는 42가지 프로젝트](https://itnext.io/42-projects-to-practice-programming-skills-6f5acc10fec0)
+- [코딩 기술을 향상시키기 위한 더 많은 프로젝트 아이디어](https://www.freecodecamp.org/news/more-project-ideas-to-improve-your-coding-skills-99f48d09bb4b/)
+- [컴퓨터 과학 프로젝트](https://www.geeksforgeeks.org/computer-science-projects/)
+- [중급 Python 개발자를 위한 13가지 프로젝트 아이디어](https://realpython.com/intermediate-python-project-ideas/)
 - [florinpop17/app-ideas](https://github.com/florinpop17/app-ideas)
-- [49 Ideas for Game Clones to Code](https://inventwithpython.com/blog/2012/02/20/i-need-practice-programming-49-ideas-for-game-clones-to-code/)
+- [코딩할 게임 클론에 대한 49가지 아이디어](https://inventwithpython.com/blog/2012/02/20/i-need-practice-programming-49-ideas-for-game-clones-to-code/)
