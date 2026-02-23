@@ -1,0 +1,2042 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "mybook",
+    "section": "",
+    "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "2  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Summary</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "References"
+    ]
+  },
+  {
+    "objectID": "ftp-client.html",
+    "href": "ftp-client.html",
+    "title": "3  FTP Client",
+    "section": "",
+    "text": "3.1 Python Implementation\nA simple File Transfer client that uses the FTP (File Transfer Protocol). As a bonus challenge, add support for secure file transfer. It can be a web, desktop, or CLI app. You can try to first implement TFTP (Trivial File Transfer Protocol) as it’s easier.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>FTP Client</span>"
+    ]
+  },
+  {
+    "objectID": "ftp-client.html#python-implementation",
+    "href": "ftp-client.html#python-implementation",
+    "title": "3  FTP Client",
+    "section": "",
+    "text": "def ftp_client():\n    \"\"\"\n    Implementation for FTP Client\n    \"\"\"\n    print(\"Executing FTP Client...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    ftp_client()",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>FTP Client</span>"
+    ]
+  },
+  {
+    "objectID": "http-server.html",
+    "href": "http-server.html",
+    "title": "4  HTTP Server",
+    "section": "",
+    "text": "4.1 Python Implementation\nTo understand HTTP better, you need to build an HTTP server. It’s not much difficult now a days (with the wealth of information around us).",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>HTTP Server</span>"
+    ]
+  },
+  {
+    "objectID": "http-server.html#python-implementation",
+    "href": "http-server.html#python-implementation",
+    "title": "4  HTTP Server",
+    "section": "",
+    "text": "def http_server():\n    \"\"\"\n    Implementation for HTTP Server\n    \"\"\"\n    print(\"Executing HTTP Server...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    http_server()",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>HTTP Server</span>"
+    ]
+  },
+  {
+    "objectID": "web-scraper.html",
+    "href": "web-scraper.html",
+    "title": "5  Web Scraper",
+    "section": "",
+    "text": "5.1 Python Implementation\nBuild a web scraper that takes in a URL/Keyword as input and returns matching results from the web related to the input. You can also build a product searcher or something like that.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Web Scraper</span>"
+    ]
+  },
+  {
+    "objectID": "web-scraper.html#python-implementation",
+    "href": "web-scraper.html#python-implementation",
+    "title": "5  Web Scraper",
+    "section": "",
+    "text": "def web_scraper():\n    \"\"\"\n    Implementation for Web Scraper\n    \"\"\"\n    print(\"Executing Web Scraper...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    web_scraper()",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Web Scraper</span>"
+    ]
+  },
+  {
+    "objectID": "port-scanner.html",
+    "href": "port-scanner.html",
+    "title": "6  Port Scanner",
+    "section": "",
+    "text": "6.1 Python Implementation\nBuild a port scanner application that can probe a server or host for open ports. You will need some technical knowledge regarding how networks work and how you can scan for ports or classify them.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Port Scanner</span>"
+    ]
+  },
+  {
+    "objectID": "port-scanner.html#python-implementation",
+    "href": "port-scanner.html#python-implementation",
+    "title": "6  Port Scanner",
+    "section": "",
+    "text": "def port_scanner():\n    \"\"\"\n    Implementation for Port Scanner\n    \"\"\"\n    print(\"Executing Port Scanner...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    port_scanner()",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Port Scanner</span>"
+    ]
+  },
+  {
+    "objectID": "packet-sniffer.html",
+    "href": "packet-sniffer.html",
+    "title": "7  Packet Sniffer",
+    "section": "",
+    "text": "7.1 Python Implementation\nA packet sniffer is used to monitor network traffic by examining streams of data packets that flow between computers on a network. To start with the project, study network protocols properly. Then dive into implementing an application that tracks down network packets and parses its content in a human readable form.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Packet Sniffer</span>"
+    ]
+  },
+  {
+    "objectID": "packet-sniffer.html#python-implementation",
+    "href": "packet-sniffer.html#python-implementation",
+    "title": "7  Packet Sniffer",
+    "section": "",
+    "text": "def packet_sniffer():\n    \"\"\"\n    Implementation for Packet Sniffer\n    \"\"\"\n    print(\"Executing Packet Sniffer...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    packet_sniffer()",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Packet Sniffer</span>"
+    ]
+  },
+  {
+    "objectID": "p2p-file-sharing.html",
+    "href": "p2p-file-sharing.html",
+    "title": "8  P2P File Sharing",
+    "section": "",
+    "text": "8.1 Python Implementation\nBuild an app that will allow for peer-to-peer file sharing securely over the internet. This will help you transfer files securely from one location to another or send something to your friend.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>P2P File Sharing</span>"
+    ]
+  },
+  {
+    "objectID": "p2p-file-sharing.html#python-implementation",
+    "href": "p2p-file-sharing.html#python-implementation",
+    "title": "8  P2P File Sharing",
+    "section": "",
+    "text": "def p2p_file_sharing():\n    \"\"\"\n    Implementation for P2P File Sharing\n    \"\"\"\n    print(\"Executing P2P File Sharing...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    p2p_file_sharing()",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>P2P File Sharing</span>"
+    ]
+  },
+  {
+    "objectID": "search-engine.html",
+    "href": "search-engine.html",
+    "title": "9  Search Engine",
+    "section": "",
+    "text": "9.1 Python Implementation\nBuild a Web Search Engine like Google or Bing. Don’t copy from them though :wink:",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Search Engine</span>"
+    ]
+  },
+  {
+    "objectID": "search-engine.html#python-implementation",
+    "href": "search-engine.html#python-implementation",
+    "title": "9  Search Engine",
+    "section": "",
+    "text": "def search_engine():\n    \"\"\"\n    Implementation for Search Engine\n    \"\"\"\n    print(\"Executing Search Engine...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    search_engine()",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Search Engine</span>"
+    ]
+  },
+  {
+    "objectID": "bandwidth-monitor.html",
+    "href": "bandwidth-monitor.html",
+    "title": "10  Bandwidth Monitor",
+    "section": "",
+    "text": "10.1 Python Implementation\nBuild a tool to track how much data you have downloaded or uploaded to the internet. Have it email you weekly reports of your usage (or notify you when you get above a specified usage limit). As a bonus challenge, predict peak usage times.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Bandwidth Monitor</span>"
+    ]
+  },
+  {
+    "objectID": "bandwidth-monitor.html#python-implementation",
+    "href": "bandwidth-monitor.html#python-implementation",
+    "title": "10  Bandwidth Monitor",
+    "section": "",
+    "text": "def bandwidth_monitor():\n    \"\"\"\n    Implementation for Bandwidth Monitor\n    \"\"\"\n    print(\"Executing Bandwidth Monitor...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    bandwidth_monitor()",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Bandwidth Monitor</span>"
+    ]
+  },
+  {
+    "objectID": "product-landing-page.html",
+    "href": "product-landing-page.html",
+    "title": "11  Product Landing Page",
+    "section": "",
+    "text": "11.1 Python Implementation\nBuild the ideal product landing page according to you. Choose a product, build a page and showcase that on your portfolio.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Product Landing Page</span>"
+    ]
+  },
+  {
+    "objectID": "product-landing-page.html#python-implementation",
+    "href": "product-landing-page.html#python-implementation",
+    "title": "11  Product Landing Page",
+    "section": "",
+    "text": "def product_landing_page():\n    \"\"\"\n    Implementation for Product Landing Page\n    \"\"\"\n    print(\"Executing Product Landing Page...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    product_landing_page()",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Product Landing Page</span>"
+    ]
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "12  Blog",
+    "section": "",
+    "text": "12.1 Python Implementation\nA blog is a must have for everyone (according to me). Combine that fact with the fact that you learn a lot of things while building your own blog from scratch, and voila!",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Blog</span>"
+    ]
+  },
+  {
+    "objectID": "blog.html#python-implementation",
+    "href": "blog.html#python-implementation",
+    "title": "12  Blog",
+    "section": "",
+    "text": "def blog():\n    \"\"\"\n    Implementation for Blog\n    \"\"\"\n    print(\"Executing Blog...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    blog()",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Blog</span>"
+    ]
+  },
+  {
+    "objectID": "portfolio-website.html",
+    "href": "portfolio-website.html",
+    "title": "13  Portfolio Website",
+    "section": "",
+    "text": "13.1 Python Implementation\nIf you are ever interested in showcasing the things you have built, build a portfolio website! Building a website to display all the stuff will teach you a lot about website design in general (if you’ve never built a website before).",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Portfolio Website</span>"
+    ]
+  },
+  {
+    "objectID": "portfolio-website.html#python-implementation",
+    "href": "portfolio-website.html#python-implementation",
+    "title": "13  Portfolio Website",
+    "section": "",
+    "text": "def portfolio_website():\n    \"\"\"\n    Implementation for Portfolio Website\n    \"\"\"\n    print(\"Executing Portfolio Website...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    portfolio_website()",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Portfolio Website</span>"
+    ]
+  },
+  {
+    "objectID": "animated-navigation-toggle.html",
+    "href": "animated-navigation-toggle.html",
+    "title": "14  Animated Navigation Toggle",
+    "section": "",
+    "text": "14.1 Python Implementation\nAlthough it may seem like a small task, building an animated navigation toggle will teach you a lot about web development. Explore all the ideas that you can play with and see if you can build something truly fascinating!",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Animated Navigation Toggle</span>"
+    ]
+  },
+  {
+    "objectID": "animated-navigation-toggle.html#python-implementation",
+    "href": "animated-navigation-toggle.html#python-implementation",
+    "title": "14  Animated Navigation Toggle",
+    "section": "",
+    "text": "def animated_navigation_toggle():\n    \"\"\"\n    Implementation for Animated Navigation Toggle\n    \"\"\"\n    print(\"Executing Animated Navigation Toggle...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    animated_navigation_toggle()",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Animated Navigation Toggle</span>"
+    ]
+  },
+  {
+    "objectID": "country-lookup-using-ip-address.html",
+    "href": "country-lookup-using-ip-address.html",
+    "title": "15  Country Lookup using IP address",
+    "section": "",
+    "text": "15.1 Python Implementation\nCan you find the country from a provided IP address? Write a script that can help you with this. For bonus points, try to figure out a more local location from the IP address.",
+    "crumbs": [
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Country Lookup using IP address</span>"
+    ]
+  },
+  {
+    "objectID": "country-lookup-using-ip-address.html#python-implementation",
+    "href": "country-lookup-using-ip-address.html#python-implementation",
+    "title": "15  Country Lookup using IP address",
+    "section": "",
+    "text": "def country_lookup_using_ip_address():\n    \"\"\"\n    Implementation for Country Lookup using IP address\n    \"\"\"\n    print(\"Executing Country Lookup using IP address...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    country_lookup_using_ip_address()",
+    "crumbs": [
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Country Lookup using IP address</span>"
+    ]
+  },
+  {
+    "objectID": "chatbot.html",
+    "href": "chatbot.html",
+    "title": "16  Chatbot",
+    "section": "",
+    "text": "16.1 Python Implementation\nBuild a chatbot that you can talk to when bored. For bonus points use machine learning/AI to make it smart. I suggest you to implement it as a simple CLI application.",
+    "crumbs": [
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Chatbot</span>"
+    ]
+  },
+  {
+    "objectID": "chatbot.html#python-implementation",
+    "href": "chatbot.html#python-implementation",
+    "title": "16  Chatbot",
+    "section": "",
+    "text": "def chatbot():\n    \"\"\"\n    Implementation for Chatbot\n    \"\"\"\n    print(\"Executing Chatbot...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    chatbot()",
+    "crumbs": [
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Chatbot</span>"
+    ]
+  },
+  {
+    "objectID": "slack-bot.html",
+    "href": "slack-bot.html",
+    "title": "17  Slack Bot",
+    "section": "",
+    "text": "17.1 Python Implementation\nDescription",
+    "crumbs": [
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Slack Bot</span>"
+    ]
+  },
+  {
+    "objectID": "slack-bot.html#python-implementation",
+    "href": "slack-bot.html#python-implementation",
+    "title": "17  Slack Bot",
+    "section": "",
+    "text": "def slack_bot():\n    \"\"\"\n    Implementation for Slack Bot\n    \"\"\"\n    print(\"Executing Slack Bot...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    slack_bot()",
+    "crumbs": [
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Slack Bot</span>"
+    ]
+  },
+  {
+    "objectID": "twitter-bot.html",
+    "href": "twitter-bot.html",
+    "title": "18  Twitter Bot",
+    "section": "",
+    "text": "18.1 Python Implementation\nBuild a bot that will either - follow people that follow the bot - retweet tweets containing some specific keywords related to a topic - retweet tweets containing a specific hashtag",
+    "crumbs": [
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Twitter Bot</span>"
+    ]
+  },
+  {
+    "objectID": "twitter-bot.html#python-implementation",
+    "href": "twitter-bot.html#python-implementation",
+    "title": "18  Twitter Bot",
+    "section": "",
+    "text": "def twitter_bot():\n    \"\"\"\n    Implementation for Twitter Bot\n    \"\"\"\n    print(\"Executing Twitter Bot...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    twitter_bot()",
+    "crumbs": [
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Twitter Bot</span>"
+    ]
+  },
+  {
+    "objectID": "messenger-bot.html",
+    "href": "messenger-bot.html",
+    "title": "19  Messenger Bot",
+    "section": "",
+    "text": "19.1 Python Implementation\nBuild a bot for messenger that can do some menial tasks too like flip a coin, roll a dice, present the news, and chat with you when bored.",
+    "crumbs": [
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Messenger Bot</span>"
+    ]
+  },
+  {
+    "objectID": "messenger-bot.html#python-implementation",
+    "href": "messenger-bot.html#python-implementation",
+    "title": "19  Messenger Bot",
+    "section": "",
+    "text": "def messenger_bot():\n    \"\"\"\n    Implementation for Messenger Bot\n    \"\"\"\n    print(\"Executing Messenger Bot...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    messenger_bot()",
+    "crumbs": [
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Messenger Bot</span>"
+    ]
+  },
+  {
+    "objectID": "whatsapp-butler.html",
+    "href": "whatsapp-butler.html",
+    "title": "20  WhatsApp Butler",
+    "section": "",
+    "text": "20.1 Python Implementation\nBuild a bot for WhatsApp that can scrape information from the internet like news, wikipedia entries, and other things. Make it able to keep track of some events like your/someone else’s birthday and send an automatic message wishing you/the other person.",
+    "crumbs": [
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>WhatsApp Butler</span>"
+    ]
+  },
+  {
+    "objectID": "whatsapp-butler.html#python-implementation",
+    "href": "whatsapp-butler.html#python-implementation",
+    "title": "20  WhatsApp Butler",
+    "section": "",
+    "text": "def whatsapp_butler():\n    \"\"\"\n    Implementation for WhatsApp Butler\n    \"\"\"\n    print(\"Executing WhatsApp Butler...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    whatsapp_butler()",
+    "crumbs": [
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>WhatsApp Butler</span>"
+    ]
+  },
+  {
+    "objectID": "quiz-app.html",
+    "href": "quiz-app.html",
+    "title": "21  Quiz App",
+    "section": "",
+    "text": "21.1 Python Implementation\nThe user chooses a category and gets a random set of questions from the given category. Implement a Multiple choice Quiz app to prevent more complications.",
+    "crumbs": [
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Quiz App</span>"
+    ]
+  },
+  {
+    "objectID": "quiz-app.html#python-implementation",
+    "href": "quiz-app.html#python-implementation",
+    "title": "21  Quiz App",
+    "section": "",
+    "text": "def quiz_app():\n    \"\"\"\n    Implementation for Quiz App\n    \"\"\"\n    print(\"Executing Quiz App...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    quiz_app()",
+    "crumbs": [
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Quiz App</span>"
+    ]
+  },
+  {
+    "objectID": "firewall.html",
+    "href": "firewall.html",
+    "title": "22  Firewall",
+    "section": "",
+    "text": "22.1 Python Implementation\nBuild a firewall software that can regulate the network connections for the user and also block/notify of any suspicious action from any website/internal software/external agent.",
+    "crumbs": [
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Firewall</span>"
+    ]
+  },
+  {
+    "objectID": "firewall.html#python-implementation",
+    "href": "firewall.html#python-implementation",
+    "title": "22  Firewall",
+    "section": "",
+    "text": "def firewall():\n    \"\"\"\n    Implementation for Firewall\n    \"\"\"\n    print(\"Executing Firewall...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    firewall()",
+    "crumbs": [
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Firewall</span>"
+    ]
+  },
+  {
+    "objectID": "todo-list.html",
+    "href": "todo-list.html",
+    "title": "23  ToDo List",
+    "section": "",
+    "text": "23.1 Python Implementation\nBuild a To Do app that can track the various stages of a given work (todo, ongoing, completed). For bonus points, make it work with recurring tasks and incorporate task scheduling (when to do what/a deadline for tasks).",
+    "crumbs": [
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>ToDo List</span>"
+    ]
+  },
+  {
+    "objectID": "todo-list.html#python-implementation",
+    "href": "todo-list.html#python-implementation",
+    "title": "23  ToDo List",
+    "section": "",
+    "text": "def todo_list():\n    \"\"\"\n    Implementation for ToDo List\n    \"\"\"\n    print(\"Executing ToDo List...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    todo_list()",
+    "crumbs": [
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>ToDo List</span>"
+    ]
+  },
+  {
+    "objectID": "text-editor.html",
+    "href": "text-editor.html",
+    "title": "24  Text Editor",
+    "section": "",
+    "text": "24.1 Python Implementation\nBuild a simple text editor that can help you open, read from and write to text files. For bonus points incorporate features like the find tool and regex search and replace.",
+    "crumbs": [
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Text Editor</span>"
+    ]
+  },
+  {
+    "objectID": "text-editor.html#python-implementation",
+    "href": "text-editor.html#python-implementation",
+    "title": "24  Text Editor",
+    "section": "",
+    "text": "def text_editor():\n    \"\"\"\n    Implementation for Text Editor\n    \"\"\"\n    print(\"Executing Text Editor...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    text_editor()",
+    "crumbs": [
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Text Editor</span>"
+    ]
+  },
+  {
+    "objectID": "application-builder.html",
+    "href": "application-builder.html",
+    "title": "25  Application Builder",
+    "section": "",
+    "text": "25.1 Python Implementation\nThis is probably the hardest one on the list and the most vague one too. Design a system that takes in text input and generates applications (or at least application interfaces) based on the text description. You can also use a drag-and-drop like feature to let users build the app.",
+    "crumbs": [
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Application Builder</span>"
+    ]
+  },
+  {
+    "objectID": "application-builder.html#python-implementation",
+    "href": "application-builder.html#python-implementation",
+    "title": "25  Application Builder",
+    "section": "",
+    "text": "def application_builder():\n    \"\"\"\n    Implementation for Application Builder\n    \"\"\"\n    print(\"Executing Application Builder...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    application_builder()",
+    "crumbs": [
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Application Builder</span>"
+    ]
+  },
+  {
+    "objectID": "drawing-app.html",
+    "href": "drawing-app.html",
+    "title": "26  Drawing App",
+    "section": "",
+    "text": "26.1 Python Implementation\nBuild an app that lets the user draw anything and save it as an image. For extra points, add colouring and other cool things like animations.",
+    "crumbs": [
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Drawing App</span>"
+    ]
+  },
+  {
+    "objectID": "drawing-app.html#python-implementation",
+    "href": "drawing-app.html#python-implementation",
+    "title": "26  Drawing App",
+    "section": "",
+    "text": "def drawing_app():\n    \"\"\"\n    Implementation for Drawing App\n    \"\"\"\n    print(\"Executing Drawing App...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    drawing_app()",
+    "crumbs": [
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Drawing App</span>"
+    ]
+  },
+  {
+    "objectID": "survey-app.html",
+    "href": "survey-app.html",
+    "title": "27  Survey App",
+    "section": "",
+    "text": "27.1 Python Implementation\nBuild an app/web app that will let anyone create survey questions and circulate it via email to record responses and then analyze the data collected.",
+    "crumbs": [
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Survey App</span>"
+    ]
+  },
+  {
+    "objectID": "survey-app.html#python-implementation",
+    "href": "survey-app.html#python-implementation",
+    "title": "27  Survey App",
+    "section": "",
+    "text": "def survey_app():\n    \"\"\"\n    Implementation for Survey App\n    \"\"\"\n    print(\"Executing Survey App...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    survey_app()",
+    "crumbs": [
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Survey App</span>"
+    ]
+  },
+  {
+    "objectID": "web-browser.html",
+    "href": "web-browser.html",
+    "title": "28  Web Browser",
+    "section": "",
+    "text": "28.1 Python Implementation\nBuild a piece of software that will help you browse any HTML page. For bonus points, add additional features like those in Chrome and Firefox.",
+    "crumbs": [
+      "<span class='chapter-number'>28</span>  <span class='chapter-title'>Web Browser</span>"
+    ]
+  },
+  {
+    "objectID": "web-browser.html#python-implementation",
+    "href": "web-browser.html#python-implementation",
+    "title": "28  Web Browser",
+    "section": "",
+    "text": "def web_browser():\n    \"\"\"\n    Implementation for Web Browser\n    \"\"\"\n    print(\"Executing Web Browser...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    web_browser()",
+    "crumbs": [
+      "<span class='chapter-number'>28</span>  <span class='chapter-title'>Web Browser</span>"
+    ]
+  },
+  {
+    "objectID": "weather-app.html",
+    "href": "weather-app.html",
+    "title": "29  Weather App",
+    "section": "",
+    "text": "29.1 Python Implementation\nBuild an app that gets the weather at your location in the current time. You can either use a web scraper in the background to collect the data or use a weather API.",
+    "crumbs": [
+      "<span class='chapter-number'>29</span>  <span class='chapter-title'>Weather App</span>"
+    ]
+  },
+  {
+    "objectID": "weather-app.html#python-implementation",
+    "href": "weather-app.html#python-implementation",
+    "title": "29  Weather App",
+    "section": "",
+    "text": "def weather_app():\n    \"\"\"\n    Implementation for Weather App\n    \"\"\"\n    print(\"Executing Weather App...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    weather_app()",
+    "crumbs": [
+      "<span class='chapter-number'>29</span>  <span class='chapter-title'>Weather App</span>"
+    ]
+  },
+  {
+    "objectID": "math-editor.html",
+    "href": "math-editor.html",
+    "title": "30  Math Editor",
+    "section": "",
+    "text": "30.1 Python Implementation\nBuild an app that will properly format equations that a user inputs. I personally find it really inconvenient to work with a special software to just write and display equations properly like Latex, thus, if you build something that can convert plain English text to properly formatted equations, ping me!",
+    "crumbs": [
+      "<span class='chapter-number'>30</span>  <span class='chapter-title'>Math Editor</span>"
+    ]
+  },
+  {
+    "objectID": "math-editor.html#python-implementation",
+    "href": "math-editor.html#python-implementation",
+    "title": "30  Math Editor",
+    "section": "",
+    "text": "def math_editor():\n    \"\"\"\n    Implementation for Math Editor\n    \"\"\"\n    print(\"Executing Math Editor...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    math_editor()",
+    "crumbs": [
+      "<span class='chapter-number'>30</span>  <span class='chapter-title'>Math Editor</span>"
+    ]
+  },
+  {
+    "objectID": "music-player.html",
+    "href": "music-player.html",
+    "title": "31  Music Player",
+    "section": "",
+    "text": "31.1 Python Implementation\nBuild a music player app that can play music from mp3 files and also have functionality for forward, rewind, pause, and play.",
+    "crumbs": [
+      "<span class='chapter-number'>31</span>  <span class='chapter-title'>Music Player</span>"
+    ]
+  },
+  {
+    "objectID": "music-player.html#python-implementation",
+    "href": "music-player.html#python-implementation",
+    "title": "31  Music Player",
+    "section": "",
+    "text": "def music_player():\n    \"\"\"\n    Implementation for Music Player\n    \"\"\"\n    print(\"Executing Music Player...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    music_player()",
+    "crumbs": [
+      "<span class='chapter-number'>31</span>  <span class='chapter-title'>Music Player</span>"
+    ]
+  },
+  {
+    "objectID": "stopwatch-app.html",
+    "href": "stopwatch-app.html",
+    "title": "32  Stopwatch App",
+    "section": "",
+    "text": "32.1 Python Implementation\nBuild a stopwatch app/web app. It should also be able to lap time.",
+    "crumbs": [
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Stopwatch App</span>"
+    ]
+  },
+  {
+    "objectID": "stopwatch-app.html#python-implementation",
+    "href": "stopwatch-app.html#python-implementation",
+    "title": "32  Stopwatch App",
+    "section": "",
+    "text": "def stopwatch_app():\n    \"\"\"\n    Implementation for Stopwatch App\n    \"\"\"\n    print(\"Executing Stopwatch App...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    stopwatch_app()",
+    "crumbs": [
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Stopwatch App</span>"
+    ]
+  },
+  {
+    "objectID": "url-shortener.html",
+    "href": "url-shortener.html",
+    "title": "33  URL Shortener",
+    "section": "",
+    "text": "33.1 Python Implementation\nBuild a web app that can shorten any URL that the user provides. You can either code an algorithm that shortens and stores the user provide URL or use an API.",
+    "crumbs": [
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>URL Shortener</span>"
+    ]
+  },
+  {
+    "objectID": "url-shortener.html#python-implementation",
+    "href": "url-shortener.html#python-implementation",
+    "title": "33  URL Shortener",
+    "section": "",
+    "text": "def url_shortener():\n    \"\"\"\n    Implementation for URL Shortener\n    \"\"\"\n    print(\"Executing URL Shortener...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    url_shortener()",
+    "crumbs": [
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>URL Shortener</span>"
+    ]
+  },
+  {
+    "objectID": "payment-system.html",
+    "href": "payment-system.html",
+    "title": "34  Payment System",
+    "section": "",
+    "text": "34.1 Python Implementation\nBuild a payment interface that can deal with fake cash (better if you can deal with real currency, although I don’t know if you have to take extra steps for that). Users should be able to receive and send money, and also check their current balance.",
+    "crumbs": [
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>Payment System</span>"
+    ]
+  },
+  {
+    "objectID": "payment-system.html#python-implementation",
+    "href": "payment-system.html#python-implementation",
+    "title": "34  Payment System",
+    "section": "",
+    "text": "def payment_system():\n    \"\"\"\n    Implementation for Payment System\n    \"\"\"\n    print(\"Executing Payment System...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    payment_system()",
+    "crumbs": [
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>Payment System</span>"
+    ]
+  },
+  {
+    "objectID": "meme-generator.html",
+    "href": "meme-generator.html",
+    "title": "35  MEME Generator",
+    "section": "",
+    "text": "35.1 Python Implementation\nBuild an app/web app that will overlay text over an image, so that users can build memes.",
+    "crumbs": [
+      "<span class='chapter-number'>35</span>  <span class='chapter-title'>MEME Generator</span>"
+    ]
+  },
+  {
+    "objectID": "meme-generator.html#python-implementation",
+    "href": "meme-generator.html#python-implementation",
+    "title": "35  MEME Generator",
+    "section": "",
+    "text": "def meme_generator():\n    \"\"\"\n    Implementation for MEME Generator\n    \"\"\"\n    print(\"Executing MEME Generator...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    meme_generator()",
+    "crumbs": [
+      "<span class='chapter-number'>35</span>  <span class='chapter-title'>MEME Generator</span>"
+    ]
+  },
+  {
+    "objectID": "pomodoro-clock.html",
+    "href": "pomodoro-clock.html",
+    "title": "36  Pomodoro Clock",
+    "section": "",
+    "text": "36.1 Python Implementation\nBuild a Pomodoro timer that will help you take breaks at proper times while doing a task. For bonus points include different Pomodoro timer formats.",
+    "crumbs": [
+      "<span class='chapter-number'>36</span>  <span class='chapter-title'>Pomodoro Clock</span>"
+    ]
+  },
+  {
+    "objectID": "pomodoro-clock.html#python-implementation",
+    "href": "pomodoro-clock.html#python-implementation",
+    "title": "36  Pomodoro Clock",
+    "section": "",
+    "text": "def pomodoro_clock():\n    \"\"\"\n    Implementation for Pomodoro Clock\n    \"\"\"\n    print(\"Executing Pomodoro Clock...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    pomodoro_clock()",
+    "crumbs": [
+      "<span class='chapter-number'>36</span>  <span class='chapter-title'>Pomodoro Clock</span>"
+    ]
+  },
+  {
+    "objectID": "typing-practice.html",
+    "href": "typing-practice.html",
+    "title": "37  Typing Practice",
+    "section": "",
+    "text": "37.1 Python Implementation\nBuild an app that lets you practice typing. Make it generate random sentences and see how fast you can type the sentences. Typing is something that many developers completely ignore, but it is one of the most important skills that someone working with computers should have.",
+    "crumbs": [
+      "<span class='chapter-number'>37</span>  <span class='chapter-title'>Typing Practice</span>"
+    ]
+  },
+  {
+    "objectID": "typing-practice.html#python-implementation",
+    "href": "typing-practice.html#python-implementation",
+    "title": "37  Typing Practice",
+    "section": "",
+    "text": "def typing_practice():\n    \"\"\"\n    Implementation for Typing Practice\n    \"\"\"\n    print(\"Executing Typing Practice...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    typing_practice()",
+    "crumbs": [
+      "<span class='chapter-number'>37</span>  <span class='chapter-title'>Typing Practice</span>"
+    ]
+  },
+  {
+    "objectID": "grammar-checker.html",
+    "href": "grammar-checker.html",
+    "title": "38  Grammar Checker",
+    "section": "",
+    "text": "38.1 Python Implementation\nBuild a software that will spell check and check simple grammatical errors in any text you write. For additional points/complexity, try to guess the mood (happy text, formal letter, etc) of the text and suggest appropriate changes.",
+    "crumbs": [
+      "<span class='chapter-number'>38</span>  <span class='chapter-title'>Grammar Checker</span>"
+    ]
+  },
+  {
+    "objectID": "grammar-checker.html#python-implementation",
+    "href": "grammar-checker.html#python-implementation",
+    "title": "38  Grammar Checker",
+    "section": "",
+    "text": "def grammar_checker():\n    \"\"\"\n    Implementation for Grammar Checker\n    \"\"\"\n    print(\"Executing Grammar Checker...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    grammar_checker()",
+    "crumbs": [
+      "<span class='chapter-number'>38</span>  <span class='chapter-title'>Grammar Checker</span>"
+    ]
+  },
+  {
+    "objectID": "news-aggregator.html",
+    "href": "news-aggregator.html",
+    "title": "39  News Aggregator",
+    "section": "",
+    "text": "39.1 Python Implementation\nBuild an app that will present you daily news from credible sources. Make sure you pool unique information about a given news headline from different sites to remove any bias that may be present in a given source.",
+    "crumbs": [
+      "<span class='chapter-number'>39</span>  <span class='chapter-title'>News Aggregator</span>"
+    ]
+  },
+  {
+    "objectID": "news-aggregator.html#python-implementation",
+    "href": "news-aggregator.html#python-implementation",
+    "title": "39  News Aggregator",
+    "section": "",
+    "text": "def news_aggregator():\n    \"\"\"\n    Implementation for News Aggregator\n    \"\"\"\n    print(\"Executing News Aggregator...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    news_aggregator()",
+    "crumbs": [
+      "<span class='chapter-number'>39</span>  <span class='chapter-title'>News Aggregator</span>"
+    ]
+  },
+  {
+    "objectID": "calorie-counter.html",
+    "href": "calorie-counter.html",
+    "title": "40  Calorie Counter",
+    "section": "",
+    "text": "40.1 Python Implementation\nBuild an app that will track the amount of calories that you eat everyday. Try to also incorporate information about other macro and micro nutrients to provide a more complete picture.",
+    "crumbs": [
+      "<span class='chapter-number'>40</span>  <span class='chapter-title'>Calorie Counter</span>"
+    ]
+  },
+  {
+    "objectID": "calorie-counter.html#python-implementation",
+    "href": "calorie-counter.html#python-implementation",
+    "title": "40  Calorie Counter",
+    "section": "",
+    "text": "def calorie_counter():\n    \"\"\"\n    Implementation for Calorie Counter\n    \"\"\"\n    print(\"Executing Calorie Counter...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    calorie_counter()",
+    "crumbs": [
+      "<span class='chapter-number'>40</span>  <span class='chapter-title'>Calorie Counter</span>"
+    ]
+  },
+  {
+    "objectID": "traffic-notifier.html",
+    "href": "traffic-notifier.html",
+    "title": "41  Traffic Notifier",
+    "section": "",
+    "text": "41.1 Python Implementation\nBuild an app (phone app will be better) that finds how congested one route is and then suggests you a better route to take to your destination.",
+    "crumbs": [
+      "<span class='chapter-number'>41</span>  <span class='chapter-title'>Traffic Notifier</span>"
+    ]
+  },
+  {
+    "objectID": "traffic-notifier.html#python-implementation",
+    "href": "traffic-notifier.html#python-implementation",
+    "title": "41  Traffic Notifier",
+    "section": "",
+    "text": "def traffic_notifier():\n    \"\"\"\n    Implementation for Traffic Notifier\n    \"\"\"\n    print(\"Executing Traffic Notifier...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    traffic_notifier()",
+    "crumbs": [
+      "<span class='chapter-number'>41</span>  <span class='chapter-title'>Traffic Notifier</span>"
+    ]
+  },
+  {
+    "objectID": "virtual-assistant.html",
+    "href": "virtual-assistant.html",
+    "title": "42  Virtual Assistant",
+    "section": "",
+    "text": "42.1 Python Implementation\nBuild a virtual assistant that will help you carry out tasks like calling people, scheduling tasks, creating todo lists, taking notes, .. you get the point.",
+    "crumbs": [
+      "<span class='chapter-number'>42</span>  <span class='chapter-title'>Virtual Assistant</span>"
+    ]
+  },
+  {
+    "objectID": "virtual-assistant.html#python-implementation",
+    "href": "virtual-assistant.html#python-implementation",
+    "title": "42  Virtual Assistant",
+    "section": "",
+    "text": "def virtual_assistant():\n    \"\"\"\n    Implementation for Virtual Assistant\n    \"\"\"\n    print(\"Executing Virtual Assistant...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    virtual_assistant()",
+    "crumbs": [
+      "<span class='chapter-number'>42</span>  <span class='chapter-title'>Virtual Assistant</span>"
+    ]
+  },
+  {
+    "objectID": "antivirus-software.html",
+    "href": "antivirus-software.html",
+    "title": "43  Antivirus Software",
+    "section": "",
+    "text": "43.1 Python Implementation\nBuild an antivirus software that will protect you from viruses and other computer worms and stuff. Make sure you update it frequently to deal with the newer viruses.",
+    "crumbs": [
+      "<span class='chapter-number'>43</span>  <span class='chapter-title'>Antivirus Software</span>"
+    ]
+  },
+  {
+    "objectID": "antivirus-software.html#python-implementation",
+    "href": "antivirus-software.html#python-implementation",
+    "title": "43  Antivirus Software",
+    "section": "",
+    "text": "def antivirus_software():\n    \"\"\"\n    Implementation for Antivirus Software\n    \"\"\"\n    print(\"Executing Antivirus Software...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    antivirus_software()",
+    "crumbs": [
+      "<span class='chapter-number'>43</span>  <span class='chapter-title'>Antivirus Software</span>"
+    ]
+  },
+  {
+    "objectID": "video-call-application.html",
+    "href": "video-call-application.html",
+    "title": "44  Video Call Application",
+    "section": "",
+    "text": "44.1 Python Implementation\nBuild an app that can let you video call anyone anywhere over the internet.",
+    "crumbs": [
+      "<span class='chapter-number'>44</span>  <span class='chapter-title'>Video Call Application</span>"
+    ]
+  },
+  {
+    "objectID": "video-call-application.html#python-implementation",
+    "href": "video-call-application.html#python-implementation",
+    "title": "44  Video Call Application",
+    "section": "",
+    "text": "def video_call_application():\n    \"\"\"\n    Implementation for Video Call Application\n    \"\"\"\n    print(\"Executing Video Call Application...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    video_call_application()",
+    "crumbs": [
+      "<span class='chapter-number'>44</span>  <span class='chapter-title'>Video Call Application</span>"
+    ]
+  },
+  {
+    "objectID": "library-management-system.html",
+    "href": "library-management-system.html",
+    "title": "45  Library Management System",
+    "section": "",
+    "text": "45.1 Python Implementation\nBuild an app for a hypothetical (or better, a real one near you) library that will help in management. You need to keep track of books you have, books to order, people with access to the library, books borrowed, returned and other related tasks.",
+    "crumbs": [
+      "<span class='chapter-number'>45</span>  <span class='chapter-title'>Library Management System</span>"
+    ]
+  },
+  {
+    "objectID": "library-management-system.html#python-implementation",
+    "href": "library-management-system.html#python-implementation",
+    "title": "45  Library Management System",
+    "section": "",
+    "text": "def library_management_system():\n    \"\"\"\n    Implementation for Library Management System\n    \"\"\"\n    print(\"Executing Library Management System...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    library_management_system()",
+    "crumbs": [
+      "<span class='chapter-number'>45</span>  <span class='chapter-title'>Library Management System</span>"
+    ]
+  },
+  {
+    "objectID": "relational-database-management-system.html",
+    "href": "relational-database-management-system.html",
+    "title": "46  Relational Database Management System",
+    "section": "",
+    "text": "46.1 Python Implementation\nBuild your own database management system like MySQL or PostgreSQL. It doesn’t have to be compatible with them, but it does need to help users manage their data efficiently and create relational tables.",
+    "crumbs": [
+      "<span class='chapter-number'>46</span>  <span class='chapter-title'>Relational Database Management System</span>"
+    ]
+  },
+  {
+    "objectID": "relational-database-management-system.html#python-implementation",
+    "href": "relational-database-management-system.html#python-implementation",
+    "title": "46  Relational Database Management System",
+    "section": "",
+    "text": "def relational_database_management_system():\n    \"\"\"\n    Implementation for Relational Database Management System\n    \"\"\"\n    print(\"Executing Relational Database Management System...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    relational_database_management_system()",
+    "crumbs": [
+      "<span class='chapter-number'>46</span>  <span class='chapter-title'>Relational Database Management System</span>"
+    ]
+  },
+  {
+    "objectID": "face-tracker.html",
+    "href": "face-tracker.html",
+    "title": "47  Face Tracker",
+    "section": "",
+    "text": "47.1 Python Implementation\nBuild a piece of software that will analyse pictures (or better, live cam feed) and tag faces in the images as face or with a box.",
+    "crumbs": [
+      "<span class='chapter-number'>47</span>  <span class='chapter-title'>Face Tracker</span>"
+    ]
+  },
+  {
+    "objectID": "face-tracker.html#python-implementation",
+    "href": "face-tracker.html#python-implementation",
+    "title": "47  Face Tracker",
+    "section": "",
+    "text": "def face_tracker():\n    \"\"\"\n    Implementation for Face Tracker\n    \"\"\"\n    print(\"Executing Face Tracker...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    face_tracker()",
+    "crumbs": [
+      "<span class='chapter-number'>47</span>  <span class='chapter-title'>Face Tracker</span>"
+    ]
+  },
+  {
+    "objectID": "spam-classifier.html",
+    "href": "spam-classifier.html",
+    "title": "48  Spam Classifier",
+    "section": "",
+    "text": "48.1 Python Implementation\nBuild a spam classifier that filters ads and other unrequired emails from people that you don’t really want to look at.",
+    "crumbs": [
+      "<span class='chapter-number'>48</span>  <span class='chapter-title'>Spam Classifier</span>"
+    ]
+  },
+  {
+    "objectID": "spam-classifier.html#python-implementation",
+    "href": "spam-classifier.html#python-implementation",
+    "title": "48  Spam Classifier",
+    "section": "",
+    "text": "def spam_classifier():\n    \"\"\"\n    Implementation for Spam Classifier\n    \"\"\"\n    print(\"Executing Spam Classifier...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    spam_classifier()",
+    "crumbs": [
+      "<span class='chapter-number'>48</span>  <span class='chapter-title'>Spam Classifier</span>"
+    ]
+  },
+  {
+    "objectID": "spoiler-blocker.html",
+    "href": "spoiler-blocker.html",
+    "title": "49  Spoiler Blocker",
+    "section": "",
+    "text": "49.1 Python Implementation\nBuild a browser extension that blocks movie spoilers on websites. I put it in AI as you have to think of a changing algorithm that should be smart enough to identify spoilers from a piece of text.",
+    "crumbs": [
+      "<span class='chapter-number'>49</span>  <span class='chapter-title'>Spoiler Blocker</span>"
+    ]
+  },
+  {
+    "objectID": "spoiler-blocker.html#python-implementation",
+    "href": "spoiler-blocker.html#python-implementation",
+    "title": "49  Spoiler Blocker",
+    "section": "",
+    "text": "def spoiler_blocker():\n    \"\"\"\n    Implementation for Spoiler Blocker\n    \"\"\"\n    print(\"Executing Spoiler Blocker...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    spoiler_blocker()",
+    "crumbs": [
+      "<span class='chapter-number'>49</span>  <span class='chapter-title'>Spoiler Blocker</span>"
+    ]
+  },
+  {
+    "objectID": "music-suggestor.html",
+    "href": "music-suggestor.html",
+    "title": "50  Music Suggestor",
+    "section": "",
+    "text": "50.1 Python Implementation\nBored of the same songs but don’t know what to try next? Build an AI to suggest you music based on your taste that you are more likely to like.",
+    "crumbs": [
+      "<span class='chapter-number'>50</span>  <span class='chapter-title'>Music Suggestor</span>"
+    ]
+  },
+  {
+    "objectID": "music-suggestor.html#python-implementation",
+    "href": "music-suggestor.html#python-implementation",
+    "title": "50  Music Suggestor",
+    "section": "",
+    "text": "def music_suggestor():\n    \"\"\"\n    Implementation for Music Suggestor\n    \"\"\"\n    print(\"Executing Music Suggestor...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    music_suggestor()",
+    "crumbs": [
+      "<span class='chapter-number'>50</span>  <span class='chapter-title'>Music Suggestor</span>"
+    ]
+  },
+  {
+    "objectID": "machine-translator.html",
+    "href": "machine-translator.html",
+    "title": "51  Machine Translator",
+    "section": "",
+    "text": "51.1 Python Implementation\nBuild an app to translate text from one language to another. For bonus points include an image translator that can get text from image and translate it.",
+    "crumbs": [
+      "<span class='chapter-number'>51</span>  <span class='chapter-title'>Machine Translator</span>"
+    ]
+  },
+  {
+    "objectID": "machine-translator.html#python-implementation",
+    "href": "machine-translator.html#python-implementation",
+    "title": "51  Machine Translator",
+    "section": "",
+    "text": "def machine_translator():\n    \"\"\"\n    Implementation for Machine Translator\n    \"\"\"\n    print(\"Executing Machine Translator...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    machine_translator()",
+    "crumbs": [
+      "<span class='chapter-number'>51</span>  <span class='chapter-title'>Machine Translator</span>"
+    ]
+  },
+  {
+    "objectID": "hand-gesture-recognition.html",
+    "href": "hand-gesture-recognition.html",
+    "title": "52  Hand Gesture Recognition",
+    "section": "",
+    "text": "52.1 Python Implementation\nBuild a piece of software that can recognise gestures from a camera video and then carry out certain tasks based on the gesture.",
+    "crumbs": [
+      "<span class='chapter-number'>52</span>  <span class='chapter-title'>Hand Gesture Recognition</span>"
+    ]
+  },
+  {
+    "objectID": "hand-gesture-recognition.html#python-implementation",
+    "href": "hand-gesture-recognition.html#python-implementation",
+    "title": "52  Hand Gesture Recognition",
+    "section": "",
+    "text": "def hand_gesture_recognition():\n    \"\"\"\n    Implementation for Hand Gesture Recognition\n    \"\"\"\n    print(\"Executing Hand Gesture Recognition...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    hand_gesture_recognition()",
+    "crumbs": [
+      "<span class='chapter-number'>52</span>  <span class='chapter-title'>Hand Gesture Recognition</span>"
+    ]
+  },
+  {
+    "objectID": "video-subtitle-generator.html",
+    "href": "video-subtitle-generator.html",
+    "title": "53  Video Subtitle Generator",
+    "section": "",
+    "text": "53.1 Python Implementation\nInput a video and get a subtitle! Build a software that automatically creates subtitles from a provided video. It may seem difficult in the beginning, but look up Natural Language Processing to see how far machines already are with regard to understanding human language.",
+    "crumbs": [
+      "<span class='chapter-number'>53</span>  <span class='chapter-title'>Video Subtitle Generator</span>"
+    ]
+  },
+  {
+    "objectID": "video-subtitle-generator.html#python-implementation",
+    "href": "video-subtitle-generator.html#python-implementation",
+    "title": "53  Video Subtitle Generator",
+    "section": "",
+    "text": "def video_subtitle_generator():\n    \"\"\"\n    Implementation for Video Subtitle Generator\n    \"\"\"\n    print(\"Executing Video Subtitle Generator...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    video_subtitle_generator()",
+    "crumbs": [
+      "<span class='chapter-number'>53</span>  <span class='chapter-title'>Video Subtitle Generator</span>"
+    ]
+  },
+  {
+    "objectID": "automatic-logo-generator.html",
+    "href": "automatic-logo-generator.html",
+    "title": "54  Automatic Logo Generator",
+    "section": "",
+    "text": "54.1 Python Implementation\nBuild a software that takes in a company name and some related keywords to generate a brand new logo for the user. Make the logo editable so the user can make any changes if they don’t like the generated output.",
+    "crumbs": [
+      "<span class='chapter-number'>54</span>  <span class='chapter-title'>Automatic Logo Generator</span>"
+    ]
+  },
+  {
+    "objectID": "automatic-logo-generator.html#python-implementation",
+    "href": "automatic-logo-generator.html#python-implementation",
+    "title": "54  Automatic Logo Generator",
+    "section": "",
+    "text": "def automatic_logo_generator():\n    \"\"\"\n    Implementation for Automatic Logo Generator\n    \"\"\"\n    print(\"Executing Automatic Logo Generator...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    automatic_logo_generator()",
+    "crumbs": [
+      "<span class='chapter-number'>54</span>  <span class='chapter-title'>Automatic Logo Generator</span>"
+    ]
+  },
+  {
+    "objectID": "movie-recommendation-system.html",
+    "href": "movie-recommendation-system.html",
+    "title": "55  Movie Recommendation System",
+    "section": "",
+    "text": "55.1 Python Implementation\nBuild a recommendation system that lets you or any users choose the next movie that you want to watch. Instead of copying an existing movie recommender with a well studied algorithm, try to come up with your own algorithm and test it out.",
+    "crumbs": [
+      "<span class='chapter-number'>55</span>  <span class='chapter-title'>Movie Recommendation System</span>"
+    ]
+  },
+  {
+    "objectID": "movie-recommendation-system.html#python-implementation",
+    "href": "movie-recommendation-system.html#python-implementation",
+    "title": "55  Movie Recommendation System",
+    "section": "",
+    "text": "def movie_recommendation_system():\n    \"\"\"\n    Implementation for Movie Recommendation System\n    \"\"\"\n    print(\"Executing Movie Recommendation System...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    movie_recommendation_system()",
+    "crumbs": [
+      "<span class='chapter-number'>55</span>  <span class='chapter-title'>Movie Recommendation System</span>"
+    ]
+  },
+  {
+    "objectID": "audio-to-sign-language-translator.html",
+    "href": "audio-to-sign-language-translator.html",
+    "title": "56  Audio to Sign Language Translator",
+    "section": "",
+    "text": "56.1 Python Implementation\nSimilar to the video translator, but now you need to translate an audio to sign language. The sign language part can be in the form of a series of images or a video.",
+    "crumbs": [
+      "<span class='chapter-number'>56</span>  <span class='chapter-title'>Audio to Sign Language Translator</span>"
+    ]
+  },
+  {
+    "objectID": "audio-to-sign-language-translator.html#python-implementation",
+    "href": "audio-to-sign-language-translator.html#python-implementation",
+    "title": "56  Audio to Sign Language Translator",
+    "section": "",
+    "text": "def audio_to_sign_language_translator():\n    \"\"\"\n    Implementation for Audio to Sign Language Translator\n    \"\"\"\n    print(\"Executing Audio to Sign Language Translator...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    audio_to_sign_language_translator()",
+    "crumbs": [
+      "<span class='chapter-number'>56</span>  <span class='chapter-title'>Audio to Sign Language Translator</span>"
+    ]
+  },
+  {
+    "objectID": "build-an-os.html",
+    "href": "build-an-os.html",
+    "title": "57  Build an OS",
+    "section": "",
+    "text": "57.1 Python Implementation\nThis project will be technically challenging and will deepen your understanding of how computers and operating systems work. Building an OS from the ground up is a really daunting task but you will surely find a way to do it.",
+    "crumbs": [
+      "<span class='chapter-number'>57</span>  <span class='chapter-title'>Build an OS</span>"
+    ]
+  },
+  {
+    "objectID": "build-an-os.html#python-implementation",
+    "href": "build-an-os.html#python-implementation",
+    "title": "57  Build an OS",
+    "section": "",
+    "text": "def build_an_os():\n    \"\"\"\n    Implementation for Build an OS\n    \"\"\"\n    print(\"Executing Build an OS...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    build_an_os()",
+    "crumbs": [
+      "<span class='chapter-number'>57</span>  <span class='chapter-title'>Build an OS</span>"
+    ]
+  },
+  {
+    "objectID": "shuffle-deck.html",
+    "href": "shuffle-deck.html",
+    "title": "58  Shuffle Deck",
+    "section": "",
+    "text": "58.1 Python Implementation\nBuild a web app to visualize the different shuffling algorithms that can be used to shuffle a standard deck of cards.",
+    "crumbs": [
+      "<span class='chapter-number'>58</span>  <span class='chapter-title'>Shuffle Deck</span>"
+    ]
+  },
+  {
+    "objectID": "shuffle-deck.html#python-implementation",
+    "href": "shuffle-deck.html#python-implementation",
+    "title": "58  Shuffle Deck",
+    "section": "",
+    "text": "def shuffle_deck():\n    \"\"\"\n    Implementation for Shuffle Deck\n    \"\"\"\n    print(\"Executing Shuffle Deck...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    shuffle_deck()",
+    "crumbs": [
+      "<span class='chapter-number'>58</span>  <span class='chapter-title'>Shuffle Deck</span>"
+    ]
+  },
+  {
+    "objectID": "sorting-visualizer.html",
+    "href": "sorting-visualizer.html",
+    "title": "59  Sorting Visualizer",
+    "section": "",
+    "text": "59.1 Python Implementation\nBuild a webpage/video that will visualize the different sorting algorithms. You can use different kinds of visualizations: dots, bars, colour bars, circularly scattered points, and so on.",
+    "crumbs": [
+      "<span class='chapter-number'>59</span>  <span class='chapter-title'>Sorting Visualizer</span>"
+    ]
+  },
+  {
+    "objectID": "sorting-visualizer.html#python-implementation",
+    "href": "sorting-visualizer.html#python-implementation",
+    "title": "59  Sorting Visualizer",
+    "section": "",
+    "text": "def sorting_visualizer():\n    \"\"\"\n    Implementation for Sorting Visualizer\n    \"\"\"\n    print(\"Executing Sorting Visualizer...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    sorting_visualizer()",
+    "crumbs": [
+      "<span class='chapter-number'>59</span>  <span class='chapter-title'>Sorting Visualizer</span>"
+    ]
+  },
+  {
+    "objectID": "static-code-analyzer.html",
+    "href": "static-code-analyzer.html",
+    "title": "60  Static Code Analyzer",
+    "section": "",
+    "text": "60.1 Python Implementation\nMake a software that will go through your code (without executing it) and check for any inconsistencies or errors (syntax errors, indentation, etc) that may cause any problems during execution.",
+    "crumbs": [
+      "<span class='chapter-number'>60</span>  <span class='chapter-title'>Static Code Analyzer</span>"
+    ]
+  },
+  {
+    "objectID": "static-code-analyzer.html#python-implementation",
+    "href": "static-code-analyzer.html#python-implementation",
+    "title": "60  Static Code Analyzer",
+    "section": "",
+    "text": "def static_code_analyzer():\n    \"\"\"\n    Implementation for Static Code Analyzer\n    \"\"\"\n    print(\"Executing Static Code Analyzer...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    static_code_analyzer()",
+    "crumbs": [
+      "<span class='chapter-number'>60</span>  <span class='chapter-title'>Static Code Analyzer</span>"
+    ]
+  },
+  {
+    "objectID": "command-line-terminal.html",
+    "href": "command-line-terminal.html",
+    "title": "61  Command Line Terminal",
+    "section": "",
+    "text": "61.1 Python Implementation\nIf you are building the Operating System, you will surely need a Command Line Terminal. Try to clone the bash shell or Windows PowerShell as an independent project to make it easier while you build your own OS.",
+    "crumbs": [
+      "<span class='chapter-number'>61</span>  <span class='chapter-title'>Command Line Terminal</span>"
+    ]
+  },
+  {
+    "objectID": "command-line-terminal.html#python-implementation",
+    "href": "command-line-terminal.html#python-implementation",
+    "title": "61  Command Line Terminal",
+    "section": "",
+    "text": "def command_line_terminal():\n    \"\"\"\n    Implementation for Command Line Terminal\n    \"\"\"\n    print(\"Executing Command Line Terminal...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    command_line_terminal()",
+    "crumbs": [
+      "<span class='chapter-number'>61</span>  <span class='chapter-title'>Command Line Terminal</span>"
+    ]
+  },
+  {
+    "objectID": "uml-diagram-generator.html",
+    "href": "uml-diagram-generator.html",
+    "title": "62  UML Diagram Generator",
+    "section": "",
+    "text": "62.1 Python Implementation\nWrite a script that goes through your OOPS code and creates a well-formatted UML diagram for your code.",
+    "crumbs": [
+      "<span class='chapter-number'>62</span>  <span class='chapter-title'>UML Diagram Generator</span>"
+    ]
+  },
+  {
+    "objectID": "uml-diagram-generator.html#python-implementation",
+    "href": "uml-diagram-generator.html#python-implementation",
+    "title": "62  UML Diagram Generator",
+    "section": "",
+    "text": "def uml_diagram_generator():\n    \"\"\"\n    Implementation for UML Diagram Generator\n    \"\"\"\n    print(\"Executing UML Diagram Generator...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    uml_diagram_generator()",
+    "crumbs": [
+      "<span class='chapter-number'>62</span>  <span class='chapter-title'>UML Diagram Generator</span>"
+    ]
+  },
+  {
+    "objectID": "pathfinding-visualizer.html",
+    "href": "pathfinding-visualizer.html",
+    "title": "63  Pathfinding Visualizer",
+    "section": "",
+    "text": "63.1 Python Implementation\nMake a visualizer for the different pathfinding algorithms. Add this to a maze maker and you have a program that can generate and solve mazes.",
+    "crumbs": [
+      "<span class='chapter-number'>63</span>  <span class='chapter-title'>Pathfinding Visualizer</span>"
+    ]
+  },
+  {
+    "objectID": "pathfinding-visualizer.html#python-implementation",
+    "href": "pathfinding-visualizer.html#python-implementation",
+    "title": "63  Pathfinding Visualizer",
+    "section": "",
+    "text": "def pathfinding_visualizer():\n    \"\"\"\n    Implementation for Pathfinding Visualizer\n    \"\"\"\n    print(\"Executing Pathfinding Visualizer...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    pathfinding_visualizer()",
+    "crumbs": [
+      "<span class='chapter-number'>63</span>  <span class='chapter-title'>Pathfinding Visualizer</span>"
+    ]
+  },
+  {
+    "objectID": "version-control-system.html",
+    "href": "version-control-system.html",
+    "title": "64  Version Control System",
+    "section": "",
+    "text": "64.1 Python Implementation\nMake a proper version control system like git that can keep track of any changes that you make to your project.",
+    "crumbs": [
+      "<span class='chapter-number'>64</span>  <span class='chapter-title'>Version Control System</span>"
+    ]
+  },
+  {
+    "objectID": "version-control-system.html#python-implementation",
+    "href": "version-control-system.html#python-implementation",
+    "title": "64  Version Control System",
+    "section": "",
+    "text": "def version_control_system():\n    \"\"\"\n    Implementation for Version Control System\n    \"\"\"\n    print(\"Executing Version Control System...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    version_control_system()",
+    "crumbs": [
+      "<span class='chapter-number'>64</span>  <span class='chapter-title'>Version Control System</span>"
+    ]
+  },
+  {
+    "objectID": "programming-language.html",
+    "href": "programming-language.html",
+    "title": "65  Programming Language",
+    "section": "",
+    "text": "65.1 Python Implementation\nCode a programming language from scratch. This project will give you great insights into why languages are structured the way they are and which languages suit which tasks better. There are quite a few programming languages, thus, incorporate some really weird (or helpful) features to make your language stand out (e.g. check out brainfuck).",
+    "crumbs": [
+      "<span class='chapter-number'>65</span>  <span class='chapter-title'>Programming Language</span>"
+    ]
+  },
+  {
+    "objectID": "programming-language.html#python-implementation",
+    "href": "programming-language.html#python-implementation",
+    "title": "65  Programming Language",
+    "section": "",
+    "text": "def programming_language():\n    \"\"\"\n    Implementation for Programming Language\n    \"\"\"\n    print(\"Executing Programming Language...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    programming_language()",
+    "crumbs": [
+      "<span class='chapter-number'>65</span>  <span class='chapter-title'>Programming Language</span>"
+    ]
+  },
+  {
+    "objectID": "codec-software.html",
+    "href": "codec-software.html",
+    "title": "66  Codec Software",
+    "section": "",
+    "text": "66.1 Python Implementation\nBuild a software that will encrypt and decrypt text for you. Incorporate quite a few algorithms to provide flexibility to the user.",
+    "crumbs": [
+      "<span class='chapter-number'>66</span>  <span class='chapter-title'>Codec Software</span>"
+    ]
+  },
+  {
+    "objectID": "codec-software.html#python-implementation",
+    "href": "codec-software.html#python-implementation",
+    "title": "66  Codec Software",
+    "section": "",
+    "text": "def codec_software():\n    \"\"\"\n    Implementation for Codec Software\n    \"\"\"\n    print(\"Executing Codec Software...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    codec_software()",
+    "crumbs": [
+      "<span class='chapter-number'>66</span>  <span class='chapter-title'>Codec Software</span>"
+    ]
+  },
+  {
+    "objectID": "password-manager.html",
+    "href": "password-manager.html",
+    "title": "67  Password Manager",
+    "section": "",
+    "text": "67.1 Python Implementation\nBuild a software that can manage the different passwords that you use on different websites. For bonus points incorporate a random password generator.",
+    "crumbs": [
+      "<span class='chapter-number'>67</span>  <span class='chapter-title'>Password Manager</span>"
+    ]
+  },
+  {
+    "objectID": "password-manager.html#python-implementation",
+    "href": "password-manager.html#python-implementation",
+    "title": "67  Password Manager",
+    "section": "",
+    "text": "def password_manager():\n    \"\"\"\n    Implementation for Password Manager\n    \"\"\"\n    print(\"Executing Password Manager...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    password_manager()",
+    "crumbs": [
+      "<span class='chapter-number'>67</span>  <span class='chapter-title'>Password Manager</span>"
+    ]
+  },
+  {
+    "objectID": "folder-encrypter.html",
+    "href": "folder-encrypter.html",
+    "title": "68  Folder Encrypter",
+    "section": "",
+    "text": "68.1 Python Implementation\nBuild a piece of software that can encrypt and lock a selected folder. The contents of the folder should not be accessible/copied/moved without the correct password.",
+    "crumbs": [
+      "<span class='chapter-number'>68</span>  <span class='chapter-title'>Folder Encrypter</span>"
+    ]
+  },
+  {
+    "objectID": "folder-encrypter.html#python-implementation",
+    "href": "folder-encrypter.html#python-implementation",
+    "title": "68  Folder Encrypter",
+    "section": "",
+    "text": "def folder_encrypter():\n    \"\"\"\n    Implementation for Folder Encrypter\n    \"\"\"\n    print(\"Executing Folder Encrypter...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    folder_encrypter()",
+    "crumbs": [
+      "<span class='chapter-number'>68</span>  <span class='chapter-title'>Folder Encrypter</span>"
+    ]
+  },
+  {
+    "objectID": "password-strength-checker.html",
+    "href": "password-strength-checker.html",
+    "title": "69  Password Strength Checker",
+    "section": "",
+    "text": "69.1 Python Implementation\nBuild a website/app that will check how strong a given password is. To make it more fancy, incorporate a good metric of how strong a password is (check out the example).",
+    "crumbs": [
+      "<span class='chapter-number'>69</span>  <span class='chapter-title'>Password Strength Checker</span>"
+    ]
+  },
+  {
+    "objectID": "password-strength-checker.html#python-implementation",
+    "href": "password-strength-checker.html#python-implementation",
+    "title": "69  Password Strength Checker",
+    "section": "",
+    "text": "def password_strength_checker():\n    \"\"\"\n    Implementation for Password Strength Checker\n    \"\"\"\n    print(\"Executing Password Strength Checker...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    password_strength_checker()",
+    "crumbs": [
+      "<span class='chapter-number'>69</span>  <span class='chapter-title'>Password Strength Checker</span>"
+    ]
+  },
+  {
+    "objectID": "pong.html",
+    "href": "pong.html",
+    "title": "70  Pong",
+    "section": "",
+    "text": "70.1 Python Implementation\nCode the game of pong. Make it multiplayer and visually appealing.",
+    "crumbs": [
+      "<span class='chapter-number'>70</span>  <span class='chapter-title'>Pong</span>"
+    ]
+  },
+  {
+    "objectID": "pong.html#python-implementation",
+    "href": "pong.html#python-implementation",
+    "title": "70  Pong",
+    "section": "",
+    "text": "def pong():\n    \"\"\"\n    Implementation for Pong\n    \"\"\"\n    print(\"Executing Pong...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    pong()",
+    "crumbs": [
+      "<span class='chapter-number'>70</span>  <span class='chapter-title'>Pong</span>"
+    ]
+  },
+  {
+    "objectID": "pong-ai.html",
+    "href": "pong-ai.html",
+    "title": "71  Pong AI",
+    "section": "",
+    "text": "71.1 Python Implementation\nAdd to the Pong program you created above. Create an AI opponent to play against in a single player mode.",
+    "crumbs": [
+      "<span class='chapter-number'>71</span>  <span class='chapter-title'>Pong AI</span>"
+    ]
+  },
+  {
+    "objectID": "pong-ai.html#python-implementation",
+    "href": "pong-ai.html#python-implementation",
+    "title": "71  Pong AI",
+    "section": "",
+    "text": "def pong_ai():\n    \"\"\"\n    Implementation for Pong AI\n    \"\"\"\n    print(\"Executing Pong AI...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    pong_ai()",
+    "crumbs": [
+      "<span class='chapter-number'>71</span>  <span class='chapter-title'>Pong AI</span>"
+    ]
+  },
+  {
+    "objectID": "risk.html",
+    "href": "risk.html",
+    "title": "72  Risk",
+    "section": "",
+    "text": "72.1 Python Implementation\nTry coding the classic board game of Risk. Make sure you know all the rules and understand the game properly before you code it.",
+    "crumbs": [
+      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Risk</span>"
+    ]
+  },
+  {
+    "objectID": "risk.html#python-implementation",
+    "href": "risk.html#python-implementation",
+    "title": "72  Risk",
+    "section": "",
+    "text": "def risk():\n    \"\"\"\n    Implementation for Risk\n    \"\"\"\n    print(\"Executing Risk...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    risk()",
+    "crumbs": [
+      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Risk</span>"
+    ]
+  },
+  {
+    "objectID": "chess.html",
+    "href": "chess.html",
+    "title": "73  Chess",
+    "section": "",
+    "text": "73.1 Python Implementation\nCode the game of chess from the ground up. Build a board, the pieces (you can use images for this part). Code in the rules and make sure you allow no invalid moves.",
+    "crumbs": [
+      "<span class='chapter-number'>73</span>  <span class='chapter-title'>Chess</span>"
+    ]
+  },
+  {
+    "objectID": "chess.html#python-implementation",
+    "href": "chess.html#python-implementation",
+    "title": "73  Chess",
+    "section": "",
+    "text": "def chess():\n    \"\"\"\n    Implementation for Chess\n    \"\"\"\n    print(\"Executing Chess...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    chess()",
+    "crumbs": [
+      "<span class='chapter-number'>73</span>  <span class='chapter-title'>Chess</span>"
+    ]
+  },
+  {
+    "objectID": "snake.html",
+    "href": "snake.html",
+    "title": "74  Snake",
+    "section": "",
+    "text": "74.1 Python Implementation\nThis is one of the simplest items on the list. For an additional challenge, try generating different maps to play in.",
+    "crumbs": [
+      "<span class='chapter-number'>74</span>  <span class='chapter-title'>Snake</span>"
+    ]
+  },
+  {
+    "objectID": "snake.html#python-implementation",
+    "href": "snake.html#python-implementation",
+    "title": "74  Snake",
+    "section": "",
+    "text": "def snake():\n    \"\"\"\n    Implementation for Snake\n    \"\"\"\n    print(\"Executing Snake...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    snake()",
+    "crumbs": [
+      "<span class='chapter-number'>74</span>  <span class='chapter-title'>Snake</span>"
+    ]
+  },
+  {
+    "objectID": "tetris.html",
+    "href": "tetris.html",
+    "title": "75  Tetris",
+    "section": "",
+    "text": "75.1 Python Implementation\nCode the game of Tetris starting from the Tetrominoes to the game interface. A web app is better as it will let you play from anywhere. For additional challenge try to implement a simple HTML and JavaScript version without any additional frameworks or libraries to help.",
+    "crumbs": [
+      "<span class='chapter-number'>75</span>  <span class='chapter-title'>Tetris</span>"
+    ]
+  },
+  {
+    "objectID": "tetris.html#python-implementation",
+    "href": "tetris.html#python-implementation",
+    "title": "75  Tetris",
+    "section": "",
+    "text": "def tetris():\n    \"\"\"\n    Implementation for Tetris\n    \"\"\"\n    print(\"Executing Tetris...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    tetris()",
+    "crumbs": [
+      "<span class='chapter-number'>75</span>  <span class='chapter-title'>Tetris</span>"
+    ]
+  },
+  {
+    "objectID": "chess-ai.html",
+    "href": "chess-ai.html",
+    "title": "76  Chess AI",
+    "section": "",
+    "text": "76.1 Python Implementation\nNow that you have most likely built the chess game, build an AI that you can play against. For inspiration look into the examples provided. The challenge here is to make an AI that is fast enough to play against. Most simple AIs for chess are just really slow (take about a minute or more for a move). Make your chess engine interface with other programs such via the Universal Chess Interface. Then you can test it out against other bots/players online.",
+    "crumbs": [
+      "<span class='chapter-number'>76</span>  <span class='chapter-title'>Chess AI</span>"
+    ]
+  },
+  {
+    "objectID": "chess-ai.html#python-implementation",
+    "href": "chess-ai.html#python-implementation",
+    "title": "76  Chess AI",
+    "section": "",
+    "text": "def chess_ai():\n    \"\"\"\n    Implementation for Chess AI\n    \"\"\"\n    print(\"Executing Chess AI...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    chess_ai()",
+    "crumbs": [
+      "<span class='chapter-number'>76</span>  <span class='chapter-title'>Chess AI</span>"
+    ]
+  },
+  {
+    "objectID": "snake-ai.html",
+    "href": "snake-ai.html",
+    "title": "77  Snake AI",
+    "section": "",
+    "text": "77.1 Python Implementation\nBuild a simple snake AI that plays snake. For an added challenge, generate random maps and then train your AI to play in any random map that you generate.",
+    "crumbs": [
+      "<span class='chapter-number'>77</span>  <span class='chapter-title'>Snake AI</span>"
+    ]
+  },
+  {
+    "objectID": "snake-ai.html#python-implementation",
+    "href": "snake-ai.html#python-implementation",
+    "title": "77  Snake AI",
+    "section": "",
+    "text": "def snake_ai():\n    \"\"\"\n    Implementation for Snake AI\n    \"\"\"\n    print(\"Executing Snake AI...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    snake_ai()",
+    "crumbs": [
+      "<span class='chapter-number'>77</span>  <span class='chapter-title'>Snake AI</span>"
+    ]
+  },
+  {
+    "objectID": "map-maker.html",
+    "href": "map-maker.html",
+    "title": "78  Map Maker",
+    "section": "",
+    "text": "78.1 Python Implementation\nBuild a simple program that will generate random terrain maps through procedural generation with a user supplied seed.",
+    "crumbs": [
+      "<span class='chapter-number'>78</span>  <span class='chapter-title'>Map Maker</span>"
+    ]
+  },
+  {
+    "objectID": "map-maker.html#python-implementation",
+    "href": "map-maker.html#python-implementation",
+    "title": "78  Map Maker",
+    "section": "",
+    "text": "def map_maker():\n    \"\"\"\n    Implementation for Map Maker\n    \"\"\"\n    print(\"Executing Map Maker...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    map_maker()",
+    "crumbs": [
+      "<span class='chapter-number'>78</span>  <span class='chapter-title'>Map Maker</span>"
+    ]
+  },
+  {
+    "objectID": "battleship.html",
+    "href": "battleship.html",
+    "title": "79  Battleship",
+    "section": "",
+    "text": "79.1 Python Implementation\nBuild the classic game of battleship. You can build a CLI app or a much better app with graphics using any 2D graphics module.",
+    "crumbs": [
+      "<span class='chapter-number'>79</span>  <span class='chapter-title'>Battleship</span>"
+    ]
+  },
+  {
+    "objectID": "battleship.html#python-implementation",
+    "href": "battleship.html#python-implementation",
+    "title": "79  Battleship",
+    "section": "",
+    "text": "def battleship():\n    \"\"\"\n    Implementation for Battleship\n    \"\"\"\n    print(\"Executing Battleship...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    battleship()",
+    "crumbs": [
+      "<span class='chapter-number'>79</span>  <span class='chapter-title'>Battleship</span>"
+    ]
+  },
+  {
+    "objectID": "flappy-bird.html",
+    "href": "flappy-bird.html",
+    "title": "80  Flappy Bird",
+    "section": "",
+    "text": "80.1 Python Implementation\nThis is one of the simplest difficult games that you can build. You can use images for pipes and the bird or generate your own custom bird and pipes for the project.",
+    "crumbs": [
+      "<span class='chapter-number'>80</span>  <span class='chapter-title'>Flappy Bird</span>"
+    ]
+  },
+  {
+    "objectID": "flappy-bird.html#python-implementation",
+    "href": "flappy-bird.html#python-implementation",
+    "title": "80  Flappy Bird",
+    "section": "",
+    "text": "def flappy_bird():\n    \"\"\"\n    Implementation for Flappy Bird\n    \"\"\"\n    print(\"Executing Flappy Bird...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    flappy_bird()",
+    "crumbs": [
+      "<span class='chapter-number'>80</span>  <span class='chapter-title'>Flappy Bird</span>"
+    ]
+  },
+  {
+    "objectID": "tic-tac-toe.html",
+    "href": "tic-tac-toe.html",
+    "title": "81  Tic Tac Toe",
+    "section": "",
+    "text": "81.1 Python Implementation\nBuild a CLI app for tic-tac-toe or a graphical interface. One of the interesting ideas is to let the user draw Xs and Os and then let the machine automatically identify if you drew an X or an O.",
+    "crumbs": [
+      "<span class='chapter-number'>81</span>  <span class='chapter-title'>Tic Tac Toe</span>"
+    ]
+  },
+  {
+    "objectID": "tic-tac-toe.html#python-implementation",
+    "href": "tic-tac-toe.html#python-implementation",
+    "title": "81  Tic Tac Toe",
+    "section": "",
+    "text": "def tic_tac_toe():\n    \"\"\"\n    Implementation for Tic Tac Toe\n    \"\"\"\n    print(\"Executing Tic Tac Toe...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    tic_tac_toe()",
+    "crumbs": [
+      "<span class='chapter-number'>81</span>  <span class='chapter-title'>Tic Tac Toe</span>"
+    ]
+  },
+  {
+    "objectID": "memory-puzzle.html",
+    "href": "memory-puzzle.html",
+    "title": "82  Memory Puzzle",
+    "section": "",
+    "text": "82.1 Python Implementation\nImplement a classic memory puzzle where the user has to click on two similar cards to eliminate them. Shuffle the cards randomly in the beginning and give the user a fixed number of chances or a fixed time to clear the board.",
+    "crumbs": [
+      "<span class='chapter-number'>82</span>  <span class='chapter-title'>Memory Puzzle</span>"
+    ]
+  },
+  {
+    "objectID": "memory-puzzle.html#python-implementation",
+    "href": "memory-puzzle.html#python-implementation",
+    "title": "82  Memory Puzzle",
+    "section": "",
+    "text": "def memory_puzzle():\n    \"\"\"\n    Implementation for Memory Puzzle\n    \"\"\"\n    print(\"Executing Memory Puzzle...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    memory_puzzle()",
+    "crumbs": [
+      "<span class='chapter-number'>82</span>  <span class='chapter-title'>Memory Puzzle</span>"
+    ]
+  },
+  {
+    "objectID": "physics-engine.html",
+    "href": "physics-engine.html",
+    "title": "83  Physics Engine",
+    "section": "",
+    "text": "83.1 Python Implementation\nVideo Games work on physics engines. Build your own. You can later use this engine to build games or carry out simulations. Try building a 2D or 3D physics engine that can handle collision, movement, acceleration, gravity, and other forces in the system. You may need to first understand a bit of physics to be able to build something, so take your time for this one.",
+    "crumbs": [
+      "<span class='chapter-number'>83</span>  <span class='chapter-title'>Physics Engine</span>"
+    ]
+  },
+  {
+    "objectID": "physics-engine.html#python-implementation",
+    "href": "physics-engine.html#python-implementation",
+    "title": "83  Physics Engine",
+    "section": "",
+    "text": "def physics_engine():\n    \"\"\"\n    Implementation for Physics Engine\n    \"\"\"\n    print(\"Executing Physics Engine...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    physics_engine()",
+    "crumbs": [
+      "<span class='chapter-number'>83</span>  <span class='chapter-title'>Physics Engine</span>"
+    ]
+  },
+  {
+    "objectID": "flappy-bird-ai.html",
+    "href": "flappy-bird-ai.html",
+    "title": "84  Flappy Bird AI",
+    "section": "",
+    "text": "84.1 Python Implementation\nDesign an AI for the flappy bird game. Try out a few learning algorithms to train your network - Q-Learning, NEAT, etc. Build the perfect AI that will play flappy bird better than you (or anyone else) ever can.",
+    "crumbs": [
+      "<span class='chapter-number'>84</span>  <span class='chapter-title'>Flappy Bird AI</span>"
+    ]
+  },
+  {
+    "objectID": "flappy-bird-ai.html#python-implementation",
+    "href": "flappy-bird-ai.html#python-implementation",
+    "title": "84  Flappy Bird AI",
+    "section": "",
+    "text": "def flappy_bird_ai():\n    \"\"\"\n    Implementation for Flappy Bird AI\n    \"\"\"\n    print(\"Executing Flappy Bird AI...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    flappy_bird_ai()",
+    "crumbs": [
+      "<span class='chapter-number'>84</span>  <span class='chapter-title'>Flappy Bird AI</span>"
+    ]
+  },
+  {
+    "objectID": "tic-tac-toe-ai.html",
+    "href": "tic-tac-toe-ai.html",
+    "title": "85  Tic Tac Toe AI",
+    "section": "",
+    "text": "85.1 Python Implementation\nBuild an AI that is unbeatable (either wins always or at least draws) in tic-tac-toe. Instead of just hardcoding what move to play when, build an AI that learns how to play and then devises strategies to win.",
+    "crumbs": [
+      "<span class='chapter-number'>85</span>  <span class='chapter-title'>Tic Tac Toe AI</span>"
+    ]
+  },
+  {
+    "objectID": "tic-tac-toe-ai.html#python-implementation",
+    "href": "tic-tac-toe-ai.html#python-implementation",
+    "title": "85  Tic Tac Toe AI",
+    "section": "",
+    "text": "def tic_tac_toe_ai():\n    \"\"\"\n    Implementation for Tic Tac Toe AI\n    \"\"\"\n    print(\"Executing Tic Tac Toe AI...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    tic_tac_toe_ai()",
+    "crumbs": [
+      "<span class='chapter-number'>85</span>  <span class='chapter-title'>Tic Tac Toe AI</span>"
+    ]
+  },
+  {
+    "objectID": "elevator-simulator.html",
+    "href": "elevator-simulator.html",
+    "title": "86  Elevator Simulator",
+    "section": "",
+    "text": "86.1 Python Implementation\nBuild a simulation for an elevator. This may seem like a random simulation, but you need to think a lot before implementing something regarding this, which floor to go to when two buttons are pressed? Is there any change if you add a preference for going up or going down? and so on.",
+    "crumbs": [
+      "<span class='chapter-number'>86</span>  <span class='chapter-title'>Elevator Simulator</span>"
+    ]
+  },
+  {
+    "objectID": "elevator-simulator.html#python-implementation",
+    "href": "elevator-simulator.html#python-implementation",
+    "title": "86  Elevator Simulator",
+    "section": "",
+    "text": "def elevator_simulator():\n    \"\"\"\n    Implementation for Elevator Simulator\n    \"\"\"\n    print(\"Executing Elevator Simulator...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    elevator_simulator()",
+    "crumbs": [
+      "<span class='chapter-number'>86</span>  <span class='chapter-title'>Elevator Simulator</span>"
+    ]
+  },
+  {
+    "objectID": "simulate-the-world.html",
+    "href": "simulate-the-world.html",
+    "title": "87  Simulate the World",
+    "section": "",
+    "text": "87.1 Python Implementation\nBuild a simulation of the whole world. Try to be as detailed as you can. Keep it simple when you feel stuck and slowly improve on it. Treat it as a self-sustaining game if it makes things easier. For bonus points, add an AI to the system to let it work on its own.",
+    "crumbs": [
+      "<span class='chapter-number'>87</span>  <span class='chapter-title'>Simulate the World</span>"
+    ]
+  },
+  {
+    "objectID": "simulate-the-world.html#python-implementation",
+    "href": "simulate-the-world.html#python-implementation",
+    "title": "87  Simulate the World",
+    "section": "",
+    "text": "def simulate_the_world():\n    \"\"\"\n    Implementation for Simulate the World\n    \"\"\"\n    print(\"Executing Simulate the World...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    simulate_the_world()",
+    "crumbs": [
+      "<span class='chapter-number'>87</span>  <span class='chapter-title'>Simulate the World</span>"
+    ]
+  },
+  {
+    "objectID": "character-generator.html",
+    "href": "character-generator.html",
+    "title": "88  Character Generator",
+    "section": "",
+    "text": "88.1 Python Implementation\nBuild a tool that will generate random characters for games that you play/build like Pathfinder or Divinity: Original Sin. First implement a random character generator and then tweak it to make characters that you will like (add an AI).",
+    "crumbs": [
+      "<span class='chapter-number'>88</span>  <span class='chapter-title'>Character Generator</span>"
+    ]
+  },
+  {
+    "objectID": "character-generator.html#python-implementation",
+    "href": "character-generator.html#python-implementation",
+    "title": "88  Character Generator",
+    "section": "",
+    "text": "def character_generator():\n    \"\"\"\n    Implementation for Character Generator\n    \"\"\"\n    print(\"Executing Character Generator...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    character_generator()",
+    "crumbs": [
+      "<span class='chapter-number'>88</span>  <span class='chapter-title'>Character Generator</span>"
+    ]
+  },
+  {
+    "objectID": "game-of-life.html",
+    "href": "game-of-life.html",
+    "title": "89  Game of Life",
+    "section": "",
+    "text": "89.1 Python Implementation\nConway’s Game of Life simulates the lives of simple cells that obey algorithmic laws. You can read the algorithmic rules from the wikipedia page and implement them. Make the program capable of graphical rendering to display the end product.",
+    "crumbs": [
+      "<span class='chapter-number'>89</span>  <span class='chapter-title'>Game of Life</span>"
+    ]
+  },
+  {
+    "objectID": "game-of-life.html#python-implementation",
+    "href": "game-of-life.html#python-implementation",
+    "title": "89  Game of Life",
+    "section": "",
+    "text": "def game_of_life():\n    \"\"\"\n    Implementation for Game of Life\n    \"\"\"\n    print(\"Executing Game of Life...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    game_of_life()",
+    "crumbs": [
+      "<span class='chapter-number'>89</span>  <span class='chapter-title'>Game of Life</span>"
+    ]
+  },
+  {
+    "objectID": "deal-finder.html",
+    "href": "deal-finder.html",
+    "title": "90  Deal Finder",
+    "section": "",
+    "text": "90.1 Python Implementation\nBuild a simple web app to notify you when an item you covet goes on sale for a good price. You can use a web scraper to pull the item’s product page and notify you of any price changes.",
+    "crumbs": [
+      "<span class='chapter-number'>90</span>  <span class='chapter-title'>Deal Finder</span>"
+    ]
+  },
+  {
+    "objectID": "deal-finder.html#python-implementation",
+    "href": "deal-finder.html#python-implementation",
+    "title": "90  Deal Finder",
+    "section": "",
+    "text": "def deal_finder():\n    \"\"\"\n    Implementation for Deal Finder\n    \"\"\"\n    print(\"Executing Deal Finder...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    deal_finder()",
+    "crumbs": [
+      "<span class='chapter-number'>90</span>  <span class='chapter-title'>Deal Finder</span>"
+    ]
+  },
+  {
+    "objectID": "expense-tracker.html",
+    "href": "expense-tracker.html",
+    "title": "91  Expense Tracker",
+    "section": "",
+    "text": "91.1 Python Implementation\nCreate a simple interface (web app/phone app) you can use to add and categorize your expense. Generate monthly reports based on the inputs and write custom alerts for things like, “spending too much on coffee… as always”.",
+    "crumbs": [
+      "<span class='chapter-number'>91</span>  <span class='chapter-title'>Expense Tracker</span>"
+    ]
+  },
+  {
+    "objectID": "expense-tracker.html#python-implementation",
+    "href": "expense-tracker.html#python-implementation",
+    "title": "91  Expense Tracker",
+    "section": "",
+    "text": "def expense_tracker():\n    \"\"\"\n    Implementation for Expense Tracker\n    \"\"\"\n    print(\"Executing Expense Tracker...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    expense_tracker()",
+    "crumbs": [
+      "<span class='chapter-number'>91</span>  <span class='chapter-title'>Expense Tracker</span>"
+    ]
+  },
+  {
+    "objectID": "recipe-generator.html",
+    "href": "recipe-generator.html",
+    "title": "92  Recipe Generator",
+    "section": "",
+    "text": "92.1 Python Implementation\nThe app (or service) should generate new recipes/scrapes recipes from the web. So when you cook by its recipe, you rate it to tell it how good the recipe was.",
+    "crumbs": [
+      "<span class='chapter-number'>92</span>  <span class='chapter-title'>Recipe Generator</span>"
+    ]
+  },
+  {
+    "objectID": "recipe-generator.html#python-implementation",
+    "href": "recipe-generator.html#python-implementation",
+    "title": "92  Recipe Generator",
+    "section": "",
+    "text": "def recipe_generator():\n    \"\"\"\n    Implementation for Recipe Generator\n    \"\"\"\n    print(\"Executing Recipe Generator...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    recipe_generator()",
+    "crumbs": [
+      "<span class='chapter-number'>92</span>  <span class='chapter-title'>Recipe Generator</span>"
+    ]
+  },
+  {
+    "objectID": "emoji-translator.html",
+    "href": "emoji-translator.html",
+    "title": "93  Emoji Translator",
+    "section": "",
+    "text": "93.1 Python Implementation\nBuild a browser extension that will translate any provided sentence into a combination of emojis. You can use the extension to automatically change texts that a user sends via messaging or email or even use it to aid in writing blog posts.",
+    "crumbs": [
+      "<span class='chapter-number'>93</span>  <span class='chapter-title'>Emoji Translator</span>"
+    ]
+  },
+  {
+    "objectID": "emoji-translator.html#python-implementation",
+    "href": "emoji-translator.html#python-implementation",
+    "title": "93  Emoji Translator",
+    "section": "",
+    "text": "def emoji_translator():\n    \"\"\"\n    Implementation for Emoji Translator\n    \"\"\"\n    print(\"Executing Emoji Translator...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    emoji_translator()",
+    "crumbs": [
+      "<span class='chapter-number'>93</span>  <span class='chapter-title'>Emoji Translator</span>"
+    ]
+  },
+  {
+    "objectID": "regex-query-tool.html",
+    "href": "regex-query-tool.html",
+    "title": "94  Regex Query Tool",
+    "section": "",
+    "text": "94.1 Python Implementation\nBuild a search tool that implements Regular Expressions. With it you can easily search for text matching a pattern in websites or documents that you may be writing or browsing.",
+    "crumbs": [
+      "<span class='chapter-number'>94</span>  <span class='chapter-title'>Regex Query Tool</span>"
+    ]
+  },
+  {
+    "objectID": "regex-query-tool.html#python-implementation",
+    "href": "regex-query-tool.html#python-implementation",
+    "title": "94  Regex Query Tool",
+    "section": "",
+    "text": "def regex_query_tool():\n    \"\"\"\n    Implementation for Regex Query Tool\n    \"\"\"\n    print(\"Executing Regex Query Tool...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    regex_query_tool()",
+    "crumbs": [
+      "<span class='chapter-number'>94</span>  <span class='chapter-title'>Regex Query Tool</span>"
+    ]
+  },
+  {
+    "objectID": "currency-converter.html",
+    "href": "currency-converter.html",
+    "title": "95  Currency Converter",
+    "section": "",
+    "text": "95.1 Python Implementation\nCode a script that scrapes the currency conversion rate and then converts from a given currency to another suing the current market rate.",
+    "crumbs": [
+      "<span class='chapter-number'>95</span>  <span class='chapter-title'>Currency Converter</span>"
+    ]
+  },
+  {
+    "objectID": "currency-converter.html#python-implementation",
+    "href": "currency-converter.html#python-implementation",
+    "title": "95  Currency Converter",
+    "section": "",
+    "text": "def currency_converter():\n    \"\"\"\n    Implementation for Currency Converter\n    \"\"\"\n    print(\"Executing Currency Converter...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    currency_converter()",
+    "crumbs": [
+      "<span class='chapter-number'>95</span>  <span class='chapter-title'>Currency Converter</span>"
+    ]
+  },
+  {
+    "objectID": "pixel-art-generator.html",
+    "href": "pixel-art-generator.html",
+    "title": "96  Pixel Art Generator",
+    "section": "",
+    "text": "96.1 Python Implementation\nCode a script that takes in a picture and then creates the Pixel Art from the image. You can achieve this by downsizing the image. You should also be able to generate random art using this script.",
+    "crumbs": [
+      "<span class='chapter-number'>96</span>  <span class='chapter-title'>Pixel Art Generator</span>"
+    ]
+  },
+  {
+    "objectID": "pixel-art-generator.html#python-implementation",
+    "href": "pixel-art-generator.html#python-implementation",
+    "title": "96  Pixel Art Generator",
+    "section": "",
+    "text": "def pixel_art_generator():\n    \"\"\"\n    Implementation for Pixel Art Generator\n    \"\"\"\n    print(\"Executing Pixel Art Generator...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    pixel_art_generator()",
+    "crumbs": [
+      "<span class='chapter-number'>96</span>  <span class='chapter-title'>Pixel Art Generator</span>"
+    ]
+  },
+  {
+    "objectID": "directory-tree-generator.html",
+    "href": "directory-tree-generator.html",
+    "title": "97  Directory Tree Generator",
+    "section": "",
+    "text": "97.1 Python Implementation\nGenerate a tree like structure using the directories present in a given path by the user. This allows you to see the positioning of files and directories. We are visual animals and thus, visual depictions of directories are more understandable.",
+    "crumbs": [
+      "<span class='chapter-number'>97</span>  <span class='chapter-title'>Directory Tree Generator</span>"
+    ]
+  },
+  {
+    "objectID": "directory-tree-generator.html#python-implementation",
+    "href": "directory-tree-generator.html#python-implementation",
+    "title": "97  Directory Tree Generator",
+    "section": "",
+    "text": "def directory_tree_generator():\n    \"\"\"\n    Implementation for Directory Tree Generator\n    \"\"\"\n    print(\"Executing Directory Tree Generator...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    directory_tree_generator()",
+    "crumbs": [
+      "<span class='chapter-number'>97</span>  <span class='chapter-title'>Directory Tree Generator</span>"
+    ]
+  },
+  {
+    "objectID": "random-username-generator.html",
+    "href": "random-username-generator.html",
+    "title": "98  Random Username Generator",
+    "section": "",
+    "text": "98.1 Python Implementation\nWrite a script to generate random usernames that you can use in games or various other places.",
+    "crumbs": [
+      "<span class='chapter-number'>98</span>  <span class='chapter-title'>Random Username Generator</span>"
+    ]
+  },
+  {
+    "objectID": "random-username-generator.html#python-implementation",
+    "href": "random-username-generator.html#python-implementation",
+    "title": "98  Random Username Generator",
+    "section": "",
+    "text": "def random_username_generator():\n    \"\"\"\n    Implementation for Random Username Generator\n    \"\"\"\n    print(\"Executing Random Username Generator...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    random_username_generator()",
+    "crumbs": [
+      "<span class='chapter-number'>98</span>  <span class='chapter-title'>Random Username Generator</span>"
+    ]
+  },
+  {
+    "objectID": "roman-to-decimal-converter.html",
+    "href": "roman-to-decimal-converter.html",
+    "title": "99  Roman to Decimal Converter",
+    "section": "",
+    "text": "99.1 Python Implementation\nWrite a script that converts decimal numbers to roman numerals and vice versa. This may seem like an easy task but I assure you its not that easy. Give it a try.",
+    "crumbs": [
+      "<span class='chapter-number'>99</span>  <span class='chapter-title'>Roman to Decimal Converter</span>"
+    ]
+  },
+  {
+    "objectID": "roman-to-decimal-converter.html#python-implementation",
+    "href": "roman-to-decimal-converter.html#python-implementation",
+    "title": "99  Roman to Decimal Converter",
+    "section": "",
+    "text": "def roman_to_decimal_converter():\n    \"\"\"\n    Implementation for Roman to Decimal Converter\n    \"\"\"\n    print(\"Executing Roman to Decimal Converter...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    roman_to_decimal_converter()",
+    "crumbs": [
+      "<span class='chapter-number'>99</span>  <span class='chapter-title'>Roman to Decimal Converter</span>"
+    ]
+  },
+  {
+    "objectID": "project-euler.html",
+    "href": "project-euler.html",
+    "title": "100  Project Euler",
+    "section": "",
+    "text": "100.1 Python Implementation\nProject Euler contains mathematical challenges that require programming tools to be solved. There are over 700 problems that you can solve, I urge you to document each solution in a properly organized way (probably build a repo for the solutions) so that you can showcase them online.",
+    "crumbs": [
+      "<span class='chapter-number'>100</span>  <span class='chapter-title'>Project Euler</span>"
+    ]
+  },
+  {
+    "objectID": "project-euler.html#python-implementation",
+    "href": "project-euler.html#python-implementation",
+    "title": "100  Project Euler",
+    "section": "",
+    "text": "def project_euler():\n    \"\"\"\n    Implementation for Project Euler\n    \"\"\"\n    print(\"Executing Project Euler...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    project_euler()",
+    "crumbs": [
+      "<span class='chapter-number'>100</span>  <span class='chapter-title'>Project Euler</span>"
+    ]
+  },
+  {
+    "objectID": "advent-of-code.html",
+    "href": "advent-of-code.html",
+    "title": "101  Advent of Code",
+    "section": "",
+    "text": "101.1 Python Implementation\nAdvent of Code challenges occur every year in the days leading up to Christmas. They include lots of fun programming challenges that can help you develop your chops in a programming language that you want to master.",
+    "crumbs": [
+      "<span class='chapter-number'>101</span>  <span class='chapter-title'>Advent of Code</span>"
+    ]
+  },
+  {
+    "objectID": "advent-of-code.html#python-implementation",
+    "href": "advent-of-code.html#python-implementation",
+    "title": "101  Advent of Code",
+    "section": "",
+    "text": "def advent_of_code():\n    \"\"\"\n    Implementation for Advent of Code\n    \"\"\"\n    print(\"Executing Advent of Code...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    advent_of_code()",
+    "crumbs": [
+      "<span class='chapter-number'>101</span>  <span class='chapter-title'>Advent of Code</span>"
+    ]
+  },
+  {
+    "objectID": "kaggle-titanic-challenge.html",
+    "href": "kaggle-titanic-challenge.html",
+    "title": "102  Kaggle Titanic Challenge",
+    "section": "",
+    "text": "102.1 Python Implementation\nKaggle offers fascinating challenges to introduce you to the basics of machine learning with Python or R: Use a real dataset from the Titanic passenger log to predict which passengers were most likely to survive the disaster.",
+    "crumbs": [
+      "<span class='chapter-number'>102</span>  <span class='chapter-title'>Kaggle Titanic Challenge</span>"
+    ]
+  },
+  {
+    "objectID": "kaggle-titanic-challenge.html#python-implementation",
+    "href": "kaggle-titanic-challenge.html#python-implementation",
+    "title": "102  Kaggle Titanic Challenge",
+    "section": "",
+    "text": "def kaggle_titanic_challenge():\n    \"\"\"\n    Implementation for Kaggle Titanic Challenge\n    \"\"\"\n    print(\"Executing Kaggle Titanic Challenge...\")\n    # TODO: Add your implementation here\n    pass\n\nif __name__ == \"__main__\":\n    kaggle_titanic_challenge()",
+    "crumbs": [
+      "<span class='chapter-number'>102</span>  <span class='chapter-title'>Kaggle Titanic Challenge</span>"
+    ]
+  }
+]
