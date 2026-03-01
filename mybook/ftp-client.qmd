@@ -16,6 +16,7 @@ title: "FTP 클라이언트 (FTP Client)"
 ## Python 구현 예시 (ftplib을 활용한 파일 목록 조회)
 
 ```python
+import os
 from ftplib import FTP
 
 def connect_and_list_ftp(host, user, passwd):
@@ -49,8 +50,8 @@ def connect_and_list_ftp(host, user, passwd):
 if __name__ == "__main__":
     # 테스트를 위한 가상 데이터 (실제 서버 정보가 필요합니다)
     ftp_host = "ftp.dlptest.com" # 공개 테스트용 FTP (주의해서 사용)
-    ftp_user = "dlpuser"
-    ftp_pass = "rNrKYuR5zzBQnd8h"
+    ftp_user = os.environ.get("FTP_USER", "your_ftp_user")
+    ftp_pass = os.environ.get("FTP_PASSWORD", "your_ftp_password")
     
     # 실제 실행 시 주석 해제
     # connect_and_list_ftp(ftp_host, ftp_user, ftp_pass)
