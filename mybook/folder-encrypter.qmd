@@ -18,6 +18,7 @@ title: "폴더 암호화 도구 (Folder Encrypter)"
 ```python
 import os
 import hashlib
+from Crypto.Cipher import AES
 
 def get_key_from_password(password):
     """
@@ -25,23 +26,45 @@ def get_key_from_password(password):
     """
     return hashlib.sha256(password.encode()).digest()
 
+def aes_encrypt(data, key):
+    """
+    AES 알고리즘을 사용하여 데이터를 암호화합니다.
+    EAX 모드를 사용하여 인증된 암호화를 수행합니다.
+    """
+    cipher = AES.new(key, AES.MODE_EAX)
+    ciphertext, tag = cipher.encrypt_and_digest(data)
+    # nonce, tag, ciphertext를 순서대로 결합하여 반환합니다.
+    return cipher.nonce + tag + ciphertext
+
 def encrypt_folder(folder_path, password):
     """
-    폴더 내의 모든 파일을 암호화합니다. (실제 구현 시 암호화 라이브러리 연동)
+    폴더 내의 모든 파일을 암호화합니다.
     """
     print(f"'{folder_path}' 폴더 암호화 중...")
     key = get_key_from_password(password)
     
     for root, dirs, files in os.walk(folder_path):
         for file in files:
+            # 이미 암호화된 파일은 건너뜁니다.
+            if file.endswith(".locked"):
+                continue
+
             file_path = os.path.join(root, file)
             print(f"암호화 중: {file_path}")
-            # TODO: 실제 파일 데이터를 읽어서 AES 암호화 후 덮어쓰기 또는 새 파일 생성
-            # with open(file_path, 'rb') as f:
-            #     data = f.read()
-            # encrypted_data = aes_encrypt(data, key)
-            # with open(file_path + '.locked', 'wb') as f:
-            #     f.write(encrypted_data)
+
+            try:
+                with open(file_path, 'rb') as f:
+                    data = f.read()
+
+                encrypted_data = aes_encrypt(data, key)
+
+                with open(file_path + '.locked', 'wb') as f:
+                    f.write(encrypted_data)
+
+                # 원본 파일 삭제 (선택 사항, 여기서는 안전을 위해 유지하거나 주석 처리 가능)
+                # os.remove(file_path)
+            except Exception as e:
+                print(f"오류 발생 ({file_path}): {e}")
             
     print("\n폴더 암호화가 완료되었습니다.")
 
