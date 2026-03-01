@@ -2,6 +2,12 @@ import os
 import re
 import yaml
 import sys
+import concurrent.futures
+
+def write_qmd_file(args):
+    filepath, content = args
+    with open(filepath, "w", encoding="utf-8") as f:
+        f.write(content)
 
 def main():
     readme_path = "README.md"
@@ -62,6 +68,7 @@ def main():
     os.makedirs(output_dir, exist_ok=True)
 
     chapter_filenames = []
+    files_to_write = []
 
     for project in projects:
         title = project["title"]
@@ -101,8 +108,11 @@ if __name__ == "__main__":
     {function_name}()
 ```
 """
-        with open(filepath, "w", encoding="utf-8") as f:
-            f.write(content)
+        files_to_write.append((filepath, content))
+
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        # Using list() to consume the iterator and propagate exceptions
+        list(executor.map(write_qmd_file, files_to_write))
 
     print(f"Generated {len(chapter_filenames)} .qmd files.")
 
