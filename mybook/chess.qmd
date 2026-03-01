@@ -56,7 +56,9 @@ class ChessGame:
     def is_valid_move(self, start_pos, end_pos, check_check=True):
         r1, c1 = self.to_coords(start_pos)
         r2, c2 = self.to_coords(end_pos)
+        return self._is_valid_move_coords(r1, c1, r2, c2, check_check)
 
+    def _is_valid_move_coords(self, r1, c1, r2, c2, check_check=True):
         if not (0 <= r1 < 8 and 0 <= c1 < 8 and 0 <= r2 < 8 and 0 <= c2 < 8):
             return False
 
@@ -87,7 +89,7 @@ class ChessGame:
 
         return True
 
-    def _validate_piece_move(self, piece, r1, c1, r2, c2):
+    def _validate_piece_move(self, piece, r1, c1, r2, c2, include_castling=True):
         dr, dc = r2 - r1, c2 - c1
         p = piece.lower()
 
@@ -109,7 +111,7 @@ class ChessGame:
             if (dr == 0 or dc == 0 or abs(dr) == abs(dc)) and self._is_path_clear(r1, c1, r2, c2): return True
         elif p == 'k':
             if abs(dr) <= 1 and abs(dc) <= 1: return True
-            if dr == 0 and abs(dc) == 2: return self._can_castle(piece, r1, c1, r2, c2)
+            if include_castling and dr == 0 and abs(dc) == 2: return self._can_castle(piece, r1, c1, r2, c2)
         return False
 
     def _is_path_clear(self, r1, c1, r2, c2):
@@ -145,9 +147,32 @@ class ChessGame:
                     if piece.lower() == 'p':
                         dir = -1 if piece.isupper() else 1
                         if r == r_idx + dir and abs(c - c_idx) == 1: return True
-                    elif self._validate_piece_move(piece, r_idx, c_idx, r, c):
+                    elif self._validate_piece_move(piece, r_idx, c_idx, r, c, include_castling=False):
                         return True
         return False
+
+    def is_checkmate(self, turn):
+        king_pos = self._find_king(turn)
+        if not self._is_under_attack(king_pos[0], king_pos[1], 'Black' if turn == 'White' else 'White'):
+            return False
+        return self._has_no_valid_moves(turn)
+
+    def is_stalemate(self, turn):
+        king_pos = self._find_king(turn)
+        if self._is_under_attack(king_pos[0], king_pos[1], 'Black' if turn == 'White' else 'White'):
+            return False
+        return self._has_no_valid_moves(turn)
+
+    def _has_no_valid_moves(self, turn):
+        for r1 in range(8):
+            for c1 in range(8):
+                piece = self.board[r1][c1]
+                if piece != ' ' and ((turn == 'White' and piece.isupper()) or (turn == 'Black' and piece.islower())):
+                    for r2 in range(8):
+                        for c2 in range(8):
+                            if self._is_valid_move_coords(r1, c1, r2, c2, check_check=True):
+                                return False
+        return True
 
     def move_piece(self, start_pos, end_pos):
         """
@@ -162,6 +187,12 @@ class ChessGame:
         r2, c2 = self.to_coords(end_pos)
         self._execute_move(r1, c1, r2, c2, self.board[r1][c1])
         self.turn = 'Black' if self.turn == 'White' else 'White'
+
+        if self.is_checkmate(self.turn):
+            print(f"체크메이트! {'White' if self.turn == 'Black' else 'Black'} 승리.")
+        elif self.is_stalemate(self.turn):
+            print("스테일메이트! 무승부.")
+
         return True
 
     def _execute_move(self, r1, c1, r2, c2, piece):
