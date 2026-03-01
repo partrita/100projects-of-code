@@ -53,6 +53,9 @@ class ChessGame:
         row = 8 - int(pos_str[1])
         return row, col
 
+    def from_coords(self, row, col):
+        return f"{chr(ord('a') + col)}{8 - row}"
+
     def is_valid_move(self, start_pos, end_pos, check_check=True):
         r1, c1 = self.to_coords(start_pos)
         r2, c2 = self.to_coords(end_pos)
@@ -161,8 +164,41 @@ class ChessGame:
         r1, c1 = self.to_coords(start_pos)
         r2, c2 = self.to_coords(end_pos)
         self._execute_move(r1, c1, r2, c2, self.board[r1][c1])
+
         self.turn = 'Black' if self.turn == 'White' else 'White'
+
+        king_pos = self._find_king(self.turn)
+        if self._is_under_attack(king_pos[0], king_pos[1], 'Black' if self.turn == 'White' else 'White'):
+            if self.is_checkmate(self.turn):
+                print(f"체크메이트! {'Black' if self.turn == 'White' else 'White'} 승리!")
+            else:
+                print(f"체크! {self.turn}의 킹이 공격받고 있습니다.")
+        elif self.is_stalemate(self.turn):
+            print("스테일메이트! 무승부입니다.")
+
         return True
+
+    def get_legal_moves(self, turn):
+        moves = []
+        for r in range(8):
+            for c in range(8):
+                piece = self.board[r][c]
+                if piece != ' ' and ((turn == 'White' and piece.isupper()) or (turn == 'Black' and piece.islower())):
+                    start_pos = self.from_coords(r, c)
+                    for r2 in range(8):
+                        for c2 in range(8):
+                            end_pos = self.from_coords(r2, c2)
+                            if self.is_valid_move(start_pos, end_pos):
+                                moves.append((start_pos, end_pos))
+        return moves
+
+    def is_checkmate(self, turn):
+        return len(self.get_legal_moves(turn)) == 0 and \
+               self._is_under_attack(*self._find_king(turn), 'Black' if turn == 'White' else 'White')
+
+    def is_stalemate(self, turn):
+        return len(self.get_legal_moves(turn)) == 0 and \
+               not self._is_under_attack(*self._find_king(turn), 'Black' if turn == 'White' else 'White')
 
     def _execute_move(self, r1, c1, r2, c2, piece):
         target_piece = self.board[r2][c2]
