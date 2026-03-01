@@ -125,11 +125,13 @@ if __name__ == "__main__":
     # Merge existing (from create project) with new
     # Start with defaults
     new_chapter_list = [c for c in default_chapters]
+    seen_chapters = set(new_chapter_list)
 
     # Add generated chapters
     for filename in chapter_filenames:
-        if filename not in new_chapter_list:
+        if filename not in seen_chapters:
             new_chapter_list.append(filename)
+            seen_chapters.add(filename)
 
     quarto_config["book"]["chapters"] = new_chapter_list
 
