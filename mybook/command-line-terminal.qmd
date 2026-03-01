@@ -18,6 +18,7 @@ title: "명령줄 터미널 (Command Line Terminal)"
 ```python
 import os
 import subprocess
+import shlex
 
 def run_shell():
     """
@@ -34,8 +35,16 @@ def run_shell():
             if not user_input:
                 continue
             
-            # 명령어와 인자 분리
-            parts = user_input.split()
+            # 명령어와 인자 분리 (shlex.split을 사용하여 따옴표 등 처리)
+            try:
+                parts = shlex.split(user_input)
+            except ValueError as e:
+                print(f"구문 오류: {e}")
+                continue
+
+            if not parts:
+                continue
+
             cmd = parts[0]
             args = parts[1:]
             
@@ -44,13 +53,21 @@ def run_shell():
                 break
             elif cmd == "cd":
                 # 내장 명령어 cd 처리
-                target_dir = args[0] if args else os.path.expanduser("~")
-                os.chdir(target_dir)
+                try:
+                    target_dir = args[0] if args else os.path.expanduser("~")
+                    os.chdir(target_dir)
+                except FileNotFoundError:
+                    print(f"cd: {target_dir}: 그런 디렉터리가 없습니다.")
+                except Exception as e:
+                    print(f"cd 오류: {e}")
             elif cmd == "pwd":
                 print(os.getcwd())
             else:
-                # 외부 명령어 실행 시도
-                result = subprocess.run(user_input, shell=True, capture_output=False, text=True)
+                # 외부 명령어 실행 시도 (보안을 위해 shell=False 설정)
+                try:
+                    result = subprocess.run(parts, shell=False, capture_output=False, text=True)
+                except FileNotFoundError:
+                    print(f"명령어를 찾을 수 없습니다: {cmd}")
                 
         except KeyboardInterrupt:
             print("\n인터럽트 감지! 종료하려면 'exit'를 입력하세요.")
