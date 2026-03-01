@@ -1,19 +1,13 @@
 import os
 import re
-import yaml
 import sys
 
-def main():
-    readme_path = "README.md"
-    if not os.path.exists(readme_path):
-        print("README.md not found!")
-        sys.exit(1)
-
-    with open(readme_path, "r", encoding="utf-8") as f:
-        content = f.read()
+def parse_projects(content):
+    # Remove HTML comments to avoid matching templates or commented out sections
+    content_no_comments = re.sub(r'<!--.*?-->', '', content, flags=re.DOTALL)
 
     # Split by headings
-    sections = re.split(r'^###\s+', content, flags=re.MULTILINE)
+    sections = re.split(r'^###\s+', content_no_comments, flags=re.MULTILINE)
 
     projects = []
 
@@ -25,32 +19,43 @@ def main():
         title = lines[0].strip()
         body = "\n".join(lines[1:])
 
-        # Remove HTML comments to avoid matching templates
-        body_no_comments = re.sub(r'<!--.*?-->', '', body, flags=re.DOTALL)
-
         # Check if it's a project section
-        is_project = "**Suggested Language**:" in body_no_comments or "**Suggested Frameworks/Tools**:" in body_no_comments
+        # Support both English and Korean markers
+        suggested_lang_markers = ["**Suggested Language**:", "**권장 언어**:"]
+        suggested_tool_markers = ["**Suggested Frameworks/Tools**:", "**권장 프레임워크/도구**:"]
+
+        is_project = any(marker in body for marker in suggested_lang_markers + suggested_tool_markers)
 
         if is_project:
             # Extract description
-            match = re.search(r'(.*?)\*\*Suggested Language\*\*:', body_no_comments, re.DOTALL)
+            # Find the first marker to extract description before it
+            all_markers = suggested_lang_markers + suggested_tool_markers
+            # Create a regex to match any of the markers
+            marker_regex = '|'.join(re.escape(m) for m in all_markers)
+            match = re.search(f'(.*?)(?:{marker_regex})', body, re.DOTALL)
+
             if match:
                 description = match.group(1).strip()
             else:
-                 match = re.search(r'(.*?)\*\*Suggested Frameworks/Tools\*\*:', body_no_comments, re.DOTALL)
-                 if match:
-                     description = match.group(1).strip()
-                 else:
-                     description = body_no_comments.strip() # Fallback
-
-            # Clean up title
-            # Remove any trailing anchor links if present in the title line (uncommon in ### but possible)
-            # The regex for split consumed the ###
+                description = body.strip() # Fallback
 
             projects.append({
                 "title": title,
                 "description": description
             })
+    return projects
+
+def main():
+    import yaml
+    readme_path = "README.md"
+    if not os.path.exists(readme_path):
+        print("README.md not found!")
+        sys.exit(1)
+
+    with open(readme_path, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    projects = parse_projects(content)
 
     print(f"Found {len(projects)} projects.")
 
