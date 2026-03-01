@@ -188,10 +188,15 @@ class ChessGame:
         self._execute_move(r1, c1, r2, c2, self.board[r1][c1])
         self.turn = 'Black' if self.turn == 'White' else 'White'
 
+        king_pos = self._find_king(self.turn)
+        in_check = self._is_under_attack(king_pos[0], king_pos[1], 'Black' if self.turn == 'White' else 'White')
+
         if self.is_checkmate(self.turn):
             print(f"체크메이트! {'White' if self.turn == 'Black' else 'Black'} 승리.")
         elif self.is_stalemate(self.turn):
             print("스테일메이트! 무승부.")
+        elif in_check:
+            print(f"체크! {self.turn}의 킹이 공격받고 있습니다.")
 
         return True
 
