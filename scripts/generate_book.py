@@ -63,13 +63,17 @@ def main():
 
     chapter_filenames = []
 
+    # Pre-compile regex patterns for title sanitization
+    re_sanitize = re.compile(r'[^\w\s-]')
+    re_dashes_spaces = re.compile(r'[-\s]+')
+
     for project in projects:
         title = project["title"]
         description = project["description"]
 
         # Create sanitized filename
-        safe_title = re.sub(r'[^\w\s-]', '', title).strip().lower()
-        safe_title = re.sub(r'[-\s]+', '-', safe_title)
+        safe_title = re_sanitize.sub('', title).strip().lower()
+        safe_title = re_dashes_spaces.sub('-', safe_title)
         filename = f"{safe_title}.qmd"
         filepath = os.path.join(output_dir, filename)
 
