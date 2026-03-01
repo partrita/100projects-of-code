@@ -37,11 +37,11 @@ def main():
             if match:
                 description = match.group(1).strip()
             else:
-                 match = re.search(r'(.*?)\*\*Suggested Frameworks/Tools\*\*:', body_no_comments, re.DOTALL)
-                 if match:
-                     description = match.group(1).strip()
-                 else:
-                     description = body_no_comments.strip() # Fallback
+                match = re.search(r'(.*?)\*\*Suggested Frameworks/Tools\*\*:', body_no_comments, re.DOTALL)
+                if match:
+                    description = match.group(1).strip()
+                else:
+                    description = body_no_comments.strip() # Fallback
 
             # Clean up title
             # Remove any trailing anchor links if present in the title line (uncommon in ### but possible)
@@ -78,7 +78,7 @@ def main():
         # Generate content
         function_name = safe_title.replace('-', '_')
         if function_name[0].isdigit():
-             function_name = f"project_{function_name}"
+            function_name = f"project_{function_name}"
 
         content = f"""---
 title: "{title}"
