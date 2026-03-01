@@ -16,6 +16,7 @@ title: "교통 알림기 (Traffic Notifier)"
 ## Python 구현 예시 (Google Maps API 활용 간단한 경로 소요 시간 조회 시뮬레이션)
 
 ```python
+import os
 # 실제 구현 시 googlemaps 등 라이브러리 설치와 API 키가 필요합니다.
 # import googlemaps
 
@@ -54,7 +55,7 @@ class TrafficNotifier:
 
 if __name__ == "__main__":
     # 테스트용 API 키 (가상의 예시)
-    my_key = "AIzaSy..."
+    my_key = os.environ.get("GOOGLE_MAPS_API_KEY", "your_api_key_here")
     notifier = TrafficNotifier(my_key)
     
     # 경로 소요 시간 조회 테스트

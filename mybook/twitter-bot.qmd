@@ -16,6 +16,7 @@ title: "트위터 봇 (Twitter Bot)"
 ## Python 구현 예시 (tweepy 활용 간단한 리트윗 봇 시뮬레이션)
 
 ```python
+import os
 # 실제 구현 시 tweepy 라이브러리 설치와 API 키/토큰이 필요합니다.
 # import tweepy
 
@@ -58,10 +59,10 @@ class TwitterBot:
 
 if __name__ == "__main__":
     # 테스트용 API 정보 (가상의 예시)
-    my_key = "abc12345"
-    my_secret = "secret678"
-    my_token = "token901"
-    my_token_secret = "token_secret234"
+    my_key = os.environ.get("TWITTER_API_KEY", "your_api_key_here")
+    my_secret = os.environ.get("TWITTER_API_SECRET", "your_api_secret_here")
+    my_token = os.environ.get("TWITTER_ACCESS_TOKEN", "your_access_token_here")
+    my_token_secret = os.environ.get("TWITTER_ACCESS_TOKEN_SECRET", "your_access_token_secret_here")
     
     bot = TwitterBot(my_key, my_secret, my_token, my_token_secret)
     

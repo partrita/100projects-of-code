@@ -16,6 +16,7 @@ title: "날씨 앱 (Weather App)"
 ## Python 구현 예시 (OpenWeatherMap API 활용 날씨 조회 시뮬레이션)
 
 ```python
+import os
 import requests
 
 class WeatherApp:
@@ -60,7 +61,7 @@ class WeatherApp:
 
 if __name__ == "__main__":
     # 테스트용 API 키 (가상의 예시)
-    my_key = "abcde12345"
+    my_key = os.environ.get("WEATHER_API_KEY", "your_api_key_here")
     app = WeatherApp(my_key)
     
     # 날씨 조회 테스트

@@ -16,6 +16,7 @@ title: "뉴스 애그리게이터 (News Aggregator)"
 ## Python 구현 예시 (간단한 뉴스 API 활용 시뮬레이션)
 
 ```python
+import os
 import requests
 
 class NewsAggregator:
@@ -51,7 +52,7 @@ class NewsAggregator:
 
 if __name__ == "__main__":
     # 테스트 API 키 (가상)
-    my_key = "abcde12345"
+    my_key = os.environ.get("NEWS_API_KEY", "your_api_key_here")
     aggregator = NewsAggregator(my_key)
     
     # 뉴스 수집 테스트

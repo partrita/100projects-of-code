@@ -53,6 +53,6 @@ if __name__ == "__main__":
         with open(os.path.join(test_folder, "test.txt"), "w") as f:
             f.write("이것은 비밀 문서입니다.")
             
-    my_password = "super_secret_password"
+    my_password = os.environ.get("MY_PASSWORD", "your_password_here")
     encrypt_folder(test_folder, my_password)
 ```
