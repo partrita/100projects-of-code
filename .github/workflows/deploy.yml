@@ -18,8 +18,12 @@ jobs:
 
       - name: Bootstrap Pixi & generate lock
         run: |
-          curl -sSL https://raw.githubusercontent.com/prefix-dev/pixi/main/install.sh | bash
-          $HOME/.pixi/bin/pixi lock --manifest-path pixi.toml
+          set -euo pipefail
+          mkdir -p "$HOME/.pixi/bin"
+          curl -sSL -f https://github.com/prefix-dev/pixi/releases/download/v0.63.2/pixi_linux_amd64.tar.gz -o /tmp/pixi.tar.gz
+          tar -xzf /tmp/pixi.tar.gz -C "$HOME/.pixi/bin" --strip-components=1
+          chmod +x "$HOME/.pixi/bin/pixi"
+          "$HOME/.pixi/bin/pixi" lock --manifest-path pixi.toml
 
       - name: Setup Pixi
         uses: prefix-dev/setup-pixi@v0.8.1
