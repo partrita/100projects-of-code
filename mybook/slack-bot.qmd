@@ -17,6 +17,7 @@ title: "슬랙 봇 (Slack Bot)"
 
 ```python
 # 실제 실행 시 slack_sdk 라이브러리 설치와 API 토큰이 필요합니다.
+import os
 # from slack_sdk import WebClient
 
 class SlackBot:
@@ -54,8 +55,8 @@ class SlackBot:
         return False
 
 if __name__ == "__main__":
-    # 테스트용 API 토큰 (가상의 예시)
-    my_token = "xoxb-123456789-abcdefghijk"
+    # 테스트용 API 토큰 (환경 변수 활용 권장)
+    my_token = os.getenv("SLACK_BOT_TOKEN", "your_slack_bot_token")
     my_bot = SlackBot(my_token, "#dev-team")
     
     # 메시지 및 명령어 처리 시뮬레이션

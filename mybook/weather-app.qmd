@@ -17,6 +17,7 @@ title: "날씨 앱 (Weather App)"
 
 ```python
 import requests
+import os
 
 class WeatherApp:
     """
@@ -59,8 +60,8 @@ class WeatherApp:
         return weather_data
 
 if __name__ == "__main__":
-    # 테스트용 API 키 (가상의 예시)
-    my_key = "abcde12345"
+    # 테스트용 API 키 (환경 변수 활용 권장)
+    my_key = os.getenv("OPENWEATHERMAP_API_KEY", "your_openweathermap_api_key")
     app = WeatherApp(my_key)
     
     # 날씨 조회 테스트

@@ -17,6 +17,7 @@ title: "트위터 봇 (Twitter Bot)"
 
 ```python
 # 실제 구현 시 tweepy 라이브러리 설치와 API 키/토큰이 필요합니다.
+import os
 # import tweepy
 
 class TwitterBot:
@@ -57,11 +58,11 @@ class TwitterBot:
         pass
 
 if __name__ == "__main__":
-    # 테스트용 API 정보 (가상의 예시)
-    my_key = "abc12345"
-    my_secret = "secret678"
-    my_token = "token901"
-    my_token_secret = "token_secret234"
+    # 테스트용 API 정보 (환경 변수 활용 권장)
+    my_key = os.getenv("TWITTER_API_KEY", "your_api_key")
+    my_secret = os.getenv("TWITTER_API_SECRET", "your_api_secret")
+    my_token = os.getenv("TWITTER_ACCESS_TOKEN", "your_access_token")
+    my_token_secret = os.getenv("TWITTER_ACCESS_TOKEN_SECRET", "your_access_token_secret")
     
     bot = TwitterBot(my_key, my_secret, my_token, my_token_secret)
     
