@@ -17,29 +17,61 @@ title: "손동작 인식 (Hand Gesture Recognition)"
 
 ```python
 # 실제 실행을 위해서는 mediapipe와 opencv-python이 필요합니다.
-# import cv2
-# import mediapipe as mp
+import cv2
+import mediapipe as mp
 
 class GestureRecognizer:
     """
     영상 프레임에서 손동작을 감지하고 분류합니다.
     """
     def __init__(self):
-        # MediaPipe Hands 모델 초기화 (실제 코드에서 필요)
-        # self.mp_hands = mp.solutions.hands
-        # self.hands = self.mp_hands.Hands()
+        # MediaPipe Hands 모델 초기화
+        self.mp_hands = mp.solutions.hands
+        self.hands = self.mp_hands.Hands(
+            static_image_mode=False,
+            max_num_hands=1,
+            min_detection_confidence=0.5,
+            min_tracking_confidence=0.5
+        )
         print("손동작 인식 엔진 초기화 완료.")
 
     def process_frame(self, frame):
         """
         영상 프레임을 분석하여 손가락 개수를 세거나 제스처를 판별합니다.
         """
-        # TODO: OpenCV 프레임을 MediaPipe에 전달하여 랜드마크 추출
-        # results = self.hands.process(frame)
+        if frame is None:
+            return "인식 불가"
+
+        # MediaPipe는 RGB 이미지를 사용하므로 BGR에서 RGB로 변환
+        image_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        results = self.hands.process(image_rgb)
+
+        finger_count = 0
+        if results.multi_hand_landmarks:
+            for hand_landmarks in results.multi_hand_landmarks:
+                # 손가락 끝(Tip) 번호: 엄지(4), 검지(8), 중지(12), 약지(16), 소지(20)
+                # 손가락 마디(PIP/IP) 번호: 엄지(3), 검지(6), 중지(10), 약지(14), 소지(18)
+                tips = [8, 12, 16, 20]
+                pips = [6, 10, 14, 18]
+
+                # 검지~소지: 끝 마디가 아래 마디보다 위에 있는지 확인 (Y값이 작을수록 위쪽)
+                for tip, pip in zip(tips, pips):
+                    if hand_landmarks.landmark[tip].y < hand_landmarks.landmark[pip].y:
+                        finger_count += 1
+
+                # 엄지: 간단하게 Y 좌표로 비교 (더 정확하게는 X 좌표나 각도 활용 가능)
+                if hand_landmarks.landmark[4].y < hand_landmarks.landmark[3].y:
+                    finger_count += 1
         
-        # 가상의 인식 결과 예시
-        finger_count = 2 # 인식된 손가락 개수 시뮬레이션
-        gesture = "가위" if finger_count == 2 else "주먹"
+        # 손가락 개수에 따른 제스처 판별
+        if finger_count == 2:
+            gesture = "가위"
+        elif finger_count == 5:
+            gesture = "보"
+        elif finger_count == 0:
+            gesture = "주먹"
+        else:
+            gesture = f"손가락 {finger_count}개"
         
         print(f"인식된 제스처: {gesture} (손가락 {finger_count}개)")
         return gesture
