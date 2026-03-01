@@ -3,6 +3,14 @@ import re
 import yaml
 import sys
 
+# Pre-compiled regex patterns for performance optimization
+RE_SECTION_SPLIT = re.compile(r'^###\s+', re.MULTILINE)
+RE_HTML_COMMENTS = re.compile(r'<!--.*?-->', re.DOTALL)
+RE_SUGGESTED_LANG = re.compile(r'(.*?)\*\*Suggested Language\*\*:', re.DOTALL)
+RE_SUGGESTED_TOOLS = re.compile(r'(.*?)\*\*Suggested Frameworks/Tools\*\*:', re.DOTALL)
+RE_CLEAN_FILENAME_1 = re.compile(r'[^\w\s-]')
+RE_CLEAN_FILENAME_2 = re.compile(r'[-\s]+')
+
 def main():
     readme_path = "README.md"
     if not os.path.exists(readme_path):
@@ -13,7 +21,7 @@ def main():
         content = f.read()
 
     # Split by headings
-    sections = re.split(r'^###\s+', content, flags=re.MULTILINE)
+    sections = RE_SECTION_SPLIT.split(content)
 
     projects = []
 
@@ -26,18 +34,18 @@ def main():
         body = "\n".join(lines[1:])
 
         # Remove HTML comments to avoid matching templates
-        body_no_comments = re.sub(r'<!--.*?-->', '', body, flags=re.DOTALL)
+        body_no_comments = RE_HTML_COMMENTS.sub('', body)
 
         # Check if it's a project section
         is_project = "**Suggested Language**:" in body_no_comments or "**Suggested Frameworks/Tools**:" in body_no_comments
 
         if is_project:
             # Extract description
-            match = re.search(r'(.*?)\*\*Suggested Language\*\*:', body_no_comments, re.DOTALL)
+            match = RE_SUGGESTED_LANG.search(body_no_comments)
             if match:
                 description = match.group(1).strip()
             else:
-                 match = re.search(r'(.*?)\*\*Suggested Frameworks/Tools\*\*:', body_no_comments, re.DOTALL)
+                 match = RE_SUGGESTED_TOOLS.search(body_no_comments)
                  if match:
                      description = match.group(1).strip()
                  else:
@@ -68,8 +76,8 @@ def main():
         description = project["description"]
 
         # Create sanitized filename
-        safe_title = re.sub(r'[^\w\s-]', '', title).strip().lower()
-        safe_title = re.sub(r'[-\s]+', '-', safe_title)
+        safe_title = RE_CLEAN_FILENAME_1.sub('', title).strip().lower()
+        safe_title = RE_CLEAN_FILENAME_2.sub('-', safe_title)
         filename = f"{safe_title}.qmd"
         filepath = os.path.join(output_dir, filename)
 
