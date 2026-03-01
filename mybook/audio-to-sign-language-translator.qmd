@@ -35,18 +35,51 @@ def transcribe_audio(audio_file_path):
         print(f"API 요청 오류: {e}")
     return None
 
+# 가상의 수어 데이터베이스 (단어: 영상/이미지 경로)
+SIGN_LANGUAGE_DB = {
+    "안녕하세요": "assets/hello.mp4",
+    "만나서": "assets/meet.mp4",
+    "반갑습니다": "assets/glad.mp4",
+    "감사합니다": "assets/thanks.mp4"
+}
+
+def play_sign_language_assets(asset_paths):
+    """
+    수어 영상 클립 또는 이미지를 순차적으로 재생/표시합니다.
+    """
+    for path in asset_paths:
+        print(f"[재생 중] {path} ...")
+        # 실제 환경에서는 OpenCV 등을 사용하여 영상을 재생하거나
+        # 이미지 뷰어를 통해 사진을 보여줄 수 있습니다.
+        # 예:
+        # import cv2
+        # cap = cv2.VideoCapture(path)
+        # while cap.isOpened():
+        #     ret, frame = cap.read()
+        #     if not ret: break
+        #     cv2.imshow('Sign Language', frame)
+        #     if cv2.waitKey(25) & 0xFF == ord('q'): break
+        # cap.release()
+        # cv2.destroyAllWindows()
+
 def translate_to_sign_language(text):
     """
-    텍스트를 수어 데이터로 매핑합니다. (간단한 예시)
+    텍스트를 수어 데이터로 매핑하고 시각화 로직을 호출합니다.
     """
     if not text:
         return
     
-    # 예: "안녕하세요" -> ["hello_sign.mp4"]
-    # 실제 구현에서는 형태소 분석을 통해 각 단어에 맞는 수어 이미지를 찾아야 합니다.
     print(f"'{text}' 문장을 수어로 변환 중...")
-    # TODO: 관련 수어 영상 클립 재생 또는 이미지 표시 로직 추가
-    pass
+
+    # 실제 구현에서는 KoNLPy와 같은 형태소 분석기를 사용하여 단어를 추출해야 합니다.
+    # 여기서는 간단히 공백으로 단어를 분리하여 매칭합니다.
+    words = text.split()
+    matched_assets = [SIGN_LANGUAGE_DB[word] for word in words if word in SIGN_LANGUAGE_DB]
+
+    if matched_assets:
+        play_sign_language_assets(matched_assets)
+    else:
+        print("일치하는 수어 데이터를 찾을 수 없습니다.")
 
 if __name__ == "__main__":
     # 실제 음성 파일이 있는 경우 실행 가능
