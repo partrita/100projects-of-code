@@ -37,11 +37,11 @@ def main():
             if match:
                 description = match.group(1).strip()
             else:
-                 match = re.search(r'(.*?)\*\*Suggested Frameworks/Tools\*\*:', body_no_comments, re.DOTALL)
-                 if match:
-                     description = match.group(1).strip()
-                 else:
-                     description = body_no_comments.strip() # Fallback
+                match = re.search(r'(.*?)\*\*Suggested Frameworks/Tools\*\*:', body_no_comments, re.DOTALL)
+                if match:
+                    description = match.group(1).strip()
+                else:
+                    description = body_no_comments.strip() # Fallback
 
             # Clean up title
             # Remove any trailing anchor links if present in the title line (uncommon in ### but possible)
