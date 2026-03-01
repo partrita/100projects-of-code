@@ -3,6 +3,13 @@ import re
 import yaml
 import sys
 
+# Pre-compile regex patterns for performance
+RE_HTML_COMMENT = re.compile(r'<!--.*?-->', re.DOTALL)
+RE_SUGGESTED_LANG = re.compile(r'(.*?)\*\*Suggested Language\*\*:', re.DOTALL)
+RE_SUGGESTED_TOOLS = re.compile(r'(.*?)\*\*Suggested Frameworks/Tools\*\*:', re.DOTALL)
+RE_INVALID_TITLE_CHARS = re.compile(r'[^\w\s-]')
+RE_DASHES_SPACES = re.compile(r'[-\s]+')
+
 def main():
     readme_path = "README.md"
     if not os.path.exists(readme_path):
@@ -26,18 +33,18 @@ def main():
         body = "\n".join(lines[1:])
 
         # Remove HTML comments to avoid matching templates
-        body_no_comments = re.sub(r'<!--.*?-->', '', body, flags=re.DOTALL)
+        body_no_comments = RE_HTML_COMMENT.sub('', body)
 
         # Check if it's a project section
         is_project = "**Suggested Language**:" in body_no_comments or "**Suggested Frameworks/Tools**:" in body_no_comments
 
         if is_project:
             # Extract description
-            match = re.search(r'(.*?)\*\*Suggested Language\*\*:', body_no_comments, re.DOTALL)
+            match = RE_SUGGESTED_LANG.search(body_no_comments)
             if match:
                 description = match.group(1).strip()
             else:
-                 match = re.search(r'(.*?)\*\*Suggested Frameworks/Tools\*\*:', body_no_comments, re.DOTALL)
+                 match = RE_SUGGESTED_TOOLS.search(body_no_comments)
                  if match:
                      description = match.group(1).strip()
                  else:
@@ -68,8 +75,8 @@ def main():
         description = project["description"]
 
         # Create sanitized filename
-        safe_title = re.sub(r'[^\w\s-]', '', title).strip().lower()
-        safe_title = re.sub(r'[-\s]+', '-', safe_title)
+        safe_title = RE_INVALID_TITLE_CHARS.sub('', title).strip().lower()
+        safe_title = RE_DASHES_SPACES.sub('-', safe_title)
         filename = f"{safe_title}.qmd"
         filepath = os.path.join(output_dir, filename)
 
