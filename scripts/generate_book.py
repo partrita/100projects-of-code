@@ -9,6 +9,20 @@ def write_qmd_file(args):
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(content)
 
+# Pre-compiled regex patterns for performance
+RE_HEADING = re.compile(r'^###\s+', re.MULTILINE)
+RE_HTML_COMMENT = re.compile(r'<!--.*?-->', re.DOTALL)
+RE_SAFE_TITLE = re.compile(r'[^\w\s-]')
+RE_DASHES = re.compile(r'[-\s]+')
+
+# Project detection patterns
+RE_PROJECT_MARKERS = [
+    re.compile(r'(.*?)\*\*Suggested Language\*\*:', re.DOTALL),
+    re.compile(r'(.*?)\*\*Suggested Frameworks/Tools\*\*:', re.DOTALL),
+    re.compile(r'(.*?)\*\*권장 언어\*\*:', re.DOTALL),
+    re.compile(r'(.*?)\*\*권장 프레임워크/도구\*\*:', re.DOTALL),
+]
+
 def main():
     readme_path = "README.md"
     if not os.path.exists(readme_path):
@@ -19,7 +33,7 @@ def main():
         content = f.read()
 
     # Split by headings
-    sections = re.split(r'^###\s+', content, flags=re.MULTILINE)
+    sections = RE_HEADING.split(content)
 
     projects = []
 
@@ -32,27 +46,17 @@ def main():
         body = "\n".join(lines[1:])
 
         # Remove HTML comments to avoid matching templates
-        body_no_comments = re.sub(r'<!--.*?-->', '', body, flags=re.DOTALL)
+        body_no_comments = RE_HTML_COMMENT.sub('', body)
 
-        # Check if it's a project section
-        is_project = "**Suggested Language**:" in body_no_comments or "**Suggested Frameworks/Tools**:" in body_no_comments
-
-        if is_project:
-            # Extract description
-            match = re.search(r'(.*?)\*\*Suggested Language\*\*:', body_no_comments, re.DOTALL)
+        # Check for English or Korean project markers
+        description = None
+        for pattern in RE_PROJECT_MARKERS:
+            match = pattern.search(body_no_comments)
             if match:
                 description = match.group(1).strip()
-            else:
-                match = re.search(r'(.*?)\*\*Suggested Frameworks/Tools\*\*:', body_no_comments, re.DOTALL)
-                if match:
-                    description = match.group(1).strip()
-                else:
-                    description = body_no_comments.strip() # Fallback
+                break
 
-            # Clean up title
-            # Remove any trailing anchor links if present in the title line (uncommon in ### but possible)
-            # The regex for split consumed the ###
-
+        if description is not None:
             projects.append({
                 "title": title,
                 "description": description
@@ -75,8 +79,8 @@ def main():
         description = project["description"]
 
         # Create sanitized filename
-        safe_title = re.sub(r'[^\w\s-]', '', title).strip().lower()
-        safe_title = re.sub(r'[-\s]+', '-', safe_title)
+        safe_title = RE_SAFE_TITLE.sub('', title).strip().lower()
+        safe_title = RE_DASHES.sub('-', safe_title)
         filename = f"{safe_title}.qmd"
         filepath = os.path.join(output_dir, filename)
 
@@ -84,7 +88,7 @@ def main():
 
         # Generate content
         function_name = safe_title.replace('-', '_')
-        if function_name[0].isdigit():
+        if function_name and function_name[0].isdigit():
             function_name = f"project_{function_name}"
 
         content = f"""---
@@ -120,7 +124,7 @@ if __name__ == "__main__":
     quarto_yml_path = os.path.join(output_dir, "_quarto.yml")
     if os.path.exists(quarto_yml_path):
         with open(quarto_yml_path, "r", encoding="utf-8") as f:
-            quarto_config = yaml.safe_load(f)
+            quarto_config = yaml.safe_load(f) or {}
     else:
         quarto_config = {}
 
@@ -132,16 +136,14 @@ if __name__ == "__main__":
     # Define standard chapters
     default_chapters = ["index.qmd", "intro.qmd", "summary.qmd", "references.qmd"]
 
-    # Merge existing (from create project) with new
-    # Start with defaults
-    new_chapter_list = [c for c in default_chapters]
-    seen_chapters = set(new_chapter_list)
+    # Merge while maintaining order and ensuring O(1) membership check
+    new_chapter_list = []
+    seen_chapters = set()
 
-    # Add generated chapters
-    for filename in chapter_filenames:
-        if filename not in seen_chapters:
-            new_chapter_list.append(filename)
-            seen_chapters.add(filename)
+    for chapter in default_chapters + existing_chapters + chapter_filenames:
+        if chapter not in seen_chapters:
+            new_chapter_list.append(chapter)
+            seen_chapters.add(chapter)
 
     quarto_config["book"]["chapters"] = new_chapter_list
 
