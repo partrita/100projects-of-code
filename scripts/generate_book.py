@@ -3,15 +3,8 @@ import re
 import yaml
 import sys
 
-def main():
-    readme_path = "README.md"
-    if not os.path.exists(readme_path):
-        print("README.md not found!")
-        sys.exit(1)
-
-    with open(readme_path, "r", encoding="utf-8") as f:
-        content = f.read()
-
+def parse_readme(content):
+    """Parse README content to extract project titles and descriptions."""
     # Split by headings
     sections = re.split(r'^###\s+', content, flags=re.MULTILINE)
 
@@ -43,44 +36,26 @@ def main():
                  else:
                      description = body_no_comments.strip() # Fallback
 
-            # Clean up title
-            # Remove any trailing anchor links if present in the title line (uncommon in ### but possible)
-            # The regex for split consumed the ###
-
             projects.append({
                 "title": title,
                 "description": description
             })
+    return projects
 
-    print(f"Found {len(projects)} projects.")
+def sanitize_filename(title):
+    """Create a filesystem-safe filename from a title."""
+    safe_title = re.sub(r'[^\w\s-]', '', title).strip().lower()
+    safe_title = re.sub(r'[-\s]+', '-', safe_title)
+    return f"{safe_title}.qmd"
 
-    if not projects:
-        print("No projects found! Check parsing logic.")
-        sys.exit(1)
+def generate_qmd_content(title, description, filename):
+    """Generate the content for a .qmd file."""
+    safe_title = filename.replace('.qmd', '')
+    function_name = safe_title.replace('-', '_')
+    if function_name and function_name[0].isdigit():
+         function_name = f"project_{function_name}"
 
-    output_dir = "mybook"
-    os.makedirs(output_dir, exist_ok=True)
-
-    chapter_filenames = []
-
-    for project in projects:
-        title = project["title"]
-        description = project["description"]
-
-        # Create sanitized filename
-        safe_title = re.sub(r'[^\w\s-]', '', title).strip().lower()
-        safe_title = re.sub(r'[-\s]+', '-', safe_title)
-        filename = f"{safe_title}.qmd"
-        filepath = os.path.join(output_dir, filename)
-
-        chapter_filenames.append(filename)
-
-        # Generate content
-        function_name = safe_title.replace('-', '_')
-        if function_name[0].isdigit():
-             function_name = f"project_{function_name}"
-
-        content = f"""---
+    return f"""---
 title: "{title}"
 ---
 
@@ -101,13 +76,9 @@ if __name__ == "__main__":
     {function_name}()
 ```
 """
-        with open(filepath, "w", encoding="utf-8") as f:
-            f.write(content)
 
-    print(f"Generated {len(chapter_filenames)} .qmd files.")
-
-    # Update _quarto.yml
-    quarto_yml_path = os.path.join(output_dir, "_quarto.yml")
+def update_quarto_config(quarto_yml_path, chapter_filenames):
+    """Update _quarto.yml with the list of generated chapters."""
     if os.path.exists(quarto_yml_path):
         with open(quarto_yml_path, "r", encoding="utf-8") as f:
             quarto_config = yaml.safe_load(f)
@@ -117,13 +88,10 @@ if __name__ == "__main__":
     if "book" not in quarto_config:
         quarto_config["book"] = {}
 
-    existing_chapters = quarto_config["book"].get("chapters", [])
-
     # Define standard chapters
     default_chapters = ["index.qmd", "intro.qmd", "summary.qmd", "references.qmd"]
 
-    # Merge existing (from create project) with new
-    # Start with defaults
+    # Merge existing with new
     new_chapter_list = [c for c in default_chapters]
     seen_chapters = set(new_chapter_list)
 
@@ -138,6 +106,41 @@ if __name__ == "__main__":
     with open(quarto_yml_path, "w", encoding="utf-8") as f:
         yaml.dump(quarto_config, f, sort_keys=False, allow_unicode=True)
 
+def main():
+    readme_path = "README.md"
+    if not os.path.exists(readme_path):
+        print("README.md not found!")
+        sys.exit(1)
+
+    with open(readme_path, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    projects = parse_readme(content)
+
+    print(f"Found {len(projects)} projects.")
+
+    if not projects:
+        print("No projects found! Check parsing logic.")
+        sys.exit(1)
+
+    output_dir = "mybook"
+    os.makedirs(output_dir, exist_ok=True)
+
+    chapter_filenames = []
+
+    for project in projects:
+        filename = sanitize_filename(project["title"])
+        filepath = os.path.join(output_dir, filename)
+        chapter_filenames.append(filename)
+
+        qmd_content = generate_qmd_content(project["title"], project["description"], filename)
+        with open(filepath, "w", encoding="utf-8") as f:
+            f.write(qmd_content)
+
+    print(f"Generated {len(chapter_filenames)} .qmd files.")
+
+    quarto_yml_path = os.path.join(output_dir, "_quarto.yml")
+    update_quarto_config(quarto_yml_path, chapter_filenames)
     print("Updated _quarto.yml")
 
 if __name__ == "__main__":
