@@ -23,7 +23,7 @@ def translate_to_sign_language(text):
         return
     print(f"'{text}' 문장을 수어로 변환 중...")
     words = text.split()
-    matched_assets = [SIGN_LANGUAGE_DB[word] for word in words if word in SIGN_LANGUAGE_DB]
+    matched_assets = [v for word in words if (v := SIGN_LANGUAGE_DB.get(word)) is not None]
     if matched_assets:
         play_sign_language_assets(matched_assets)
     else:
