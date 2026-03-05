@@ -53,7 +53,7 @@ class SimpleVCS:
         
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         commit_data = {
-            "id": hashlib.md5(timestamp.encode()).hexdigest()[:8],
+            "id": hashlib.sha256(timestamp.encode()).hexdigest()[:8],
             "message": message,
             "timestamp": timestamp
         }
